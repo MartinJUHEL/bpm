@@ -1,0 +1,94 @@
+import 'package:bloc/bloc.dart';
+import 'package:bpm/core/utils/logger/logger.dart';
+import 'package:bpm/signup/domain/usecases/is_email_valid_usecase.dart';
+import 'package:bpm/signup/domain/usecases/is_name_valid_usecase.dart';
+import 'package:bpm/signup/domain/usecases/is_password_valid_usecase.dart';
+import 'package:bpm/signup/domain/usecases/submit_signin_usecase.dart';
+import 'package:bpm/signup/domain/usecases/submit_signup_usecase.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:injectable/injectable.dart';
+
+part 'signup_event.dart';
+
+part 'signup_state.dart';
+
+part 'signup_bloc.freezed.dart';
+
+@injectable
+class SignupBloc extends Bloc<SignupEvent, SignupState> {
+  final IsEmailValidUseCase _isEmailValidUseCase;
+  final IsPasswordValidUseCase _isPasswordValidUseCase;
+  final IsNameValidUseCase _isNameValidUseCase;
+  final SubmitSignupUseCase _submitSignupUseCase;
+  final SubmitSigninUseCase _submitSigninUseCase;
+
+  SignupBloc(
+      this._isEmailValidUseCase,
+      this._isPasswordValidUseCase,
+      this._isNameValidUseCase,
+      this._submitSignupUseCase,
+      this._submitSigninUseCase)
+      : super(SignupState.initial()) {
+    on<SignupEvent>((events, emit) {
+      events.when(
+          emailChanged: (email) => _onEmailChanged(email, emit),
+          passwordChanged: (password) => _onPasswordChanged(password, emit),
+          nameChanged: (name) => _onNameChanged(name, emit),
+          submitted: () => _onSubmitted(emit),
+          obscurePasswordToggled: () => _obscurePasswordToggled(emit),
+          succeeded: () => _onSucceeded(emit));
+    });
+  }
+
+  _onEmailChanged(String email, Emitter<SignupState> emit) {
+    emit(state.copyWith(
+      isFormSuccessful: false,
+      isFormValid: false,
+      isFormValidateFailed: false,
+      errorMessage: "",
+      email: email,
+      isEmailValid: _isEmailValidUseCase.execute(email),
+    ));
+  }
+
+  _onPasswordChanged(String password, Emitter<SignupState> emit) {
+    emit(state.copyWith(
+      isFormSuccessful: false,
+      isFormValid: false,
+      isFormValidateFailed: false,
+      errorMessage: "",
+      email: password,
+      isPasswordValid: _isPasswordValidUseCase.execute(password),
+    ));
+  }
+
+  Future<void> _onNameChanged(String name, Emitter<SignupState> emit) async {
+    emit(state.copyWith(
+      isFormSuccessful: false,
+      isFormValid: false,
+      isFormValidateFailed: false,
+      errorMessage: "",
+      email: name,
+      isPasswordValid: await _isNameValidUseCase.execute(name),
+    ));
+  }
+
+  Future<void> _onSubmitted(Emitter<SignupState> emit) async {
+    if (state.formType == FormType.signUp) {
+      SignupState updatedState = await _submitSignupUseCase.execute(state);
+      emit(updatedState);
+    } else {
+      SignupState updatedState = await _submitSigninUseCase.execute(state);
+      emit(updatedState);
+    }
+  }
+
+  _onSucceeded(Emitter<SignupState> emit) {
+    emit(state.copyWith(isFormSuccessful: true));
+  }
+
+  _obscurePasswordToggled(Emitter<SignupState> emit) {
+    logger.d('STATE ${state.obscurePassword}');
+    emit(state.copyWith(obscurePassword: !state.obscurePassword));
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "appTitle": "BPM",
+  "@appTitle": {
+    "description": "App title"
+  },
+
+  "@_WELCOME_PAGE": {},
+  "welcomeText" : "Welcome to BPM",
+
+  "@_SIGNUP_PAGE": {},
+  "signup": "Sign Up",
+  "checkEmailMessage" : "Please Verify your email, by clicking the link sent to you by mail.",
+  "emailLabel" : "Email",
+  "emailHelperText" : "A complete, valid email e.g. joe@gmail.com",
+  "emailNotValid" : "Please ensure the email entered is valid",
+  "textFillIssue" : "Please fill the data correctly!",
+  "passwordLabel" : "Password",
+  "passwordHelperText" : "Password should be at least 6 characters",
+  "passwordNotValid" : "Password must be at least 6 characters",
+  "nameLabel" : "Name",
+  "nameNotValid" : "Name cannot be empty!"
+}
