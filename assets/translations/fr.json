@@ -3,12 +3,17 @@
   "@appTitle": {
     "description": "App title"
   },
+  "refresh": "Refresh",
 
   "@_WELCOME_PAGE": {},
   "welcomeText" : "Welcome to BPM",
 
+  "@_EMAIL_NOT_VERIFIED_PAGE": {},
+  "verifyEmail" : "Please verify your email with the link we sent on your email",
+
   "@_SIGNUP_PAGE": {},
   "signup": "Sign Up",
+  "signin": "Sign in",
   "checkEmailMessage" : "Please Verify your email, by clicking the link sent to you by mail.",
   "emailLabel" : "Email",
   "emailHelperText" : "A complete, valid email e.g. joe@gmail.com",

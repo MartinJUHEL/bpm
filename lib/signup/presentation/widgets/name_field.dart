@@ -19,7 +19,9 @@ class NameField extends StatelessWidget {
               },
               decoration: InputDecoration(
                 labelText: tr('nameLabel'),
-                errorText: !state.isEmailValid ? tr('nameNotValid') : null,
+                errorText: !state.isNameValid && state.showError
+                    ? tr('nameNotValid')
+                    : null,
                 hintText: tr('nameLabel'),
                 contentPadding: const EdgeInsets.symmetric(
                     vertical: 15.0, horizontal: 10.0),

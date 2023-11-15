@@ -13,6 +13,9 @@ class AuthenticationStartedUseCase {
   Future<AuthenticationState> execute() async {
     User? user = await authenticationRepository.getCurrentUser().first;
     if (user != null) {
+      if(!user.emailVerified){
+        return const AuthenticationState.emailNotVerified();
+      }
       //todo retrieve userModel on firestore
       return AuthenticationState.success(user.displayName);
     } else {

@@ -21,7 +21,7 @@ class EmailField extends StatelessWidget {
               decoration: InputDecoration(
                 labelText: tr('emailLabel'),
                 helperText: tr('emailHelperText'),
-                errorText: !state.isEmailValid ? tr('emailNotValid') : null,
+                errorText: !state.isEmailValid && state.showError ? tr('emailNotValid') : null,
                 hintText: tr('emailLabel'),
                 contentPadding: const EdgeInsets.symmetric(
                     vertical: 15.0, horizontal: 10.0),

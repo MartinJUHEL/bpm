@@ -12,12 +12,13 @@ class PasswordField extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
     return BlocBuilder<SignupBloc, SignupState>(
       builder: (context, state) {
-        logger.d('State ${state.obscurePassword}');
         return SizedBox(
           width: size.width * 0.8,
           child: TextFormField(
               onChanged: (value) {
-                context.read<SignupBloc>().add(SignupEvent.passwordChanged(value));
+                context
+                    .read<SignupBloc>()
+                    .add(SignupEvent.passwordChanged(value));
               },
               obscureText: state.obscurePassword,
               decoration: InputDecoration(
@@ -32,7 +33,9 @@ class PasswordField extends StatelessWidget {
                 ),
                 labelText: tr('passwordLabel'),
                 helperText: tr('passwordHelperText'),
-                errorText: !state.isEmailValid ? tr('passwordNotValid') : null,
+                errorText: !state.isPasswordValid && state.showError
+                    ? tr('passwordNotValid')
+                    : null,
                 hintText: tr('passwordLabel'),
                 contentPadding: const EdgeInsets.symmetric(
                     vertical: 15.0, horizontal: 10.0),

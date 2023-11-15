@@ -35,15 +35,15 @@ class SubmitSignupUseCase {
       try {
         UserCredential? authUser = await _authenticationRepository.signUp(user);
         UserModel updatedUser = user.copyWith(
-            uid: authUser?.user?.uid, isVerified: authUser?.user?.emailVerified);
+            uid: authUser?.user?.uid,
+            isVerified: authUser?.user?.emailVerified);
         //await _databaseRepository.saveUserData(updatedUser);
         if (updatedUser.isVerified == true) {
           return state.copyWith(isLoading: false, errorMessage: "");
         } else {
           return state.copyWith(
               isFormValid: false,
-              errorMessage:
-              tr('checkEmailMessage'),
+              errorMessage: tr('checkEmailMessage'),
               isLoading: false);
         }
       } on FirebaseAuthException catch (e) {
@@ -52,7 +52,10 @@ class SubmitSignupUseCase {
       }
     } else {
       return state.copyWith(
-          isLoading: false, isFormValid: false, isFormValidateFailed: true);
+          isLoading: false,
+          isFormValid: false,
+          isFormValidateFailed: true,
+          showError: true);
     }
   }
 }

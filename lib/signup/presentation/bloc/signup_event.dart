@@ -12,6 +12,8 @@ class SignupEvent with _$SignupEvent {
 
   const factory SignupEvent.obscurePasswordToggled() =_ObscurePasswordToggled;
 
+  const factory SignupEvent.formTypeToggled(FormType form) = _FormTypeToggled;
+
   const factory SignupEvent.succeeded() = _Succeeded;
 }
 

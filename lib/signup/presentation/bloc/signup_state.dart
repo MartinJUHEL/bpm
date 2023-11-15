@@ -11,6 +11,7 @@ sealed class SignupState with _$SignupState {
     required final String password,
     @Default('') final String? errorMessage,
     @Default(FormType.signUp) final FormType? formType,
+    @Default(false) final bool showError,
     @Default(false) final bool isFormSuccessful,
     @Default(true) final bool obscurePassword,
     @Default(true) final bool isEmailValid,

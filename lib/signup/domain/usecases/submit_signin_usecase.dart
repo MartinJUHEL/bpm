@@ -50,7 +50,10 @@ class SubmitSigninUseCase {
       }
     } else {
       return state.copyWith(
-          isLoading: false, isFormValid: false, isFormValidateFailed: true);
+          isLoading: false,
+          isFormValid: false,
+          isFormValidateFailed: true,
+          showError: true);
     }
   }
 }

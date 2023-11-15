@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:bloc/bloc.dart';
 import 'package:bpm/core/utils/logger/logger.dart';
 import 'package:bpm/signup/domain/usecases/is_email_valid_usecase.dart';
@@ -29,14 +31,15 @@ class SignupBloc extends Bloc<SignupEvent, SignupState> {
       this._submitSignupUseCase,
       this._submitSigninUseCase)
       : super(SignupState.initial()) {
-    on<SignupEvent>((events, emit) {
-      events.when(
+    on<SignupEvent>((events, emit) async {
+      await events.when<FutureOr<void>>(
           emailChanged: (email) => _onEmailChanged(email, emit),
           passwordChanged: (password) => _onPasswordChanged(password, emit),
           nameChanged: (name) => _onNameChanged(name, emit),
           submitted: () => _onSubmitted(emit),
           obscurePasswordToggled: () => _obscurePasswordToggled(emit),
-          succeeded: () => _onSucceeded(emit));
+          succeeded: () => _onSucceeded(emit),
+          formTypeToggled: (FormType form) => _formTypeToggled(form, emit));
     });
   }
 
@@ -57,7 +60,7 @@ class SignupBloc extends Bloc<SignupEvent, SignupState> {
       isFormValid: false,
       isFormValidateFailed: false,
       errorMessage: "",
-      email: password,
+      password: password,
       isPasswordValid: _isPasswordValidUseCase.execute(password),
     ));
   }
@@ -68,7 +71,8 @@ class SignupBloc extends Bloc<SignupEvent, SignupState> {
       isFormValid: false,
       isFormValidateFailed: false,
       errorMessage: "",
-      email: name,
+      isNameValid: true,
+      displayName: name,
       isPasswordValid: await _isNameValidUseCase.execute(name),
     ));
   }
@@ -88,7 +92,10 @@ class SignupBloc extends Bloc<SignupEvent, SignupState> {
   }
 
   _obscurePasswordToggled(Emitter<SignupState> emit) {
-    logger.d('STATE ${state.obscurePassword}');
     emit(state.copyWith(obscurePassword: !state.obscurePassword));
+  }
+
+  _formTypeToggled(FormType form,Emitter<SignupState> emit){
+    emit(state.copyWith(formType: form));
   }
 }

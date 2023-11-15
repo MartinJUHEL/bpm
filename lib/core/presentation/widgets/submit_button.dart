@@ -6,7 +6,10 @@ class SubmitButton extends StatelessWidget {
       {super.key,
       this.isEnabled = true,
       this.isLoading = false,
+      this.title = "",
       required this.onPressed});
+
+  final String title;
   final bool isLoading;
   final bool isEnabled;
   final VoidCallback onPressed;
@@ -19,8 +22,8 @@ class SubmitButton extends StatelessWidget {
         : SizedBox(
             width: size.width * 0.8,
             child: OutlinedButton(
-              onPressed: () => onPressed(),
-              child: const Text('signup').tr(),
+              onPressed: isEnabled ? () => onPressed() : null,
+              child: Text(title),
             ),
           );
   }

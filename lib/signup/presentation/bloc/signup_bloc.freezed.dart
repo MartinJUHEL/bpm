@@ -23,6 +23,7 @@ mixin _$SignupEvent {
     required TResult Function(String name) nameChanged,
     required TResult Function() submitted,
     required TResult Function() obscurePasswordToggled,
+    required TResult Function(FormType form) formTypeToggled,
     required TResult Function() succeeded,
   }) =>
       throw _privateConstructorUsedError;
@@ -33,6 +34,7 @@ mixin _$SignupEvent {
     TResult? Function(String name)? nameChanged,
     TResult? Function()? submitted,
     TResult? Function()? obscurePasswordToggled,
+    TResult? Function(FormType form)? formTypeToggled,
     TResult? Function()? succeeded,
   }) =>
       throw _privateConstructorUsedError;
@@ -43,6 +45,7 @@ mixin _$SignupEvent {
     TResult Function(String name)? nameChanged,
     TResult Function()? submitted,
     TResult Function()? obscurePasswordToggled,
+    TResult Function(FormType form)? formTypeToggled,
     TResult Function()? succeeded,
     required TResult orElse(),
   }) =>
@@ -55,6 +58,7 @@ mixin _$SignupEvent {
     required TResult Function(_Submitted value) submitted,
     required TResult Function(_ObscurePasswordToggled value)
         obscurePasswordToggled,
+    required TResult Function(_FormTypeToggled value) formTypeToggled,
     required TResult Function(_Succeeded value) succeeded,
   }) =>
       throw _privateConstructorUsedError;
@@ -65,6 +69,7 @@ mixin _$SignupEvent {
     TResult? Function(_NameChanged value)? nameChanged,
     TResult? Function(_Submitted value)? submitted,
     TResult? Function(_ObscurePasswordToggled value)? obscurePasswordToggled,
+    TResult? Function(_FormTypeToggled value)? formTypeToggled,
     TResult? Function(_Succeeded value)? succeeded,
   }) =>
       throw _privateConstructorUsedError;
@@ -75,6 +80,7 @@ mixin _$SignupEvent {
     TResult Function(_NameChanged value)? nameChanged,
     TResult Function(_Submitted value)? submitted,
     TResult Function(_ObscurePasswordToggled value)? obscurePasswordToggled,
+    TResult Function(_FormTypeToggled value)? formTypeToggled,
     TResult Function(_Succeeded value)? succeeded,
     required TResult orElse(),
   }) =>
@@ -168,6 +174,7 @@ class _$EmailChangedImpl implements _EmailChanged {
     required TResult Function(String name) nameChanged,
     required TResult Function() submitted,
     required TResult Function() obscurePasswordToggled,
+    required TResult Function(FormType form) formTypeToggled,
     required TResult Function() succeeded,
   }) {
     return emailChanged(email);
@@ -181,6 +188,7 @@ class _$EmailChangedImpl implements _EmailChanged {
     TResult? Function(String name)? nameChanged,
     TResult? Function()? submitted,
     TResult? Function()? obscurePasswordToggled,
+    TResult? Function(FormType form)? formTypeToggled,
     TResult? Function()? succeeded,
   }) {
     return emailChanged?.call(email);
@@ -194,6 +202,7 @@ class _$EmailChangedImpl implements _EmailChanged {
     TResult Function(String name)? nameChanged,
     TResult Function()? submitted,
     TResult Function()? obscurePasswordToggled,
+    TResult Function(FormType form)? formTypeToggled,
     TResult Function()? succeeded,
     required TResult orElse(),
   }) {
@@ -212,6 +221,7 @@ class _$EmailChangedImpl implements _EmailChanged {
     required TResult Function(_Submitted value) submitted,
     required TResult Function(_ObscurePasswordToggled value)
         obscurePasswordToggled,
+    required TResult Function(_FormTypeToggled value) formTypeToggled,
     required TResult Function(_Succeeded value) succeeded,
   }) {
     return emailChanged(this);
@@ -225,6 +235,7 @@ class _$EmailChangedImpl implements _EmailChanged {
     TResult? Function(_NameChanged value)? nameChanged,
     TResult? Function(_Submitted value)? submitted,
     TResult? Function(_ObscurePasswordToggled value)? obscurePasswordToggled,
+    TResult? Function(_FormTypeToggled value)? formTypeToggled,
     TResult? Function(_Succeeded value)? succeeded,
   }) {
     return emailChanged?.call(this);
@@ -238,6 +249,7 @@ class _$EmailChangedImpl implements _EmailChanged {
     TResult Function(_NameChanged value)? nameChanged,
     TResult Function(_Submitted value)? submitted,
     TResult Function(_ObscurePasswordToggled value)? obscurePasswordToggled,
+    TResult Function(_FormTypeToggled value)? formTypeToggled,
     TResult Function(_Succeeded value)? succeeded,
     required TResult orElse(),
   }) {
@@ -328,6 +340,7 @@ class _$PasswordChangedImpl implements _PasswordChanged {
     required TResult Function(String name) nameChanged,
     required TResult Function() submitted,
     required TResult Function() obscurePasswordToggled,
+    required TResult Function(FormType form) formTypeToggled,
     required TResult Function() succeeded,
   }) {
     return passwordChanged(password);
@@ -341,6 +354,7 @@ class _$PasswordChangedImpl implements _PasswordChanged {
     TResult? Function(String name)? nameChanged,
     TResult? Function()? submitted,
     TResult? Function()? obscurePasswordToggled,
+    TResult? Function(FormType form)? formTypeToggled,
     TResult? Function()? succeeded,
   }) {
     return passwordChanged?.call(password);
@@ -354,6 +368,7 @@ class _$PasswordChangedImpl implements _PasswordChanged {
     TResult Function(String name)? nameChanged,
     TResult Function()? submitted,
     TResult Function()? obscurePasswordToggled,
+    TResult Function(FormType form)? formTypeToggled,
     TResult Function()? succeeded,
     required TResult orElse(),
   }) {
@@ -372,6 +387,7 @@ class _$PasswordChangedImpl implements _PasswordChanged {
     required TResult Function(_Submitted value) submitted,
     required TResult Function(_ObscurePasswordToggled value)
         obscurePasswordToggled,
+    required TResult Function(_FormTypeToggled value) formTypeToggled,
     required TResult Function(_Succeeded value) succeeded,
   }) {
     return passwordChanged(this);
@@ -385,6 +401,7 @@ class _$PasswordChangedImpl implements _PasswordChanged {
     TResult? Function(_NameChanged value)? nameChanged,
     TResult? Function(_Submitted value)? submitted,
     TResult? Function(_ObscurePasswordToggled value)? obscurePasswordToggled,
+    TResult? Function(_FormTypeToggled value)? formTypeToggled,
     TResult? Function(_Succeeded value)? succeeded,
   }) {
     return passwordChanged?.call(this);
@@ -398,6 +415,7 @@ class _$PasswordChangedImpl implements _PasswordChanged {
     TResult Function(_NameChanged value)? nameChanged,
     TResult Function(_Submitted value)? submitted,
     TResult Function(_ObscurePasswordToggled value)? obscurePasswordToggled,
+    TResult Function(_FormTypeToggled value)? formTypeToggled,
     TResult Function(_Succeeded value)? succeeded,
     required TResult orElse(),
   }) {
@@ -486,6 +504,7 @@ class _$NameChangedImpl implements _NameChanged {
     required TResult Function(String name) nameChanged,
     required TResult Function() submitted,
     required TResult Function() obscurePasswordToggled,
+    required TResult Function(FormType form) formTypeToggled,
     required TResult Function() succeeded,
   }) {
     return nameChanged(name);
@@ -499,6 +518,7 @@ class _$NameChangedImpl implements _NameChanged {
     TResult? Function(String name)? nameChanged,
     TResult? Function()? submitted,
     TResult? Function()? obscurePasswordToggled,
+    TResult? Function(FormType form)? formTypeToggled,
     TResult? Function()? succeeded,
   }) {
     return nameChanged?.call(name);
@@ -512,6 +532,7 @@ class _$NameChangedImpl implements _NameChanged {
     TResult Function(String name)? nameChanged,
     TResult Function()? submitted,
     TResult Function()? obscurePasswordToggled,
+    TResult Function(FormType form)? formTypeToggled,
     TResult Function()? succeeded,
     required TResult orElse(),
   }) {
@@ -530,6 +551,7 @@ class _$NameChangedImpl implements _NameChanged {
     required TResult Function(_Submitted value) submitted,
     required TResult Function(_ObscurePasswordToggled value)
         obscurePasswordToggled,
+    required TResult Function(_FormTypeToggled value) formTypeToggled,
     required TResult Function(_Succeeded value) succeeded,
   }) {
     return nameChanged(this);
@@ -543,6 +565,7 @@ class _$NameChangedImpl implements _NameChanged {
     TResult? Function(_NameChanged value)? nameChanged,
     TResult? Function(_Submitted value)? submitted,
     TResult? Function(_ObscurePasswordToggled value)? obscurePasswordToggled,
+    TResult? Function(_FormTypeToggled value)? formTypeToggled,
     TResult? Function(_Succeeded value)? succeeded,
   }) {
     return nameChanged?.call(this);
@@ -556,6 +579,7 @@ class _$NameChangedImpl implements _NameChanged {
     TResult Function(_NameChanged value)? nameChanged,
     TResult Function(_Submitted value)? submitted,
     TResult Function(_ObscurePasswordToggled value)? obscurePasswordToggled,
+    TResult Function(_FormTypeToggled value)? formTypeToggled,
     TResult Function(_Succeeded value)? succeeded,
     required TResult orElse(),
   }) {
@@ -618,6 +642,7 @@ class _$SubmittedImpl implements _Submitted {
     required TResult Function(String name) nameChanged,
     required TResult Function() submitted,
     required TResult Function() obscurePasswordToggled,
+    required TResult Function(FormType form) formTypeToggled,
     required TResult Function() succeeded,
   }) {
     return submitted();
@@ -631,6 +656,7 @@ class _$SubmittedImpl implements _Submitted {
     TResult? Function(String name)? nameChanged,
     TResult? Function()? submitted,
     TResult? Function()? obscurePasswordToggled,
+    TResult? Function(FormType form)? formTypeToggled,
     TResult? Function()? succeeded,
   }) {
     return submitted?.call();
@@ -644,6 +670,7 @@ class _$SubmittedImpl implements _Submitted {
     TResult Function(String name)? nameChanged,
     TResult Function()? submitted,
     TResult Function()? obscurePasswordToggled,
+    TResult Function(FormType form)? formTypeToggled,
     TResult Function()? succeeded,
     required TResult orElse(),
   }) {
@@ -662,6 +689,7 @@ class _$SubmittedImpl implements _Submitted {
     required TResult Function(_Submitted value) submitted,
     required TResult Function(_ObscurePasswordToggled value)
         obscurePasswordToggled,
+    required TResult Function(_FormTypeToggled value) formTypeToggled,
     required TResult Function(_Succeeded value) succeeded,
   }) {
     return submitted(this);
@@ -675,6 +703,7 @@ class _$SubmittedImpl implements _Submitted {
     TResult? Function(_NameChanged value)? nameChanged,
     TResult? Function(_Submitted value)? submitted,
     TResult? Function(_ObscurePasswordToggled value)? obscurePasswordToggled,
+    TResult? Function(_FormTypeToggled value)? formTypeToggled,
     TResult? Function(_Succeeded value)? succeeded,
   }) {
     return submitted?.call(this);
@@ -688,6 +717,7 @@ class _$SubmittedImpl implements _Submitted {
     TResult Function(_NameChanged value)? nameChanged,
     TResult Function(_Submitted value)? submitted,
     TResult Function(_ObscurePasswordToggled value)? obscurePasswordToggled,
+    TResult Function(_FormTypeToggled value)? formTypeToggled,
     TResult Function(_Succeeded value)? succeeded,
     required TResult orElse(),
   }) {
@@ -748,6 +778,7 @@ class _$ObscurePasswordToggledImpl implements _ObscurePasswordToggled {
     required TResult Function(String name) nameChanged,
     required TResult Function() submitted,
     required TResult Function() obscurePasswordToggled,
+    required TResult Function(FormType form) formTypeToggled,
     required TResult Function() succeeded,
   }) {
     return obscurePasswordToggled();
@@ -761,6 +792,7 @@ class _$ObscurePasswordToggledImpl implements _ObscurePasswordToggled {
     TResult? Function(String name)? nameChanged,
     TResult? Function()? submitted,
     TResult? Function()? obscurePasswordToggled,
+    TResult? Function(FormType form)? formTypeToggled,
     TResult? Function()? succeeded,
   }) {
     return obscurePasswordToggled?.call();
@@ -774,6 +806,7 @@ class _$ObscurePasswordToggledImpl implements _ObscurePasswordToggled {
     TResult Function(String name)? nameChanged,
     TResult Function()? submitted,
     TResult Function()? obscurePasswordToggled,
+    TResult Function(FormType form)? formTypeToggled,
     TResult Function()? succeeded,
     required TResult orElse(),
   }) {
@@ -792,6 +825,7 @@ class _$ObscurePasswordToggledImpl implements _ObscurePasswordToggled {
     required TResult Function(_Submitted value) submitted,
     required TResult Function(_ObscurePasswordToggled value)
         obscurePasswordToggled,
+    required TResult Function(_FormTypeToggled value) formTypeToggled,
     required TResult Function(_Succeeded value) succeeded,
   }) {
     return obscurePasswordToggled(this);
@@ -805,6 +839,7 @@ class _$ObscurePasswordToggledImpl implements _ObscurePasswordToggled {
     TResult? Function(_NameChanged value)? nameChanged,
     TResult? Function(_Submitted value)? submitted,
     TResult? Function(_ObscurePasswordToggled value)? obscurePasswordToggled,
+    TResult? Function(_FormTypeToggled value)? formTypeToggled,
     TResult? Function(_Succeeded value)? succeeded,
   }) {
     return obscurePasswordToggled?.call(this);
@@ -818,6 +853,7 @@ class _$ObscurePasswordToggledImpl implements _ObscurePasswordToggled {
     TResult Function(_NameChanged value)? nameChanged,
     TResult Function(_Submitted value)? submitted,
     TResult Function(_ObscurePasswordToggled value)? obscurePasswordToggled,
+    TResult Function(_FormTypeToggled value)? formTypeToggled,
     TResult Function(_Succeeded value)? succeeded,
     required TResult orElse(),
   }) {
@@ -830,6 +866,171 @@ class _$ObscurePasswordToggledImpl implements _ObscurePasswordToggled {
 
 abstract class _ObscurePasswordToggled implements SignupEvent {
   const factory _ObscurePasswordToggled() = _$ObscurePasswordToggledImpl;
+}
+
+/// @nodoc
+abstract class _$$FormTypeToggledImplCopyWith<$Res> {
+  factory _$$FormTypeToggledImplCopyWith(_$FormTypeToggledImpl value,
+          $Res Function(_$FormTypeToggledImpl) then) =
+      __$$FormTypeToggledImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({FormType form});
+}
+
+/// @nodoc
+class __$$FormTypeToggledImplCopyWithImpl<$Res>
+    extends _$SignupEventCopyWithImpl<$Res, _$FormTypeToggledImpl>
+    implements _$$FormTypeToggledImplCopyWith<$Res> {
+  __$$FormTypeToggledImplCopyWithImpl(
+      _$FormTypeToggledImpl _value, $Res Function(_$FormTypeToggledImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? form = null,
+  }) {
+    return _then(_$FormTypeToggledImpl(
+      null == form
+          ? _value.form
+          : form // ignore: cast_nullable_to_non_nullable
+              as FormType,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$FormTypeToggledImpl implements _FormTypeToggled {
+  const _$FormTypeToggledImpl(this.form);
+
+  @override
+  final FormType form;
+
+  @override
+  String toString() {
+    return 'SignupEvent.formTypeToggled(form: $form)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$FormTypeToggledImpl &&
+            (identical(other.form, form) || other.form == form));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, form);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$FormTypeToggledImplCopyWith<_$FormTypeToggledImpl> get copyWith =>
+      __$$FormTypeToggledImplCopyWithImpl<_$FormTypeToggledImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String email) emailChanged,
+    required TResult Function(String password) passwordChanged,
+    required TResult Function(String name) nameChanged,
+    required TResult Function() submitted,
+    required TResult Function() obscurePasswordToggled,
+    required TResult Function(FormType form) formTypeToggled,
+    required TResult Function() succeeded,
+  }) {
+    return formTypeToggled(form);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String email)? emailChanged,
+    TResult? Function(String password)? passwordChanged,
+    TResult? Function(String name)? nameChanged,
+    TResult? Function()? submitted,
+    TResult? Function()? obscurePasswordToggled,
+    TResult? Function(FormType form)? formTypeToggled,
+    TResult? Function()? succeeded,
+  }) {
+    return formTypeToggled?.call(form);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String email)? emailChanged,
+    TResult Function(String password)? passwordChanged,
+    TResult Function(String name)? nameChanged,
+    TResult Function()? submitted,
+    TResult Function()? obscurePasswordToggled,
+    TResult Function(FormType form)? formTypeToggled,
+    TResult Function()? succeeded,
+    required TResult orElse(),
+  }) {
+    if (formTypeToggled != null) {
+      return formTypeToggled(form);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_EmailChanged value) emailChanged,
+    required TResult Function(_PasswordChanged value) passwordChanged,
+    required TResult Function(_NameChanged value) nameChanged,
+    required TResult Function(_Submitted value) submitted,
+    required TResult Function(_ObscurePasswordToggled value)
+        obscurePasswordToggled,
+    required TResult Function(_FormTypeToggled value) formTypeToggled,
+    required TResult Function(_Succeeded value) succeeded,
+  }) {
+    return formTypeToggled(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_EmailChanged value)? emailChanged,
+    TResult? Function(_PasswordChanged value)? passwordChanged,
+    TResult? Function(_NameChanged value)? nameChanged,
+    TResult? Function(_Submitted value)? submitted,
+    TResult? Function(_ObscurePasswordToggled value)? obscurePasswordToggled,
+    TResult? Function(_FormTypeToggled value)? formTypeToggled,
+    TResult? Function(_Succeeded value)? succeeded,
+  }) {
+    return formTypeToggled?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_EmailChanged value)? emailChanged,
+    TResult Function(_PasswordChanged value)? passwordChanged,
+    TResult Function(_NameChanged value)? nameChanged,
+    TResult Function(_Submitted value)? submitted,
+    TResult Function(_ObscurePasswordToggled value)? obscurePasswordToggled,
+    TResult Function(_FormTypeToggled value)? formTypeToggled,
+    TResult Function(_Succeeded value)? succeeded,
+    required TResult orElse(),
+  }) {
+    if (formTypeToggled != null) {
+      return formTypeToggled(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _FormTypeToggled implements SignupEvent {
+  const factory _FormTypeToggled(final FormType form) = _$FormTypeToggledImpl;
+
+  FormType get form;
+  @JsonKey(ignore: true)
+  _$$FormTypeToggledImplCopyWith<_$FormTypeToggledImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -875,6 +1076,7 @@ class _$SucceededImpl implements _Succeeded {
     required TResult Function(String name) nameChanged,
     required TResult Function() submitted,
     required TResult Function() obscurePasswordToggled,
+    required TResult Function(FormType form) formTypeToggled,
     required TResult Function() succeeded,
   }) {
     return succeeded();
@@ -888,6 +1090,7 @@ class _$SucceededImpl implements _Succeeded {
     TResult? Function(String name)? nameChanged,
     TResult? Function()? submitted,
     TResult? Function()? obscurePasswordToggled,
+    TResult? Function(FormType form)? formTypeToggled,
     TResult? Function()? succeeded,
   }) {
     return succeeded?.call();
@@ -901,6 +1104,7 @@ class _$SucceededImpl implements _Succeeded {
     TResult Function(String name)? nameChanged,
     TResult Function()? submitted,
     TResult Function()? obscurePasswordToggled,
+    TResult Function(FormType form)? formTypeToggled,
     TResult Function()? succeeded,
     required TResult orElse(),
   }) {
@@ -919,6 +1123,7 @@ class _$SucceededImpl implements _Succeeded {
     required TResult Function(_Submitted value) submitted,
     required TResult Function(_ObscurePasswordToggled value)
         obscurePasswordToggled,
+    required TResult Function(_FormTypeToggled value) formTypeToggled,
     required TResult Function(_Succeeded value) succeeded,
   }) {
     return succeeded(this);
@@ -932,6 +1137,7 @@ class _$SucceededImpl implements _Succeeded {
     TResult? Function(_NameChanged value)? nameChanged,
     TResult? Function(_Submitted value)? submitted,
     TResult? Function(_ObscurePasswordToggled value)? obscurePasswordToggled,
+    TResult? Function(_FormTypeToggled value)? formTypeToggled,
     TResult? Function(_Succeeded value)? succeeded,
   }) {
     return succeeded?.call(this);
@@ -945,6 +1151,7 @@ class _$SucceededImpl implements _Succeeded {
     TResult Function(_NameChanged value)? nameChanged,
     TResult Function(_Submitted value)? submitted,
     TResult Function(_ObscurePasswordToggled value)? obscurePasswordToggled,
+    TResult Function(_FormTypeToggled value)? formTypeToggled,
     TResult Function(_Succeeded value)? succeeded,
     required TResult orElse(),
   }) {
@@ -966,6 +1173,7 @@ mixin _$SignupState {
   String get password => throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
   FormType? get formType => throw _privateConstructorUsedError;
+  bool get showError => throw _privateConstructorUsedError;
   bool get isFormSuccessful => throw _privateConstructorUsedError;
   bool get obscurePassword => throw _privateConstructorUsedError;
   bool get isEmailValid => throw _privateConstructorUsedError;
@@ -992,6 +1200,7 @@ abstract class $SignupStateCopyWith<$Res> {
       String password,
       String? errorMessage,
       FormType? formType,
+      bool showError,
       bool isFormSuccessful,
       bool obscurePassword,
       bool isEmailValid,
@@ -1020,6 +1229,7 @@ class _$SignupStateCopyWithImpl<$Res, $Val extends SignupState>
     Object? password = null,
     Object? errorMessage = freezed,
     Object? formType = freezed,
+    Object? showError = null,
     Object? isFormSuccessful = null,
     Object? obscurePassword = null,
     Object? isEmailValid = null,
@@ -1050,6 +1260,10 @@ class _$SignupStateCopyWithImpl<$Res, $Val extends SignupState>
           ? _value.formType
           : formType // ignore: cast_nullable_to_non_nullable
               as FormType?,
+      showError: null == showError
+          ? _value.showError
+          : showError // ignore: cast_nullable_to_non_nullable
+              as bool,
       isFormSuccessful: null == isFormSuccessful
           ? _value.isFormSuccessful
           : isFormSuccessful // ignore: cast_nullable_to_non_nullable
@@ -1100,6 +1314,7 @@ abstract class _$$SignupStateImplCopyWith<$Res>
       String password,
       String? errorMessage,
       FormType? formType,
+      bool showError,
       bool isFormSuccessful,
       bool obscurePassword,
       bool isEmailValid,
@@ -1126,6 +1341,7 @@ class __$$SignupStateImplCopyWithImpl<$Res>
     Object? password = null,
     Object? errorMessage = freezed,
     Object? formType = freezed,
+    Object? showError = null,
     Object? isFormSuccessful = null,
     Object? obscurePassword = null,
     Object? isEmailValid = null,
@@ -1156,6 +1372,10 @@ class __$$SignupStateImplCopyWithImpl<$Res>
           ? _value.formType
           : formType // ignore: cast_nullable_to_non_nullable
               as FormType?,
+      showError: null == showError
+          ? _value.showError
+          : showError // ignore: cast_nullable_to_non_nullable
+              as bool,
       isFormSuccessful: null == isFormSuccessful
           ? _value.isFormSuccessful
           : isFormSuccessful // ignore: cast_nullable_to_non_nullable
@@ -1201,6 +1421,7 @@ class _$SignupStateImpl implements _SignupState {
       required this.password,
       this.errorMessage = '',
       this.formType = FormType.signUp,
+      this.showError = false,
       this.isFormSuccessful = false,
       this.obscurePassword = true,
       this.isEmailValid = true,
@@ -1222,6 +1443,9 @@ class _$SignupStateImpl implements _SignupState {
   @override
   @JsonKey()
   final FormType? formType;
+  @override
+  @JsonKey()
+  final bool showError;
   @override
   @JsonKey()
   final bool isFormSuccessful;
@@ -1249,7 +1473,7 @@ class _$SignupStateImpl implements _SignupState {
 
   @override
   String toString() {
-    return 'SignupState(email: $email, displayName: $displayName, password: $password, errorMessage: $errorMessage, formType: $formType, isFormSuccessful: $isFormSuccessful, obscurePassword: $obscurePassword, isEmailValid: $isEmailValid, isPasswordValid: $isPasswordValid, isFormValid: $isFormValid, isNameValid: $isNameValid, isFormValidateFailed: $isFormValidateFailed, isLoading: $isLoading)';
+    return 'SignupState(email: $email, displayName: $displayName, password: $password, errorMessage: $errorMessage, formType: $formType, showError: $showError, isFormSuccessful: $isFormSuccessful, obscurePassword: $obscurePassword, isEmailValid: $isEmailValid, isPasswordValid: $isPasswordValid, isFormValid: $isFormValid, isNameValid: $isNameValid, isFormValidateFailed: $isFormValidateFailed, isLoading: $isLoading)';
   }
 
   @override
@@ -1266,6 +1490,8 @@ class _$SignupStateImpl implements _SignupState {
                 other.errorMessage == errorMessage) &&
             (identical(other.formType, formType) ||
                 other.formType == formType) &&
+            (identical(other.showError, showError) ||
+                other.showError == showError) &&
             (identical(other.isFormSuccessful, isFormSuccessful) ||
                 other.isFormSuccessful == isFormSuccessful) &&
             (identical(other.obscurePassword, obscurePassword) ||
@@ -1292,6 +1518,7 @@ class _$SignupStateImpl implements _SignupState {
       password,
       errorMessage,
       formType,
+      showError,
       isFormSuccessful,
       obscurePassword,
       isEmailValid,
@@ -1315,6 +1542,7 @@ abstract class _SignupState implements SignupState {
       required final String password,
       final String? errorMessage,
       final FormType? formType,
+      final bool showError,
       final bool isFormSuccessful,
       final bool obscurePassword,
       final bool isEmailValid,
@@ -1334,6 +1562,8 @@ abstract class _SignupState implements SignupState {
   String? get errorMessage;
   @override
   FormType? get formType;
+  @override
+  bool get showError;
   @override
   bool get isFormSuccessful;
   @override
