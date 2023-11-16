@@ -1,5 +1,6 @@
 import 'package:bpm/core/di/injection.dart';
 import 'package:bpm/core/presentation/widgets/error_dialog.dart';
+import 'package:bpm/core/presentation/widgets/info_dialog.dart';
 import 'package:bpm/core/presentation/widgets/submit_button.dart';
 import 'package:bpm/reset_password/presentation/bloc/reset_password_bloc.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -22,7 +23,13 @@ class ResetPasswordScreen extends StatelessWidget {
             case ResetPasswordStatus.loading:
             // TODO: Handle this case.
             case ResetPasswordStatus.success:
-              Navigator.pop(context);
+              showDialog(
+                  context: context,
+                  builder: (context) => const InfoDialog(
+                        text: 'test',
+                        title: 'test',
+                        descriptions: 'test',
+                      )).whenComplete(() => Navigator.of(context).pop());
             case ResetPasswordStatus.failure:
               showDialog(
                   context: context,
@@ -57,7 +64,8 @@ class ResetPasswordScreen extends StatelessWidget {
                       )),
                 ),
                 SubmitButton(
-                  title: tr('resetPassword'),
+                    isEnabled: !state.status.isLoading,
+                    title: tr('resetPassword'),
                     onPressed: () => context.read<ResetPasswordBloc>().add(
                         ResetPasswordEvent.sendedEmailResetPassword(
                             state.email)))

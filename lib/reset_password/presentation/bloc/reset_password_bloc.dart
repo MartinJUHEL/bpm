@@ -34,6 +34,7 @@ class ResetPasswordBloc extends Bloc<ResetPasswordEvent, ResetPasswordState> {
 
   Future<void> _sendedEmailResetPassword(
       String email, Emitter<ResetPasswordState> emit) async {
+    emit(state.copyWith(status: ResetPasswordStatus.initial));
     ResetPasswordState newState =
         await _getResetPasswordStateUseCase.execute(email);
     emit(newState);
