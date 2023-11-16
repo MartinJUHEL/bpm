@@ -20,20 +20,26 @@ import '../../Authentication/data/services/remote/authentication_remote_service.
 import '../../Authentication/domain/repositories/authentication_repository.dart'
     as _i11;
 import '../../Authentication/domain/usecases/authentication_signed_out_usecase.dart'
-    as _i15;
-import '../../Authentication/domain/usecases/authentication_started_usecase.dart'
     as _i16;
+import '../../Authentication/domain/usecases/authentication_started_usecase.dart'
+    as _i17;
+import '../../Authentication/domain/usecases/is_email_verified_usecase.dart'
+    as _i13;
 import '../../Authentication/presentation/bloc/authentication_bloc.dart'
+    as _i21;
+import '../../reset_password/domain/usecases/get_reset_password_state_usecase.dart'
     as _i18;
+import '../../reset_password/presentation/bloc/reset_password_bloc.dart'
+    as _i19;
 import '../../signup/domain/usecases/is_email_valid_usecase.dart' as _i7;
 import '../../signup/domain/usecases/is_name_valid_usecase.dart' as _i8;
 import '../../signup/domain/usecases/is_password_valid_usecase.dart' as _i9;
-import '../../signup/domain/usecases/submit_signin_usecase.dart' as _i13;
-import '../../signup/domain/usecases/submit_signup_usecase.dart' as _i14;
-import '../../signup/presentation/bloc/signup_bloc.dart' as _i17;
+import '../../signup/domain/usecases/submit_signin_usecase.dart' as _i14;
+import '../../signup/domain/usecases/submit_signup_usecase.dart' as _i15;
+import '../../signup/presentation/bloc/signup_bloc.dart' as _i20;
 import '../data/services/firebase_service.dart' as _i6;
 import '../utils/helpers/connectivity_helper.dart' as _i3;
-import 'app_module.dart' as _i19;
+import 'app_module.dart' as _i22;
 
 // initializes the registration of main-scope dependencies inside of GetIt
 Future<_i1.GetIt> $initGetIt(
@@ -63,35 +69,44 @@ Future<_i1.GetIt> $initGetIt(
   gh.factory<_i11.IAuthenticationRepository>(() =>
       _i12.AuthenticationRepositoryImpl(
           gh<_i10.AuthenticationRemoteService>()));
-  gh.factory<_i13.SubmitSigninUseCase>(() => _i13.SubmitSigninUseCase(
+  gh.factory<_i13.IsEmailVerifiedUseCase>(
+      () => _i13.IsEmailVerifiedUseCase(gh<_i11.IAuthenticationRepository>()));
+  gh.factory<_i14.SubmitSigninUseCase>(() => _i14.SubmitSigninUseCase(
         gh<_i7.IsEmailValidUseCase>(),
         gh<_i9.IsPasswordValidUseCase>(),
         gh<_i8.IsNameValidUseCase>(),
         gh<_i11.IAuthenticationRepository>(),
       ));
-  gh.factory<_i14.SubmitSignupUseCase>(() => _i14.SubmitSignupUseCase(
+  gh.factory<_i15.SubmitSignupUseCase>(() => _i15.SubmitSignupUseCase(
         gh<_i7.IsEmailValidUseCase>(),
         gh<_i9.IsPasswordValidUseCase>(),
         gh<_i8.IsNameValidUseCase>(),
         gh<_i11.IAuthenticationRepository>(),
       ));
-  gh.factory<_i15.AuthenticationSignedOutUseCase>(() =>
-      _i15.AuthenticationSignedOutUseCase(
+  gh.factory<_i16.AuthenticationSignedOutUseCase>(() =>
+      _i16.AuthenticationSignedOutUseCase(
           gh<_i11.IAuthenticationRepository>()));
-  gh.factory<_i16.AuthenticationStartedUseCase>(() =>
-      _i16.AuthenticationStartedUseCase(gh<_i11.IAuthenticationRepository>()));
-  gh.factory<_i17.SignupBloc>(() => _i17.SignupBloc(
+  gh.factory<_i17.AuthenticationStartedUseCase>(
+      () => _i17.AuthenticationStartedUseCase(
+            gh<_i11.IAuthenticationRepository>(),
+            gh<_i13.IsEmailVerifiedUseCase>(),
+          ));
+  gh.factory<_i18.GetResetPasswordStateUseCase>(() =>
+      _i18.GetResetPasswordStateUseCase(gh<_i11.IAuthenticationRepository>()));
+  gh.factory<_i19.ResetPasswordBloc>(
+      () => _i19.ResetPasswordBloc(gh<_i18.GetResetPasswordStateUseCase>()));
+  gh.factory<_i20.SignupBloc>(() => _i20.SignupBloc(
         gh<_i7.IsEmailValidUseCase>(),
         gh<_i9.IsPasswordValidUseCase>(),
         gh<_i8.IsNameValidUseCase>(),
-        gh<_i14.SubmitSignupUseCase>(),
-        gh<_i13.SubmitSigninUseCase>(),
+        gh<_i15.SubmitSignupUseCase>(),
+        gh<_i14.SubmitSigninUseCase>(),
       ));
-  gh.factory<_i18.AuthenticationBloc>(() => _i18.AuthenticationBloc(
-        gh<_i16.AuthenticationStartedUseCase>(),
-        gh<_i15.AuthenticationSignedOutUseCase>(),
+  gh.factory<_i21.AuthenticationBloc>(() => _i21.AuthenticationBloc(
+        gh<_i17.AuthenticationStartedUseCase>(),
+        gh<_i16.AuthenticationSignedOutUseCase>(),
       ));
   return getIt;
 }
 
-class _$AppModule extends _i19.AppModule {}
+class _$AppModule extends _i22.AppModule {}

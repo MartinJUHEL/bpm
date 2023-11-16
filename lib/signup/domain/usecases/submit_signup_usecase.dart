@@ -38,14 +38,8 @@ class SubmitSignupUseCase {
             uid: authUser?.user?.uid,
             isVerified: authUser?.user?.emailVerified);
         //await _databaseRepository.saveUserData(updatedUser);
-        if (updatedUser.isVerified == true) {
-          return state.copyWith(isLoading: false, errorMessage: "");
-        } else {
-          return state.copyWith(
-              isFormValid: false,
-              errorMessage: tr('checkEmailMessage'),
-              isLoading: false);
-        }
+        return state.copyWith(
+            isLoading: false, errorMessage: "", isFormValid: true);
       } on FirebaseAuthException catch (e) {
         return state.copyWith(
             isLoading: false, errorMessage: e.message, isFormValid: false);

@@ -9,17 +9,19 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<AuthenticationBloc, AuthenticationState>(
       builder: (context, state) {
-        return Scaffold(
-          body: Center(
-              child: Column(
-                children: [
-                  const Text('COUCOU'),
-                  OutlinedButton(onPressed: () =>
-                      context.read<AuthenticationBloc>().add(
-                          const AuthenticationEvent.signedOut()),
-                      child: const Text('test'))
-                ],
-              )),
+        return SafeArea(
+          child: Scaffold(
+            body: Center(
+                child: Column(
+                  children: [
+                    const Text('COUCOU'),
+                    OutlinedButton(onPressed: () =>
+                        context.read<AuthenticationBloc>().add(
+                            const AuthenticationEvent.signedOut()),
+                        child: const Text('test'))
+                  ],
+                )),
+          ),
         );
       },
     );

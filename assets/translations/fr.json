@@ -4,12 +4,18 @@
     "description": "App title"
   },
   "refresh": "Refresh",
+  "errorOccured": "An error occurred please try again",
 
   "@_WELCOME_PAGE": {},
   "welcomeText" : "Welcome to BPM",
 
   "@_EMAIL_NOT_VERIFIED_PAGE": {},
   "verifyEmail" : "Please verify your email with the link we sent on your email",
+
+  "@_RESET_PASSWORD_PAGE": {},
+  "resetPassword" : "Reset your password",
+  "resetPasswordInfo" : "Enter your email, we'll send you an email to reset your password",
+  "emailInvalid" : "This email is invalid",
 
   "@_SIGNUP_PAGE": {},
   "signup": "Sign Up",
@@ -23,5 +29,6 @@
   "passwordHelperText" : "Password should be at least 6 characters",
   "passwordNotValid" : "Password must be at least 6 characters",
   "nameLabel" : "Name",
-  "nameNotValid" : "Name cannot be empty!"
+  "nameNotValid" : "Name cannot be empty!",
+  "forgotPassword" : "Forgot password"
 }

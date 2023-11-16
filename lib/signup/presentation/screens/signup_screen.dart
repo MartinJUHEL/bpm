@@ -1,11 +1,13 @@
 import 'package:bpm/Authentication/presentation/bloc/authentication_bloc.dart';
 import 'package:bpm/core/presentation/widgets/error_dialog.dart';
 import 'package:bpm/core/presentation/widgets/submit_button.dart';
+import 'package:bpm/reset_password/presentation/screens/reset_password_screen.dart';
 import 'package:bpm/signup/presentation/bloc/signup_bloc.dart';
 import 'package:bpm/signup/presentation/widgets/email_field.dart';
 import 'package:bpm/signup/presentation/widgets/name_field.dart';
 import 'package:bpm/signup/presentation/widgets/password_field.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -56,22 +58,7 @@ class SignupScreen extends StatelessWidget {
                     const Text('appTitle').tr(),
                     Padding(
                         padding: EdgeInsets.only(bottom: size.height * 0.04)),
-                    SegmentedButton<FormType>(
-                      onSelectionChanged: (Set<FormType> newSelection) =>
-                          context.read<SignupBloc>().add(
-                              SignupEvent.formTypeToggled(newSelection.first)),
-                      segments: <ButtonSegment<FormType>>[
-                        ButtonSegment<FormType>(
-                          value: FormType.signUp,
-                          label: const Text('signup').tr(),
-                        ),
-                        ButtonSegment<FormType>(
-                          value: FormType.signIn,
-                          label: const Text('signin').tr(),
-                        ),
-                      ],
-                      selected: <FormType>{state.formType ?? FormType.signUp},
-                    ),
+                    _buildSegmentedButton(context, state, 0.8 * size.width),
                     Padding(
                         padding: EdgeInsets.only(bottom: size.height * 0.02)),
                     _buildFormBody(size, state, context),
@@ -81,6 +68,31 @@ class SignupScreen extends StatelessWidget {
             ),
           ),
         ),
+      ),
+    );
+  }
+
+  SizedBox _buildSegmentedButton(
+      BuildContext context, SignupState state, double width) {
+    return SizedBox(
+      width: width,
+      child: SegmentedButton<FormType>(
+        style: ButtonStyle(),
+        showSelectedIcon: false,
+        onSelectionChanged: (Set<FormType> newSelection) => context
+            .read<SignupBloc>()
+            .add(SignupEvent.formTypeToggled(newSelection.first)),
+        segments: <ButtonSegment<FormType>>[
+          ButtonSegment<FormType>(
+            value: FormType.signUp,
+            label: const Text('signup').tr(),
+          ),
+          ButtonSegment<FormType>(
+            value: FormType.signIn,
+            label: const Text('signin').tr(),
+          ),
+        ],
+        selected: <FormType>{state.formType ?? FormType.signUp},
       ),
     );
   }
@@ -98,6 +110,25 @@ class SignupScreen extends StatelessWidget {
               ? Column(
                   children: [
                     const NameField(),
+                    SizedBox(height: size.height * 0.01),
+                  ],
+                )
+              : const SizedBox(),
+          state.formType == FormType.signIn
+              ? Column(
+                  children: [
+                    RichText(
+                      text: TextSpan(
+                        style: TextStyle(color:Theme.of(context).colorScheme.primary,  ),
+                          text: tr('forgotPassword'),
+                          recognizer: TapGestureRecognizer()
+                            ..onTap = () => Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          const ResetPasswordScreen()),
+                                )),
+                    ),
                     SizedBox(height: size.height * 0.01),
                   ],
                 )

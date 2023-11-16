@@ -4,12 +4,12 @@ import 'package:injectable/injectable.dart';
 
 @injectable
 class AuthenticationSignedOutUseCase {
-  final IAuthenticationRepository authenticationRepository;
+  final IAuthenticationRepository _authenticationRepository;
 
-  AuthenticationSignedOutUseCase(this.authenticationRepository);
+  AuthenticationSignedOutUseCase(this._authenticationRepository);
 
   Future<AuthenticationState> execute() async {
-   await authenticationRepository.signOut();
+   await _authenticationRepository.signOut();
    return const AuthenticationState.failure();
   }
 }

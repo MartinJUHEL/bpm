@@ -8,8 +8,8 @@ class AuthenticationRemoteService {
 
   AuthenticationRemoteService(this._firebaseAuth);
 
-  Stream<User?> getCurrentUser() {
-    return _firebaseAuth.authStateChanges();
+  User? getCurrentUser() {
+    return _firebaseAuth.currentUser;
   }
 
   Future<String?> getUserName() async {
@@ -21,7 +21,6 @@ class AuthenticationRemoteService {
       UserCredential userCredential =
           await _firebaseAuth.createUserWithEmailAndPassword(
               email: user.email!, password: user.password!);
-      verifyEmail();
       return userCredential;
     } on FirebaseAuthException catch (e) {
       throw FirebaseAuthException(code: e.code, message: e.message);
@@ -46,12 +45,17 @@ class AuthenticationRemoteService {
     }
   }
 
-  Future<bool?> isEmailVerified() async {
+  Future<bool> isEmailVerified() async {
+    await _firebaseAuth.currentUser?.reload();
     User? user = _firebaseAuth.currentUser;
     return user?.emailVerified == true;
   }
 
-  Future<void> signOut() async {
-    return await _firebaseAuth.signOut();
+  Future<void> signOut() {
+    return _firebaseAuth.signOut();
+  }
+
+  Future<void> resetPassword({required String email}) {
+    return _firebaseAuth.sendPasswordResetEmail(email: email);
   }
 }

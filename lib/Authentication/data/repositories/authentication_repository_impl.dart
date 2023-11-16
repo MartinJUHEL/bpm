@@ -11,8 +11,7 @@ class AuthenticationRepositoryImpl implements IAuthenticationRepository {
   AuthenticationRepositoryImpl(this._authenticationRemoteService);
 
   @override
-  Stream<User?> getCurrentUser() =>
-      _authenticationRemoteService.getCurrentUser();
+  User? getCurrentUser() => _authenticationRemoteService.getCurrentUser();
 
   @override
   Future<UserCredential?> signIn(UserModel user) =>
@@ -24,4 +23,16 @@ class AuthenticationRepositoryImpl implements IAuthenticationRepository {
   @override
   Future<UserCredential?> signUp(UserModel user) =>
       _authenticationRemoteService.signUp(user);
+
+  @override
+  Future<bool> isEmailVerfied() =>
+      _authenticationRemoteService.isEmailVerified();
+
+  @override
+  Future<void> verifyEmail() => _authenticationRemoteService.verifyEmail();
+
+  @override
+  Future<void> resetPassword(String email) {
+    return _authenticationRemoteService.resetPassword(email: email);
+  }
 }
