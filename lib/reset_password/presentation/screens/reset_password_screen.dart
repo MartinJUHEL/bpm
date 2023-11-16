@@ -42,34 +42,43 @@ class ResetPasswordScreen extends StatelessWidget {
         builder: (context, state) {
           return SafeArea(
               child: Scaffold(
-            body: Column(
-              children: [
-                const Text('resetPassword').tr(),
-                const Text('resetPasswordInfo').tr(),
-                SizedBox(
-                  width: size.width * 0.8,
-                  child: TextFormField(
-                      onChanged: (value) {
-                        context
-                            .read<ResetPasswordBloc>()
-                            .add(ResetPasswordEvent.emailChanged(value));
-                      },
-                      keyboardType: TextInputType.emailAddress,
-                      decoration: InputDecoration(
-                        labelText: tr('emailLabel'),
-                        helperText: tr('emailHelperText'),
-                        hintText: tr('emailLabel'),
-                        contentPadding: const EdgeInsets.symmetric(
-                            vertical: 15.0, horizontal: 10.0),
-                      )),
+                appBar: AppBar(
+                  title: const Text('resetPassword').tr(),
+                  titleTextStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
+                  backgroundColor: Theme.of(context).colorScheme.background,
+                  elevation: 0,
+                  iconTheme: IconThemeData(color: Theme.of(context).colorScheme.primary),
                 ),
-                SubmitButton(
-                    isEnabled: !state.status.isLoading,
-                    title: tr('resetPassword'),
-                    onPressed: () => context.read<ResetPasswordBloc>().add(
-                        ResetPasswordEvent.sendedEmailResetPassword(
-                            state.email)))
-              ],
+            body: Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: Column(
+                children: [
+                  const Text('resetPasswordInfo').tr(),
+                  SizedBox(
+                    width: size.width * 0.8,
+                    child: TextFormField(
+                        onChanged: (value) {
+                          context
+                              .read<ResetPasswordBloc>()
+                              .add(ResetPasswordEvent.emailChanged(value));
+                        },
+                        keyboardType: TextInputType.emailAddress,
+                        decoration: InputDecoration(
+                          labelText: tr('emailLabel'),
+                          helperText: tr('emailHelperText'),
+                          hintText: tr('emailLabel'),
+                          contentPadding: const EdgeInsets.symmetric(
+                              vertical: 15.0, horizontal: 10.0),
+                        )),
+                  ),
+                  SubmitButton(
+                      isEnabled: !state.status.isLoading,
+                      title: tr('resetPassword'),
+                      onPressed: () => context.read<ResetPasswordBloc>().add(
+                          ResetPasswordEvent.sendedEmailResetPassword(
+                              state.email)))
+                ],
+              ),
             ),
           ));
         },
