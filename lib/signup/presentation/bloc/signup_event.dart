@@ -2,6 +2,10 @@ part of 'signup_bloc.dart';
 
 @freezed
 class SignupEvent with _$SignupEvent {
+
+  const factory SignupEvent.initialized(FormType formType,
+      UserType userType)= _Initialized;
+
   const factory SignupEvent.emailChanged(String email) = _EmailChanged;
 
   const factory SignupEvent.passwordChanged(String password) = _PasswordChanged;

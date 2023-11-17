@@ -1,9 +1,8 @@
 import 'package:bpm/Authentication/presentation/bloc/authentication_bloc.dart';
 import 'package:bpm/Authentication/presentation/screens/email_not_verified_screen.dart';
-import 'package:bpm/core/utils/logger/logger.dart';
 import 'package:bpm/home/presentation/screen/home_screen.dart';
-import 'package:bpm/signup/presentation/screens/signup_screen.dart';
-import 'package:bpm/welcome/presentation/screen/welcome_screen.dart';
+import 'package:bpm/signup/presentation/screens/welcome_screen.dart';
+import 'package:bpm/splash/presentation/screen/splash_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -16,9 +15,9 @@ class BlocMainNavigation extends StatelessWidget {
       builder: (context, state) {
         return state.maybeMap(
             success: (s) => const HomeScreen(),
-            failure: (_) => const SignupScreen(),
+            failure: (_) => const WelcomeScreen(),
             emailNotVerified: (_)=> const EmailNotVerifiedScreen(),
-            orElse: () => const WelcomeScreen());
+            orElse: () => const SplashScreen());
       },
     );
   }

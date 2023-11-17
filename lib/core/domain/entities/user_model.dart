@@ -1,36 +1,20 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:equatable/equatable.dart';
-import 'package:copy_with_extension/copy_with_extension.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
+part 'user_model.freezed.dart';
 part 'user_model.g.dart';
 
-@CopyWith()
-class UserModel extends Equatable {
-  final String? uid;
-  final bool? isVerified;
-  final String? email;
-  final String? password;
-  final String? displayName;
+@freezed
+class UserModel with _$UserModel {
+  const factory UserModel({
+    required final String uid,
+    required final bool isVerified,
+    required final String email,
+    required final String displayName,
+    required final UserType userType,
+  }) = _UserModel;
 
-  const UserModel(
-      {this.uid,
-      this.email,
-      this.password,
-      this.displayName,
-      this.isVerified});
-
-  UserModel.fromDocumentSnapshot(DocumentSnapshot<Map<String, dynamic>> doc,
-      this.isVerified, this.password)
-      : uid = doc.id,
-        email = doc.data()!["email"],
-        displayName = doc.data()!["displayName"];
-
-  @override
-  List<Object?> get props => [
-        uid,
-        isVerified,
-        email,
-        password,
-        displayName,
-      ];
+  factory UserModel.fromJson(Map<String, dynamic> json) =>
+      _$UserModelFromJson(json);
 }
+
+enum UserType { individual, association }

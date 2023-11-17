@@ -19,6 +19,8 @@
 
   "@_SIGNUP_PAGE": {},
   "signup": "Sign Up",
+  "individual": "An individual",
+  "association": "An association",
   "signin": "Sign in",
   "checkEmailMessage" : "Please Verify your email, by clicking the link sent to you by mail.",
   "emailLabel" : "Email",

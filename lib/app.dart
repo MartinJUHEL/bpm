@@ -18,9 +18,7 @@ class App extends StatelessWidget {
         BlocProvider(
           create: (context) =>
               locator<AuthenticationBloc>()..add(const AuthenticationEvent.started()),
-        ),
-        BlocProvider(create: (context) => locator<SignupBloc>())
-      ],
+        ),],
       child: MaterialApp(
         title: 'Flutter Demo Production',
         localizationsDelegates: context.localizationDelegates,

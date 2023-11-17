@@ -21,11 +21,6 @@ class SubmitSignupUseCase {
       this._isNameValidUseCase, this._authenticationRepository);
 
   Future<SignupState> execute(SignupState state) async {
-    UserModel user = UserModel(
-        email: state.email,
-        password: state.password,
-        displayName: state.displayName);
-
     bool isNameValid = await _isNameValidUseCase.execute(state.displayName);
     bool isFormValid = isNameValid &&
         _isPasswordValidUseCase.execute(state.password) &&
@@ -33,11 +28,20 @@ class SubmitSignupUseCase {
 
     if (isFormValid) {
       try {
-        UserCredential? authUser = await _authenticationRepository.signUp(user);
-        UserModel updatedUser = user.copyWith(
-            uid: authUser?.user?.uid,
-            isVerified: authUser?.user?.emailVerified);
-        //await _databaseRepository.saveUserData(updatedUser);
+        UserCredential? authUser =
+        await _authenticationRepository.signUp(state.email, state.password);
+        if (authUser?.user?.uid != null) {
+          UserModel user = UserModel(uid: authUser!.user!.uid,
+              isVerified: false,
+              email: state.email,
+              displayName: state.displayName,
+              userType: state.userType );
+        } else {
+          return state.copyWith(
+              isLoading: false,
+              errorMessage: tr('errorOccured'),
+              isFormValid: false);
+        }
         return state.copyWith(
             isLoading: false, errorMessage: "", isFormValid: true);
       } on FirebaseAuthException catch (e) {

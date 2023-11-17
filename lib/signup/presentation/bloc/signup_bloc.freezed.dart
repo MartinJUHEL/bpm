@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$SignupEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(FormType formType, UserType userType) initialized,
     required TResult Function(String email) emailChanged,
     required TResult Function(String password) passwordChanged,
     required TResult Function(String name) nameChanged,
@@ -29,6 +30,7 @@ mixin _$SignupEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(FormType formType, UserType userType)? initialized,
     TResult? Function(String email)? emailChanged,
     TResult? Function(String password)? passwordChanged,
     TResult? Function(String name)? nameChanged,
@@ -40,6 +42,7 @@ mixin _$SignupEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(FormType formType, UserType userType)? initialized,
     TResult Function(String email)? emailChanged,
     TResult Function(String password)? passwordChanged,
     TResult Function(String name)? nameChanged,
@@ -52,6 +55,7 @@ mixin _$SignupEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_Initialized value) initialized,
     required TResult Function(_EmailChanged value) emailChanged,
     required TResult Function(_PasswordChanged value) passwordChanged,
     required TResult Function(_NameChanged value) nameChanged,
@@ -64,6 +68,7 @@ mixin _$SignupEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialized value)? initialized,
     TResult? Function(_EmailChanged value)? emailChanged,
     TResult? Function(_PasswordChanged value)? passwordChanged,
     TResult? Function(_NameChanged value)? nameChanged,
@@ -75,6 +80,7 @@ mixin _$SignupEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialized value)? initialized,
     TResult Function(_EmailChanged value)? emailChanged,
     TResult Function(_PasswordChanged value)? passwordChanged,
     TResult Function(_NameChanged value)? nameChanged,
@@ -103,6 +109,188 @@ class _$SignupEventCopyWithImpl<$Res, $Val extends SignupEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+}
+
+/// @nodoc
+abstract class _$$InitializedImplCopyWith<$Res> {
+  factory _$$InitializedImplCopyWith(
+          _$InitializedImpl value, $Res Function(_$InitializedImpl) then) =
+      __$$InitializedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({FormType formType, UserType userType});
+}
+
+/// @nodoc
+class __$$InitializedImplCopyWithImpl<$Res>
+    extends _$SignupEventCopyWithImpl<$Res, _$InitializedImpl>
+    implements _$$InitializedImplCopyWith<$Res> {
+  __$$InitializedImplCopyWithImpl(
+      _$InitializedImpl _value, $Res Function(_$InitializedImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? formType = null,
+    Object? userType = null,
+  }) {
+    return _then(_$InitializedImpl(
+      null == formType
+          ? _value.formType
+          : formType // ignore: cast_nullable_to_non_nullable
+              as FormType,
+      null == userType
+          ? _value.userType
+          : userType // ignore: cast_nullable_to_non_nullable
+              as UserType,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$InitializedImpl implements _Initialized {
+  const _$InitializedImpl(this.formType, this.userType);
+
+  @override
+  final FormType formType;
+  @override
+  final UserType userType;
+
+  @override
+  String toString() {
+    return 'SignupEvent.initialized(formType: $formType, userType: $userType)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$InitializedImpl &&
+            (identical(other.formType, formType) ||
+                other.formType == formType) &&
+            (identical(other.userType, userType) ||
+                other.userType == userType));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, formType, userType);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$InitializedImplCopyWith<_$InitializedImpl> get copyWith =>
+      __$$InitializedImplCopyWithImpl<_$InitializedImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(FormType formType, UserType userType) initialized,
+    required TResult Function(String email) emailChanged,
+    required TResult Function(String password) passwordChanged,
+    required TResult Function(String name) nameChanged,
+    required TResult Function() submitted,
+    required TResult Function() obscurePasswordToggled,
+    required TResult Function(FormType form) formTypeToggled,
+    required TResult Function() succeeded,
+  }) {
+    return initialized(formType, userType);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(FormType formType, UserType userType)? initialized,
+    TResult? Function(String email)? emailChanged,
+    TResult? Function(String password)? passwordChanged,
+    TResult? Function(String name)? nameChanged,
+    TResult? Function()? submitted,
+    TResult? Function()? obscurePasswordToggled,
+    TResult? Function(FormType form)? formTypeToggled,
+    TResult? Function()? succeeded,
+  }) {
+    return initialized?.call(formType, userType);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(FormType formType, UserType userType)? initialized,
+    TResult Function(String email)? emailChanged,
+    TResult Function(String password)? passwordChanged,
+    TResult Function(String name)? nameChanged,
+    TResult Function()? submitted,
+    TResult Function()? obscurePasswordToggled,
+    TResult Function(FormType form)? formTypeToggled,
+    TResult Function()? succeeded,
+    required TResult orElse(),
+  }) {
+    if (initialized != null) {
+      return initialized(formType, userType);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialized value) initialized,
+    required TResult Function(_EmailChanged value) emailChanged,
+    required TResult Function(_PasswordChanged value) passwordChanged,
+    required TResult Function(_NameChanged value) nameChanged,
+    required TResult Function(_Submitted value) submitted,
+    required TResult Function(_ObscurePasswordToggled value)
+        obscurePasswordToggled,
+    required TResult Function(_FormTypeToggled value) formTypeToggled,
+    required TResult Function(_Succeeded value) succeeded,
+  }) {
+    return initialized(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialized value)? initialized,
+    TResult? Function(_EmailChanged value)? emailChanged,
+    TResult? Function(_PasswordChanged value)? passwordChanged,
+    TResult? Function(_NameChanged value)? nameChanged,
+    TResult? Function(_Submitted value)? submitted,
+    TResult? Function(_ObscurePasswordToggled value)? obscurePasswordToggled,
+    TResult? Function(_FormTypeToggled value)? formTypeToggled,
+    TResult? Function(_Succeeded value)? succeeded,
+  }) {
+    return initialized?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialized value)? initialized,
+    TResult Function(_EmailChanged value)? emailChanged,
+    TResult Function(_PasswordChanged value)? passwordChanged,
+    TResult Function(_NameChanged value)? nameChanged,
+    TResult Function(_Submitted value)? submitted,
+    TResult Function(_ObscurePasswordToggled value)? obscurePasswordToggled,
+    TResult Function(_FormTypeToggled value)? formTypeToggled,
+    TResult Function(_Succeeded value)? succeeded,
+    required TResult orElse(),
+  }) {
+    if (initialized != null) {
+      return initialized(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Initialized implements SignupEvent {
+  const factory _Initialized(final FormType formType, final UserType userType) =
+      _$InitializedImpl;
+
+  FormType get formType;
+  UserType get userType;
+  @JsonKey(ignore: true)
+  _$$InitializedImplCopyWith<_$InitializedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -169,6 +357,7 @@ class _$EmailChangedImpl implements _EmailChanged {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(FormType formType, UserType userType) initialized,
     required TResult Function(String email) emailChanged,
     required TResult Function(String password) passwordChanged,
     required TResult Function(String name) nameChanged,
@@ -183,6 +372,7 @@ class _$EmailChangedImpl implements _EmailChanged {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(FormType formType, UserType userType)? initialized,
     TResult? Function(String email)? emailChanged,
     TResult? Function(String password)? passwordChanged,
     TResult? Function(String name)? nameChanged,
@@ -197,6 +387,7 @@ class _$EmailChangedImpl implements _EmailChanged {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(FormType formType, UserType userType)? initialized,
     TResult Function(String email)? emailChanged,
     TResult Function(String password)? passwordChanged,
     TResult Function(String name)? nameChanged,
@@ -215,6 +406,7 @@ class _$EmailChangedImpl implements _EmailChanged {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_Initialized value) initialized,
     required TResult Function(_EmailChanged value) emailChanged,
     required TResult Function(_PasswordChanged value) passwordChanged,
     required TResult Function(_NameChanged value) nameChanged,
@@ -230,6 +422,7 @@ class _$EmailChangedImpl implements _EmailChanged {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialized value)? initialized,
     TResult? Function(_EmailChanged value)? emailChanged,
     TResult? Function(_PasswordChanged value)? passwordChanged,
     TResult? Function(_NameChanged value)? nameChanged,
@@ -244,6 +437,7 @@ class _$EmailChangedImpl implements _EmailChanged {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialized value)? initialized,
     TResult Function(_EmailChanged value)? emailChanged,
     TResult Function(_PasswordChanged value)? passwordChanged,
     TResult Function(_NameChanged value)? nameChanged,
@@ -335,6 +529,7 @@ class _$PasswordChangedImpl implements _PasswordChanged {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(FormType formType, UserType userType) initialized,
     required TResult Function(String email) emailChanged,
     required TResult Function(String password) passwordChanged,
     required TResult Function(String name) nameChanged,
@@ -349,6 +544,7 @@ class _$PasswordChangedImpl implements _PasswordChanged {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(FormType formType, UserType userType)? initialized,
     TResult? Function(String email)? emailChanged,
     TResult? Function(String password)? passwordChanged,
     TResult? Function(String name)? nameChanged,
@@ -363,6 +559,7 @@ class _$PasswordChangedImpl implements _PasswordChanged {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(FormType formType, UserType userType)? initialized,
     TResult Function(String email)? emailChanged,
     TResult Function(String password)? passwordChanged,
     TResult Function(String name)? nameChanged,
@@ -381,6 +578,7 @@ class _$PasswordChangedImpl implements _PasswordChanged {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_Initialized value) initialized,
     required TResult Function(_EmailChanged value) emailChanged,
     required TResult Function(_PasswordChanged value) passwordChanged,
     required TResult Function(_NameChanged value) nameChanged,
@@ -396,6 +594,7 @@ class _$PasswordChangedImpl implements _PasswordChanged {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialized value)? initialized,
     TResult? Function(_EmailChanged value)? emailChanged,
     TResult? Function(_PasswordChanged value)? passwordChanged,
     TResult? Function(_NameChanged value)? nameChanged,
@@ -410,6 +609,7 @@ class _$PasswordChangedImpl implements _PasswordChanged {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialized value)? initialized,
     TResult Function(_EmailChanged value)? emailChanged,
     TResult Function(_PasswordChanged value)? passwordChanged,
     TResult Function(_NameChanged value)? nameChanged,
@@ -499,6 +699,7 @@ class _$NameChangedImpl implements _NameChanged {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(FormType formType, UserType userType) initialized,
     required TResult Function(String email) emailChanged,
     required TResult Function(String password) passwordChanged,
     required TResult Function(String name) nameChanged,
@@ -513,6 +714,7 @@ class _$NameChangedImpl implements _NameChanged {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(FormType formType, UserType userType)? initialized,
     TResult? Function(String email)? emailChanged,
     TResult? Function(String password)? passwordChanged,
     TResult? Function(String name)? nameChanged,
@@ -527,6 +729,7 @@ class _$NameChangedImpl implements _NameChanged {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(FormType formType, UserType userType)? initialized,
     TResult Function(String email)? emailChanged,
     TResult Function(String password)? passwordChanged,
     TResult Function(String name)? nameChanged,
@@ -545,6 +748,7 @@ class _$NameChangedImpl implements _NameChanged {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_Initialized value) initialized,
     required TResult Function(_EmailChanged value) emailChanged,
     required TResult Function(_PasswordChanged value) passwordChanged,
     required TResult Function(_NameChanged value) nameChanged,
@@ -560,6 +764,7 @@ class _$NameChangedImpl implements _NameChanged {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialized value)? initialized,
     TResult? Function(_EmailChanged value)? emailChanged,
     TResult? Function(_PasswordChanged value)? passwordChanged,
     TResult? Function(_NameChanged value)? nameChanged,
@@ -574,6 +779,7 @@ class _$NameChangedImpl implements _NameChanged {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialized value)? initialized,
     TResult Function(_EmailChanged value)? emailChanged,
     TResult Function(_PasswordChanged value)? passwordChanged,
     TResult Function(_NameChanged value)? nameChanged,
@@ -637,6 +843,7 @@ class _$SubmittedImpl implements _Submitted {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(FormType formType, UserType userType) initialized,
     required TResult Function(String email) emailChanged,
     required TResult Function(String password) passwordChanged,
     required TResult Function(String name) nameChanged,
@@ -651,6 +858,7 @@ class _$SubmittedImpl implements _Submitted {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(FormType formType, UserType userType)? initialized,
     TResult? Function(String email)? emailChanged,
     TResult? Function(String password)? passwordChanged,
     TResult? Function(String name)? nameChanged,
@@ -665,6 +873,7 @@ class _$SubmittedImpl implements _Submitted {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(FormType formType, UserType userType)? initialized,
     TResult Function(String email)? emailChanged,
     TResult Function(String password)? passwordChanged,
     TResult Function(String name)? nameChanged,
@@ -683,6 +892,7 @@ class _$SubmittedImpl implements _Submitted {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_Initialized value) initialized,
     required TResult Function(_EmailChanged value) emailChanged,
     required TResult Function(_PasswordChanged value) passwordChanged,
     required TResult Function(_NameChanged value) nameChanged,
@@ -698,6 +908,7 @@ class _$SubmittedImpl implements _Submitted {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialized value)? initialized,
     TResult? Function(_EmailChanged value)? emailChanged,
     TResult? Function(_PasswordChanged value)? passwordChanged,
     TResult? Function(_NameChanged value)? nameChanged,
@@ -712,6 +923,7 @@ class _$SubmittedImpl implements _Submitted {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialized value)? initialized,
     TResult Function(_EmailChanged value)? emailChanged,
     TResult Function(_PasswordChanged value)? passwordChanged,
     TResult Function(_NameChanged value)? nameChanged,
@@ -773,6 +985,7 @@ class _$ObscurePasswordToggledImpl implements _ObscurePasswordToggled {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(FormType formType, UserType userType) initialized,
     required TResult Function(String email) emailChanged,
     required TResult Function(String password) passwordChanged,
     required TResult Function(String name) nameChanged,
@@ -787,6 +1000,7 @@ class _$ObscurePasswordToggledImpl implements _ObscurePasswordToggled {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(FormType formType, UserType userType)? initialized,
     TResult? Function(String email)? emailChanged,
     TResult? Function(String password)? passwordChanged,
     TResult? Function(String name)? nameChanged,
@@ -801,6 +1015,7 @@ class _$ObscurePasswordToggledImpl implements _ObscurePasswordToggled {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(FormType formType, UserType userType)? initialized,
     TResult Function(String email)? emailChanged,
     TResult Function(String password)? passwordChanged,
     TResult Function(String name)? nameChanged,
@@ -819,6 +1034,7 @@ class _$ObscurePasswordToggledImpl implements _ObscurePasswordToggled {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_Initialized value) initialized,
     required TResult Function(_EmailChanged value) emailChanged,
     required TResult Function(_PasswordChanged value) passwordChanged,
     required TResult Function(_NameChanged value) nameChanged,
@@ -834,6 +1050,7 @@ class _$ObscurePasswordToggledImpl implements _ObscurePasswordToggled {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialized value)? initialized,
     TResult? Function(_EmailChanged value)? emailChanged,
     TResult? Function(_PasswordChanged value)? passwordChanged,
     TResult? Function(_NameChanged value)? nameChanged,
@@ -848,6 +1065,7 @@ class _$ObscurePasswordToggledImpl implements _ObscurePasswordToggled {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialized value)? initialized,
     TResult Function(_EmailChanged value)? emailChanged,
     TResult Function(_PasswordChanged value)? passwordChanged,
     TResult Function(_NameChanged value)? nameChanged,
@@ -933,6 +1151,7 @@ class _$FormTypeToggledImpl implements _FormTypeToggled {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(FormType formType, UserType userType) initialized,
     required TResult Function(String email) emailChanged,
     required TResult Function(String password) passwordChanged,
     required TResult Function(String name) nameChanged,
@@ -947,6 +1166,7 @@ class _$FormTypeToggledImpl implements _FormTypeToggled {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(FormType formType, UserType userType)? initialized,
     TResult? Function(String email)? emailChanged,
     TResult? Function(String password)? passwordChanged,
     TResult? Function(String name)? nameChanged,
@@ -961,6 +1181,7 @@ class _$FormTypeToggledImpl implements _FormTypeToggled {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(FormType formType, UserType userType)? initialized,
     TResult Function(String email)? emailChanged,
     TResult Function(String password)? passwordChanged,
     TResult Function(String name)? nameChanged,
@@ -979,6 +1200,7 @@ class _$FormTypeToggledImpl implements _FormTypeToggled {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_Initialized value) initialized,
     required TResult Function(_EmailChanged value) emailChanged,
     required TResult Function(_PasswordChanged value) passwordChanged,
     required TResult Function(_NameChanged value) nameChanged,
@@ -994,6 +1216,7 @@ class _$FormTypeToggledImpl implements _FormTypeToggled {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialized value)? initialized,
     TResult? Function(_EmailChanged value)? emailChanged,
     TResult? Function(_PasswordChanged value)? passwordChanged,
     TResult? Function(_NameChanged value)? nameChanged,
@@ -1008,6 +1231,7 @@ class _$FormTypeToggledImpl implements _FormTypeToggled {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialized value)? initialized,
     TResult Function(_EmailChanged value)? emailChanged,
     TResult Function(_PasswordChanged value)? passwordChanged,
     TResult Function(_NameChanged value)? nameChanged,
@@ -1071,6 +1295,7 @@ class _$SucceededImpl implements _Succeeded {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(FormType formType, UserType userType) initialized,
     required TResult Function(String email) emailChanged,
     required TResult Function(String password) passwordChanged,
     required TResult Function(String name) nameChanged,
@@ -1085,6 +1310,7 @@ class _$SucceededImpl implements _Succeeded {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(FormType formType, UserType userType)? initialized,
     TResult? Function(String email)? emailChanged,
     TResult? Function(String password)? passwordChanged,
     TResult? Function(String name)? nameChanged,
@@ -1099,6 +1325,7 @@ class _$SucceededImpl implements _Succeeded {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(FormType formType, UserType userType)? initialized,
     TResult Function(String email)? emailChanged,
     TResult Function(String password)? passwordChanged,
     TResult Function(String name)? nameChanged,
@@ -1117,6 +1344,7 @@ class _$SucceededImpl implements _Succeeded {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_Initialized value) initialized,
     required TResult Function(_EmailChanged value) emailChanged,
     required TResult Function(_PasswordChanged value) passwordChanged,
     required TResult Function(_NameChanged value) nameChanged,
@@ -1132,6 +1360,7 @@ class _$SucceededImpl implements _Succeeded {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialized value)? initialized,
     TResult? Function(_EmailChanged value)? emailChanged,
     TResult? Function(_PasswordChanged value)? passwordChanged,
     TResult? Function(_NameChanged value)? nameChanged,
@@ -1146,6 +1375,7 @@ class _$SucceededImpl implements _Succeeded {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialized value)? initialized,
     TResult Function(_EmailChanged value)? emailChanged,
     TResult Function(_PasswordChanged value)? passwordChanged,
     TResult Function(_NameChanged value)? nameChanged,
@@ -1172,7 +1402,8 @@ mixin _$SignupState {
   String get displayName => throw _privateConstructorUsedError;
   String get password => throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
-  FormType? get formType => throw _privateConstructorUsedError;
+  FormType get formType => throw _privateConstructorUsedError;
+  UserType get userType => throw _privateConstructorUsedError;
   bool get showError => throw _privateConstructorUsedError;
   bool get isFormSuccessful => throw _privateConstructorUsedError;
   bool get obscurePassword => throw _privateConstructorUsedError;
@@ -1199,7 +1430,8 @@ abstract class $SignupStateCopyWith<$Res> {
       String displayName,
       String password,
       String? errorMessage,
-      FormType? formType,
+      FormType formType,
+      UserType userType,
       bool showError,
       bool isFormSuccessful,
       bool obscurePassword,
@@ -1228,7 +1460,8 @@ class _$SignupStateCopyWithImpl<$Res, $Val extends SignupState>
     Object? displayName = null,
     Object? password = null,
     Object? errorMessage = freezed,
-    Object? formType = freezed,
+    Object? formType = null,
+    Object? userType = null,
     Object? showError = null,
     Object? isFormSuccessful = null,
     Object? obscurePassword = null,
@@ -1256,10 +1489,14 @@ class _$SignupStateCopyWithImpl<$Res, $Val extends SignupState>
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String?,
-      formType: freezed == formType
+      formType: null == formType
           ? _value.formType
           : formType // ignore: cast_nullable_to_non_nullable
-              as FormType?,
+              as FormType,
+      userType: null == userType
+          ? _value.userType
+          : userType // ignore: cast_nullable_to_non_nullable
+              as UserType,
       showError: null == showError
           ? _value.showError
           : showError // ignore: cast_nullable_to_non_nullable
@@ -1313,7 +1550,8 @@ abstract class _$$SignupStateImplCopyWith<$Res>
       String displayName,
       String password,
       String? errorMessage,
-      FormType? formType,
+      FormType formType,
+      UserType userType,
       bool showError,
       bool isFormSuccessful,
       bool obscurePassword,
@@ -1340,7 +1578,8 @@ class __$$SignupStateImplCopyWithImpl<$Res>
     Object? displayName = null,
     Object? password = null,
     Object? errorMessage = freezed,
-    Object? formType = freezed,
+    Object? formType = null,
+    Object? userType = null,
     Object? showError = null,
     Object? isFormSuccessful = null,
     Object? obscurePassword = null,
@@ -1368,10 +1607,14 @@ class __$$SignupStateImplCopyWithImpl<$Res>
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String?,
-      formType: freezed == formType
+      formType: null == formType
           ? _value.formType
           : formType // ignore: cast_nullable_to_non_nullable
-              as FormType?,
+              as FormType,
+      userType: null == userType
+          ? _value.userType
+          : userType // ignore: cast_nullable_to_non_nullable
+              as UserType,
       showError: null == showError
           ? _value.showError
           : showError // ignore: cast_nullable_to_non_nullable
@@ -1421,6 +1664,7 @@ class _$SignupStateImpl implements _SignupState {
       required this.password,
       this.errorMessage = '',
       this.formType = FormType.signUp,
+      this.userType = UserType.individual,
       this.showError = false,
       this.isFormSuccessful = false,
       this.obscurePassword = true,
@@ -1442,7 +1686,10 @@ class _$SignupStateImpl implements _SignupState {
   final String? errorMessage;
   @override
   @JsonKey()
-  final FormType? formType;
+  final FormType formType;
+  @override
+  @JsonKey()
+  final UserType userType;
   @override
   @JsonKey()
   final bool showError;
@@ -1473,7 +1720,7 @@ class _$SignupStateImpl implements _SignupState {
 
   @override
   String toString() {
-    return 'SignupState(email: $email, displayName: $displayName, password: $password, errorMessage: $errorMessage, formType: $formType, showError: $showError, isFormSuccessful: $isFormSuccessful, obscurePassword: $obscurePassword, isEmailValid: $isEmailValid, isPasswordValid: $isPasswordValid, isFormValid: $isFormValid, isNameValid: $isNameValid, isFormValidateFailed: $isFormValidateFailed, isLoading: $isLoading)';
+    return 'SignupState(email: $email, displayName: $displayName, password: $password, errorMessage: $errorMessage, formType: $formType, userType: $userType, showError: $showError, isFormSuccessful: $isFormSuccessful, obscurePassword: $obscurePassword, isEmailValid: $isEmailValid, isPasswordValid: $isPasswordValid, isFormValid: $isFormValid, isNameValid: $isNameValid, isFormValidateFailed: $isFormValidateFailed, isLoading: $isLoading)';
   }
 
   @override
@@ -1490,6 +1737,8 @@ class _$SignupStateImpl implements _SignupState {
                 other.errorMessage == errorMessage) &&
             (identical(other.formType, formType) ||
                 other.formType == formType) &&
+            (identical(other.userType, userType) ||
+                other.userType == userType) &&
             (identical(other.showError, showError) ||
                 other.showError == showError) &&
             (identical(other.isFormSuccessful, isFormSuccessful) ||
@@ -1518,6 +1767,7 @@ class _$SignupStateImpl implements _SignupState {
       password,
       errorMessage,
       formType,
+      userType,
       showError,
       isFormSuccessful,
       obscurePassword,
@@ -1541,7 +1791,8 @@ abstract class _SignupState implements SignupState {
       required final String displayName,
       required final String password,
       final String? errorMessage,
-      final FormType? formType,
+      final FormType formType,
+      final UserType userType,
       final bool showError,
       final bool isFormSuccessful,
       final bool obscurePassword,
@@ -1561,7 +1812,9 @@ abstract class _SignupState implements SignupState {
   @override
   String? get errorMessage;
   @override
-  FormType? get formType;
+  FormType get formType;
+  @override
+  UserType get userType;
   @override
   bool get showError;
   @override

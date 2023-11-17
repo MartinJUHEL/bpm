@@ -26,12 +26,11 @@ dependencies:
   logger: ^2.0.2+1
   firebase_crashlytics: ^3.4.4
   injectable: ^2.3.2
-  json_annotation: ^4.8.1
   get_it: ^7.6.4
   connectivity_plus: ^5.0.1
-  copy_with_extension: ^5.0.4
   freezed_annotation: ^2.4.1
   easy_localization: ^3.0.3
+  json_annotation: ^4.0.6
 
 dev_dependencies:
   flutter_test:
@@ -40,9 +39,10 @@ dev_dependencies:
   flutter_lints: ^3.0.1
   lint: ^2.2.0
   build_runner: ^2.4.6
-  copy_with_extension_gen: ^5.0.4
   freezed: ^2.4.5
   injectable_generator: ^2.4.1
+  json_serializable: ^6.7.1
+
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -92,4 +92,5 @@ flutter:
     - android/.gradle/7.5/dependencies-accessors/
     - android/.gradle/vcs-1/
     - android/.gradle/buildOutputCleanup/
+    - lib/signup/domain/usecases/
 

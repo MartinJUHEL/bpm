@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:bpm/core/utils/logger/logger.dart';
+import 'package:bpm/core/domain/entities/user_model.dart';
 import 'package:bpm/signup/domain/usecases/is_email_valid_usecase.dart';
 import 'package:bpm/signup/domain/usecases/is_name_valid_usecase.dart';
 import 'package:bpm/signup/domain/usecases/is_password_valid_usecase.dart';
@@ -39,7 +39,9 @@ class SignupBloc extends Bloc<SignupEvent, SignupState> {
           submitted: () => _onSubmitted(emit),
           obscurePasswordToggled: () => _obscurePasswordToggled(emit),
           succeeded: () => _onSucceeded(emit),
-          formTypeToggled: (FormType form) => _formTypeToggled(form, emit));
+          formTypeToggled: (FormType form) => _formTypeToggled(form, emit),
+          initialized: (FormType formType, UserType userType) =>_initialized(
+              formType, userType));
     });
   }
 
@@ -95,7 +97,11 @@ class SignupBloc extends Bloc<SignupEvent, SignupState> {
     emit(state.copyWith(obscurePassword: !state.obscurePassword));
   }
 
-  _formTypeToggled(FormType form,Emitter<SignupState> emit){
+  _formTypeToggled(FormType form, Emitter<SignupState> emit) {
     emit(state.copyWith(formType: form));
+  }
+
+  _initialized (FormType formType, UserType userType){
+    emit(state.copyWith(formType: formType,userType: userType));
   }
 }

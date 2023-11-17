@@ -16,22 +16,22 @@ class AuthenticationRemoteService {
     return _firebaseAuth.currentUser?.displayName;
   }
 
-  Future<UserCredential?> signUp(UserModel user) async {
+  Future<UserCredential?> signUp(String email, String password) async {
     try {
       UserCredential userCredential =
           await _firebaseAuth.createUserWithEmailAndPassword(
-              email: user.email!, password: user.password!);
+              email: email, password: password);
       return userCredential;
     } on FirebaseAuthException catch (e) {
       throw FirebaseAuthException(code: e.code, message: e.message);
     }
   }
 
-  Future<UserCredential?> signIn(UserModel user) async {
+  Future<UserCredential?> signIn(String email, String password) async {
     try {
       UserCredential userCredential =
           await _firebaseAuth.signInWithEmailAndPassword(
-              email: user.email!, password: user.password!);
+              email: email, password: password!);
       return userCredential;
     } on FirebaseAuthException catch (e) {
       throw FirebaseAuthException(code: e.code, message: e.message);

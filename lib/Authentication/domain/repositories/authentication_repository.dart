@@ -4,9 +4,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 abstract class IAuthenticationRepository {
   User? getCurrentUser();
 
-  Future<UserCredential?> signUp(UserModel user);
+  Future<UserCredential?> signUp(String email, String password);
 
-  Future<UserCredential?> signIn(UserModel user);
+  Future<UserCredential?> signIn(String email, String password);
 
   Future<void> signOut();
 
