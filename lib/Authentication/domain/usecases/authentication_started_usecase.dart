@@ -21,7 +21,6 @@ class AuthenticationStartedUseCase {
         _authenticationRepository.verifyEmail();
         return const AuthenticationState.emailNotVerified();
       }
-      //todo retrieve userModel on firestore
       return AuthenticationState.success(user.displayName);
     } else {
       return const AuthenticationState.failure();

@@ -1,6 +1,8 @@
 import 'package:bpm/core/domain/entities/user_model.dart';
 import 'package:bpm/core/domain/usecases/get_user_type_from_string_usecase.dart';
+import 'package:injectable/injectable.dart';
 
+@injectable
 class UserModelFirestoreToModelMapper {
   final GetUserTypeFromStringUseCase _getUserTypeFromStringUseCase;
 

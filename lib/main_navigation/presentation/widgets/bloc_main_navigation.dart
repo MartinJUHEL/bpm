@@ -4,6 +4,7 @@ import 'package:bpm/home/presentation/screen/home_screen.dart';
 import 'package:bpm/signup/presentation/screens/welcome_screen.dart';
 import 'package:bpm/splash/presentation/screen/splash_screen.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class BlocMainNavigation extends StatelessWidget {
@@ -11,14 +12,23 @@ class BlocMainNavigation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<AuthenticationBloc, AuthenticationState>(
-      builder: (context, state) {
-        return state.maybeMap(
-            success: (s) => const HomeScreen(),
-            failure: (_) => const WelcomeScreen(),
-            emailNotVerified: (_)=> const EmailNotVerifiedScreen(),
-            orElse: () => const SplashScreen());
+    return BlocListener<AuthenticationBloc, AuthenticationState>(
+      listener: (context, state) {
+        state.maybeMap(
+          emailNotVerified: (_) =>
+              Navigator.popUntil(context, (route) => route.isFirst),
+          orElse: () {},
+        );
       },
+      child: BlocBuilder<AuthenticationBloc, AuthenticationState>(
+        builder: (context, state) {
+          return state.maybeMap(
+              success: (s) => HomeScreen(),
+              emailNotVerified: (_)=> const EmailNotVerifiedScreen(),
+              failure: (_) => const WelcomeScreen(),
+              orElse: () => const SplashScreen());
+        },
+      ),
     );
   }
 }

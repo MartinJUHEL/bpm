@@ -11,25 +11,28 @@ class WelcomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-      body: Column(
-        children: [
-          OutlinedButton(
-            onPressed: () => Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => const ChooseUserTypeScreen()),
+      body: Center(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            OutlinedButton(
+              onPressed: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const ChooseUserTypeScreen()),
+              ),
+              child: Text('signup').tr(),
             ),
-            child: Text('signup').tr(),
-          ),
-          OutlinedButton(
-            onPressed: () => Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => const SignupScreen(formType: FormType.signIn)),
+            OutlinedButton(
+              onPressed: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const SignupScreen(formType: FormType.signIn)),
+              ),
+              child: Text('signin').tr(),
             ),
-            child: Text('signin').tr(),
-          ),
-        ],
+          ],
+        ),
       ),
     ));
   }

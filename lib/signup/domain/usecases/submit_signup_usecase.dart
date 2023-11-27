@@ -5,6 +5,7 @@ import 'package:bpm/core/domain/entities/user_model.dart';
 import 'package:bpm/signup/domain/usecases/is_email_valid_usecase.dart';
 import 'package:bpm/signup/domain/usecases/is_name_valid_usecase.dart';
 import 'package:bpm/signup/domain/usecases/is_password_valid_usecase.dart';
+import 'package:bpm/signup/domain/usecases/save_user_usecase.dart';
 import 'package:bpm/signup/presentation/bloc/signup_bloc.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -16,9 +17,14 @@ class SubmitSignupUseCase {
   final IsPasswordValidUseCase _isPasswordValidUseCase;
   final IsNameValidUseCase _isNameValidUseCase;
   final IAuthenticationRepository _authenticationRepository;
+  final SaveUserUseCase _saveUserUseCase;
 
-  SubmitSignupUseCase(this._isEmailValidUseCase, this._isPasswordValidUseCase,
-      this._isNameValidUseCase, this._authenticationRepository);
+  SubmitSignupUseCase(
+      this._isEmailValidUseCase,
+      this._isPasswordValidUseCase,
+      this._isNameValidUseCase,
+      this._authenticationRepository,
+      this._saveUserUseCase);
 
   Future<SignupState> execute(SignupState state) async {
     bool isNameValid = await _isNameValidUseCase.execute(state.displayName);
@@ -29,13 +35,15 @@ class SubmitSignupUseCase {
     if (isFormValid) {
       try {
         UserCredential? authUser =
-        await _authenticationRepository.signUp(state.email, state.password);
+            await _authenticationRepository.signUp(state.email, state.password);
         if (authUser?.user?.uid != null) {
-          UserModel user = UserModel(uid: authUser!.user!.uid,
+          UserModel user = UserModel(
+              uid: authUser!.user!.uid,
               isVerified: false,
               email: state.email,
               displayName: state.displayName,
-              userType: state.userType );
+              userType: state.userType);
+          await _saveUserUseCase.execute(user);
         } else {
           return state.copyWith(
               isLoading: false,
@@ -47,6 +55,11 @@ class SubmitSignupUseCase {
       } on FirebaseAuthException catch (e) {
         return state.copyWith(
             isLoading: false, errorMessage: e.message, isFormValid: false);
+      } catch (e) {
+        return state.copyWith(
+            isLoading: false,
+            errorMessage: tr('errorOccured'),
+            isFormValid: false);
       }
     } else {
       return state.copyWith(

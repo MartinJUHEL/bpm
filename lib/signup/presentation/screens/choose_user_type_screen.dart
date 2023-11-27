@@ -11,31 +11,34 @@ class ChooseUserTypeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: Column(
-          children: [
-            OutlinedButton(
-              onPressed: () => Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => const SignupScreen(
-                          formType: FormType.signUp,
-                          userType: UserType.individual,
-                        )),
+        body: Center(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              OutlinedButton(
+                onPressed: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const SignupScreen(
+                            formType: FormType.signUp,
+                            userType: UserType.individual,
+                          )),
+                ),
+                child: const Text('individual').tr(),
               ),
-              child: const Text('individual').tr(),
-            ),
-            OutlinedButton(
-              onPressed: () => Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => const SignupScreen(
-                          formType: FormType.signUp,
-                          userType: UserType.association,
-                        )),
+              OutlinedButton(
+                onPressed: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const SignupScreen(
+                            formType: FormType.signUp,
+                            userType: UserType.association,
+                          )),
+                ),
+                child: const Text('association').tr(),
               ),
-              child: const Text('association').tr(),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

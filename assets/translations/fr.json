@@ -19,6 +19,8 @@
 
   "@_SIGNUP_PAGE": {},
   "signup": "Sign Up",
+  "individual": "An individual",
+  "association": "An association",
   "signin": "Sign in",
   "checkEmailMessage" : "Please Verify your email, by clicking the link sent to you by mail.",
   "emailLabel" : "Email",
@@ -30,5 +32,12 @@
   "passwordNotValid" : "Password must be at least 6 characters",
   "nameLabel" : "Name",
   "nameNotValid" : "Name cannot be empty!",
-  "forgotPassword" : "Forgot password"
+  "forgotPassword" : "Forgot password",
+
+  "@_HOME_PAGE": {},
+  "search": "Search",
+  "likes": "Likes",
+  "rentals": "Rentals",
+  "messages": "Messages",
+  "profil": "Profil"
 }

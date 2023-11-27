@@ -16,7 +16,7 @@ class ResetPasswordBloc extends Bloc<ResetPasswordEvent, ResetPasswordState> {
   final GetResetPasswordStateUseCase _getResetPasswordStateUseCase;
 
   ResetPasswordBloc(this._getResetPasswordStateUseCase)
-      : super(ResetPasswordState()) {
+      : super(const ResetPasswordState()) {
     on<ResetPasswordEvent>((event, emit) async {
       await event.when<FutureOr<void>>(
           sendedEmailResetPassword: (String email) =>
