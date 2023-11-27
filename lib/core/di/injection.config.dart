@@ -92,6 +92,7 @@ Future<_i1.GetIt> $initGetIt(
   gh.factory<_i15.UserRemoteService>(() => _i15.UserRemoteService(
         gh<_i5.FirebaseFirestore>(),
         gh<_i14.UserModelFirestoreToModelMapper>(),
+        gh<_i4.FirebaseAuth>(),
       ));
   gh.factory<_i16.AuthenticationRemoteService>(
       () => _i16.AuthenticationRemoteService(gh<_i4.FirebaseAuth>()));
@@ -120,6 +121,7 @@ Future<_i1.GetIt> $initGetIt(
       () => _i25.AuthenticationStartedUseCase(
             gh<_i17.IAuthenticationRepository>(),
             gh<_i21.IsEmailVerifiedUseCase>(),
+            gh<_i19.IUserRepository>(),
           ));
   gh.factory<_i26.FetchAndSaveUserLocalUseCase>(
       () => _i26.FetchAndSaveUserLocalUseCase(gh<_i19.IUserRepository>()));

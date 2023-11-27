@@ -4,6 +4,6 @@ import 'package:injectable/injectable.dart';
 class IsNameValidUseCase {
   Future<bool> execute(String name) async {
     //TODO : Check that there is no user already with this name
-    return Future.value(true);
+    return Future.value(name.isNotEmpty);
   }
 }

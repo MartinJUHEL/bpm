@@ -5,6 +5,7 @@
   },
   "refresh": "Refresh",
   "errorOccured": "An error occurred please try again",
+  "userNotAuthenticated": "User is not authenticated",
 
   "@_WELCOME_PAGE": {},
   "welcomeText" : "Welcome to BPM",

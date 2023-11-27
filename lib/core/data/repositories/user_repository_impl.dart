@@ -39,4 +39,9 @@ class UserRepositoryImpl implements IUserRepository {
       _userLocalService.saveUid(uid)
     ]);
   }
+
+  @override
+  Future<void> setUserVerified(bool isVerified) {
+    return _userRemoteService.setUserVerified(isVerified);
+  }
 }

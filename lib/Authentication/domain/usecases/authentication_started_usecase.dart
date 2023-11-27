@@ -2,6 +2,7 @@ import 'package:bpm/Authentication/domain/repositories/authentication_repository
 import 'package:bpm/Authentication/domain/usecases/is_email_verified_usecase.dart';
 import 'package:bpm/Authentication/presentation/bloc/authentication_bloc.dart';
 import 'package:bpm/core/domain/entities/user_model.dart';
+import 'package:bpm/core/domain/repositories/user_repository.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:injectable/injectable.dart';
 
@@ -9,20 +10,31 @@ import 'package:injectable/injectable.dart';
 class AuthenticationStartedUseCase {
   final IAuthenticationRepository _authenticationRepository;
   final IsEmailVerifiedUseCase _isEmailVerifiedUseCase;
+  final IUserRepository _userRepository;
 
-  AuthenticationStartedUseCase(
-      this._authenticationRepository, this._isEmailVerifiedUseCase);
+  AuthenticationStartedUseCase(this._authenticationRepository,
+      this._isEmailVerifiedUseCase, this._userRepository);
 
   Future<AuthenticationState> execute() async {
-    User? user = _authenticationRepository.getCurrentUser();
-    bool isEmailVerified = await _isEmailVerifiedUseCase.execute();
-    if (user != null) {
-      if (!isEmailVerified) {
-        _authenticationRepository.verifyEmail();
-        return const AuthenticationState.emailNotVerified();
+    try {
+      User? user = _authenticationRepository.getCurrentUser();
+      bool isEmailVerified = await _isEmailVerifiedUseCase.execute();
+      if (user != null) {
+        if (!isEmailVerified) {
+          _authenticationRepository.verifyEmail();
+          return const AuthenticationState.emailNotVerified();
+        }
+        if (_userRepository.getUserName() == null ||
+            _userRepository.getUid() == null) {
+          return const AuthenticationState.failure();
+        } else {
+          await _userRepository.setUserVerified(true);
+          return AuthenticationState.success(user.displayName);
+        }
+      } else {
+        return const AuthenticationState.failure();
       }
-      return AuthenticationState.success(user.displayName);
-    } else {
+    } catch (e) {
       return const AuthenticationState.failure();
     }
   }
