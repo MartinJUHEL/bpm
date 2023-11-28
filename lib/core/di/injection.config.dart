@@ -136,9 +136,9 @@ Future<_i1.GetIt> $initGetIt(
   gh.factory<_i31.SubmitSigninUseCase>(() => _i31.SubmitSigninUseCase(
         gh<_i9.IsEmailValidUseCase>(),
         gh<_i11.IsPasswordValidUseCase>(),
-        gh<_i10.IsNameValidUseCase>(),
         gh<_i17.IAuthenticationRepository>(),
         gh<_i26.FetchAndSaveUserLocalUseCase>(),
+        gh<_i24.AuthenticationSignedOutUseCase>(),
       ));
   gh.factory<_i32.AuthenticationBloc>(() => _i32.AuthenticationBloc(
         gh<_i25.AuthenticationStartedUseCase>(),

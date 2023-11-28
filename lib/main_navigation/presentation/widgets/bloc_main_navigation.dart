@@ -17,6 +17,8 @@ class BlocMainNavigation extends StatelessWidget {
         state.maybeMap(
           emailNotVerified: (_) =>
               Navigator.popUntil(context, (route) => route.isFirst),
+          success: (_) =>
+              Navigator.popUntil(context, (route) => route.isFirst),
           orElse: () {},
         );
       },

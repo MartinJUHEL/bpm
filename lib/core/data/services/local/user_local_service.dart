@@ -23,6 +23,11 @@ class UserLocalService {
     return _preferences.getString(_uidKey);
   }
 
+  Future<void> removeUser() async {
+    await _preferences.remove('userName');
+    await _preferences.remove('uid');
+  }
+
   ///////////////////////////////////////////////////////////////
   //CONSTANTS
   ///////////////////////////////////////////////////////////////

@@ -12,6 +12,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 
 class SignupScreen extends StatelessWidget {
   const SignupScreen(
@@ -29,6 +30,14 @@ class SignupScreen extends StatelessWidget {
     }
   }
 
+  void _showLoader(bool show) {
+    if (show) {
+      EasyLoading.show();
+    } else {
+      EasyLoading.dismiss();
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -37,6 +46,7 @@ class SignupScreen extends StatelessWidget {
         ..add(SignupEvent.initialized(formType, userType)),
       child: BlocListener<SignupBloc, SignupState>(
         listener: (context, state) {
+          _showLoader(state.isLoading);
           if (state.errorMessage?.isNotEmpty == true) {
             showDialog(
                 context: context,

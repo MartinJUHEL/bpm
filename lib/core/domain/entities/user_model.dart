@@ -1,3 +1,5 @@
+import 'package:bpm/core/utils/converters/timestamp_converter.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'user_model.freezed.dart';
@@ -11,6 +13,8 @@ class UserModel with _$UserModel {
     required final String email,
     required final String displayName,
     required final UserType userType,
+    @TimestampConverter()
+    required final DateTime creationDate
   }) = _UserModel;
 
   factory UserModel.fromJson(Map<String, dynamic> json) =>

@@ -40,8 +40,8 @@ class SignupBloc extends Bloc<SignupEvent, SignupState> {
           obscurePasswordToggled: () => _obscurePasswordToggled(emit),
           succeeded: () => _onSucceeded(emit),
           formTypeToggled: (FormType form) => _formTypeToggled(form, emit),
-          initialized: (FormType formType, UserType userType) =>_initialized(
-              formType, userType));
+          initialized: (FormType formType, UserType userType) =>
+              _initialized(formType, userType));
     });
   }
 
@@ -80,6 +80,7 @@ class SignupBloc extends Bloc<SignupEvent, SignupState> {
   }
 
   Future<void> _onSubmitted(Emitter<SignupState> emit) async {
+    emit(state.copyWith(isLoading: true));
     if (state.formType == FormType.signUp) {
       SignupState updatedState = await _submitSignupUseCase.execute(state);
       emit(updatedState);
@@ -101,7 +102,7 @@ class SignupBloc extends Bloc<SignupEvent, SignupState> {
     emit(state.copyWith(formType: form));
   }
 
-  _initialized (FormType formType, UserType userType){
-    emit(state.copyWith(formType: formType,userType: userType));
+  _initialized(FormType formType, UserType userType) {
+    emit(state.copyWith(formType: formType, userType: userType));
   }
 }

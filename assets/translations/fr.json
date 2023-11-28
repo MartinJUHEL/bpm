@@ -5,6 +5,7 @@
   },
   "refresh": "Refresh",
   "errorOccured": "An error occurred please try again",
+  "userNotAuthenticated": "User is not authenticated",
 
   "@_WELCOME_PAGE": {},
   "welcomeText" : "Welcome to BPM",
@@ -39,5 +40,9 @@
   "likes": "Likes",
   "rentals": "Rentals",
   "messages": "Messages",
-  "profil": "Profil"
+  "profil": "Profil",
+
+  "@_PROFIL_PAGE": {},
+  "memberDate": "Member since {}",
+  "logout": "Logout"
 }

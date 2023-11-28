@@ -40,5 +40,8 @@
   "likes": "Likes",
   "rentals": "Rentals",
   "messages": "Messages",
-  "profil": "Profil"
+  "profil": "Profil",
+
+  "@_PROFIL_PAGE": {},
+  "memberDate": "Member since {}"
 }

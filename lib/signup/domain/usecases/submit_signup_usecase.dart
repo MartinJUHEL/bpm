@@ -42,7 +42,8 @@ class SubmitSignupUseCase {
               isVerified: false,
               email: state.email,
               displayName: state.displayName,
-              userType: state.userType);
+              userType: state.userType,
+              creationDate: DateTime.now());
           await _saveUserUseCase.execute(user);
         } else {
           return state.copyWith(

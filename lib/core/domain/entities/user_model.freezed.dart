@@ -25,6 +25,8 @@ mixin _$UserModel {
   String get email => throw _privateConstructorUsedError;
   String get displayName => throw _privateConstructorUsedError;
   UserType get userType => throw _privateConstructorUsedError;
+  @TimestampConverter()
+  DateTime get creationDate => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -42,7 +44,8 @@ abstract class $UserModelCopyWith<$Res> {
       bool isVerified,
       String email,
       String displayName,
-      UserType userType});
+      UserType userType,
+      @TimestampConverter() DateTime creationDate});
 }
 
 /// @nodoc
@@ -63,6 +66,7 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
     Object? email = null,
     Object? displayName = null,
     Object? userType = null,
+    Object? creationDate = null,
   }) {
     return _then(_value.copyWith(
       uid: null == uid
@@ -85,6 +89,10 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
           ? _value.userType
           : userType // ignore: cast_nullable_to_non_nullable
               as UserType,
+      creationDate: null == creationDate
+          ? _value.creationDate
+          : creationDate // ignore: cast_nullable_to_non_nullable
+              as DateTime,
     ) as $Val);
   }
 }
@@ -102,7 +110,8 @@ abstract class _$$UserModelImplCopyWith<$Res>
       bool isVerified,
       String email,
       String displayName,
-      UserType userType});
+      UserType userType,
+      @TimestampConverter() DateTime creationDate});
 }
 
 /// @nodoc
@@ -121,6 +130,7 @@ class __$$UserModelImplCopyWithImpl<$Res>
     Object? email = null,
     Object? displayName = null,
     Object? userType = null,
+    Object? creationDate = null,
   }) {
     return _then(_$UserModelImpl(
       uid: null == uid
@@ -143,6 +153,10 @@ class __$$UserModelImplCopyWithImpl<$Res>
           ? _value.userType
           : userType // ignore: cast_nullable_to_non_nullable
               as UserType,
+      creationDate: null == creationDate
+          ? _value.creationDate
+          : creationDate // ignore: cast_nullable_to_non_nullable
+              as DateTime,
     ));
   }
 }
@@ -155,7 +169,8 @@ class _$UserModelImpl implements _UserModel {
       required this.isVerified,
       required this.email,
       required this.displayName,
-      required this.userType});
+      required this.userType,
+      @TimestampConverter() required this.creationDate});
 
   factory _$UserModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$UserModelImplFromJson(json);
@@ -170,10 +185,13 @@ class _$UserModelImpl implements _UserModel {
   final String displayName;
   @override
   final UserType userType;
+  @override
+  @TimestampConverter()
+  final DateTime creationDate;
 
   @override
   String toString() {
-    return 'UserModel(uid: $uid, isVerified: $isVerified, email: $email, displayName: $displayName, userType: $userType)';
+    return 'UserModel(uid: $uid, isVerified: $isVerified, email: $email, displayName: $displayName, userType: $userType, creationDate: $creationDate)';
   }
 
   @override
@@ -188,13 +206,15 @@ class _$UserModelImpl implements _UserModel {
             (identical(other.displayName, displayName) ||
                 other.displayName == displayName) &&
             (identical(other.userType, userType) ||
-                other.userType == userType));
+                other.userType == userType) &&
+            (identical(other.creationDate, creationDate) ||
+                other.creationDate == creationDate));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, uid, isVerified, email, displayName, userType);
+  int get hashCode => Object.hash(
+      runtimeType, uid, isVerified, email, displayName, userType, creationDate);
 
   @JsonKey(ignore: true)
   @override
@@ -212,11 +232,13 @@ class _$UserModelImpl implements _UserModel {
 
 abstract class _UserModel implements UserModel {
   const factory _UserModel(
-      {required final String uid,
-      required final bool isVerified,
-      required final String email,
-      required final String displayName,
-      required final UserType userType}) = _$UserModelImpl;
+          {required final String uid,
+          required final bool isVerified,
+          required final String email,
+          required final String displayName,
+          required final UserType userType,
+          @TimestampConverter() required final DateTime creationDate}) =
+      _$UserModelImpl;
 
   factory _UserModel.fromJson(Map<String, dynamic> json) =
       _$UserModelImpl.fromJson;
@@ -231,6 +253,9 @@ abstract class _UserModel implements UserModel {
   String get displayName;
   @override
   UserType get userType;
+  @override
+  @TimestampConverter()
+  DateTime get creationDate;
   @override
   @JsonKey(ignore: true)
   _$$UserModelImplCopyWith<_$UserModelImpl> get copyWith =>
