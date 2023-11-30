@@ -2,7 +2,8 @@ import 'package:bpm/app/appTextStyles.dart';
 import 'package:bpm/core/di/injection.dart';
 import 'package:bpm/core/presentation/widgets/submit_button.dart';
 import 'package:bpm/publish_ad/presentation/bloc/publish_ad_bloc.dart';
-import 'package:bpm/publish_ad/presentation/widgets/publish_add_title_page.dart';
+import 'package:bpm/publish_ad/presentation/widgets/publish_ad_photos_page.dart';
+import 'package:bpm/publish_ad/presentation/widgets/publish_ad_title_page.dart';
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -35,6 +36,7 @@ class _PublishAdScreenState extends State<PublishAdScreen> {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return BlocProvider(
       create: (context) => locator<PublishAdBloc>(),
       child: BlocConsumer<PublishAdBloc, PublishAdState>(
@@ -62,28 +64,23 @@ class _PublishAdScreenState extends State<PublishAdScreen> {
                     }
                   },
                 ),
-              ),
-              body: Stack(alignment: Alignment.center, children: [
-                Positioned(
-                    top: 10,
-                    child: DotsIndicator(
-                      decorator: DotsDecorator(
-                          color: Theme.of(context).colorScheme.secondary,
-                          activeColor: Theme.of(context).colorScheme.primary),
-                      dotsCount: _page_number,
-                      position: state.pageIndex,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                    )),
-                PageView(
-                  physics: const NeverScrollableScrollPhysics(),
-                  scrollDirection: Axis.horizontal,
-                  controller: _controller,
-                  children: [
-                    PublishAdTitlePage(submit: () => _moveToNextPage(context)),
-                    Text('TOTO2')
-                  ],
+                bottom: PreferredSize(
+                  preferredSize: Size(size.width, 0),
+                  child: LinearProgressIndicator(
+                    color: Theme.of(context).colorScheme.primary,
+                    value: (state.pageIndex + 1) / _page_number,
+                  ),
                 ),
-              ]),
+              ),
+              body: PageView(
+                physics: const NeverScrollableScrollPhysics(),
+                scrollDirection: Axis.horizontal,
+                controller: _controller,
+                children: [
+                  PublishAdTitlePage(submit: () => _moveToNextPage(context)),
+                  PublishAdPhotosPage(),
+                ],
+              ),
             ),
           );
         },
@@ -95,5 +92,5 @@ class _PublishAdScreenState extends State<PublishAdScreen> {
   //CONSTANTS
   ///////////////////////////////////////////////////////////////
 
-  static const _page_number = 3;
+  static const _page_number = 4;
 }
