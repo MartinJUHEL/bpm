@@ -2,6 +2,7 @@ import 'package:bpm/Authentication/presentation/bloc/authentication_bloc.dart';
 import 'package:bpm/core/di/injection.dart';
 import 'package:bpm/profil/presentation/bloc/profil_bloc.dart';
 import 'package:bpm/profil/presentation/widgets/profil_menu_modal.dart';
+import 'package:bpm/publish_ad/presentation/screens/publish_ad_screen.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -43,10 +44,7 @@ class ProfilScreen extends StatelessWidget {
                     actions: [
                       IconButton(
                         icon: const Icon(Icons.add_box_outlined),
-                        onPressed: () {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(content: Text('add item')));
-                        },
+                        onPressed: () => _goToPublishAd(context),
                       ),
                       IconButton(
                         icon: const Icon(Icons.menu),
@@ -79,11 +77,18 @@ class ProfilScreen extends StatelessWidget {
     );
   }
 
-  _showMenuModal(BuildContext context){
+  _showMenuModal(BuildContext context) {
     showBarModalBottomSheet(
       expand: false,
       context: context,
       builder: (context) => const ProfilMenuModal(),
+    );
+  }
+
+  _goToPublishAd(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const PublishAdScreen()),
     );
   }
 }

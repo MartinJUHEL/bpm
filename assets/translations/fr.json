@@ -44,5 +44,15 @@
 
   "@_PROFIL_PAGE": {},
   "memberDate": "Member since {}",
-  "logout": "Logout"
+  "logout": "Logout",
+
+
+  "@_PUBLISH_AD_PAGE": {},
+  "postAnAd": "Post an ad",
+  "adTitleInfo": "Choose a title for your ad",
+  "adTitleLabel": "Ad title",
+  "adTitleNotValid": "Your title should contain at least 3 characters",
+  "adDescriptionInfo": "Describe your ad",
+  "adDescriptionLabel": "Ad description",
+  "adDescriptionNotValid": "Your description should contain at least 10 characters"
 }
