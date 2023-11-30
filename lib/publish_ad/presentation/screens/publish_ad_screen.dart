@@ -1,10 +1,8 @@
 import 'package:bpm/app/appTextStyles.dart';
 import 'package:bpm/core/di/injection.dart';
-import 'package:bpm/core/presentation/widgets/submit_button.dart';
-import 'package:bpm/publish_ad/presentation/bloc/publish_ad_bloc.dart';
+import 'package:bpm/publish_ad/presentation/blocs/publish_ad_bloc/publish_ad_bloc.dart';
 import 'package:bpm/publish_ad/presentation/widgets/publish_ad_photos_page.dart';
 import 'package:bpm/publish_ad/presentation/widgets/publish_ad_title_page.dart';
-import 'package:dots_indicator/dots_indicator.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';

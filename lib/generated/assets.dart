@@ -28,10 +28,6 @@ class Assets {
   static const String blocProfilBloc.freezed = 'lib/profil/presentation/bloc/profil_bloc.freezed.dart';
   static const String blocProfilEvent = 'lib/profil/presentation/bloc/profil_event.dart';
   static const String blocProfilState = 'lib/profil/presentation/bloc/profil_state.dart';
-  static const String blocPublishAdBloc = 'lib/publish_ad/presentation/bloc/publish_ad_bloc.dart';
-  static const String blocPublishAdBloc.freezed = 'lib/publish_ad/presentation/bloc/publish_ad_bloc.freezed.dart';
-  static const String blocPublishAdEvent = 'lib/publish_ad/presentation/bloc/publish_ad_event.dart';
-  static const String blocPublishAdState = 'lib/publish_ad/presentation/bloc/publish_ad_state.dart';
   static const String blocResetPasswordBloc = 'lib/reset_password/presentation/bloc/reset_password_bloc.dart';
   static const String blocResetPasswordBloc.freezed = 'lib/reset_password/presentation/bloc/reset_password_bloc.freezed.dart';
   static const String blocResetPasswordEvent = 'lib/reset_password/presentation/bloc/reset_password_event.dart';
@@ -76,6 +72,10 @@ class Assets {
   static const String mipmapXxxhdpiIcLauncher = 'android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png';
   static const String pluginsGeneratedPluginRegistrant = 'android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java';
   static const String profileAndroidManifest = 'android/app/src/profile/AndroidManifest.xml';
+  static const String publishAdBlocPublishAdBloc = 'lib/publish_ad/presentation/blocs/publish_ad_bloc/publish_ad_bloc.dart';
+  static const String publishAdBlocPublishAdBloc.freezed = 'lib/publish_ad/presentation/blocs/publish_ad_bloc/publish_ad_bloc.freezed.dart';
+  static const String publishAdBlocPublishAdEvent = 'lib/publish_ad/presentation/blocs/publish_ad_bloc/publish_ad_event.dart';
+  static const String publishAdBlocPublishAdState = 'lib/publish_ad/presentation/blocs/publish_ad_bloc/publish_ad_state.dart';
   static const String remoteAuthenticationRemoteService = 'lib/Authentication/data/services/remote/authentication_remote_service.dart';
   static const String remoteUserRemoteService = 'lib/core/data/services/remote/user_remote_service.dart';
   static const String repositoriesAuthenticationRepository = 'lib/Authentication/domain/repositories/authentication_repository.dart';
@@ -94,6 +94,9 @@ class Assets {
   static const String servicesFirebaseService = 'lib/core/data/services/firebase_service.dart';
   static const String translationsEn = 'assets/translations/en.json';
   static const String translationsFr = 'assets/translations/fr.json';
+  static const String uploadPhotosBlocUploadPhotosBloc = 'lib/publish_ad/presentation/blocs/upload_photos_bloc/upload_photos_bloc.dart';
+  static const String uploadPhotosBlocUploadPhotosEvent = 'lib/publish_ad/presentation/blocs/upload_photos_bloc/upload_photos_event.dart';
+  static const String uploadPhotosBlocUploadPhotosState = 'lib/publish_ad/presentation/blocs/upload_photos_bloc/upload_photos_state.dart';
   static const String usecasesAuthenticationSignedOutUsecase = 'lib/Authentication/domain/usecases/authentication_signed_out_usecase.dart';
   static const String usecasesAuthenticationStartedUsecase = 'lib/Authentication/domain/usecases/authentication_started_usecase.dart';
   static const String usecasesFetchAndSaveUserLocalUsecase = 'lib/signup/domain/usecases/fetch_and_save_user_local_usecase.dart';
