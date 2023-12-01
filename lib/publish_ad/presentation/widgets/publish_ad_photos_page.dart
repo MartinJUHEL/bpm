@@ -5,10 +5,19 @@ import 'package:bpm/publish_ad/presentation/blocs/upload_photos_bloc/upload_phot
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
 class PublishAdPhotosPage extends StatelessWidget {
   const PublishAdPhotosPage({super.key});
+
+  void _showLoader(bool show) {
+    if (show) {
+      EasyLoading.show();
+    } else {
+      EasyLoading.dismiss();
+    }
+  }
 
   void _showPicker(context) {
     showBarModalBottomSheet(
@@ -54,7 +63,10 @@ class PublishAdPhotosPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => locator<UploadPhotosBloc>(),
-      child: BlocBuilder<UploadPhotosBloc, UploadPhotosState>(
+      child: BlocConsumer<UploadPhotosBloc, UploadPhotosState>(
+        listener: (context, state) {
+          _showLoader(state.status.isLoading);
+        },
         builder: (context, state) {
           return Scaffold(
             body: Center(
@@ -81,7 +93,8 @@ class PublishAdPhotosPage extends StatelessWidget {
                                 left: 3.0, right: 3.0),
                             decoration: BoxDecoration(
                                 image: DecorationImage(
-                                  image: FileImage(File(state.photos[i].path)),
+                                  image: FileImage(
+                                      File(state.photos[i].path)),
                                   fit: BoxFit.cover,
                                 )),
                           ))
