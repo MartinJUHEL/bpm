@@ -95,6 +95,7 @@ class Assets {
   static const String translationsEn = 'assets/translations/en.json';
   static const String translationsFr = 'assets/translations/fr.json';
   static const String uploadPhotosBlocUploadPhotosBloc = 'lib/publish_ad/presentation/blocs/upload_photos_bloc/upload_photos_bloc.dart';
+  static const String uploadPhotosBlocUploadPhotosBloc.freezed = 'lib/publish_ad/presentation/blocs/upload_photos_bloc/upload_photos_bloc.freezed.dart';
   static const String uploadPhotosBlocUploadPhotosEvent = 'lib/publish_ad/presentation/blocs/upload_photos_bloc/upload_photos_event.dart';
   static const String uploadPhotosBlocUploadPhotosState = 'lib/publish_ad/presentation/blocs/upload_photos_bloc/upload_photos_state.dart';
   static const String usecasesAuthenticationSignedOutUsecase = 'lib/Authentication/domain/usecases/authentication_signed_out_usecase.dart';
@@ -112,6 +113,7 @@ class Assets {
   static const String usecasesSaveUserUsecase = 'lib/signup/domain/usecases/save_user_usecase.dart';
   static const String usecasesSubmitSigninUsecase = 'lib/signup/domain/usecases/submit_signin_usecase.dart';
   static const String usecasesSubmitSignupUsecase = 'lib/signup/domain/usecases/submit_signup_usecase.dart';
+  static const String usecasesUploadPhotosUseCase = 'lib/publish_ad/domain/usecases/upload_photos_use_case.dart';
   static const String valuesNightStyles = 'android/app/src/main/res/values-night/styles.xml';
   static const String valuesStyles = 'android/app/src/main/res/values/styles.xml';
   static const String widgetsBlocMainNavigation = 'lib/main_navigation/presentation/widgets/bloc_main_navigation.dart';

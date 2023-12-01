@@ -54,5 +54,7 @@
   "adTitleNotValid": "Your title should contain at least 3 characters",
   "adDescriptionInfo": "Describe your ad",
   "adDescriptionLabel": "Ad description",
-  "adDescriptionNotValid": "Your description should contain at least 10 characters"
+  "adDescriptionNotValid": "Your description should contain at least 10 characters",
+  "camera": "Camera",
+  "gallery": "Gallery"
 }
