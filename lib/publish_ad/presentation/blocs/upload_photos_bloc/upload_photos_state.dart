@@ -4,7 +4,7 @@ part of 'upload_photos_bloc.dart';
 class UploadPhotosState with _$UploadPhotosState {
   const factory UploadPhotosState({
     @Default(UploadPhotosStatus.initial) UploadPhotosStatus status,
-    @Default([]) List<XFile> photos,
+    @Default([]) List<PhotoModel> photos,
   }) = _UploadPhotosState;
 }
 

@@ -23,6 +23,7 @@ mixin _$PublishAdEvent {
     required TResult Function() movedToPreviousPage,
     required TResult Function(String title) titleChanged,
     required TResult Function(String description) descriptionChanged,
+    required TResult Function(List<PhotoModel> photos) savedPhotos,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -32,6 +33,7 @@ mixin _$PublishAdEvent {
     TResult? Function()? movedToPreviousPage,
     TResult? Function(String title)? titleChanged,
     TResult? Function(String description)? descriptionChanged,
+    TResult? Function(List<PhotoModel> photos)? savedPhotos,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -41,6 +43,7 @@ mixin _$PublishAdEvent {
     TResult Function()? movedToPreviousPage,
     TResult Function(String title)? titleChanged,
     TResult Function(String description)? descriptionChanged,
+    TResult Function(List<PhotoModel> photos)? savedPhotos,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -51,6 +54,7 @@ mixin _$PublishAdEvent {
     required TResult Function(_MovedToPreviousPage value) movedToPreviousPage,
     required TResult Function(_TitleChanged value) titleChanged,
     required TResult Function(_DescriptionChanged value) descriptionChanged,
+    required TResult Function(_SavedPhotos value) savedPhotos,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -60,6 +64,7 @@ mixin _$PublishAdEvent {
     TResult? Function(_MovedToPreviousPage value)? movedToPreviousPage,
     TResult? Function(_TitleChanged value)? titleChanged,
     TResult? Function(_DescriptionChanged value)? descriptionChanged,
+    TResult? Function(_SavedPhotos value)? savedPhotos,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -69,6 +74,7 @@ mixin _$PublishAdEvent {
     TResult Function(_MovedToPreviousPage value)? movedToPreviousPage,
     TResult Function(_TitleChanged value)? titleChanged,
     TResult Function(_DescriptionChanged value)? descriptionChanged,
+    TResult Function(_SavedPhotos value)? savedPhotos,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -135,6 +141,7 @@ class _$StartedImpl implements _Started {
     required TResult Function() movedToPreviousPage,
     required TResult Function(String title) titleChanged,
     required TResult Function(String description) descriptionChanged,
+    required TResult Function(List<PhotoModel> photos) savedPhotos,
   }) {
     return started();
   }
@@ -147,6 +154,7 @@ class _$StartedImpl implements _Started {
     TResult? Function()? movedToPreviousPage,
     TResult? Function(String title)? titleChanged,
     TResult? Function(String description)? descriptionChanged,
+    TResult? Function(List<PhotoModel> photos)? savedPhotos,
   }) {
     return started?.call();
   }
@@ -159,6 +167,7 @@ class _$StartedImpl implements _Started {
     TResult Function()? movedToPreviousPage,
     TResult Function(String title)? titleChanged,
     TResult Function(String description)? descriptionChanged,
+    TResult Function(List<PhotoModel> photos)? savedPhotos,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -175,6 +184,7 @@ class _$StartedImpl implements _Started {
     required TResult Function(_MovedToPreviousPage value) movedToPreviousPage,
     required TResult Function(_TitleChanged value) titleChanged,
     required TResult Function(_DescriptionChanged value) descriptionChanged,
+    required TResult Function(_SavedPhotos value) savedPhotos,
   }) {
     return started(this);
   }
@@ -187,6 +197,7 @@ class _$StartedImpl implements _Started {
     TResult? Function(_MovedToPreviousPage value)? movedToPreviousPage,
     TResult? Function(_TitleChanged value)? titleChanged,
     TResult? Function(_DescriptionChanged value)? descriptionChanged,
+    TResult? Function(_SavedPhotos value)? savedPhotos,
   }) {
     return started?.call(this);
   }
@@ -199,6 +210,7 @@ class _$StartedImpl implements _Started {
     TResult Function(_MovedToPreviousPage value)? movedToPreviousPage,
     TResult Function(_TitleChanged value)? titleChanged,
     TResult Function(_DescriptionChanged value)? descriptionChanged,
+    TResult Function(_SavedPhotos value)? savedPhotos,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -255,6 +267,7 @@ class _$MovedToNextPageImpl implements _MovedToNextPage {
     required TResult Function() movedToPreviousPage,
     required TResult Function(String title) titleChanged,
     required TResult Function(String description) descriptionChanged,
+    required TResult Function(List<PhotoModel> photos) savedPhotos,
   }) {
     return movedToNextPage();
   }
@@ -267,6 +280,7 @@ class _$MovedToNextPageImpl implements _MovedToNextPage {
     TResult? Function()? movedToPreviousPage,
     TResult? Function(String title)? titleChanged,
     TResult? Function(String description)? descriptionChanged,
+    TResult? Function(List<PhotoModel> photos)? savedPhotos,
   }) {
     return movedToNextPage?.call();
   }
@@ -279,6 +293,7 @@ class _$MovedToNextPageImpl implements _MovedToNextPage {
     TResult Function()? movedToPreviousPage,
     TResult Function(String title)? titleChanged,
     TResult Function(String description)? descriptionChanged,
+    TResult Function(List<PhotoModel> photos)? savedPhotos,
     required TResult orElse(),
   }) {
     if (movedToNextPage != null) {
@@ -295,6 +310,7 @@ class _$MovedToNextPageImpl implements _MovedToNextPage {
     required TResult Function(_MovedToPreviousPage value) movedToPreviousPage,
     required TResult Function(_TitleChanged value) titleChanged,
     required TResult Function(_DescriptionChanged value) descriptionChanged,
+    required TResult Function(_SavedPhotos value) savedPhotos,
   }) {
     return movedToNextPage(this);
   }
@@ -307,6 +323,7 @@ class _$MovedToNextPageImpl implements _MovedToNextPage {
     TResult? Function(_MovedToPreviousPage value)? movedToPreviousPage,
     TResult? Function(_TitleChanged value)? titleChanged,
     TResult? Function(_DescriptionChanged value)? descriptionChanged,
+    TResult? Function(_SavedPhotos value)? savedPhotos,
   }) {
     return movedToNextPage?.call(this);
   }
@@ -319,6 +336,7 @@ class _$MovedToNextPageImpl implements _MovedToNextPage {
     TResult Function(_MovedToPreviousPage value)? movedToPreviousPage,
     TResult Function(_TitleChanged value)? titleChanged,
     TResult Function(_DescriptionChanged value)? descriptionChanged,
+    TResult Function(_SavedPhotos value)? savedPhotos,
     required TResult orElse(),
   }) {
     if (movedToNextPage != null) {
@@ -376,6 +394,7 @@ class _$MovedToPreviousPageImpl implements _MovedToPreviousPage {
     required TResult Function() movedToPreviousPage,
     required TResult Function(String title) titleChanged,
     required TResult Function(String description) descriptionChanged,
+    required TResult Function(List<PhotoModel> photos) savedPhotos,
   }) {
     return movedToPreviousPage();
   }
@@ -388,6 +407,7 @@ class _$MovedToPreviousPageImpl implements _MovedToPreviousPage {
     TResult? Function()? movedToPreviousPage,
     TResult? Function(String title)? titleChanged,
     TResult? Function(String description)? descriptionChanged,
+    TResult? Function(List<PhotoModel> photos)? savedPhotos,
   }) {
     return movedToPreviousPage?.call();
   }
@@ -400,6 +420,7 @@ class _$MovedToPreviousPageImpl implements _MovedToPreviousPage {
     TResult Function()? movedToPreviousPage,
     TResult Function(String title)? titleChanged,
     TResult Function(String description)? descriptionChanged,
+    TResult Function(List<PhotoModel> photos)? savedPhotos,
     required TResult orElse(),
   }) {
     if (movedToPreviousPage != null) {
@@ -416,6 +437,7 @@ class _$MovedToPreviousPageImpl implements _MovedToPreviousPage {
     required TResult Function(_MovedToPreviousPage value) movedToPreviousPage,
     required TResult Function(_TitleChanged value) titleChanged,
     required TResult Function(_DescriptionChanged value) descriptionChanged,
+    required TResult Function(_SavedPhotos value) savedPhotos,
   }) {
     return movedToPreviousPage(this);
   }
@@ -428,6 +450,7 @@ class _$MovedToPreviousPageImpl implements _MovedToPreviousPage {
     TResult? Function(_MovedToPreviousPage value)? movedToPreviousPage,
     TResult? Function(_TitleChanged value)? titleChanged,
     TResult? Function(_DescriptionChanged value)? descriptionChanged,
+    TResult? Function(_SavedPhotos value)? savedPhotos,
   }) {
     return movedToPreviousPage?.call(this);
   }
@@ -440,6 +463,7 @@ class _$MovedToPreviousPageImpl implements _MovedToPreviousPage {
     TResult Function(_MovedToPreviousPage value)? movedToPreviousPage,
     TResult Function(_TitleChanged value)? titleChanged,
     TResult Function(_DescriptionChanged value)? descriptionChanged,
+    TResult Function(_SavedPhotos value)? savedPhotos,
     required TResult orElse(),
   }) {
     if (movedToPreviousPage != null) {
@@ -522,6 +546,7 @@ class _$TitleChangedImpl implements _TitleChanged {
     required TResult Function() movedToPreviousPage,
     required TResult Function(String title) titleChanged,
     required TResult Function(String description) descriptionChanged,
+    required TResult Function(List<PhotoModel> photos) savedPhotos,
   }) {
     return titleChanged(title);
   }
@@ -534,6 +559,7 @@ class _$TitleChangedImpl implements _TitleChanged {
     TResult? Function()? movedToPreviousPage,
     TResult? Function(String title)? titleChanged,
     TResult? Function(String description)? descriptionChanged,
+    TResult? Function(List<PhotoModel> photos)? savedPhotos,
   }) {
     return titleChanged?.call(title);
   }
@@ -546,6 +572,7 @@ class _$TitleChangedImpl implements _TitleChanged {
     TResult Function()? movedToPreviousPage,
     TResult Function(String title)? titleChanged,
     TResult Function(String description)? descriptionChanged,
+    TResult Function(List<PhotoModel> photos)? savedPhotos,
     required TResult orElse(),
   }) {
     if (titleChanged != null) {
@@ -562,6 +589,7 @@ class _$TitleChangedImpl implements _TitleChanged {
     required TResult Function(_MovedToPreviousPage value) movedToPreviousPage,
     required TResult Function(_TitleChanged value) titleChanged,
     required TResult Function(_DescriptionChanged value) descriptionChanged,
+    required TResult Function(_SavedPhotos value) savedPhotos,
   }) {
     return titleChanged(this);
   }
@@ -574,6 +602,7 @@ class _$TitleChangedImpl implements _TitleChanged {
     TResult? Function(_MovedToPreviousPage value)? movedToPreviousPage,
     TResult? Function(_TitleChanged value)? titleChanged,
     TResult? Function(_DescriptionChanged value)? descriptionChanged,
+    TResult? Function(_SavedPhotos value)? savedPhotos,
   }) {
     return titleChanged?.call(this);
   }
@@ -586,6 +615,7 @@ class _$TitleChangedImpl implements _TitleChanged {
     TResult Function(_MovedToPreviousPage value)? movedToPreviousPage,
     TResult Function(_TitleChanged value)? titleChanged,
     TResult Function(_DescriptionChanged value)? descriptionChanged,
+    TResult Function(_SavedPhotos value)? savedPhotos,
     required TResult orElse(),
   }) {
     if (titleChanged != null) {
@@ -675,6 +705,7 @@ class _$DescriptionChangedImpl implements _DescriptionChanged {
     required TResult Function() movedToPreviousPage,
     required TResult Function(String title) titleChanged,
     required TResult Function(String description) descriptionChanged,
+    required TResult Function(List<PhotoModel> photos) savedPhotos,
   }) {
     return descriptionChanged(description);
   }
@@ -687,6 +718,7 @@ class _$DescriptionChangedImpl implements _DescriptionChanged {
     TResult? Function()? movedToPreviousPage,
     TResult? Function(String title)? titleChanged,
     TResult? Function(String description)? descriptionChanged,
+    TResult? Function(List<PhotoModel> photos)? savedPhotos,
   }) {
     return descriptionChanged?.call(description);
   }
@@ -699,6 +731,7 @@ class _$DescriptionChangedImpl implements _DescriptionChanged {
     TResult Function()? movedToPreviousPage,
     TResult Function(String title)? titleChanged,
     TResult Function(String description)? descriptionChanged,
+    TResult Function(List<PhotoModel> photos)? savedPhotos,
     required TResult orElse(),
   }) {
     if (descriptionChanged != null) {
@@ -715,6 +748,7 @@ class _$DescriptionChangedImpl implements _DescriptionChanged {
     required TResult Function(_MovedToPreviousPage value) movedToPreviousPage,
     required TResult Function(_TitleChanged value) titleChanged,
     required TResult Function(_DescriptionChanged value) descriptionChanged,
+    required TResult Function(_SavedPhotos value) savedPhotos,
   }) {
     return descriptionChanged(this);
   }
@@ -727,6 +761,7 @@ class _$DescriptionChangedImpl implements _DescriptionChanged {
     TResult? Function(_MovedToPreviousPage value)? movedToPreviousPage,
     TResult? Function(_TitleChanged value)? titleChanged,
     TResult? Function(_DescriptionChanged value)? descriptionChanged,
+    TResult? Function(_SavedPhotos value)? savedPhotos,
   }) {
     return descriptionChanged?.call(this);
   }
@@ -739,6 +774,7 @@ class _$DescriptionChangedImpl implements _DescriptionChanged {
     TResult Function(_MovedToPreviousPage value)? movedToPreviousPage,
     TResult Function(_TitleChanged value)? titleChanged,
     TResult Function(_DescriptionChanged value)? descriptionChanged,
+    TResult Function(_SavedPhotos value)? savedPhotos,
     required TResult orElse(),
   }) {
     if (descriptionChanged != null) {
@@ -759,6 +795,169 @@ abstract class _DescriptionChanged implements PublishAdEvent {
 }
 
 /// @nodoc
+abstract class _$$SavedPhotosImplCopyWith<$Res> {
+  factory _$$SavedPhotosImplCopyWith(
+          _$SavedPhotosImpl value, $Res Function(_$SavedPhotosImpl) then) =
+      __$$SavedPhotosImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<PhotoModel> photos});
+}
+
+/// @nodoc
+class __$$SavedPhotosImplCopyWithImpl<$Res>
+    extends _$PublishAdEventCopyWithImpl<$Res, _$SavedPhotosImpl>
+    implements _$$SavedPhotosImplCopyWith<$Res> {
+  __$$SavedPhotosImplCopyWithImpl(
+      _$SavedPhotosImpl _value, $Res Function(_$SavedPhotosImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? photos = null,
+  }) {
+    return _then(_$SavedPhotosImpl(
+      null == photos
+          ? _value._photos
+          : photos // ignore: cast_nullable_to_non_nullable
+              as List<PhotoModel>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SavedPhotosImpl implements _SavedPhotos {
+  const _$SavedPhotosImpl(final List<PhotoModel> photos) : _photos = photos;
+
+  final List<PhotoModel> _photos;
+  @override
+  List<PhotoModel> get photos {
+    if (_photos is EqualUnmodifiableListView) return _photos;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_photos);
+  }
+
+  @override
+  String toString() {
+    return 'PublishAdEvent.savedPhotos(photos: $photos)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SavedPhotosImpl &&
+            const DeepCollectionEquality().equals(other._photos, _photos));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_photos));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SavedPhotosImplCopyWith<_$SavedPhotosImpl> get copyWith =>
+      __$$SavedPhotosImplCopyWithImpl<_$SavedPhotosImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() movedToNextPage,
+    required TResult Function() movedToPreviousPage,
+    required TResult Function(String title) titleChanged,
+    required TResult Function(String description) descriptionChanged,
+    required TResult Function(List<PhotoModel> photos) savedPhotos,
+  }) {
+    return savedPhotos(photos);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function()? movedToNextPage,
+    TResult? Function()? movedToPreviousPage,
+    TResult? Function(String title)? titleChanged,
+    TResult? Function(String description)? descriptionChanged,
+    TResult? Function(List<PhotoModel> photos)? savedPhotos,
+  }) {
+    return savedPhotos?.call(photos);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? movedToNextPage,
+    TResult Function()? movedToPreviousPage,
+    TResult Function(String title)? titleChanged,
+    TResult Function(String description)? descriptionChanged,
+    TResult Function(List<PhotoModel> photos)? savedPhotos,
+    required TResult orElse(),
+  }) {
+    if (savedPhotos != null) {
+      return savedPhotos(photos);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_MovedToNextPage value) movedToNextPage,
+    required TResult Function(_MovedToPreviousPage value) movedToPreviousPage,
+    required TResult Function(_TitleChanged value) titleChanged,
+    required TResult Function(_DescriptionChanged value) descriptionChanged,
+    required TResult Function(_SavedPhotos value) savedPhotos,
+  }) {
+    return savedPhotos(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_MovedToNextPage value)? movedToNextPage,
+    TResult? Function(_MovedToPreviousPage value)? movedToPreviousPage,
+    TResult? Function(_TitleChanged value)? titleChanged,
+    TResult? Function(_DescriptionChanged value)? descriptionChanged,
+    TResult? Function(_SavedPhotos value)? savedPhotos,
+  }) {
+    return savedPhotos?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_MovedToNextPage value)? movedToNextPage,
+    TResult Function(_MovedToPreviousPage value)? movedToPreviousPage,
+    TResult Function(_TitleChanged value)? titleChanged,
+    TResult Function(_DescriptionChanged value)? descriptionChanged,
+    TResult Function(_SavedPhotos value)? savedPhotos,
+    required TResult orElse(),
+  }) {
+    if (savedPhotos != null) {
+      return savedPhotos(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SavedPhotos implements PublishAdEvent {
+  const factory _SavedPhotos(final List<PhotoModel> photos) = _$SavedPhotosImpl;
+
+  List<PhotoModel> get photos;
+  @JsonKey(ignore: true)
+  _$$SavedPhotosImplCopyWith<_$SavedPhotosImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$PublishAdState {
   PublishAdStatus get status => throw _privateConstructorUsedError;
   int get pageIndex => throw _privateConstructorUsedError;
@@ -766,6 +965,7 @@ mixin _$PublishAdState {
   bool get isTitleValid => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
   bool get isDescriptionValid => throw _privateConstructorUsedError;
+  List<PhotoModel> get photos => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $PublishAdStateCopyWith<PublishAdState> get copyWith =>
@@ -784,7 +984,8 @@ abstract class $PublishAdStateCopyWith<$Res> {
       String title,
       bool isTitleValid,
       String description,
-      bool isDescriptionValid});
+      bool isDescriptionValid,
+      List<PhotoModel> photos});
 }
 
 /// @nodoc
@@ -806,6 +1007,7 @@ class _$PublishAdStateCopyWithImpl<$Res, $Val extends PublishAdState>
     Object? isTitleValid = null,
     Object? description = null,
     Object? isDescriptionValid = null,
+    Object? photos = null,
   }) {
     return _then(_value.copyWith(
       status: null == status
@@ -832,6 +1034,10 @@ class _$PublishAdStateCopyWithImpl<$Res, $Val extends PublishAdState>
           ? _value.isDescriptionValid
           : isDescriptionValid // ignore: cast_nullable_to_non_nullable
               as bool,
+      photos: null == photos
+          ? _value.photos
+          : photos // ignore: cast_nullable_to_non_nullable
+              as List<PhotoModel>,
     ) as $Val);
   }
 }
@@ -850,7 +1056,8 @@ abstract class _$$PublishAdStateImplCopyWith<$Res>
       String title,
       bool isTitleValid,
       String description,
-      bool isDescriptionValid});
+      bool isDescriptionValid,
+      List<PhotoModel> photos});
 }
 
 /// @nodoc
@@ -870,6 +1077,7 @@ class __$$PublishAdStateImplCopyWithImpl<$Res>
     Object? isTitleValid = null,
     Object? description = null,
     Object? isDescriptionValid = null,
+    Object? photos = null,
   }) {
     return _then(_$PublishAdStateImpl(
       status: null == status
@@ -896,6 +1104,10 @@ class __$$PublishAdStateImplCopyWithImpl<$Res>
           ? _value.isDescriptionValid
           : isDescriptionValid // ignore: cast_nullable_to_non_nullable
               as bool,
+      photos: null == photos
+          ? _value._photos
+          : photos // ignore: cast_nullable_to_non_nullable
+              as List<PhotoModel>,
     ));
   }
 }
@@ -909,7 +1121,9 @@ class _$PublishAdStateImpl implements _PublishAdState {
       this.title = '',
       this.isTitleValid = false,
       this.description = '',
-      this.isDescriptionValid = false});
+      this.isDescriptionValid = false,
+      final List<PhotoModel> photos = const []})
+      : _photos = photos;
 
   @override
   @JsonKey()
@@ -929,10 +1143,18 @@ class _$PublishAdStateImpl implements _PublishAdState {
   @override
   @JsonKey()
   final bool isDescriptionValid;
+  final List<PhotoModel> _photos;
+  @override
+  @JsonKey()
+  List<PhotoModel> get photos {
+    if (_photos is EqualUnmodifiableListView) return _photos;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_photos);
+  }
 
   @override
   String toString() {
-    return 'PublishAdState(status: $status, pageIndex: $pageIndex, title: $title, isTitleValid: $isTitleValid, description: $description, isDescriptionValid: $isDescriptionValid)';
+    return 'PublishAdState(status: $status, pageIndex: $pageIndex, title: $title, isTitleValid: $isTitleValid, description: $description, isDescriptionValid: $isDescriptionValid, photos: $photos)';
   }
 
   @override
@@ -949,12 +1171,20 @@ class _$PublishAdStateImpl implements _PublishAdState {
             (identical(other.description, description) ||
                 other.description == description) &&
             (identical(other.isDescriptionValid, isDescriptionValid) ||
-                other.isDescriptionValid == isDescriptionValid));
+                other.isDescriptionValid == isDescriptionValid) &&
+            const DeepCollectionEquality().equals(other._photos, _photos));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, status, pageIndex, title,
-      isTitleValid, description, isDescriptionValid);
+  int get hashCode => Object.hash(
+      runtimeType,
+      status,
+      pageIndex,
+      title,
+      isTitleValid,
+      description,
+      isDescriptionValid,
+      const DeepCollectionEquality().hash(_photos));
 
   @JsonKey(ignore: true)
   @override
@@ -971,7 +1201,8 @@ abstract class _PublishAdState implements PublishAdState {
       final String title,
       final bool isTitleValid,
       final String description,
-      final bool isDescriptionValid}) = _$PublishAdStateImpl;
+      final bool isDescriptionValid,
+      final List<PhotoModel> photos}) = _$PublishAdStateImpl;
 
   @override
   PublishAdStatus get status;
@@ -985,6 +1216,8 @@ abstract class _PublishAdState implements PublishAdState {
   String get description;
   @override
   bool get isDescriptionValid;
+  @override
+  List<PhotoModel> get photos;
   @override
   @JsonKey(ignore: true)
   _$$PublishAdStateImplCopyWith<_$PublishAdStateImpl> get copyWith =>

@@ -56,5 +56,6 @@
   "adDescriptionLabel": "Ad description",
   "adDescriptionNotValid": "Your description should contain at least 10 characters",
   "camera": "Camera",
-  "gallery": "Gallery"
+  "gallery": "Gallery",
+  "adPhotos": "Add photos"
 }

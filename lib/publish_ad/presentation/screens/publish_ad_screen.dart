@@ -1,5 +1,6 @@
 import 'package:bpm/app/appTextStyles.dart';
 import 'package:bpm/core/di/injection.dart';
+import 'package:bpm/publish_ad/domain/models/photo_model.dart';
 import 'package:bpm/publish_ad/presentation/blocs/publish_ad_bloc/publish_ad_bloc.dart';
 import 'package:bpm/publish_ad/presentation/widgets/publish_ad_photos_page.dart';
 import 'package:bpm/publish_ad/presentation/widgets/publish_ad_title_page.dart';
@@ -28,6 +29,12 @@ class _PublishAdScreenState extends State<PublishAdScreen> {
 
   _moveToNextPage(BuildContext context) {
     context.read<PublishAdBloc>().add(const PublishAdEvent.movedToNextPage());
+    _controller.nextPage(
+        duration: const Duration(milliseconds: 200), curve: Curves.easeIn);
+  }
+
+  _savePhotos(BuildContext context, List<PhotoModel> photos) {
+    context.read<PublishAdBloc>().add(PublishAdEvent.savedPhotos(photos));
     _controller.nextPage(
         duration: const Duration(milliseconds: 200), curve: Curves.easeIn);
   }
@@ -76,7 +83,11 @@ class _PublishAdScreenState extends State<PublishAdScreen> {
                 controller: _controller,
                 children: [
                   PublishAdTitlePage(submit: () => _moveToNextPage(context)),
-                  PublishAdPhotosPage(),
+                  PublishAdPhotosPage(
+                    //todo : adId
+                    adId: 'test',
+                    submit: (photos) => _savePhotos(context, photos),
+                  ),
                 ],
               ),
             ),

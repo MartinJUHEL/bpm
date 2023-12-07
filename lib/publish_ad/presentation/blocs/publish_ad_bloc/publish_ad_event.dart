@@ -7,4 +7,6 @@ class PublishAdEvent with _$PublishAdEvent {
   const factory PublishAdEvent.movedToPreviousPage() = _MovedToPreviousPage;
   const factory PublishAdEvent.titleChanged(String title) = _TitleChanged;
   const factory PublishAdEvent.descriptionChanged(String description) = _DescriptionChanged;
+  const factory PublishAdEvent.savedPhotos(List<PhotoModel> photos) = _SavedPhotos;
+
 }

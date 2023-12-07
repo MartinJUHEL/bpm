@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:bpm/publish_ad/domain/models/photo_model.dart';
 import 'package:bpm/publish_ad/domain/usecases/is_ad_description_valid_use_case.dart';
 import 'package:bpm/publish_ad/domain/usecases/is_ad_title_valid_use_case.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -26,7 +27,9 @@ class PublishAdBloc extends Bloc<PublishAdEvent, PublishAdState> {
           movedToPreviousPage: () => _onMovedToPreviousPage(emit),
           titleChanged: (String title) => _onTitleChanged(title, emit),
           descriptionChanged: (String description) =>
-              _onDescriptionChanged(description, emit));
+              _onDescriptionChanged(description, emit),
+          savedPhotos: (List<PhotoModel> photos) =>
+              _onSavedPhotos(emit, photos));
     });
   }
 
@@ -48,6 +51,11 @@ class PublishAdBloc extends Bloc<PublishAdEvent, PublishAdState> {
       String newDescription, Emitter<PublishAdState> emit) {
     emit(state.copyWith(
         description: newDescription,
-        isDescriptionValid: _isAdDescriptionValidUseCase.execute(newDescription)));
+        isDescriptionValid:
+            _isAdDescriptionValidUseCase.execute(newDescription)));
+  }
+
+  void _onSavedPhotos(Emitter<PublishAdState> emit, List<PhotoModel> photos) {
+    emit(state.copyWith(photos: photos, pageIndex: state.pageIndex - 1));
   }
 }

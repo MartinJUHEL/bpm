@@ -24,6 +24,7 @@ class PublishAdState with _$PublishAdState {
     @Default(false) bool isTitleValid,
     @Default('') String description,
     @Default(false) bool isDescriptionValid,
+    @Default([]) List<PhotoModel> photos,
 
 }) = _PublishAdState;
 }
