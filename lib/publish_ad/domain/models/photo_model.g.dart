@@ -11,6 +11,7 @@ _$PhotoModelImpl _$$PhotoModelImplFromJson(Map<String, dynamic> json) =>
       adId: json['adId'] as String,
       path: json['path'] as String? ?? null,
       name: json['name'] as String? ?? "",
+      url: json['url'] as String? ?? null,
       status: $enumDecodeNullable(_$PhotoStatusEnumMap, json['status']) ??
           PhotoStatus.init,
     );
@@ -20,6 +21,7 @@ Map<String, dynamic> _$$PhotoModelImplToJson(_$PhotoModelImpl instance) =>
       'adId': instance.adId,
       'path': instance.path,
       'name': instance.name,
+      'url': instance.url,
       'status': _$PhotoStatusEnumMap[instance.status]!,
     };
 

@@ -23,6 +23,7 @@ mixin _$PhotoModel {
   String get adId => throw _privateConstructorUsedError;
   String? get path => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
+  String? get url => throw _privateConstructorUsedError;
   PhotoStatus get status => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -37,7 +38,12 @@ abstract class $PhotoModelCopyWith<$Res> {
           PhotoModel value, $Res Function(PhotoModel) then) =
       _$PhotoModelCopyWithImpl<$Res, PhotoModel>;
   @useResult
-  $Res call({String adId, String? path, String name, PhotoStatus status});
+  $Res call(
+      {String adId,
+      String? path,
+      String name,
+      String? url,
+      PhotoStatus status});
 }
 
 /// @nodoc
@@ -56,6 +62,7 @@ class _$PhotoModelCopyWithImpl<$Res, $Val extends PhotoModel>
     Object? adId = null,
     Object? path = freezed,
     Object? name = null,
+    Object? url = freezed,
     Object? status = null,
   }) {
     return _then(_value.copyWith(
@@ -71,6 +78,10 @@ class _$PhotoModelCopyWithImpl<$Res, $Val extends PhotoModel>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
+      url: freezed == url
+          ? _value.url
+          : url // ignore: cast_nullable_to_non_nullable
+              as String?,
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -87,7 +98,12 @@ abstract class _$$PhotoModelImplCopyWith<$Res>
       __$$PhotoModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String adId, String? path, String name, PhotoStatus status});
+  $Res call(
+      {String adId,
+      String? path,
+      String name,
+      String? url,
+      PhotoStatus status});
 }
 
 /// @nodoc
@@ -104,6 +120,7 @@ class __$$PhotoModelImplCopyWithImpl<$Res>
     Object? adId = null,
     Object? path = freezed,
     Object? name = null,
+    Object? url = freezed,
     Object? status = null,
   }) {
     return _then(_$PhotoModelImpl(
@@ -119,6 +136,10 @@ class __$$PhotoModelImplCopyWithImpl<$Res>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
+      url: freezed == url
+          ? _value.url
+          : url // ignore: cast_nullable_to_non_nullable
+              as String?,
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -134,6 +155,7 @@ class _$PhotoModelImpl implements _PhotoModel {
       {required this.adId,
       this.path = null,
       this.name = "",
+      this.url = null,
       this.status = PhotoStatus.init});
 
   factory _$PhotoModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -149,11 +171,14 @@ class _$PhotoModelImpl implements _PhotoModel {
   final String name;
   @override
   @JsonKey()
+  final String? url;
+  @override
+  @JsonKey()
   final PhotoStatus status;
 
   @override
   String toString() {
-    return 'PhotoModel(adId: $adId, path: $path, name: $name, status: $status)';
+    return 'PhotoModel(adId: $adId, path: $path, name: $name, url: $url, status: $status)';
   }
 
   @override
@@ -164,12 +189,13 @@ class _$PhotoModelImpl implements _PhotoModel {
             (identical(other.adId, adId) || other.adId == adId) &&
             (identical(other.path, path) || other.path == path) &&
             (identical(other.name, name) || other.name == name) &&
+            (identical(other.url, url) || other.url == url) &&
             (identical(other.status, status) || other.status == status));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, adId, path, name, status);
+  int get hashCode => Object.hash(runtimeType, adId, path, name, url, status);
 
   @JsonKey(ignore: true)
   @override
@@ -190,6 +216,7 @@ abstract class _PhotoModel implements PhotoModel {
       {required final String adId,
       final String? path,
       final String name,
+      final String? url,
       final PhotoStatus status}) = _$PhotoModelImpl;
 
   factory _PhotoModel.fromJson(Map<String, dynamic> json) =
@@ -201,6 +228,8 @@ abstract class _PhotoModel implements PhotoModel {
   String? get path;
   @override
   String get name;
+  @override
+  String? get url;
   @override
   PhotoStatus get status;
   @override

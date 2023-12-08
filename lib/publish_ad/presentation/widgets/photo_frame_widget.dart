@@ -6,58 +6,55 @@ import 'package:flutter/material.dart';
 
 class PhotoFrameWidget extends StatelessWidget {
   final PhotoModel photo;
-  final Function(PhotoModel photo) delete;
 
-  const PhotoFrameWidget(
-      {super.key, required this.photo, required this.delete});
+  const PhotoFrameWidget({super.key, required this.photo});
 
   @override
   Widget build(BuildContext context) {
-    logger.d(photo.toString());
-    return SizedBox(
-      height: 200,
-      width: 200,
+    return Card(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(5),
+      ),
       child: Stack(
         children: [
-          Column(
-            children: [
-              photo.status.isUploading
-                  ? LinearProgressIndicator(
-                      color: Theme.of(context).colorScheme.primary,
-                    )
-                  : const SizedBox(),
-              photo.status.isError
-                  ? Icon(
-                      Icons.error,
-                      size: 80,
-                      color: Theme.of(context).colorScheme.error,
-                    )
-                  : photo.status.isUploaded && photo.path != null
-                      ? Container(
-                          margin: const EdgeInsets.only(left: 3.0, right: 3.0),
-                          decoration: BoxDecoration(
-                              image: DecorationImage(
-                            image: FileImage(File(photo.path!)),
-                            fit: BoxFit.cover,
-                          )),
-                        )
-                      : const Icon(
-                          Icons.photo_camera,
-                          size: 80,
-                          color: Colors.grey,
-                        )
-            ],
-          ),
-          Positioned(
-              right: -2,
-              top: -9,
-              child: IconButton(
-                  icon: Icon(
-                    Icons.cancel,
-                    color: Colors.black.withOpacity(0.5),
-                    size: 18,
+          photo.status.isError
+              ? Center(
+                  child: Icon(
+                    Icons.error,
+                    size: 80,
+                    color: Theme.of(context).colorScheme.error,
                   ),
-                  onPressed: () => delete(photo)))
+                )
+              : photo.status.isUploaded && photo.url != null
+                  ? InkWell(
+                      onTap: () {
+                        //todo open photoview
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: NetworkImage(photo.url!),
+                            fit: BoxFit.fitWidth,
+                            alignment: Alignment.center,
+                          ),
+                        ),
+                      ),
+                    )
+                  : const Center(
+                      child: Icon(
+                        Icons.photo_camera,
+                        size: 80,
+                        color: Colors.grey,
+                      ),
+                    ),
+          photo.status.isUploading
+              ? Align(
+                  alignment: Alignment.bottomCenter,
+                  child: LinearProgressIndicator(
+                    color: Theme.of(context).colorScheme.primary,
+                  ),
+                )
+              : const SizedBox(),
         ],
       ),
     );

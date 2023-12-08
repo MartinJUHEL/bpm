@@ -11,6 +11,7 @@ class PhotoModel with _$PhotoModel {
       {required final String adId,
       @Default(null) final String? path,
       @Default("") final String name,
+      @Default(null) final String? url,
       @Default(PhotoStatus.init) PhotoStatus status}) = _PhotoModel;
 
   factory PhotoModel.fromJson(Map<String, dynamic> json) =>

@@ -13,7 +13,7 @@ class UploadPhotosUseCase {
 
   Future<PhotoModel> execute(PhotoModel photo) async {
     if (photo.path != null) {
-      final destination = '$_adPhotosPath/${photo.adId}/${photo.name}';
+      final destination = '$adPhotosPath/${photo.adId}/${photo.name}';
       try {
         final ref = _storage.ref(destination);
         await ref.putFile(File(photo.path!));
@@ -25,10 +25,10 @@ class UploadPhotosUseCase {
       return photo.copyWith(status: PhotoStatus.error);
     }
   }
-
-  ///////////////////////////////////////////////////////////////
-  //CONSTANTS
-  ///////////////////////////////////////////////////////////////
-
-  static const _adPhotosPath = 'adPhotos';
 }
+
+///////////////////////////////////////////////////////////////
+//CONSTANTS
+///////////////////////////////////////////////////////////////
+
+const adPhotosPath = 'adPhotos';

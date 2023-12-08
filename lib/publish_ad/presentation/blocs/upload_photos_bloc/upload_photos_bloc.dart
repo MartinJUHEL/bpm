@@ -4,6 +4,7 @@ import 'package:bloc/bloc.dart';
 import 'package:bpm/core/utils/logger/logger.dart';
 import 'package:bpm/publish_ad/domain/models/photo_model.dart';
 import 'package:bpm/publish_ad/domain/usecases/build_photo_from_file_use_case.dart';
+import 'package:bpm/publish_ad/domain/usecases/get_photo_url_use_case.dart';
 import 'package:bpm/publish_ad/domain/usecases/pick_photo_from_camera_use_case.dart';
 import 'package:bpm/publish_ad/domain/usecases/pick_photos_from_gallery_use_case.dart';
 import 'package:bpm/publish_ad/domain/usecases/remove_photo_use_case.dart';
@@ -25,6 +26,7 @@ class UploadPhotosBloc extends Bloc<UploadPhotosEvent, UploadPhotosState> {
   final PickPhotosFromGalleryUseCase _pickPhotosFromGalleryUseCase;
   final RemovePhotosUseCase _removePhotosUseCase;
   final BuildPhotoFromFileUseCase _buildPhotoFromFileUseCase;
+  final GetPhotoUrlUseCase _getPhotoUrlUseCase;
 
   final List<PhotoModel> _photos = [];
 
@@ -33,7 +35,8 @@ class UploadPhotosBloc extends Bloc<UploadPhotosEvent, UploadPhotosState> {
       this._pickPhotoFromCameraUseCase,
       this._pickPhotosFromGalleryUseCase,
       this._removePhotosUseCase,
-      this._buildPhotoFromFileUseCase)
+      this._buildPhotoFromFileUseCase,
+      this._getPhotoUrlUseCase)
       : super(const UploadPhotosState()) {
     on<UploadPhotosEvent>((event, emit) async {
       await event.when<FutureOr<void>>(
@@ -56,8 +59,9 @@ class UploadPhotosBloc extends Bloc<UploadPhotosEvent, UploadPhotosState> {
         final PhotoModel photo = _buildPhotoFromFileUseCase.execute(file, adId);
         _photos.add(photo.copyWith(status: PhotoStatus.uploading));
         emit(state.copyWith(photos: _photos));
-        final PhotoModel uploadedPhoto =
-            await _uploadPhotosUseCase.execute(photo);
+        PhotoModel uploadedPhoto = await _uploadPhotosUseCase.execute(photo);
+        String url = await _getPhotoUrlUseCase.execute(adId, photo.name);
+        uploadedPhoto = uploadedPhoto.copyWith(url: url);
         _photos
           ..removeLast()
           ..add(uploadedPhoto);
@@ -84,8 +88,12 @@ class UploadPhotosBloc extends Bloc<UploadPhotosEvent, UploadPhotosState> {
   }
 
   _onRemovedPhoto(Emitter<UploadPhotosState> emit, PhotoModel photo) async {
-    await _removePhotosUseCase.execute(photo);
-    _photos.remove(photo);
-    emit(state.copyWith(photos: List.of(_photos)));
+    try {
+      await _removePhotosUseCase.execute(photo);
+      _photos.remove(photo);
+      emit(state.copyWith(photos: List.of(_photos)));
+    } catch (e) {
+      //todo error case
+    }
   }
 }
