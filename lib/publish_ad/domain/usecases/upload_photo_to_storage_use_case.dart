@@ -6,10 +6,10 @@ import 'package:injectable/injectable.dart';
 import 'package:path/path.dart';
 
 @injectable
-class UploadPhotosUseCase {
+class UploadPhotosToStorageUseCase {
   final FirebaseStorage _storage;
 
-  UploadPhotosUseCase(this._storage);
+  UploadPhotosToStorageUseCase(this._storage);
 
   Future<PhotoModel> execute(PhotoModel photo) async {
     if (photo.path != null) {
@@ -17,7 +17,8 @@ class UploadPhotosUseCase {
       try {
         final ref = _storage.ref(destination);
         await ref.putFile(File(photo.path!));
-        return photo.copyWith(status: PhotoStatus.uploaded);
+        String url = await ref.getDownloadURL();
+        return photo.copyWith(status: PhotoStatus.uploaded, url: url);
       } catch (e) {
         return photo.copyWith(name: photo.name, status: PhotoStatus.error);
       }

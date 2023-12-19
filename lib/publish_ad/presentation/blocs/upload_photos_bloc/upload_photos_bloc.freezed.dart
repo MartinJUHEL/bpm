@@ -21,7 +21,7 @@ mixin _$UploadPhotosEvent {
     required TResult Function() started,
     required TResult Function(String adId) pickedImagesFromCamera,
     required TResult Function(String adId) pickedImagesFromGallery,
-    required TResult Function(PhotoModel photo) removedPhoto,
+    required TResult Function(int index) removedPhoto,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -29,7 +29,7 @@ mixin _$UploadPhotosEvent {
     TResult? Function()? started,
     TResult? Function(String adId)? pickedImagesFromCamera,
     TResult? Function(String adId)? pickedImagesFromGallery,
-    TResult? Function(PhotoModel photo)? removedPhoto,
+    TResult? Function(int index)? removedPhoto,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -37,7 +37,7 @@ mixin _$UploadPhotosEvent {
     TResult Function()? started,
     TResult Function(String adId)? pickedImagesFromCamera,
     TResult Function(String adId)? pickedImagesFromGallery,
-    TResult Function(PhotoModel photo)? removedPhoto,
+    TResult Function(int index)? removedPhoto,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -129,7 +129,7 @@ class _$StartedImpl implements _Started {
     required TResult Function() started,
     required TResult Function(String adId) pickedImagesFromCamera,
     required TResult Function(String adId) pickedImagesFromGallery,
-    required TResult Function(PhotoModel photo) removedPhoto,
+    required TResult Function(int index) removedPhoto,
   }) {
     return started();
   }
@@ -140,7 +140,7 @@ class _$StartedImpl implements _Started {
     TResult? Function()? started,
     TResult? Function(String adId)? pickedImagesFromCamera,
     TResult? Function(String adId)? pickedImagesFromGallery,
-    TResult? Function(PhotoModel photo)? removedPhoto,
+    TResult? Function(int index)? removedPhoto,
   }) {
     return started?.call();
   }
@@ -151,7 +151,7 @@ class _$StartedImpl implements _Started {
     TResult Function()? started,
     TResult Function(String adId)? pickedImagesFromCamera,
     TResult Function(String adId)? pickedImagesFromGallery,
-    TResult Function(PhotoModel photo)? removedPhoto,
+    TResult Function(int index)? removedPhoto,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -274,7 +274,7 @@ class _$PickedImagesFromCameraImpl implements _PickedImagesFromCamera {
     required TResult Function() started,
     required TResult Function(String adId) pickedImagesFromCamera,
     required TResult Function(String adId) pickedImagesFromGallery,
-    required TResult Function(PhotoModel photo) removedPhoto,
+    required TResult Function(int index) removedPhoto,
   }) {
     return pickedImagesFromCamera(adId);
   }
@@ -285,7 +285,7 @@ class _$PickedImagesFromCameraImpl implements _PickedImagesFromCamera {
     TResult? Function()? started,
     TResult? Function(String adId)? pickedImagesFromCamera,
     TResult? Function(String adId)? pickedImagesFromGallery,
-    TResult? Function(PhotoModel photo)? removedPhoto,
+    TResult? Function(int index)? removedPhoto,
   }) {
     return pickedImagesFromCamera?.call(adId);
   }
@@ -296,7 +296,7 @@ class _$PickedImagesFromCameraImpl implements _PickedImagesFromCamera {
     TResult Function()? started,
     TResult Function(String adId)? pickedImagesFromCamera,
     TResult Function(String adId)? pickedImagesFromGallery,
-    TResult Function(PhotoModel photo)? removedPhoto,
+    TResult Function(int index)? removedPhoto,
     required TResult orElse(),
   }) {
     if (pickedImagesFromCamera != null) {
@@ -425,7 +425,7 @@ class _$PickedImagesFromGalleryImpl implements _PickedImagesFromGallery {
     required TResult Function() started,
     required TResult Function(String adId) pickedImagesFromCamera,
     required TResult Function(String adId) pickedImagesFromGallery,
-    required TResult Function(PhotoModel photo) removedPhoto,
+    required TResult Function(int index) removedPhoto,
   }) {
     return pickedImagesFromGallery(adId);
   }
@@ -436,7 +436,7 @@ class _$PickedImagesFromGalleryImpl implements _PickedImagesFromGallery {
     TResult? Function()? started,
     TResult? Function(String adId)? pickedImagesFromCamera,
     TResult? Function(String adId)? pickedImagesFromGallery,
-    TResult? Function(PhotoModel photo)? removedPhoto,
+    TResult? Function(int index)? removedPhoto,
   }) {
     return pickedImagesFromGallery?.call(adId);
   }
@@ -447,7 +447,7 @@ class _$PickedImagesFromGalleryImpl implements _PickedImagesFromGallery {
     TResult Function()? started,
     TResult Function(String adId)? pickedImagesFromCamera,
     TResult Function(String adId)? pickedImagesFromGallery,
-    TResult Function(PhotoModel photo)? removedPhoto,
+    TResult Function(int index)? removedPhoto,
     required TResult orElse(),
   }) {
     if (pickedImagesFromGallery != null) {
@@ -512,9 +512,7 @@ abstract class _$$RemovedPhotoImplCopyWith<$Res> {
           _$RemovedPhotoImpl value, $Res Function(_$RemovedPhotoImpl) then) =
       __$$RemovedPhotoImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({PhotoModel photo});
-
-  $PhotoModelCopyWith<$Res> get photo;
+  $Res call({int index});
 }
 
 /// @nodoc
@@ -528,36 +526,28 @@ class __$$RemovedPhotoImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? photo = null,
+    Object? index = null,
   }) {
     return _then(_$RemovedPhotoImpl(
-      null == photo
-          ? _value.photo
-          : photo // ignore: cast_nullable_to_non_nullable
-              as PhotoModel,
+      null == index
+          ? _value.index
+          : index // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $PhotoModelCopyWith<$Res> get photo {
-    return $PhotoModelCopyWith<$Res>(_value.photo, (value) {
-      return _then(_value.copyWith(photo: value));
-    });
   }
 }
 
 /// @nodoc
 
 class _$RemovedPhotoImpl implements _RemovedPhoto {
-  const _$RemovedPhotoImpl(this.photo);
+  const _$RemovedPhotoImpl(this.index);
 
   @override
-  final PhotoModel photo;
+  final int index;
 
   @override
   String toString() {
-    return 'UploadPhotosEvent.removedPhoto(photo: $photo)';
+    return 'UploadPhotosEvent.removedPhoto(index: $index)';
   }
 
   @override
@@ -565,11 +555,11 @@ class _$RemovedPhotoImpl implements _RemovedPhoto {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$RemovedPhotoImpl &&
-            (identical(other.photo, photo) || other.photo == photo));
+            (identical(other.index, index) || other.index == index));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, photo);
+  int get hashCode => Object.hash(runtimeType, index);
 
   @JsonKey(ignore: true)
   @override
@@ -583,9 +573,9 @@ class _$RemovedPhotoImpl implements _RemovedPhoto {
     required TResult Function() started,
     required TResult Function(String adId) pickedImagesFromCamera,
     required TResult Function(String adId) pickedImagesFromGallery,
-    required TResult Function(PhotoModel photo) removedPhoto,
+    required TResult Function(int index) removedPhoto,
   }) {
-    return removedPhoto(photo);
+    return removedPhoto(index);
   }
 
   @override
@@ -594,9 +584,9 @@ class _$RemovedPhotoImpl implements _RemovedPhoto {
     TResult? Function()? started,
     TResult? Function(String adId)? pickedImagesFromCamera,
     TResult? Function(String adId)? pickedImagesFromGallery,
-    TResult? Function(PhotoModel photo)? removedPhoto,
+    TResult? Function(int index)? removedPhoto,
   }) {
-    return removedPhoto?.call(photo);
+    return removedPhoto?.call(index);
   }
 
   @override
@@ -605,11 +595,11 @@ class _$RemovedPhotoImpl implements _RemovedPhoto {
     TResult Function()? started,
     TResult Function(String adId)? pickedImagesFromCamera,
     TResult Function(String adId)? pickedImagesFromGallery,
-    TResult Function(PhotoModel photo)? removedPhoto,
+    TResult Function(int index)? removedPhoto,
     required TResult orElse(),
   }) {
     if (removedPhoto != null) {
-      return removedPhoto(photo);
+      return removedPhoto(index);
     }
     return orElse();
   }
@@ -655,9 +645,9 @@ class _$RemovedPhotoImpl implements _RemovedPhoto {
 }
 
 abstract class _RemovedPhoto implements UploadPhotosEvent {
-  const factory _RemovedPhoto(final PhotoModel photo) = _$RemovedPhotoImpl;
+  const factory _RemovedPhoto(final int index) = _$RemovedPhotoImpl;
 
-  PhotoModel get photo;
+  int get index;
   @JsonKey(ignore: true)
   _$$RemovedPhotoImplCopyWith<_$RemovedPhotoImpl> get copyWith =>
       throw _privateConstructorUsedError;

@@ -72,7 +72,7 @@ class PublishAdPhotosPage extends StatelessWidget {
                                         onPressed: () => context
                                             .read<UploadPhotosBloc>()
                                             .add(UploadPhotosEvent.removedPhoto(
-                                                photo))))
+                                                index - 1))))
                               ],
                             );
                           }
@@ -106,19 +106,16 @@ class PublishAdPhotosPage extends StatelessWidget {
               context: context,
               builder: (BuildContext modalContext) {
                 return BlocProvider.value(
-                    value:
-                    BlocProvider.of<UploadPhotosBloc>(
-                        context),
+                    value: BlocProvider.of<UploadPhotosBloc>(context),
                     child: PhotoPickerModal(
                         onCameraClicked: () => context
                             .read<UploadPhotosBloc>()
-                            .add(UploadPhotosEvent
-                            .pickedImagesFromCamera(
-                            adId)),
+                            .add(
+                                UploadPhotosEvent.pickedImagesFromCamera(adId)),
                         onGalleryClicked: () => context
                             .read<UploadPhotosBloc>()
-                            .add(UploadPhotosEvent
-                            .pickedImagesFromGallery(adId))));
+                            .add(UploadPhotosEvent.pickedImagesFromGallery(
+                                adId))));
               }),
           child: const SizedBox(
               child: Icon(
