@@ -40,8 +40,8 @@ class PublishAdSearchCityBloc
           query: query,
           suggestions: suggestions,
           status: PublishAdSearchCityStatus.success));
-    } catch (e) {
-      logger.e(e.toString());
+    } catch (e, stacktrace) {
+      logger.e('$e \n ${stacktrace.toString()}');
       emit(state.copyWith(status: PublishAdSearchCityStatus.failure));
     }
   }

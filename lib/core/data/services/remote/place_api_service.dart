@@ -25,7 +25,7 @@ class PlaceApiService {
       final result = json.decode(response.body);
       if (result['status'] == 'OK') {
         return result['predictions']
-            .map<String>((p) => p['description'])
+            .map<String>((p) => '${p['description']}')
             .toList();
       }
       if (result['status'] == 'ZERO_RESULTS') {
