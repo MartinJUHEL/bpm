@@ -24,6 +24,7 @@ mixin _$PublishAdEvent {
     required TResult Function(String title) titleChanged,
     required TResult Function(String description) descriptionChanged,
     required TResult Function(List<PhotoModel> photos) savedPhotos,
+    required TResult Function(String city) citySaved,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -34,6 +35,7 @@ mixin _$PublishAdEvent {
     TResult? Function(String title)? titleChanged,
     TResult? Function(String description)? descriptionChanged,
     TResult? Function(List<PhotoModel> photos)? savedPhotos,
+    TResult? Function(String city)? citySaved,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -44,6 +46,7 @@ mixin _$PublishAdEvent {
     TResult Function(String title)? titleChanged,
     TResult Function(String description)? descriptionChanged,
     TResult Function(List<PhotoModel> photos)? savedPhotos,
+    TResult Function(String city)? citySaved,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -55,6 +58,7 @@ mixin _$PublishAdEvent {
     required TResult Function(_TitleChanged value) titleChanged,
     required TResult Function(_DescriptionChanged value) descriptionChanged,
     required TResult Function(_SavedPhotos value) savedPhotos,
+    required TResult Function(_CitySaved value) citySaved,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -65,6 +69,7 @@ mixin _$PublishAdEvent {
     TResult? Function(_TitleChanged value)? titleChanged,
     TResult? Function(_DescriptionChanged value)? descriptionChanged,
     TResult? Function(_SavedPhotos value)? savedPhotos,
+    TResult? Function(_CitySaved value)? citySaved,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -75,6 +80,7 @@ mixin _$PublishAdEvent {
     TResult Function(_TitleChanged value)? titleChanged,
     TResult Function(_DescriptionChanged value)? descriptionChanged,
     TResult Function(_SavedPhotos value)? savedPhotos,
+    TResult Function(_CitySaved value)? citySaved,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -142,6 +148,7 @@ class _$StartedImpl implements _Started {
     required TResult Function(String title) titleChanged,
     required TResult Function(String description) descriptionChanged,
     required TResult Function(List<PhotoModel> photos) savedPhotos,
+    required TResult Function(String city) citySaved,
   }) {
     return started();
   }
@@ -155,6 +162,7 @@ class _$StartedImpl implements _Started {
     TResult? Function(String title)? titleChanged,
     TResult? Function(String description)? descriptionChanged,
     TResult? Function(List<PhotoModel> photos)? savedPhotos,
+    TResult? Function(String city)? citySaved,
   }) {
     return started?.call();
   }
@@ -168,6 +176,7 @@ class _$StartedImpl implements _Started {
     TResult Function(String title)? titleChanged,
     TResult Function(String description)? descriptionChanged,
     TResult Function(List<PhotoModel> photos)? savedPhotos,
+    TResult Function(String city)? citySaved,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -185,6 +194,7 @@ class _$StartedImpl implements _Started {
     required TResult Function(_TitleChanged value) titleChanged,
     required TResult Function(_DescriptionChanged value) descriptionChanged,
     required TResult Function(_SavedPhotos value) savedPhotos,
+    required TResult Function(_CitySaved value) citySaved,
   }) {
     return started(this);
   }
@@ -198,6 +208,7 @@ class _$StartedImpl implements _Started {
     TResult? Function(_TitleChanged value)? titleChanged,
     TResult? Function(_DescriptionChanged value)? descriptionChanged,
     TResult? Function(_SavedPhotos value)? savedPhotos,
+    TResult? Function(_CitySaved value)? citySaved,
   }) {
     return started?.call(this);
   }
@@ -211,6 +222,7 @@ class _$StartedImpl implements _Started {
     TResult Function(_TitleChanged value)? titleChanged,
     TResult Function(_DescriptionChanged value)? descriptionChanged,
     TResult Function(_SavedPhotos value)? savedPhotos,
+    TResult Function(_CitySaved value)? citySaved,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -268,6 +280,7 @@ class _$MovedToNextPageImpl implements _MovedToNextPage {
     required TResult Function(String title) titleChanged,
     required TResult Function(String description) descriptionChanged,
     required TResult Function(List<PhotoModel> photos) savedPhotos,
+    required TResult Function(String city) citySaved,
   }) {
     return movedToNextPage();
   }
@@ -281,6 +294,7 @@ class _$MovedToNextPageImpl implements _MovedToNextPage {
     TResult? Function(String title)? titleChanged,
     TResult? Function(String description)? descriptionChanged,
     TResult? Function(List<PhotoModel> photos)? savedPhotos,
+    TResult? Function(String city)? citySaved,
   }) {
     return movedToNextPage?.call();
   }
@@ -294,6 +308,7 @@ class _$MovedToNextPageImpl implements _MovedToNextPage {
     TResult Function(String title)? titleChanged,
     TResult Function(String description)? descriptionChanged,
     TResult Function(List<PhotoModel> photos)? savedPhotos,
+    TResult Function(String city)? citySaved,
     required TResult orElse(),
   }) {
     if (movedToNextPage != null) {
@@ -311,6 +326,7 @@ class _$MovedToNextPageImpl implements _MovedToNextPage {
     required TResult Function(_TitleChanged value) titleChanged,
     required TResult Function(_DescriptionChanged value) descriptionChanged,
     required TResult Function(_SavedPhotos value) savedPhotos,
+    required TResult Function(_CitySaved value) citySaved,
   }) {
     return movedToNextPage(this);
   }
@@ -324,6 +340,7 @@ class _$MovedToNextPageImpl implements _MovedToNextPage {
     TResult? Function(_TitleChanged value)? titleChanged,
     TResult? Function(_DescriptionChanged value)? descriptionChanged,
     TResult? Function(_SavedPhotos value)? savedPhotos,
+    TResult? Function(_CitySaved value)? citySaved,
   }) {
     return movedToNextPage?.call(this);
   }
@@ -337,6 +354,7 @@ class _$MovedToNextPageImpl implements _MovedToNextPage {
     TResult Function(_TitleChanged value)? titleChanged,
     TResult Function(_DescriptionChanged value)? descriptionChanged,
     TResult Function(_SavedPhotos value)? savedPhotos,
+    TResult Function(_CitySaved value)? citySaved,
     required TResult orElse(),
   }) {
     if (movedToNextPage != null) {
@@ -395,6 +413,7 @@ class _$MovedToPreviousPageImpl implements _MovedToPreviousPage {
     required TResult Function(String title) titleChanged,
     required TResult Function(String description) descriptionChanged,
     required TResult Function(List<PhotoModel> photos) savedPhotos,
+    required TResult Function(String city) citySaved,
   }) {
     return movedToPreviousPage();
   }
@@ -408,6 +427,7 @@ class _$MovedToPreviousPageImpl implements _MovedToPreviousPage {
     TResult? Function(String title)? titleChanged,
     TResult? Function(String description)? descriptionChanged,
     TResult? Function(List<PhotoModel> photos)? savedPhotos,
+    TResult? Function(String city)? citySaved,
   }) {
     return movedToPreviousPage?.call();
   }
@@ -421,6 +441,7 @@ class _$MovedToPreviousPageImpl implements _MovedToPreviousPage {
     TResult Function(String title)? titleChanged,
     TResult Function(String description)? descriptionChanged,
     TResult Function(List<PhotoModel> photos)? savedPhotos,
+    TResult Function(String city)? citySaved,
     required TResult orElse(),
   }) {
     if (movedToPreviousPage != null) {
@@ -438,6 +459,7 @@ class _$MovedToPreviousPageImpl implements _MovedToPreviousPage {
     required TResult Function(_TitleChanged value) titleChanged,
     required TResult Function(_DescriptionChanged value) descriptionChanged,
     required TResult Function(_SavedPhotos value) savedPhotos,
+    required TResult Function(_CitySaved value) citySaved,
   }) {
     return movedToPreviousPage(this);
   }
@@ -451,6 +473,7 @@ class _$MovedToPreviousPageImpl implements _MovedToPreviousPage {
     TResult? Function(_TitleChanged value)? titleChanged,
     TResult? Function(_DescriptionChanged value)? descriptionChanged,
     TResult? Function(_SavedPhotos value)? savedPhotos,
+    TResult? Function(_CitySaved value)? citySaved,
   }) {
     return movedToPreviousPage?.call(this);
   }
@@ -464,6 +487,7 @@ class _$MovedToPreviousPageImpl implements _MovedToPreviousPage {
     TResult Function(_TitleChanged value)? titleChanged,
     TResult Function(_DescriptionChanged value)? descriptionChanged,
     TResult Function(_SavedPhotos value)? savedPhotos,
+    TResult Function(_CitySaved value)? citySaved,
     required TResult orElse(),
   }) {
     if (movedToPreviousPage != null) {
@@ -547,6 +571,7 @@ class _$TitleChangedImpl implements _TitleChanged {
     required TResult Function(String title) titleChanged,
     required TResult Function(String description) descriptionChanged,
     required TResult Function(List<PhotoModel> photos) savedPhotos,
+    required TResult Function(String city) citySaved,
   }) {
     return titleChanged(title);
   }
@@ -560,6 +585,7 @@ class _$TitleChangedImpl implements _TitleChanged {
     TResult? Function(String title)? titleChanged,
     TResult? Function(String description)? descriptionChanged,
     TResult? Function(List<PhotoModel> photos)? savedPhotos,
+    TResult? Function(String city)? citySaved,
   }) {
     return titleChanged?.call(title);
   }
@@ -573,6 +599,7 @@ class _$TitleChangedImpl implements _TitleChanged {
     TResult Function(String title)? titleChanged,
     TResult Function(String description)? descriptionChanged,
     TResult Function(List<PhotoModel> photos)? savedPhotos,
+    TResult Function(String city)? citySaved,
     required TResult orElse(),
   }) {
     if (titleChanged != null) {
@@ -590,6 +617,7 @@ class _$TitleChangedImpl implements _TitleChanged {
     required TResult Function(_TitleChanged value) titleChanged,
     required TResult Function(_DescriptionChanged value) descriptionChanged,
     required TResult Function(_SavedPhotos value) savedPhotos,
+    required TResult Function(_CitySaved value) citySaved,
   }) {
     return titleChanged(this);
   }
@@ -603,6 +631,7 @@ class _$TitleChangedImpl implements _TitleChanged {
     TResult? Function(_TitleChanged value)? titleChanged,
     TResult? Function(_DescriptionChanged value)? descriptionChanged,
     TResult? Function(_SavedPhotos value)? savedPhotos,
+    TResult? Function(_CitySaved value)? citySaved,
   }) {
     return titleChanged?.call(this);
   }
@@ -616,6 +645,7 @@ class _$TitleChangedImpl implements _TitleChanged {
     TResult Function(_TitleChanged value)? titleChanged,
     TResult Function(_DescriptionChanged value)? descriptionChanged,
     TResult Function(_SavedPhotos value)? savedPhotos,
+    TResult Function(_CitySaved value)? citySaved,
     required TResult orElse(),
   }) {
     if (titleChanged != null) {
@@ -706,6 +736,7 @@ class _$DescriptionChangedImpl implements _DescriptionChanged {
     required TResult Function(String title) titleChanged,
     required TResult Function(String description) descriptionChanged,
     required TResult Function(List<PhotoModel> photos) savedPhotos,
+    required TResult Function(String city) citySaved,
   }) {
     return descriptionChanged(description);
   }
@@ -719,6 +750,7 @@ class _$DescriptionChangedImpl implements _DescriptionChanged {
     TResult? Function(String title)? titleChanged,
     TResult? Function(String description)? descriptionChanged,
     TResult? Function(List<PhotoModel> photos)? savedPhotos,
+    TResult? Function(String city)? citySaved,
   }) {
     return descriptionChanged?.call(description);
   }
@@ -732,6 +764,7 @@ class _$DescriptionChangedImpl implements _DescriptionChanged {
     TResult Function(String title)? titleChanged,
     TResult Function(String description)? descriptionChanged,
     TResult Function(List<PhotoModel> photos)? savedPhotos,
+    TResult Function(String city)? citySaved,
     required TResult orElse(),
   }) {
     if (descriptionChanged != null) {
@@ -749,6 +782,7 @@ class _$DescriptionChangedImpl implements _DescriptionChanged {
     required TResult Function(_TitleChanged value) titleChanged,
     required TResult Function(_DescriptionChanged value) descriptionChanged,
     required TResult Function(_SavedPhotos value) savedPhotos,
+    required TResult Function(_CitySaved value) citySaved,
   }) {
     return descriptionChanged(this);
   }
@@ -762,6 +796,7 @@ class _$DescriptionChangedImpl implements _DescriptionChanged {
     TResult? Function(_TitleChanged value)? titleChanged,
     TResult? Function(_DescriptionChanged value)? descriptionChanged,
     TResult? Function(_SavedPhotos value)? savedPhotos,
+    TResult? Function(_CitySaved value)? citySaved,
   }) {
     return descriptionChanged?.call(this);
   }
@@ -775,6 +810,7 @@ class _$DescriptionChangedImpl implements _DescriptionChanged {
     TResult Function(_TitleChanged value)? titleChanged,
     TResult Function(_DescriptionChanged value)? descriptionChanged,
     TResult Function(_SavedPhotos value)? savedPhotos,
+    TResult Function(_CitySaved value)? citySaved,
     required TResult orElse(),
   }) {
     if (descriptionChanged != null) {
@@ -870,6 +906,7 @@ class _$SavedPhotosImpl implements _SavedPhotos {
     required TResult Function(String title) titleChanged,
     required TResult Function(String description) descriptionChanged,
     required TResult Function(List<PhotoModel> photos) savedPhotos,
+    required TResult Function(String city) citySaved,
   }) {
     return savedPhotos(photos);
   }
@@ -883,6 +920,7 @@ class _$SavedPhotosImpl implements _SavedPhotos {
     TResult? Function(String title)? titleChanged,
     TResult? Function(String description)? descriptionChanged,
     TResult? Function(List<PhotoModel> photos)? savedPhotos,
+    TResult? Function(String city)? citySaved,
   }) {
     return savedPhotos?.call(photos);
   }
@@ -896,6 +934,7 @@ class _$SavedPhotosImpl implements _SavedPhotos {
     TResult Function(String title)? titleChanged,
     TResult Function(String description)? descriptionChanged,
     TResult Function(List<PhotoModel> photos)? savedPhotos,
+    TResult Function(String city)? citySaved,
     required TResult orElse(),
   }) {
     if (savedPhotos != null) {
@@ -913,6 +952,7 @@ class _$SavedPhotosImpl implements _SavedPhotos {
     required TResult Function(_TitleChanged value) titleChanged,
     required TResult Function(_DescriptionChanged value) descriptionChanged,
     required TResult Function(_SavedPhotos value) savedPhotos,
+    required TResult Function(_CitySaved value) citySaved,
   }) {
     return savedPhotos(this);
   }
@@ -926,6 +966,7 @@ class _$SavedPhotosImpl implements _SavedPhotos {
     TResult? Function(_TitleChanged value)? titleChanged,
     TResult? Function(_DescriptionChanged value)? descriptionChanged,
     TResult? Function(_SavedPhotos value)? savedPhotos,
+    TResult? Function(_CitySaved value)? citySaved,
   }) {
     return savedPhotos?.call(this);
   }
@@ -939,6 +980,7 @@ class _$SavedPhotosImpl implements _SavedPhotos {
     TResult Function(_TitleChanged value)? titleChanged,
     TResult Function(_DescriptionChanged value)? descriptionChanged,
     TResult Function(_SavedPhotos value)? savedPhotos,
+    TResult Function(_CitySaved value)? citySaved,
     required TResult orElse(),
   }) {
     if (savedPhotos != null) {
@@ -958,6 +1000,169 @@ abstract class _SavedPhotos implements PublishAdEvent {
 }
 
 /// @nodoc
+abstract class _$$CitySavedImplCopyWith<$Res> {
+  factory _$$CitySavedImplCopyWith(
+          _$CitySavedImpl value, $Res Function(_$CitySavedImpl) then) =
+      __$$CitySavedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String city});
+}
+
+/// @nodoc
+class __$$CitySavedImplCopyWithImpl<$Res>
+    extends _$PublishAdEventCopyWithImpl<$Res, _$CitySavedImpl>
+    implements _$$CitySavedImplCopyWith<$Res> {
+  __$$CitySavedImplCopyWithImpl(
+      _$CitySavedImpl _value, $Res Function(_$CitySavedImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? city = null,
+  }) {
+    return _then(_$CitySavedImpl(
+      null == city
+          ? _value.city
+          : city // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$CitySavedImpl implements _CitySaved {
+  const _$CitySavedImpl(this.city);
+
+  @override
+  final String city;
+
+  @override
+  String toString() {
+    return 'PublishAdEvent.citySaved(city: $city)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CitySavedImpl &&
+            (identical(other.city, city) || other.city == city));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, city);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CitySavedImplCopyWith<_$CitySavedImpl> get copyWith =>
+      __$$CitySavedImplCopyWithImpl<_$CitySavedImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() movedToNextPage,
+    required TResult Function() movedToPreviousPage,
+    required TResult Function(String title) titleChanged,
+    required TResult Function(String description) descriptionChanged,
+    required TResult Function(List<PhotoModel> photos) savedPhotos,
+    required TResult Function(String city) citySaved,
+  }) {
+    return citySaved(city);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function()? movedToNextPage,
+    TResult? Function()? movedToPreviousPage,
+    TResult? Function(String title)? titleChanged,
+    TResult? Function(String description)? descriptionChanged,
+    TResult? Function(List<PhotoModel> photos)? savedPhotos,
+    TResult? Function(String city)? citySaved,
+  }) {
+    return citySaved?.call(city);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? movedToNextPage,
+    TResult Function()? movedToPreviousPage,
+    TResult Function(String title)? titleChanged,
+    TResult Function(String description)? descriptionChanged,
+    TResult Function(List<PhotoModel> photos)? savedPhotos,
+    TResult Function(String city)? citySaved,
+    required TResult orElse(),
+  }) {
+    if (citySaved != null) {
+      return citySaved(city);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_MovedToNextPage value) movedToNextPage,
+    required TResult Function(_MovedToPreviousPage value) movedToPreviousPage,
+    required TResult Function(_TitleChanged value) titleChanged,
+    required TResult Function(_DescriptionChanged value) descriptionChanged,
+    required TResult Function(_SavedPhotos value) savedPhotos,
+    required TResult Function(_CitySaved value) citySaved,
+  }) {
+    return citySaved(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_MovedToNextPage value)? movedToNextPage,
+    TResult? Function(_MovedToPreviousPage value)? movedToPreviousPage,
+    TResult? Function(_TitleChanged value)? titleChanged,
+    TResult? Function(_DescriptionChanged value)? descriptionChanged,
+    TResult? Function(_SavedPhotos value)? savedPhotos,
+    TResult? Function(_CitySaved value)? citySaved,
+  }) {
+    return citySaved?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_MovedToNextPage value)? movedToNextPage,
+    TResult Function(_MovedToPreviousPage value)? movedToPreviousPage,
+    TResult Function(_TitleChanged value)? titleChanged,
+    TResult Function(_DescriptionChanged value)? descriptionChanged,
+    TResult Function(_SavedPhotos value)? savedPhotos,
+    TResult Function(_CitySaved value)? citySaved,
+    required TResult orElse(),
+  }) {
+    if (citySaved != null) {
+      return citySaved(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _CitySaved implements PublishAdEvent {
+  const factory _CitySaved(final String city) = _$CitySavedImpl;
+
+  String get city;
+  @JsonKey(ignore: true)
+  _$$CitySavedImplCopyWith<_$CitySavedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$PublishAdState {
   PublishAdStatus get status => throw _privateConstructorUsedError;
   int get pageIndex => throw _privateConstructorUsedError;
@@ -966,6 +1171,9 @@ mixin _$PublishAdState {
   String get description => throw _privateConstructorUsedError;
   bool get isDescriptionValid => throw _privateConstructorUsedError;
   List<PhotoModel> get photos => throw _privateConstructorUsedError;
+  String get city => throw _privateConstructorUsedError;
+  double get lat => throw _privateConstructorUsedError;
+  double get long => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $PublishAdStateCopyWith<PublishAdState> get copyWith =>
@@ -985,7 +1193,10 @@ abstract class $PublishAdStateCopyWith<$Res> {
       bool isTitleValid,
       String description,
       bool isDescriptionValid,
-      List<PhotoModel> photos});
+      List<PhotoModel> photos,
+      String city,
+      double lat,
+      double long});
 }
 
 /// @nodoc
@@ -1008,6 +1219,9 @@ class _$PublishAdStateCopyWithImpl<$Res, $Val extends PublishAdState>
     Object? description = null,
     Object? isDescriptionValid = null,
     Object? photos = null,
+    Object? city = null,
+    Object? lat = null,
+    Object? long = null,
   }) {
     return _then(_value.copyWith(
       status: null == status
@@ -1038,6 +1252,18 @@ class _$PublishAdStateCopyWithImpl<$Res, $Val extends PublishAdState>
           ? _value.photos
           : photos // ignore: cast_nullable_to_non_nullable
               as List<PhotoModel>,
+      city: null == city
+          ? _value.city
+          : city // ignore: cast_nullable_to_non_nullable
+              as String,
+      lat: null == lat
+          ? _value.lat
+          : lat // ignore: cast_nullable_to_non_nullable
+              as double,
+      long: null == long
+          ? _value.long
+          : long // ignore: cast_nullable_to_non_nullable
+              as double,
     ) as $Val);
   }
 }
@@ -1057,7 +1283,10 @@ abstract class _$$PublishAdStateImplCopyWith<$Res>
       bool isTitleValid,
       String description,
       bool isDescriptionValid,
-      List<PhotoModel> photos});
+      List<PhotoModel> photos,
+      String city,
+      double lat,
+      double long});
 }
 
 /// @nodoc
@@ -1078,6 +1307,9 @@ class __$$PublishAdStateImplCopyWithImpl<$Res>
     Object? description = null,
     Object? isDescriptionValid = null,
     Object? photos = null,
+    Object? city = null,
+    Object? lat = null,
+    Object? long = null,
   }) {
     return _then(_$PublishAdStateImpl(
       status: null == status
@@ -1108,6 +1340,18 @@ class __$$PublishAdStateImplCopyWithImpl<$Res>
           ? _value._photos
           : photos // ignore: cast_nullable_to_non_nullable
               as List<PhotoModel>,
+      city: null == city
+          ? _value.city
+          : city // ignore: cast_nullable_to_non_nullable
+              as String,
+      lat: null == lat
+          ? _value.lat
+          : lat // ignore: cast_nullable_to_non_nullable
+              as double,
+      long: null == long
+          ? _value.long
+          : long // ignore: cast_nullable_to_non_nullable
+              as double,
     ));
   }
 }
@@ -1122,7 +1366,10 @@ class _$PublishAdStateImpl implements _PublishAdState {
       this.isTitleValid = false,
       this.description = '',
       this.isDescriptionValid = false,
-      final List<PhotoModel> photos = const []})
+      final List<PhotoModel> photos = const [],
+      this.city = '',
+      this.lat = 0,
+      this.long = 0})
       : _photos = photos;
 
   @override
@@ -1153,8 +1400,18 @@ class _$PublishAdStateImpl implements _PublishAdState {
   }
 
   @override
+  @JsonKey()
+  final String city;
+  @override
+  @JsonKey()
+  final double lat;
+  @override
+  @JsonKey()
+  final double long;
+
+  @override
   String toString() {
-    return 'PublishAdState(status: $status, pageIndex: $pageIndex, title: $title, isTitleValid: $isTitleValid, description: $description, isDescriptionValid: $isDescriptionValid, photos: $photos)';
+    return 'PublishAdState(status: $status, pageIndex: $pageIndex, title: $title, isTitleValid: $isTitleValid, description: $description, isDescriptionValid: $isDescriptionValid, photos: $photos, city: $city, lat: $lat, long: $long)';
   }
 
   @override
@@ -1172,7 +1429,10 @@ class _$PublishAdStateImpl implements _PublishAdState {
                 other.description == description) &&
             (identical(other.isDescriptionValid, isDescriptionValid) ||
                 other.isDescriptionValid == isDescriptionValid) &&
-            const DeepCollectionEquality().equals(other._photos, _photos));
+            const DeepCollectionEquality().equals(other._photos, _photos) &&
+            (identical(other.city, city) || other.city == city) &&
+            (identical(other.lat, lat) || other.lat == lat) &&
+            (identical(other.long, long) || other.long == long));
   }
 
   @override
@@ -1184,7 +1444,10 @@ class _$PublishAdStateImpl implements _PublishAdState {
       isTitleValid,
       description,
       isDescriptionValid,
-      const DeepCollectionEquality().hash(_photos));
+      const DeepCollectionEquality().hash(_photos),
+      city,
+      lat,
+      long);
 
   @JsonKey(ignore: true)
   @override
@@ -1202,7 +1465,10 @@ abstract class _PublishAdState implements PublishAdState {
       final bool isTitleValid,
       final String description,
       final bool isDescriptionValid,
-      final List<PhotoModel> photos}) = _$PublishAdStateImpl;
+      final List<PhotoModel> photos,
+      final String city,
+      final double lat,
+      final double long}) = _$PublishAdStateImpl;
 
   @override
   PublishAdStatus get status;
@@ -1218,6 +1484,12 @@ abstract class _PublishAdState implements PublishAdState {
   bool get isDescriptionValid;
   @override
   List<PhotoModel> get photos;
+  @override
+  String get city;
+  @override
+  double get lat;
+  @override
+  double get long;
   @override
   @JsonKey(ignore: true)
   _$$PublishAdStateImplCopyWith<_$PublishAdStateImpl> get copyWith =>

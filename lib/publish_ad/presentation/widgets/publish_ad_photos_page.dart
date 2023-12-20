@@ -15,15 +15,20 @@ import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 class PublishAdPhotosPage extends StatelessWidget {
   final Function(List<PhotoModel> photos) submit;
   final String adId;
+  final List<PhotoModel> photos;
 
   const PublishAdPhotosPage(
-      {super.key, required this.submit, required this.adId});
+      {super.key,
+      required this.submit,
+      required this.adId,
+      required this.photos});
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return BlocProvider(
-      create: (context) => locator<UploadPhotosBloc>(),
+      create: (context) =>
+          locator<UploadPhotosBloc>()..add(UploadPhotosEvent.started(photos)),
       child: BlocConsumer<UploadPhotosBloc, UploadPhotosState>(
         listener: (context, state) {},
         builder: (context, state) {

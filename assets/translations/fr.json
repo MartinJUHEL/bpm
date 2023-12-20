@@ -57,5 +57,7 @@
   "adDescriptionNotValid": "Your description should contain at least 10 characters",
   "camera": "Camera",
   "gallery": "Gallery",
-  "adPhotos": "Add photos"
+  "adPhotos": "Add photos",
+  "chooseCity": "Choose a city",
+  "enterYourCity": "Enter your city"
 }

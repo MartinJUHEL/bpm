@@ -25,6 +25,8 @@ class PublishAdState with _$PublishAdState {
     @Default('') String description,
     @Default(false) bool isDescriptionValid,
     @Default([]) List<PhotoModel> photos,
-
+    @Default('') String city,
+    @Default(0) double lat,
+    @Default(0) double long,
 }) = _PublishAdState;
 }

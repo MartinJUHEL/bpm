@@ -18,7 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$UploadPhotosEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function(List<PhotoModel> photos) started,
     required TResult Function(String adId) pickedImagesFromCamera,
     required TResult Function(String adId) pickedImagesFromGallery,
     required TResult Function(int index) removedPhoto,
@@ -26,7 +26,7 @@ mixin _$UploadPhotosEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
+    TResult? Function(List<PhotoModel> photos)? started,
     TResult? Function(String adId)? pickedImagesFromCamera,
     TResult? Function(String adId)? pickedImagesFromGallery,
     TResult? Function(int index)? removedPhoto,
@@ -34,7 +34,7 @@ mixin _$UploadPhotosEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function(List<PhotoModel> photos)? started,
     TResult Function(String adId)? pickedImagesFromCamera,
     TResult Function(String adId)? pickedImagesFromGallery,
     TResult Function(int index)? removedPhoto,
@@ -93,6 +93,8 @@ abstract class _$$StartedImplCopyWith<$Res> {
   factory _$$StartedImplCopyWith(
           _$StartedImpl value, $Res Function(_$StartedImpl) then) =
       __$$StartedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<PhotoModel> photos});
 }
 
 /// @nodoc
@@ -102,60 +104,90 @@ class __$$StartedImplCopyWithImpl<$Res>
   __$$StartedImplCopyWithImpl(
       _$StartedImpl _value, $Res Function(_$StartedImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? photos = null,
+  }) {
+    return _then(_$StartedImpl(
+      null == photos
+          ? _value._photos
+          : photos // ignore: cast_nullable_to_non_nullable
+              as List<PhotoModel>,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$StartedImpl implements _Started {
-  const _$StartedImpl();
+  const _$StartedImpl(final List<PhotoModel> photos) : _photos = photos;
+
+  final List<PhotoModel> _photos;
+  @override
+  List<PhotoModel> get photos {
+    if (_photos is EqualUnmodifiableListView) return _photos;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_photos);
+  }
 
   @override
   String toString() {
-    return 'UploadPhotosEvent.started()';
+    return 'UploadPhotosEvent.started(photos: $photos)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$StartedImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$StartedImpl &&
+            const DeepCollectionEquality().equals(other._photos, _photos));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_photos));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$StartedImplCopyWith<_$StartedImpl> get copyWith =>
+      __$$StartedImplCopyWithImpl<_$StartedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function(List<PhotoModel> photos) started,
     required TResult Function(String adId) pickedImagesFromCamera,
     required TResult Function(String adId) pickedImagesFromGallery,
     required TResult Function(int index) removedPhoto,
   }) {
-    return started();
+    return started(photos);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
+    TResult? Function(List<PhotoModel> photos)? started,
     TResult? Function(String adId)? pickedImagesFromCamera,
     TResult? Function(String adId)? pickedImagesFromGallery,
     TResult? Function(int index)? removedPhoto,
   }) {
-    return started?.call();
+    return started?.call(photos);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function(List<PhotoModel> photos)? started,
     TResult Function(String adId)? pickedImagesFromCamera,
     TResult Function(String adId)? pickedImagesFromGallery,
     TResult Function(int index)? removedPhoto,
     required TResult orElse(),
   }) {
     if (started != null) {
-      return started();
+      return started(photos);
     }
     return orElse();
   }
@@ -201,7 +233,12 @@ class _$StartedImpl implements _Started {
 }
 
 abstract class _Started implements UploadPhotosEvent {
-  const factory _Started() = _$StartedImpl;
+  const factory _Started(final List<PhotoModel> photos) = _$StartedImpl;
+
+  List<PhotoModel> get photos;
+  @JsonKey(ignore: true)
+  _$$StartedImplCopyWith<_$StartedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -271,7 +308,7 @@ class _$PickedImagesFromCameraImpl implements _PickedImagesFromCamera {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function(List<PhotoModel> photos) started,
     required TResult Function(String adId) pickedImagesFromCamera,
     required TResult Function(String adId) pickedImagesFromGallery,
     required TResult Function(int index) removedPhoto,
@@ -282,7 +319,7 @@ class _$PickedImagesFromCameraImpl implements _PickedImagesFromCamera {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
+    TResult? Function(List<PhotoModel> photos)? started,
     TResult? Function(String adId)? pickedImagesFromCamera,
     TResult? Function(String adId)? pickedImagesFromGallery,
     TResult? Function(int index)? removedPhoto,
@@ -293,7 +330,7 @@ class _$PickedImagesFromCameraImpl implements _PickedImagesFromCamera {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function(List<PhotoModel> photos)? started,
     TResult Function(String adId)? pickedImagesFromCamera,
     TResult Function(String adId)? pickedImagesFromGallery,
     TResult Function(int index)? removedPhoto,
@@ -422,7 +459,7 @@ class _$PickedImagesFromGalleryImpl implements _PickedImagesFromGallery {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function(List<PhotoModel> photos) started,
     required TResult Function(String adId) pickedImagesFromCamera,
     required TResult Function(String adId) pickedImagesFromGallery,
     required TResult Function(int index) removedPhoto,
@@ -433,7 +470,7 @@ class _$PickedImagesFromGalleryImpl implements _PickedImagesFromGallery {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
+    TResult? Function(List<PhotoModel> photos)? started,
     TResult? Function(String adId)? pickedImagesFromCamera,
     TResult? Function(String adId)? pickedImagesFromGallery,
     TResult? Function(int index)? removedPhoto,
@@ -444,7 +481,7 @@ class _$PickedImagesFromGalleryImpl implements _PickedImagesFromGallery {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function(List<PhotoModel> photos)? started,
     TResult Function(String adId)? pickedImagesFromCamera,
     TResult Function(String adId)? pickedImagesFromGallery,
     TResult Function(int index)? removedPhoto,
@@ -570,7 +607,7 @@ class _$RemovedPhotoImpl implements _RemovedPhoto {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function(List<PhotoModel> photos) started,
     required TResult Function(String adId) pickedImagesFromCamera,
     required TResult Function(String adId) pickedImagesFromGallery,
     required TResult Function(int index) removedPhoto,
@@ -581,7 +618,7 @@ class _$RemovedPhotoImpl implements _RemovedPhoto {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
+    TResult? Function(List<PhotoModel> photos)? started,
     TResult? Function(String adId)? pickedImagesFromCamera,
     TResult? Function(String adId)? pickedImagesFromGallery,
     TResult? Function(int index)? removedPhoto,
@@ -592,7 +629,7 @@ class _$RemovedPhotoImpl implements _RemovedPhoto {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function(List<PhotoModel> photos)? started,
     TResult Function(String adId)? pickedImagesFromCamera,
     TResult Function(String adId)? pickedImagesFromGallery,
     TResult Function(int index)? removedPhoto,

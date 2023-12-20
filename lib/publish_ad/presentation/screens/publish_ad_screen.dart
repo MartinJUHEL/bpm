@@ -2,6 +2,7 @@ import 'package:bpm/app/appTextStyles.dart';
 import 'package:bpm/core/di/injection.dart';
 import 'package:bpm/publish_ad/domain/models/photo_model.dart';
 import 'package:bpm/publish_ad/presentation/blocs/publish_ad_bloc/publish_ad_bloc.dart';
+import 'package:bpm/publish_ad/presentation/widgets/publish_ad_search_city_page.dart';
 import 'package:bpm/publish_ad/presentation/widgets/publish_ad_photos_page.dart';
 import 'package:bpm/publish_ad/presentation/widgets/publish_ad_title_page.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -35,6 +36,12 @@ class _PublishAdScreenState extends State<PublishAdScreen> {
 
   _savePhotos(BuildContext context, List<PhotoModel> photos) {
     context.read<PublishAdBloc>().add(PublishAdEvent.savedPhotos(photos));
+    _controller.nextPage(
+        duration: const Duration(milliseconds: 200), curve: Curves.easeIn);
+  }
+
+  _saveCity(BuildContext context, String city) {
+    context.read<PublishAdBloc>().add(PublishAdEvent.citySaved(city));
     _controller.nextPage(
         duration: const Duration(milliseconds: 200), curve: Curves.easeIn);
   }
@@ -87,7 +94,11 @@ class _PublishAdScreenState extends State<PublishAdScreen> {
                     //todo : adId
                     adId: 'test',
                     submit: (photos) => _savePhotos(context, photos),
+                    photos: state.photos,
                   ),
+                  PublishAdSearchCityPage(
+                    submit: (String city)=>_saveCity(context, city) ,
+                  )
                 ],
               ),
             ),

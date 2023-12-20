@@ -37,7 +37,7 @@ class UploadPhotosBloc extends Bloc<UploadPhotosEvent, UploadPhotosState> {
   ) : super(const UploadPhotosState()) {
     on<UploadPhotosEvent>((event, emit) async {
       await event.when<FutureOr<void>>(
-        started: () {},
+        started: (List<PhotoModel> photos) => _started(emit, photos),
         pickedImagesFromCamera: (String adId) =>
             _onPickedImagesFromCamera(emit, adId),
         pickedImagesFromGallery: (String adId) =>
@@ -45,6 +45,11 @@ class UploadPhotosBloc extends Bloc<UploadPhotosEvent, UploadPhotosState> {
         removedPhoto: (int index) => _onRemovedPhoto(emit, index),
       );
     });
+  }
+
+  _started(Emitter<UploadPhotosState> emit, List<PhotoModel> photos) {
+    logger.d('TOTOOO ${photos.toString()}');
+    emit(state.copyWith(photos: List.of(photos)));
   }
 
   _onPickedImagesFromCamera(

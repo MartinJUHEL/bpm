@@ -29,7 +29,8 @@ class PublishAdBloc extends Bloc<PublishAdEvent, PublishAdState> {
           descriptionChanged: (String description) =>
               _onDescriptionChanged(description, emit),
           savedPhotos: (List<PhotoModel> photos) =>
-              _onSavedPhotos(emit, photos));
+              _onSavedPhotos(emit, photos),
+          citySaved: (String city) => _onCitySaved(emit, city));
     });
   }
 
@@ -56,6 +57,10 @@ class PublishAdBloc extends Bloc<PublishAdEvent, PublishAdState> {
   }
 
   void _onSavedPhotos(Emitter<PublishAdState> emit, List<PhotoModel> photos) {
-    emit(state.copyWith(photos: photos, pageIndex: state.pageIndex - 1));
+    emit(state.copyWith(photos: photos, pageIndex: state.pageIndex + 1));
+  }
+
+  void _onCitySaved(Emitter<PublishAdState> emit, String city) {
+    emit(state.copyWith(city: city));
   }
 }
