@@ -1,10 +1,16 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:bpm/core/domain/entities/city_model.dart';
+import 'package:bpm/core/domain/entities/common_status.dart';
+import 'package:bpm/core/utils/logger/logger.dart';
 import 'package:bpm/publish_ad/domain/models/photo_model.dart';
+import 'package:bpm/publish_ad/domain/usecases/get_location_from_city_use_case.dart';
 import 'package:bpm/publish_ad/domain/usecases/is_ad_description_valid_use_case.dart';
 import 'package:bpm/publish_ad/domain/usecases/is_ad_title_valid_use_case.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:geocoding/geocoding.dart';
 import 'package:injectable/injectable.dart';
 
 part 'publish_ad_event.dart';
@@ -30,7 +36,8 @@ class PublishAdBloc extends Bloc<PublishAdEvent, PublishAdState> {
               _onDescriptionChanged(description, emit),
           savedPhotos: (List<PhotoModel> photos) =>
               _onSavedPhotos(emit, photos),
-          citySaved: (String city) => _onCitySaved(emit, city));
+          citySaved: (CityModel city) => _onCitySaved(emit, city),
+          adPublished: () => _onAdPublished(emit));
     });
   }
 
@@ -60,7 +67,14 @@ class PublishAdBloc extends Bloc<PublishAdEvent, PublishAdState> {
     emit(state.copyWith(photos: photos, pageIndex: state.pageIndex + 1));
   }
 
-  void _onCitySaved(Emitter<PublishAdState> emit, String city) {
-    emit(state.copyWith(city: city));
+  void _onCitySaved(Emitter<PublishAdState> emit, CityModel city) {
+    //todo remove status
+    emit(state.copyWith(city: city, status: CommonStatus.success));
+  }
+
+  Future<void> _onAdPublished(Emitter<PublishAdState> emit) async {
+    //emit(state.copyWith(city: city, status: CommonStatus.loading));
+    //todo save ad in firestore
+    // emit(state.copyWith(city: city, status: CommonStatus.success));
   }
 }

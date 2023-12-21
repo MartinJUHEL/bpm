@@ -1,4 +1,5 @@
 import 'package:bpm/core/di/injection.dart';
+import 'package:bpm/core/domain/entities/city_model.dart';
 import 'package:bpm/core/presentation/widgets/submit_button.dart';
 import 'package:bpm/publish_ad/presentation/blocs/publish_ad_search_city_bloc/publish_ad_search_city_bloc.dart';
 import 'package:bpm/publish_ad/presentation/widgets/city_search_delegate.dart';
@@ -8,7 +9,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:uuid/uuid.dart';
 
 class PublishAdSearchCityPage extends StatefulWidget {
-  final Function(String query) submit;
+  final Function(CityModel city) submit;
 
   const PublishAdSearchCityPage({super.key, required this.submit});
 
@@ -83,7 +84,13 @@ class _PublishAdSearchCityPageState extends State<PublishAdSearchCityPage> {
                       title: 'next',
                       isEnabled: state.status.isSuccess,
                       isLoading: state.status.isLoading,
-                      onPressed: () => widget.submit(state.query)),
+                      onPressed: () => {
+                        if(state.city!=null){
+                          widget.submit(state.city!)
+                        }else{
+                          //todo error
+                        }
+                      }),
                 )
               ],
             ),

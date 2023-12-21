@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:bpm/core/domain/entities/common_status.dart';
 import 'package:bpm/core/utils/logger/logger.dart';
 import 'package:bpm/publish_ad/domain/models/photo_model.dart';
 import 'package:bpm/publish_ad/domain/usecases/build_photo_from_file_use_case.dart';
@@ -48,41 +49,40 @@ class UploadPhotosBloc extends Bloc<UploadPhotosEvent, UploadPhotosState> {
   }
 
   _started(Emitter<UploadPhotosState> emit, List<PhotoModel> photos) {
-    logger.d('TOTOOO ${photos.toString()}');
     emit(state.copyWith(photos: List.of(photos)));
   }
 
   _onPickedImagesFromCamera(
       Emitter<UploadPhotosState> emit, String adId) async {
     try {
-      emit(state.copyWith(status: UploadPhotosStatus.loading));
+      emit(state.copyWith(status: CommonStatus.loading));
       final XFile? file = await _pickPhotoFromCameraUseCase.execute();
       if (file != null) {
         await _uploadPhoto(file, adId, emit);
         emit(state.copyWith(
-            status: UploadPhotosStatus.success, photos: List.of(_photos)));
+            status: CommonStatus.success, photos: List.of(_photos)));
       } else {
-        emit(state.copyWith(status: UploadPhotosStatus.failure));
+        emit(state.copyWith(status: CommonStatus.failure));
       }
     } catch (e) {
-      emit(state.copyWith(status: UploadPhotosStatus.failure));
+      emit(state.copyWith(status: CommonStatus.failure));
     }
   }
 
   _onPickedImagesFromGallery(
       Emitter<UploadPhotosState> emit, String adId) async {
     try {
-      emit(state.copyWith(status: UploadPhotosStatus.loading));
+      emit(state.copyWith(status: CommonStatus.loading));
       final List<XFile> files = await _pickPhotosFromGalleryUseCase.execute();
       if (files.isNotEmpty) {
         await Future.wait(files.map((file) => _uploadPhoto(file, adId, emit)));
         emit(state.copyWith(
-            status: UploadPhotosStatus.success, photos: List.of(_photos)));
+            status: CommonStatus.success, photos: List.of(_photos)));
       } else {
-        emit(state.copyWith(status: UploadPhotosStatus.failure));
+        emit(state.copyWith(status: CommonStatus.failure));
       }
     } catch (e) {
-      emit(state.copyWith(status: UploadPhotosStatus.failure));
+      emit(state.copyWith(status: CommonStatus.failure));
     }
   }
 
@@ -93,7 +93,7 @@ class UploadPhotosBloc extends Bloc<UploadPhotosEvent, UploadPhotosState> {
       _photos.removeAt(index);
       emit(state.copyWith(photos: List.of(_photos)));
     } catch (e) {
-      emit(state.copyWith(status: UploadPhotosStatus.failure));
+      emit(state.copyWith(status: CommonStatus.failure));
     }
   }
 

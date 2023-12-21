@@ -2,7 +2,7 @@ import 'dart:ui';
 
 import 'package:bpm/app/theme.dart';
 import 'package:bpm/core/di/injection.dart';
-import 'package:bpm/core/presentation/bloc/app_bloc_observer.dart';
+import 'package:bpm/core/presentation/blocs/app_bloc_observer.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';

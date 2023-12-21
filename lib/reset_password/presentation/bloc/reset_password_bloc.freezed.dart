@@ -381,7 +381,7 @@ abstract class _EmailChanged implements ResetPasswordEvent {
 
 /// @nodoc
 mixin _$ResetPasswordState {
-  ResetPasswordStatus get status => throw _privateConstructorUsedError;
+  CommonStatus get status => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
   String get error => throw _privateConstructorUsedError;
 
@@ -396,7 +396,7 @@ abstract class $ResetPasswordStateCopyWith<$Res> {
           ResetPasswordState value, $Res Function(ResetPasswordState) then) =
       _$ResetPasswordStateCopyWithImpl<$Res, ResetPasswordState>;
   @useResult
-  $Res call({ResetPasswordStatus status, String email, String error});
+  $Res call({CommonStatus status, String email, String error});
 }
 
 /// @nodoc
@@ -420,7 +420,7 @@ class _$ResetPasswordStateCopyWithImpl<$Res, $Val extends ResetPasswordState>
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as ResetPasswordStatus,
+              as CommonStatus,
       email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
@@ -441,7 +441,7 @@ abstract class _$$ResetPasswordStateImplCopyWith<$Res>
       __$$ResetPasswordStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({ResetPasswordStatus status, String email, String error});
+  $Res call({CommonStatus status, String email, String error});
 }
 
 /// @nodoc
@@ -463,7 +463,7 @@ class __$$ResetPasswordStateImplCopyWithImpl<$Res>
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as ResetPasswordStatus,
+              as CommonStatus,
       email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
@@ -480,13 +480,11 @@ class __$$ResetPasswordStateImplCopyWithImpl<$Res>
 
 class _$ResetPasswordStateImpl implements _ResetPasswordState {
   const _$ResetPasswordStateImpl(
-      {this.status = ResetPasswordStatus.initial,
-      this.email = '',
-      this.error = ''});
+      {this.status = CommonStatus.initial, this.email = '', this.error = ''});
 
   @override
   @JsonKey()
-  final ResetPasswordStatus status;
+  final CommonStatus status;
   @override
   @JsonKey()
   final String email;
@@ -522,12 +520,12 @@ class _$ResetPasswordStateImpl implements _ResetPasswordState {
 
 abstract class _ResetPasswordState implements ResetPasswordState {
   const factory _ResetPasswordState(
-      {final ResetPasswordStatus status,
+      {final CommonStatus status,
       final String email,
       final String error}) = _$ResetPasswordStateImpl;
 
   @override
-  ResetPasswordStatus get status;
+  CommonStatus get status;
   @override
   String get email;
   @override

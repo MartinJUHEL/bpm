@@ -20,18 +20,24 @@ mixin _$PublishAdSearchCityEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(String sessionToken) started,
     required TResult Function(String query) citySearched,
+    required TResult Function() locationRequested,
+    required TResult Function(String suggestion) suggestionClicked,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String sessionToken)? started,
     TResult? Function(String query)? citySearched,
+    TResult? Function()? locationRequested,
+    TResult? Function(String suggestion)? suggestionClicked,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String sessionToken)? started,
     TResult Function(String query)? citySearched,
+    TResult Function()? locationRequested,
+    TResult Function(String suggestion)? suggestionClicked,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -39,18 +45,24 @@ mixin _$PublishAdSearchCityEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_CitySearched value) citySearched,
+    required TResult Function(_LocationRequested value) locationRequested,
+    required TResult Function(_SuggestionClicked value) suggestionClicked,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_CitySearched value)? citySearched,
+    TResult? Function(_LocationRequested value)? locationRequested,
+    TResult? Function(_SuggestionClicked value)? suggestionClicked,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_CitySearched value)? citySearched,
+    TResult Function(_LocationRequested value)? locationRequested,
+    TResult Function(_SuggestionClicked value)? suggestionClicked,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -142,6 +154,8 @@ class _$StartedImpl implements _Started {
   TResult when<TResult extends Object?>({
     required TResult Function(String sessionToken) started,
     required TResult Function(String query) citySearched,
+    required TResult Function() locationRequested,
+    required TResult Function(String suggestion) suggestionClicked,
   }) {
     return started(sessionToken);
   }
@@ -151,6 +165,8 @@ class _$StartedImpl implements _Started {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String sessionToken)? started,
     TResult? Function(String query)? citySearched,
+    TResult? Function()? locationRequested,
+    TResult? Function(String suggestion)? suggestionClicked,
   }) {
     return started?.call(sessionToken);
   }
@@ -160,6 +176,8 @@ class _$StartedImpl implements _Started {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String sessionToken)? started,
     TResult Function(String query)? citySearched,
+    TResult Function()? locationRequested,
+    TResult Function(String suggestion)? suggestionClicked,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -173,6 +191,8 @@ class _$StartedImpl implements _Started {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_CitySearched value) citySearched,
+    required TResult Function(_LocationRequested value) locationRequested,
+    required TResult Function(_SuggestionClicked value) suggestionClicked,
   }) {
     return started(this);
   }
@@ -182,6 +202,8 @@ class _$StartedImpl implements _Started {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_CitySearched value)? citySearched,
+    TResult? Function(_LocationRequested value)? locationRequested,
+    TResult? Function(_SuggestionClicked value)? suggestionClicked,
   }) {
     return started?.call(this);
   }
@@ -191,6 +213,8 @@ class _$StartedImpl implements _Started {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_CitySearched value)? citySearched,
+    TResult Function(_LocationRequested value)? locationRequested,
+    TResult Function(_SuggestionClicked value)? suggestionClicked,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -275,6 +299,8 @@ class _$CitySearchedImpl implements _CitySearched {
   TResult when<TResult extends Object?>({
     required TResult Function(String sessionToken) started,
     required TResult Function(String query) citySearched,
+    required TResult Function() locationRequested,
+    required TResult Function(String suggestion) suggestionClicked,
   }) {
     return citySearched(query);
   }
@@ -284,6 +310,8 @@ class _$CitySearchedImpl implements _CitySearched {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String sessionToken)? started,
     TResult? Function(String query)? citySearched,
+    TResult? Function()? locationRequested,
+    TResult? Function(String suggestion)? suggestionClicked,
   }) {
     return citySearched?.call(query);
   }
@@ -293,6 +321,8 @@ class _$CitySearchedImpl implements _CitySearched {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String sessionToken)? started,
     TResult Function(String query)? citySearched,
+    TResult Function()? locationRequested,
+    TResult Function(String suggestion)? suggestionClicked,
     required TResult orElse(),
   }) {
     if (citySearched != null) {
@@ -306,6 +336,8 @@ class _$CitySearchedImpl implements _CitySearched {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_CitySearched value) citySearched,
+    required TResult Function(_LocationRequested value) locationRequested,
+    required TResult Function(_SuggestionClicked value) suggestionClicked,
   }) {
     return citySearched(this);
   }
@@ -315,6 +347,8 @@ class _$CitySearchedImpl implements _CitySearched {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_CitySearched value)? citySearched,
+    TResult? Function(_LocationRequested value)? locationRequested,
+    TResult? Function(_SuggestionClicked value)? suggestionClicked,
   }) {
     return citySearched?.call(this);
   }
@@ -324,6 +358,8 @@ class _$CitySearchedImpl implements _CitySearched {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_CitySearched value)? citySearched,
+    TResult Function(_LocationRequested value)? locationRequested,
+    TResult Function(_SuggestionClicked value)? suggestionClicked,
     required TResult orElse(),
   }) {
     if (citySearched != null) {
@@ -343,11 +379,277 @@ abstract class _CitySearched implements PublishAdSearchCityEvent {
 }
 
 /// @nodoc
+abstract class _$$LocationRequestedImplCopyWith<$Res> {
+  factory _$$LocationRequestedImplCopyWith(_$LocationRequestedImpl value,
+          $Res Function(_$LocationRequestedImpl) then) =
+      __$$LocationRequestedImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$LocationRequestedImplCopyWithImpl<$Res>
+    extends _$PublishAdSearchCityEventCopyWithImpl<$Res,
+        _$LocationRequestedImpl>
+    implements _$$LocationRequestedImplCopyWith<$Res> {
+  __$$LocationRequestedImplCopyWithImpl(_$LocationRequestedImpl _value,
+      $Res Function(_$LocationRequestedImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$LocationRequestedImpl implements _LocationRequested {
+  const _$LocationRequestedImpl();
+
+  @override
+  String toString() {
+    return 'PublishAdSearchCityEvent.locationRequested()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$LocationRequestedImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String sessionToken) started,
+    required TResult Function(String query) citySearched,
+    required TResult Function() locationRequested,
+    required TResult Function(String suggestion) suggestionClicked,
+  }) {
+    return locationRequested();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String sessionToken)? started,
+    TResult? Function(String query)? citySearched,
+    TResult? Function()? locationRequested,
+    TResult? Function(String suggestion)? suggestionClicked,
+  }) {
+    return locationRequested?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String sessionToken)? started,
+    TResult Function(String query)? citySearched,
+    TResult Function()? locationRequested,
+    TResult Function(String suggestion)? suggestionClicked,
+    required TResult orElse(),
+  }) {
+    if (locationRequested != null) {
+      return locationRequested();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_CitySearched value) citySearched,
+    required TResult Function(_LocationRequested value) locationRequested,
+    required TResult Function(_SuggestionClicked value) suggestionClicked,
+  }) {
+    return locationRequested(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_CitySearched value)? citySearched,
+    TResult? Function(_LocationRequested value)? locationRequested,
+    TResult? Function(_SuggestionClicked value)? suggestionClicked,
+  }) {
+    return locationRequested?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_CitySearched value)? citySearched,
+    TResult Function(_LocationRequested value)? locationRequested,
+    TResult Function(_SuggestionClicked value)? suggestionClicked,
+    required TResult orElse(),
+  }) {
+    if (locationRequested != null) {
+      return locationRequested(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _LocationRequested implements PublishAdSearchCityEvent {
+  const factory _LocationRequested() = _$LocationRequestedImpl;
+}
+
+/// @nodoc
+abstract class _$$SuggestionClickedImplCopyWith<$Res> {
+  factory _$$SuggestionClickedImplCopyWith(_$SuggestionClickedImpl value,
+          $Res Function(_$SuggestionClickedImpl) then) =
+      __$$SuggestionClickedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String suggestion});
+}
+
+/// @nodoc
+class __$$SuggestionClickedImplCopyWithImpl<$Res>
+    extends _$PublishAdSearchCityEventCopyWithImpl<$Res,
+        _$SuggestionClickedImpl>
+    implements _$$SuggestionClickedImplCopyWith<$Res> {
+  __$$SuggestionClickedImplCopyWithImpl(_$SuggestionClickedImpl _value,
+      $Res Function(_$SuggestionClickedImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? suggestion = null,
+  }) {
+    return _then(_$SuggestionClickedImpl(
+      null == suggestion
+          ? _value.suggestion
+          : suggestion // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SuggestionClickedImpl implements _SuggestionClicked {
+  const _$SuggestionClickedImpl(this.suggestion);
+
+  @override
+  final String suggestion;
+
+  @override
+  String toString() {
+    return 'PublishAdSearchCityEvent.suggestionClicked(suggestion: $suggestion)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SuggestionClickedImpl &&
+            (identical(other.suggestion, suggestion) ||
+                other.suggestion == suggestion));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, suggestion);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SuggestionClickedImplCopyWith<_$SuggestionClickedImpl> get copyWith =>
+      __$$SuggestionClickedImplCopyWithImpl<_$SuggestionClickedImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String sessionToken) started,
+    required TResult Function(String query) citySearched,
+    required TResult Function() locationRequested,
+    required TResult Function(String suggestion) suggestionClicked,
+  }) {
+    return suggestionClicked(suggestion);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String sessionToken)? started,
+    TResult? Function(String query)? citySearched,
+    TResult? Function()? locationRequested,
+    TResult? Function(String suggestion)? suggestionClicked,
+  }) {
+    return suggestionClicked?.call(suggestion);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String sessionToken)? started,
+    TResult Function(String query)? citySearched,
+    TResult Function()? locationRequested,
+    TResult Function(String suggestion)? suggestionClicked,
+    required TResult orElse(),
+  }) {
+    if (suggestionClicked != null) {
+      return suggestionClicked(suggestion);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_CitySearched value) citySearched,
+    required TResult Function(_LocationRequested value) locationRequested,
+    required TResult Function(_SuggestionClicked value) suggestionClicked,
+  }) {
+    return suggestionClicked(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_CitySearched value)? citySearched,
+    TResult? Function(_LocationRequested value)? locationRequested,
+    TResult? Function(_SuggestionClicked value)? suggestionClicked,
+  }) {
+    return suggestionClicked?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_CitySearched value)? citySearched,
+    TResult Function(_LocationRequested value)? locationRequested,
+    TResult Function(_SuggestionClicked value)? suggestionClicked,
+    required TResult orElse(),
+  }) {
+    if (suggestionClicked != null) {
+      return suggestionClicked(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SuggestionClicked implements PublishAdSearchCityEvent {
+  const factory _SuggestionClicked(final String suggestion) =
+      _$SuggestionClickedImpl;
+
+  String get suggestion;
+  @JsonKey(ignore: true)
+  _$$SuggestionClickedImplCopyWith<_$SuggestionClickedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$PublishAdSearchCityState {
-  PublishAdSearchCityStatus get status => throw _privateConstructorUsedError;
+  SearchCityStatus get status => throw _privateConstructorUsedError;
   String get sessionToken => throw _privateConstructorUsedError;
   String get query => throw _privateConstructorUsedError;
   List<String> get suggestions => throw _privateConstructorUsedError;
+  CityModel? get city => throw _privateConstructorUsedError;
+  String get errorMessage => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $PublishAdSearchCityStateCopyWith<PublishAdSearchCityState> get copyWith =>
@@ -361,10 +663,14 @@ abstract class $PublishAdSearchCityStateCopyWith<$Res> {
       _$PublishAdSearchCityStateCopyWithImpl<$Res, PublishAdSearchCityState>;
   @useResult
   $Res call(
-      {PublishAdSearchCityStatus status,
+      {SearchCityStatus status,
       String sessionToken,
       String query,
-      List<String> suggestions});
+      List<String> suggestions,
+      CityModel? city,
+      String errorMessage});
+
+  $CityModelCopyWith<$Res>? get city;
 }
 
 /// @nodoc
@@ -385,12 +691,14 @@ class _$PublishAdSearchCityStateCopyWithImpl<$Res,
     Object? sessionToken = null,
     Object? query = null,
     Object? suggestions = null,
+    Object? city = freezed,
+    Object? errorMessage = null,
   }) {
     return _then(_value.copyWith(
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as PublishAdSearchCityStatus,
+              as SearchCityStatus,
       sessionToken: null == sessionToken
           ? _value.sessionToken
           : sessionToken // ignore: cast_nullable_to_non_nullable
@@ -403,7 +711,27 @@ class _$PublishAdSearchCityStateCopyWithImpl<$Res,
           ? _value.suggestions
           : suggestions // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      city: freezed == city
+          ? _value.city
+          : city // ignore: cast_nullable_to_non_nullable
+              as CityModel?,
+      errorMessage: null == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $CityModelCopyWith<$Res>? get city {
+    if (_value.city == null) {
+      return null;
+    }
+
+    return $CityModelCopyWith<$Res>(_value.city!, (value) {
+      return _then(_value.copyWith(city: value) as $Val);
+    });
   }
 }
 
@@ -417,10 +745,15 @@ abstract class _$$PublishAdSearchCityStateImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {PublishAdSearchCityStatus status,
+      {SearchCityStatus status,
       String sessionToken,
       String query,
-      List<String> suggestions});
+      List<String> suggestions,
+      CityModel? city,
+      String errorMessage});
+
+  @override
+  $CityModelCopyWith<$Res>? get city;
 }
 
 /// @nodoc
@@ -440,12 +773,14 @@ class __$$PublishAdSearchCityStateImplCopyWithImpl<$Res>
     Object? sessionToken = null,
     Object? query = null,
     Object? suggestions = null,
+    Object? city = freezed,
+    Object? errorMessage = null,
   }) {
     return _then(_$PublishAdSearchCityStateImpl(
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as PublishAdSearchCityStatus,
+              as SearchCityStatus,
       sessionToken: null == sessionToken
           ? _value.sessionToken
           : sessionToken // ignore: cast_nullable_to_non_nullable
@@ -458,6 +793,14 @@ class __$$PublishAdSearchCityStateImplCopyWithImpl<$Res>
           ? _value._suggestions
           : suggestions // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      city: freezed == city
+          ? _value.city
+          : city // ignore: cast_nullable_to_non_nullable
+              as CityModel?,
+      errorMessage: null == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -466,15 +809,17 @@ class __$$PublishAdSearchCityStateImplCopyWithImpl<$Res>
 
 class _$PublishAdSearchCityStateImpl implements _PublishAdSearchCityState {
   const _$PublishAdSearchCityStateImpl(
-      {this.status = PublishAdSearchCityStatus.initial,
+      {this.status = SearchCityStatus.initial,
       this.sessionToken = '',
       this.query = '',
-      final List<String> suggestions = const []})
+      final List<String> suggestions = const [],
+      this.city,
+      this.errorMessage = ''})
       : _suggestions = suggestions;
 
   @override
   @JsonKey()
-  final PublishAdSearchCityStatus status;
+  final SearchCityStatus status;
   @override
   @JsonKey()
   final String sessionToken;
@@ -491,8 +836,14 @@ class _$PublishAdSearchCityStateImpl implements _PublishAdSearchCityState {
   }
 
   @override
+  final CityModel? city;
+  @override
+  @JsonKey()
+  final String errorMessage;
+
+  @override
   String toString() {
-    return 'PublishAdSearchCityState(status: $status, sessionToken: $sessionToken, query: $query, suggestions: $suggestions)';
+    return 'PublishAdSearchCityState(status: $status, sessionToken: $sessionToken, query: $query, suggestions: $suggestions, city: $city, errorMessage: $errorMessage)';
   }
 
   @override
@@ -505,12 +856,15 @@ class _$PublishAdSearchCityStateImpl implements _PublishAdSearchCityState {
                 other.sessionToken == sessionToken) &&
             (identical(other.query, query) || other.query == query) &&
             const DeepCollectionEquality()
-                .equals(other._suggestions, _suggestions));
+                .equals(other._suggestions, _suggestions) &&
+            (identical(other.city, city) || other.city == city) &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, status, sessionToken, query,
-      const DeepCollectionEquality().hash(_suggestions));
+      const DeepCollectionEquality().hash(_suggestions), city, errorMessage);
 
   @JsonKey(ignore: true)
   @override
@@ -522,19 +876,25 @@ class _$PublishAdSearchCityStateImpl implements _PublishAdSearchCityState {
 
 abstract class _PublishAdSearchCityState implements PublishAdSearchCityState {
   const factory _PublishAdSearchCityState(
-      {final PublishAdSearchCityStatus status,
+      {final SearchCityStatus status,
       final String sessionToken,
       final String query,
-      final List<String> suggestions}) = _$PublishAdSearchCityStateImpl;
+      final List<String> suggestions,
+      final CityModel? city,
+      final String errorMessage}) = _$PublishAdSearchCityStateImpl;
 
   @override
-  PublishAdSearchCityStatus get status;
+  SearchCityStatus get status;
   @override
   String get sessionToken;
   @override
   String get query;
   @override
   List<String> get suggestions;
+  @override
+  CityModel? get city;
+  @override
+  String get errorMessage;
   @override
   @JsonKey(ignore: true)
   _$$PublishAdSearchCityStateImplCopyWith<_$PublishAdSearchCityStateImpl>

@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:bpm/core/domain/entities/common_status.dart';
 import 'package:bpm/reset_password/domain/usecases/get_reset_password_state_usecase.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
@@ -28,13 +29,13 @@ class ResetPasswordBloc extends Bloc<ResetPasswordEvent, ResetPasswordState> {
   void _onEmailChanged(String email, Emitter<ResetPasswordState> emit) {
     emit(state.copyWith(
       email: email,
-      status: ResetPasswordStatus.initial,
+      status: CommonStatus.initial,
     ));
   }
 
   Future<void> _sendedEmailResetPassword(
       String email, Emitter<ResetPasswordState> emit) async {
-    emit(state.copyWith(status: ResetPasswordStatus.loading));
+    emit(state.copyWith(status: CommonStatus.loading));
     ResetPasswordState newState =
         await _getResetPasswordStateUseCase.execute(email);
     emit(newState);

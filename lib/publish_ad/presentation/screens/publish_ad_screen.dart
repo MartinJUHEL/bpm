@@ -1,5 +1,7 @@
 import 'package:bpm/app/appTextStyles.dart';
 import 'package:bpm/core/di/injection.dart';
+import 'package:bpm/core/domain/entities/city_model.dart';
+import 'package:bpm/core/utils/logger/logger.dart';
 import 'package:bpm/publish_ad/domain/models/photo_model.dart';
 import 'package:bpm/publish_ad/presentation/blocs/publish_ad_bloc/publish_ad_bloc.dart';
 import 'package:bpm/publish_ad/presentation/widgets/publish_ad_search_city_page.dart';
@@ -40,10 +42,8 @@ class _PublishAdScreenState extends State<PublishAdScreen> {
         duration: const Duration(milliseconds: 200), curve: Curves.easeIn);
   }
 
-  _saveCity(BuildContext context, String city) {
+  _saveCity(BuildContext context, CityModel city) {
     context.read<PublishAdBloc>().add(PublishAdEvent.citySaved(city));
-    _controller.nextPage(
-        duration: const Duration(milliseconds: 200), curve: Curves.easeIn);
   }
 
   @override
@@ -53,7 +53,9 @@ class _PublishAdScreenState extends State<PublishAdScreen> {
       create: (context) => locator<PublishAdBloc>(),
       child: BlocConsumer<PublishAdBloc, PublishAdState>(
         listener: (context, state) {
-          // TODO: implement listener
+          if(state.status.isSuccess){
+            Navigator.pop(context);
+          }
         },
         builder: (context, state) {
           return SafeArea(
@@ -97,7 +99,7 @@ class _PublishAdScreenState extends State<PublishAdScreen> {
                     photos: state.photos,
                   ),
                   PublishAdSearchCityPage(
-                    submit: (String city)=>_saveCity(context, city) ,
+                    submit: (CityModel city) => _saveCity(context, city),
                   )
                 ],
               ),

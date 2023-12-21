@@ -1,5 +1,5 @@
 import 'package:bpm/app/appTextStyles.dart';
-import 'package:bpm/core/utils/logger/logger.dart';
+import 'package:bpm/core/domain/entities/common_status.dart';
 import 'package:bpm/publish_ad/presentation/blocs/publish_ad_search_city_bloc/publish_ad_search_city_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -31,7 +31,8 @@ class CitySearchDelegate extends SearchDelegate<String?> {
               tooltip: 'locate',
               icon: const Icon(Icons.location_searching),
               onPressed: () {
-                //todo
+                publishSearchCityBloc
+                    .add(const PublishAdSearchCityEvent.locationRequested());
               },
             )
           : IconButton(
@@ -66,41 +67,56 @@ class CitySearchDelegate extends SearchDelegate<String?> {
       return const SizedBox();
     } else {
       publishSearchCityBloc.add(PublishAdSearchCityEvent.citySearched(query));
-      return BlocBuilder(
+      return BlocConsumer(
         bloc: publishSearchCityBloc,
-        builder: (BuildContext context, PublishAdSearchCityState state) {
-          switch (state.status) {
-            case PublishAdSearchCityStatus.initial:
-              {
-                return const SizedBox();
-              }
-            case PublishAdSearchCityStatus.loading:
-              {
-                return const Center(
-                  child: CircularProgressIndicator(),
-                );
-              }
-            case PublishAdSearchCityStatus.failure:
-              {
-                //todo implements error
-                return const Text('Error');
-              }
-            case PublishAdSearchCityStatus.success:
-              {
-                return ListView.builder(
-                  itemBuilder: (context, index) {
-                    return ListTile(
-                      leading: const Icon(Icons.location_city),
-                      title: Text(state.suggestions[index]),
-                      onTap: () => close(context, state.suggestions[index]),
-                    );
-                  },
-                  itemCount: state.suggestions.length,
-                );
-              }
+        listener: (context, PublishAdSearchCityState state) {
+          if (state.status.isLocated) {
+            query = state.query;
+          }
+          //todo error
+          if (state.status.isSuccess && state.city != null) {
+            close(context, state.city!.name);
           }
         },
+        builder: (context, PublishAdSearchCityState state) {
+          return _buildBody(state);
+        },
       );
+    }
+  }
+
+  Widget _buildBody(PublishAdSearchCityState state) {
+    switch (state.status) {
+      case SearchCityStatus.initial:
+        {
+          return const SizedBox();
+        }
+      case SearchCityStatus.loading:
+        {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        }
+      case SearchCityStatus.failure:
+        {
+          //todo implements error
+          return const Text('Error');
+        }
+      default:
+        {
+          return ListView.builder(
+            itemBuilder: (context, index) {
+              return ListTile(
+                leading: const Icon(Icons.location_city),
+                title: Text(state.suggestions[index]),
+                onTap: () => publishSearchCityBloc.add(
+                    PublishAdSearchCityEvent.suggestionClicked(
+                        state.suggestions[index])),
+              );
+            },
+            itemCount: state.suggestions.length,
+          );
+        }
     }
   }
 }

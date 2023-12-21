@@ -692,7 +692,7 @@ abstract class _RemovedPhoto implements UploadPhotosEvent {
 
 /// @nodoc
 mixin _$UploadPhotosState {
-  UploadPhotosStatus get status => throw _privateConstructorUsedError;
+  CommonStatus get status => throw _privateConstructorUsedError;
   List<PhotoModel> get photos => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -706,7 +706,7 @@ abstract class $UploadPhotosStateCopyWith<$Res> {
           UploadPhotosState value, $Res Function(UploadPhotosState) then) =
       _$UploadPhotosStateCopyWithImpl<$Res, UploadPhotosState>;
   @useResult
-  $Res call({UploadPhotosStatus status, List<PhotoModel> photos});
+  $Res call({CommonStatus status, List<PhotoModel> photos});
 }
 
 /// @nodoc
@@ -729,7 +729,7 @@ class _$UploadPhotosStateCopyWithImpl<$Res, $Val extends UploadPhotosState>
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as UploadPhotosStatus,
+              as CommonStatus,
       photos: null == photos
           ? _value.photos
           : photos // ignore: cast_nullable_to_non_nullable
@@ -746,7 +746,7 @@ abstract class _$$UploadPhotosStateImplCopyWith<$Res>
       __$$UploadPhotosStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({UploadPhotosStatus status, List<PhotoModel> photos});
+  $Res call({CommonStatus status, List<PhotoModel> photos});
 }
 
 /// @nodoc
@@ -767,7 +767,7 @@ class __$$UploadPhotosStateImplCopyWithImpl<$Res>
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as UploadPhotosStatus,
+              as CommonStatus,
       photos: null == photos
           ? _value._photos
           : photos // ignore: cast_nullable_to_non_nullable
@@ -780,13 +780,13 @@ class __$$UploadPhotosStateImplCopyWithImpl<$Res>
 
 class _$UploadPhotosStateImpl implements _UploadPhotosState {
   const _$UploadPhotosStateImpl(
-      {this.status = UploadPhotosStatus.initial,
+      {this.status = CommonStatus.initial,
       final List<PhotoModel> photos = const []})
       : _photos = photos;
 
   @override
   @JsonKey()
-  final UploadPhotosStatus status;
+  final CommonStatus status;
   final List<PhotoModel> _photos;
   @override
   @JsonKey()
@@ -824,11 +824,11 @@ class _$UploadPhotosStateImpl implements _UploadPhotosState {
 
 abstract class _UploadPhotosState implements UploadPhotosState {
   const factory _UploadPhotosState(
-      {final UploadPhotosStatus status,
+      {final CommonStatus status,
       final List<PhotoModel> photos}) = _$UploadPhotosStateImpl;
 
   @override
-  UploadPhotosStatus get status;
+  CommonStatus get status;
   @override
   List<PhotoModel> get photos;
   @override

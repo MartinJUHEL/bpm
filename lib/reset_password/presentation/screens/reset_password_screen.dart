@@ -1,4 +1,5 @@
 import 'package:bpm/core/di/injection.dart';
+import 'package:bpm/core/domain/entities/common_status.dart';
 import 'package:bpm/core/presentation/widgets/error_dialog.dart';
 import 'package:bpm/core/presentation/widgets/info_dialog.dart';
 import 'package:bpm/core/presentation/widgets/submit_button.dart';
@@ -18,11 +19,11 @@ class ResetPasswordScreen extends StatelessWidget {
       child: BlocConsumer<ResetPasswordBloc, ResetPasswordState>(
         listener: (context, state) {
           switch (state.status) {
-            case ResetPasswordStatus.initial:
+            case CommonStatus.initial:
               {}
-            case ResetPasswordStatus.loading:
+            case CommonStatus.loading:
             // TODO: Handle this case.
-            case ResetPasswordStatus.success:
+            case CommonStatus.success:
               showDialog(
                   context: context,
                   builder: (context) => const InfoDialog(
@@ -30,7 +31,7 @@ class ResetPasswordScreen extends StatelessWidget {
                         title: 'test',
                         descriptions: 'test',
                       )).whenComplete(() => Navigator.of(context).pop());
-            case ResetPasswordStatus.failure:
+            case CommonStatus.failure:
               showDialog(
                   context: context,
                   builder: (context) => ErrorDialog(

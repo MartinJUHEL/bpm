@@ -15,7 +15,6 @@ class Assets {
   static const String appConstants = 'lib/app/constants.dart';
   static const String appGoogleServices = 'android/app/google-services.json';
   static const String appTheme = 'lib/app/theme.dart';
-  static const String blocAppBlocObserver = 'lib/core/presentation/bloc/app_bloc_observer.dart';
   static const String blocAuthenticationBloc = 'lib/Authentication/presentation/bloc/authentication_bloc.dart';
   static const String blocAuthenticationBloc.freezed = 'lib/Authentication/presentation/bloc/authentication_bloc.freezed.dart';
   static const String blocAuthenticationEvent = 'lib/Authentication/presentation/bloc/authentication_event.dart';
@@ -36,6 +35,7 @@ class Assets {
   static const String blocSignupBloc.freezed = 'lib/signup/presentation/bloc/signup_bloc.freezed.dart';
   static const String blocSignupEvent = 'lib/signup/presentation/bloc/signup_event.dart';
   static const String blocSignupState = 'lib/signup/presentation/bloc/signup_state.dart';
+  static const String blocsAppBlocObserver = 'lib/core/presentation/blocs/app_bloc_observer.dart';
   static const String bpmAndroidGradlew = 'android/gradlew.bat';
   static const String bpmMainActivity = 'android/app/src/main/kotlin/com/bpm/bpm/MainActivity.kt';
   static const String convertersTimestampConverter = 'lib/core/utils/converters/timestamp_converter.dart';
@@ -45,6 +45,10 @@ class Assets {
   static const String diInjection.config = 'lib/core/di/injection.config.dart';
   static const String drawableLaunchBackground = 'android/app/src/main/res/drawable/launch_background.xml';
   static const String drawableV21LaunchBackground = 'android/app/src/main/res/drawable-v21/launch_background.xml';
+  static const String entitiesCityModel = 'lib/core/domain/entities/city_model.dart';
+  static const String entitiesCityModel.freezed = 'lib/core/domain/entities/city_model.freezed.dart';
+  static const String entitiesCityModel.g = 'lib/core/domain/entities/city_model.g.dart';
+  static const String entitiesCommonStatus = 'lib/core/domain/entities/common_status.dart';
   static const String entitiesErrorResultModel = 'lib/core/domain/entities/ErrorResultModel.dart';
   static const String entitiesUserModel = 'lib/core/domain/entities/user_model.dart';
   static const String entitiesUserModel.freezed = 'lib/core/domain/entities/user_model.freezed.dart';
@@ -80,7 +84,6 @@ class Assets {
   static const String publishAdBlocPublishAdEvent = 'lib/publish_ad/presentation/blocs/publish_ad_bloc/publish_ad_event.dart';
   static const String publishAdBlocPublishAdState = 'lib/publish_ad/presentation/blocs/publish_ad_bloc/publish_ad_state.dart';
   static const String publishAdSearchCityBlocPublishAdSearchCityBloc = 'lib/publish_ad/presentation/blocs/publish_ad_search_city_bloc/publish_ad_search_city_bloc.dart';
-  static const String publishAdSearchCityBlocPublishAdSearchCityBloc.freezed = 'lib/publish_ad/presentation/blocs/publish_ad_search_city_bloc/publish_ad_search_city_bloc.freezed.dart';
   static const String publishAdSearchCityBlocPublishAdSearchCityEvent = 'lib/publish_ad/presentation/blocs/publish_ad_search_city_bloc/publish_ad_search_city_event.dart';
   static const String publishAdSearchCityBlocPublishAdSearchCityState = 'lib/publish_ad/presentation/blocs/publish_ad_search_city_bloc/publish_ad_search_city_state.dart';
   static const String remoteAuthenticationRemoteService = 'lib/Authentication/data/services/remote/authentication_remote_service.dart';
@@ -113,7 +116,10 @@ class Assets {
   static const String usecasesBuildPhotoFromFileUseCase = 'lib/publish_ad/domain/usecases/build_photo_from_file_use_case.dart';
   static const String usecasesFetchAndSaveUserLocalUsecase = 'lib/signup/domain/usecases/fetch_and_save_user_local_usecase.dart';
   static const String usecasesGetApiKeyUseCase = 'lib/publish_ad/domain/usecases/get_api_key_use_case.dart';
+  static const String usecasesGetCityFromLocationUseCase = 'lib/publish_ad/domain/usecases/get_city_from_location_use_case.dart';
   static const String usecasesGetCitySuggestionsUseCase = 'lib/publish_ad/domain/usecases/get_city_suggestions_use_case.dart';
+  static const String usecasesGetLocationFromCityUseCase = 'lib/publish_ad/domain/usecases/get_location_from_city_use_case.dart';
+  static const String usecasesGetLocationUseCase = 'lib/core/domain/usecases/get_location_use_case.dart';
   static const String usecasesGetResetPasswordStateUsecase = 'lib/reset_password/domain/usecases/get_reset_password_state_usecase.dart';
   static const String usecasesGetUserNameUseCase = 'lib/profil/domain/usecases/get_user_name_use_case.dart';
   static const String usecasesGetUserTypeFromStringUsecase = 'lib/core/domain/usecases/get_user_type_from_string_usecase.dart';

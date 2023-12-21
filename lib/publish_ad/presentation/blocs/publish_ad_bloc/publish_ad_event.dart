@@ -8,6 +8,7 @@ class PublishAdEvent with _$PublishAdEvent {
   const factory PublishAdEvent.titleChanged(String title) = _TitleChanged;
   const factory PublishAdEvent.descriptionChanged(String description) = _DescriptionChanged;
   const factory PublishAdEvent.savedPhotos(List<PhotoModel> photos) = _SavedPhotos;
-  const factory PublishAdEvent.citySaved(String city) = _CitySaved;
+  const factory PublishAdEvent.citySaved(CityModel city) = _CitySaved;
+  const factory PublishAdEvent.adPublished() = _AdPublished;
 
 }

@@ -2,26 +2,33 @@ part of 'publish_ad_search_city_bloc.dart';
 
 @freezed
 sealed class PublishAdSearchCityState with _$PublishAdSearchCityState {
-  const factory PublishAdSearchCityState(
-          {@Default(PublishAdSearchCityStatus.initial)
-          PublishAdSearchCityStatus status,
-          @Default('') final String sessionToken,
-          @Default('') final String query,
-          @Default([]) final List<String> suggestions}) =
-      _PublishAdSearchCityState;
+  const factory PublishAdSearchCityState({
+    @Default(SearchCityStatus.initial) SearchCityStatus status,
+    @Default('') final String sessionToken,
+    @Default('') final String query,
+    @Default([]) final List<String> suggestions,
+    final CityModel? city,
+    @Default('') final String errorMessage,
+  }) = _PublishAdSearchCityState;
 }
 
-enum PublishAdSearchCityStatus {
+enum SearchCityStatus {
   initial,
   loading,
+  failure,
   success,
-  failure;
+  suggestionFound,
+  located;
 
-  bool get isInitial => this == PublishAdSearchCityStatus.initial;
+  bool get isInitial => this == SearchCityStatus.initial;
 
-  bool get isLoading => this == PublishAdSearchCityStatus.loading;
+  bool get isLoading => this == SearchCityStatus.loading;
 
-  bool get isSuccess => this == PublishAdSearchCityStatus.success;
+  bool get isSuggestionFound => this == SearchCityStatus.suggestionFound;
 
-  bool get isFailure => this == PublishAdSearchCityStatus.failure;
+  bool get isLocated => this == SearchCityStatus.located;
+
+  bool get isFailure => this == SearchCityStatus.failure;
+
+  bool get isSuccess => this == SearchCityStatus.success;
 }
