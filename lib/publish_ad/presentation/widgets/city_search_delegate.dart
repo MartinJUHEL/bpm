@@ -71,7 +71,7 @@ class CitySearchDelegate extends SearchDelegate<String?> {
         bloc: publishSearchCityBloc,
         listener: (context, PublishAdSearchCityState state) {
           if (state.status.isLocated) {
-            query = state.query;
+            query = state.city!.name;
           }
           //todo error
           if (state.status.isSuccess && state.city != null) {

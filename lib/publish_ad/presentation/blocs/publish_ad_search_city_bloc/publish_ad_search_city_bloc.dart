@@ -67,7 +67,7 @@ class PublishAdSearchCityBloc
             query: city.name,
             city: city,
             status: SearchCityStatus.located,
-            errorMessage: tr('locationError')));
+            errorMessage: ''));
       } else {
         emit(state.copyWith(
             status: SearchCityStatus.failure,

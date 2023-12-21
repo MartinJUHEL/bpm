@@ -84,6 +84,7 @@ class Assets {
   static const String publishAdBlocPublishAdEvent = 'lib/publish_ad/presentation/blocs/publish_ad_bloc/publish_ad_event.dart';
   static const String publishAdBlocPublishAdState = 'lib/publish_ad/presentation/blocs/publish_ad_bloc/publish_ad_state.dart';
   static const String publishAdSearchCityBlocPublishAdSearchCityBloc = 'lib/publish_ad/presentation/blocs/publish_ad_search_city_bloc/publish_ad_search_city_bloc.dart';
+  static const String publishAdSearchCityBlocPublishAdSearchCityBloc.freezed = 'lib/publish_ad/presentation/blocs/publish_ad_search_city_bloc/publish_ad_search_city_bloc.freezed.dart';
   static const String publishAdSearchCityBlocPublishAdSearchCityEvent = 'lib/publish_ad/presentation/blocs/publish_ad_search_city_bloc/publish_ad_search_city_event.dart';
   static const String publishAdSearchCityBlocPublishAdSearchCityState = 'lib/publish_ad/presentation/blocs/publish_ad_search_city_bloc/publish_ad_search_city_state.dart';
   static const String remoteAuthenticationRemoteService = 'lib/Authentication/data/services/remote/authentication_remote_service.dart';
@@ -114,11 +115,13 @@ class Assets {
   static const String usecasesAuthenticationSignedOutUsecase = 'lib/Authentication/domain/usecases/authentication_signed_out_usecase.dart';
   static const String usecasesAuthenticationStartedUsecase = 'lib/Authentication/domain/usecases/authentication_started_usecase.dart';
   static const String usecasesBuildPhotoFromFileUseCase = 'lib/publish_ad/domain/usecases/build_photo_from_file_use_case.dart';
+  static const String usecasesCheckLocationPermissionUseCase = 'lib/core/domain/usecases/check_location_permission_use_case.dart';
   static const String usecasesFetchAndSaveUserLocalUsecase = 'lib/signup/domain/usecases/fetch_and_save_user_local_usecase.dart';
   static const String usecasesGetApiKeyUseCase = 'lib/publish_ad/domain/usecases/get_api_key_use_case.dart';
   static const String usecasesGetCityFromLocationUseCase = 'lib/publish_ad/domain/usecases/get_city_from_location_use_case.dart';
   static const String usecasesGetCitySuggestionsUseCase = 'lib/publish_ad/domain/usecases/get_city_suggestions_use_case.dart';
   static const String usecasesGetLocationFromCityUseCase = 'lib/publish_ad/domain/usecases/get_location_from_city_use_case.dart';
+  static const String usecasesGetLocationPermissionUseCase = 'lib/core/domain/usecases/request_location_permission_use_case.dart';
   static const String usecasesGetLocationUseCase = 'lib/core/domain/usecases/get_location_use_case.dart';
   static const String usecasesGetResetPasswordStateUsecase = 'lib/reset_password/domain/usecases/get_reset_password_state_usecase.dart';
   static const String usecasesGetUserNameUseCase = 'lib/profil/domain/usecases/get_user_name_use_case.dart';

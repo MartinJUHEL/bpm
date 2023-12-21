@@ -11,13 +11,17 @@ class GetCityFromLocationUseCase {
   GetCityFromLocationUseCase(this._getLocationUseCase);
 
   Future<CityModel?> execute() async {
-    Position location = await _getLocationUseCase.execute();
-    List<Placemark> placemark =
-    await placemarkFromCoordinates(location.latitude, location.longitude);
-    String? cityName = placemark.first.locality;
-    if (cityName != null) {
-      return CityModel(
-          name: cityName, lat: location.latitude, lng: location.longitude);
+    Position? location = await _getLocationUseCase.execute();
+    if (location != null) {
+      List<Placemark> placemark =
+          await placemarkFromCoordinates(location.latitude, location.longitude);
+      String? cityName = placemark.first.locality;
+      if (cityName != null) {
+        return CityModel(
+            name: cityName, lat: location.latitude, lng: location.longitude);
+      } else {
+        return null;
+      }
     } else {
       return null;
     }
