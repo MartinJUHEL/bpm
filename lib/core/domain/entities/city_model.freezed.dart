@@ -12,7 +12,7 @@ part of 'city_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 CityModel _$CityModelFromJson(Map<String, dynamic> json) {
   return _CityModel.fromJson(json);
@@ -24,8 +24,12 @@ mixin _$CityModel {
   double get lat => throw _privateConstructorUsedError;
   double get lng => throw _privateConstructorUsedError;
 
+  /// Serializes this CityModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CityModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CityModelCopyWith<CityModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -48,6 +52,8 @@ class _$CityModelCopyWithImpl<$Res, $Val extends CityModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of CityModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -91,6 +97,8 @@ class __$$CityModelImplCopyWithImpl<$Res>
       _$CityModelImpl _value, $Res Function(_$CityModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CityModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -137,7 +145,7 @@ class _$CityModelImpl implements _CityModel {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CityModelImpl &&
@@ -146,11 +154,13 @@ class _$CityModelImpl implements _CityModel {
             (identical(other.lng, lng) || other.lng == lng));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, name, lat, lng);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CityModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CityModelImplCopyWith<_$CityModelImpl> get copyWith =>
@@ -179,8 +189,11 @@ abstract class _CityModel implements CityModel {
   double get lat;
   @override
   double get lng;
+
+  /// Create a copy of CityModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CityModelImplCopyWith<_$CityModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

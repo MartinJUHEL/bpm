@@ -55,6 +55,7 @@ dev_dependencies:
   freezed: ^2.4.5
   injectable_generator: ^2.4.1
   json_serializable: ^6.7.1
+  change_app_package_name: ^1.4.0
 
 dependency_overrides:
   modal_bottom_sheet: ^3.0.0-pre
@@ -91,8 +92,8 @@ flutter:
     - android/app/src/main/java/io/flutter/plugins/
     - android/app/src/main/kotlin/
     - android/app/src/main/kotlin/com/
-    - android/app/src/main/kotlin/com/bpm/
-    - android/app/src/main/kotlin/com/bpm/bpm/
+    - android/app/src/main/kotlin/com/rennes/
+    - android/app/src/main/kotlin/com/rennes/bpm/
     - android/app/src/debug/
     - android/app/src/profile/
     - android/gradle/
@@ -107,5 +108,4 @@ flutter:
     - android/.gradle/7.5/dependencies-accessors/
     - android/.gradle/vcs-1/
     - android/.gradle/buildOutputCleanup/
-    - lib/signup/domain/usecases/
 

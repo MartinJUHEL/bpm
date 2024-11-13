@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1062357614962",
+    "project_id": "bpm-prod-df16a",
+    "storage_bucket": "bpm-prod-df16a.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1062357614962:android:012c81a7d386f8a0e71deb",
+        "android_client_info": {
+          "package_name": "com.rennes.bpm"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBVZJ59wYDEWxebxYRa-PfvxjTB9YprYnQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

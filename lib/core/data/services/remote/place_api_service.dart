@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:bpm/core/utils/logger/logger.dart';
-import 'package:bpm/publish_ad/domain/usecases/get_api_key_use_case.dart';
+import 'package:bpm/features/publish_ad/domain/usecases/get_api_key_use_case.dart';
 import 'package:http/http.dart';
 import 'package:injectable/injectable.dart';
 
