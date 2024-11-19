@@ -1,4 +1,4 @@
-import 'package:bpm/core/domain/repositories/user_repository.dart';
+import 'package:assoshare/core/domain/repositories/user_repository.dart';
 import 'package:injectable/injectable.dart';
 
 @injectable

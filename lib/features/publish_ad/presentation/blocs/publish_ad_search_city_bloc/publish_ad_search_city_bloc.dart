@@ -1,10 +1,10 @@
 import 'dart:async';
 
-import 'package:bpm/core/domain/entities/city_model.dart';
-import 'package:bpm/core/utils/logger/logger.dart';
-import 'package:bpm/features/publish_ad/domain/usecases/get_city_from_location_use_case.dart';
-import 'package:bpm/features/publish_ad/domain/usecases/get_city_suggestions_use_case.dart';
-import 'package:bpm/features/publish_ad/domain/usecases/get_location_from_city_use_case.dart';
+import 'package:assoshare/core/domain/entities/city_model.dart';
+import 'package:assoshare/core/utils/logger/logger.dart';
+import 'package:assoshare/features/publish_ad/domain/usecases/get_city_from_location_use_case.dart';
+import 'package:assoshare/features/publish_ad/domain/usecases/get_city_suggestions_use_case.dart';
+import 'package:assoshare/features/publish_ad/domain/usecases/get_location_from_city_use_case.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';

@@ -1,5 +1,5 @@
-import 'package:bpm/features/Authentication/domain/repositories/authentication_repository.dart';
-import 'package:bpm/features/Authentication/presentation/bloc/authentication_bloc.dart';
+import 'package:assoshare/features/Authentication/domain/repositories/authentication_repository.dart';
+import 'package:assoshare/features/Authentication/presentation/bloc/authentication_bloc.dart';
 import 'package:injectable/injectable.dart';
 
 @injectable

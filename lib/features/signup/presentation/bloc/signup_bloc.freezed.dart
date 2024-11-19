@@ -25,6 +25,7 @@ mixin _$SignupEvent {
     required TResult Function() submitted,
     required TResult Function() obscurePasswordToggled,
     required TResult Function(FormType form) formTypeToggled,
+    required TResult Function() closeErrorDialog,
     required TResult Function() succeeded,
   }) =>
       throw _privateConstructorUsedError;
@@ -37,6 +38,7 @@ mixin _$SignupEvent {
     TResult? Function()? submitted,
     TResult? Function()? obscurePasswordToggled,
     TResult? Function(FormType form)? formTypeToggled,
+    TResult? Function()? closeErrorDialog,
     TResult? Function()? succeeded,
   }) =>
       throw _privateConstructorUsedError;
@@ -49,6 +51,7 @@ mixin _$SignupEvent {
     TResult Function()? submitted,
     TResult Function()? obscurePasswordToggled,
     TResult Function(FormType form)? formTypeToggled,
+    TResult Function()? closeErrorDialog,
     TResult Function()? succeeded,
     required TResult orElse(),
   }) =>
@@ -63,6 +66,7 @@ mixin _$SignupEvent {
     required TResult Function(_ObscurePasswordToggled value)
         obscurePasswordToggled,
     required TResult Function(_FormTypeToggled value) formTypeToggled,
+    required TResult Function(_CloseErrorDialog value) closeErrorDialog,
     required TResult Function(_Succeeded value) succeeded,
   }) =>
       throw _privateConstructorUsedError;
@@ -75,6 +79,7 @@ mixin _$SignupEvent {
     TResult? Function(_Submitted value)? submitted,
     TResult? Function(_ObscurePasswordToggled value)? obscurePasswordToggled,
     TResult? Function(_FormTypeToggled value)? formTypeToggled,
+    TResult? Function(_CloseErrorDialog value)? closeErrorDialog,
     TResult? Function(_Succeeded value)? succeeded,
   }) =>
       throw _privateConstructorUsedError;
@@ -87,6 +92,7 @@ mixin _$SignupEvent {
     TResult Function(_Submitted value)? submitted,
     TResult Function(_ObscurePasswordToggled value)? obscurePasswordToggled,
     TResult Function(_FormTypeToggled value)? formTypeToggled,
+    TResult Function(_CloseErrorDialog value)? closeErrorDialog,
     TResult Function(_Succeeded value)? succeeded,
     required TResult orElse(),
   }) =>
@@ -199,6 +205,7 @@ class _$InitializedImpl implements _Initialized {
     required TResult Function() submitted,
     required TResult Function() obscurePasswordToggled,
     required TResult Function(FormType form) formTypeToggled,
+    required TResult Function() closeErrorDialog,
     required TResult Function() succeeded,
   }) {
     return initialized(formType, userType);
@@ -214,6 +221,7 @@ class _$InitializedImpl implements _Initialized {
     TResult? Function()? submitted,
     TResult? Function()? obscurePasswordToggled,
     TResult? Function(FormType form)? formTypeToggled,
+    TResult? Function()? closeErrorDialog,
     TResult? Function()? succeeded,
   }) {
     return initialized?.call(formType, userType);
@@ -229,6 +237,7 @@ class _$InitializedImpl implements _Initialized {
     TResult Function()? submitted,
     TResult Function()? obscurePasswordToggled,
     TResult Function(FormType form)? formTypeToggled,
+    TResult Function()? closeErrorDialog,
     TResult Function()? succeeded,
     required TResult orElse(),
   }) {
@@ -249,6 +258,7 @@ class _$InitializedImpl implements _Initialized {
     required TResult Function(_ObscurePasswordToggled value)
         obscurePasswordToggled,
     required TResult Function(_FormTypeToggled value) formTypeToggled,
+    required TResult Function(_CloseErrorDialog value) closeErrorDialog,
     required TResult Function(_Succeeded value) succeeded,
   }) {
     return initialized(this);
@@ -264,6 +274,7 @@ class _$InitializedImpl implements _Initialized {
     TResult? Function(_Submitted value)? submitted,
     TResult? Function(_ObscurePasswordToggled value)? obscurePasswordToggled,
     TResult? Function(_FormTypeToggled value)? formTypeToggled,
+    TResult? Function(_CloseErrorDialog value)? closeErrorDialog,
     TResult? Function(_Succeeded value)? succeeded,
   }) {
     return initialized?.call(this);
@@ -279,6 +290,7 @@ class _$InitializedImpl implements _Initialized {
     TResult Function(_Submitted value)? submitted,
     TResult Function(_ObscurePasswordToggled value)? obscurePasswordToggled,
     TResult Function(_FormTypeToggled value)? formTypeToggled,
+    TResult Function(_CloseErrorDialog value)? closeErrorDialog,
     TResult Function(_Succeeded value)? succeeded,
     required TResult orElse(),
   }) {
@@ -378,6 +390,7 @@ class _$EmailChangedImpl implements _EmailChanged {
     required TResult Function() submitted,
     required TResult Function() obscurePasswordToggled,
     required TResult Function(FormType form) formTypeToggled,
+    required TResult Function() closeErrorDialog,
     required TResult Function() succeeded,
   }) {
     return emailChanged(email);
@@ -393,6 +406,7 @@ class _$EmailChangedImpl implements _EmailChanged {
     TResult? Function()? submitted,
     TResult? Function()? obscurePasswordToggled,
     TResult? Function(FormType form)? formTypeToggled,
+    TResult? Function()? closeErrorDialog,
     TResult? Function()? succeeded,
   }) {
     return emailChanged?.call(email);
@@ -408,6 +422,7 @@ class _$EmailChangedImpl implements _EmailChanged {
     TResult Function()? submitted,
     TResult Function()? obscurePasswordToggled,
     TResult Function(FormType form)? formTypeToggled,
+    TResult Function()? closeErrorDialog,
     TResult Function()? succeeded,
     required TResult orElse(),
   }) {
@@ -428,6 +443,7 @@ class _$EmailChangedImpl implements _EmailChanged {
     required TResult Function(_ObscurePasswordToggled value)
         obscurePasswordToggled,
     required TResult Function(_FormTypeToggled value) formTypeToggled,
+    required TResult Function(_CloseErrorDialog value) closeErrorDialog,
     required TResult Function(_Succeeded value) succeeded,
   }) {
     return emailChanged(this);
@@ -443,6 +459,7 @@ class _$EmailChangedImpl implements _EmailChanged {
     TResult? Function(_Submitted value)? submitted,
     TResult? Function(_ObscurePasswordToggled value)? obscurePasswordToggled,
     TResult? Function(_FormTypeToggled value)? formTypeToggled,
+    TResult? Function(_CloseErrorDialog value)? closeErrorDialog,
     TResult? Function(_Succeeded value)? succeeded,
   }) {
     return emailChanged?.call(this);
@@ -458,6 +475,7 @@ class _$EmailChangedImpl implements _EmailChanged {
     TResult Function(_Submitted value)? submitted,
     TResult Function(_ObscurePasswordToggled value)? obscurePasswordToggled,
     TResult Function(_FormTypeToggled value)? formTypeToggled,
+    TResult Function(_CloseErrorDialog value)? closeErrorDialog,
     TResult Function(_Succeeded value)? succeeded,
     required TResult orElse(),
   }) {
@@ -557,6 +575,7 @@ class _$PasswordChangedImpl implements _PasswordChanged {
     required TResult Function() submitted,
     required TResult Function() obscurePasswordToggled,
     required TResult Function(FormType form) formTypeToggled,
+    required TResult Function() closeErrorDialog,
     required TResult Function() succeeded,
   }) {
     return passwordChanged(password);
@@ -572,6 +591,7 @@ class _$PasswordChangedImpl implements _PasswordChanged {
     TResult? Function()? submitted,
     TResult? Function()? obscurePasswordToggled,
     TResult? Function(FormType form)? formTypeToggled,
+    TResult? Function()? closeErrorDialog,
     TResult? Function()? succeeded,
   }) {
     return passwordChanged?.call(password);
@@ -587,6 +607,7 @@ class _$PasswordChangedImpl implements _PasswordChanged {
     TResult Function()? submitted,
     TResult Function()? obscurePasswordToggled,
     TResult Function(FormType form)? formTypeToggled,
+    TResult Function()? closeErrorDialog,
     TResult Function()? succeeded,
     required TResult orElse(),
   }) {
@@ -607,6 +628,7 @@ class _$PasswordChangedImpl implements _PasswordChanged {
     required TResult Function(_ObscurePasswordToggled value)
         obscurePasswordToggled,
     required TResult Function(_FormTypeToggled value) formTypeToggled,
+    required TResult Function(_CloseErrorDialog value) closeErrorDialog,
     required TResult Function(_Succeeded value) succeeded,
   }) {
     return passwordChanged(this);
@@ -622,6 +644,7 @@ class _$PasswordChangedImpl implements _PasswordChanged {
     TResult? Function(_Submitted value)? submitted,
     TResult? Function(_ObscurePasswordToggled value)? obscurePasswordToggled,
     TResult? Function(_FormTypeToggled value)? formTypeToggled,
+    TResult? Function(_CloseErrorDialog value)? closeErrorDialog,
     TResult? Function(_Succeeded value)? succeeded,
   }) {
     return passwordChanged?.call(this);
@@ -637,6 +660,7 @@ class _$PasswordChangedImpl implements _PasswordChanged {
     TResult Function(_Submitted value)? submitted,
     TResult Function(_ObscurePasswordToggled value)? obscurePasswordToggled,
     TResult Function(_FormTypeToggled value)? formTypeToggled,
+    TResult Function(_CloseErrorDialog value)? closeErrorDialog,
     TResult Function(_Succeeded value)? succeeded,
     required TResult orElse(),
   }) {
@@ -734,6 +758,7 @@ class _$NameChangedImpl implements _NameChanged {
     required TResult Function() submitted,
     required TResult Function() obscurePasswordToggled,
     required TResult Function(FormType form) formTypeToggled,
+    required TResult Function() closeErrorDialog,
     required TResult Function() succeeded,
   }) {
     return nameChanged(name);
@@ -749,6 +774,7 @@ class _$NameChangedImpl implements _NameChanged {
     TResult? Function()? submitted,
     TResult? Function()? obscurePasswordToggled,
     TResult? Function(FormType form)? formTypeToggled,
+    TResult? Function()? closeErrorDialog,
     TResult? Function()? succeeded,
   }) {
     return nameChanged?.call(name);
@@ -764,6 +790,7 @@ class _$NameChangedImpl implements _NameChanged {
     TResult Function()? submitted,
     TResult Function()? obscurePasswordToggled,
     TResult Function(FormType form)? formTypeToggled,
+    TResult Function()? closeErrorDialog,
     TResult Function()? succeeded,
     required TResult orElse(),
   }) {
@@ -784,6 +811,7 @@ class _$NameChangedImpl implements _NameChanged {
     required TResult Function(_ObscurePasswordToggled value)
         obscurePasswordToggled,
     required TResult Function(_FormTypeToggled value) formTypeToggled,
+    required TResult Function(_CloseErrorDialog value) closeErrorDialog,
     required TResult Function(_Succeeded value) succeeded,
   }) {
     return nameChanged(this);
@@ -799,6 +827,7 @@ class _$NameChangedImpl implements _NameChanged {
     TResult? Function(_Submitted value)? submitted,
     TResult? Function(_ObscurePasswordToggled value)? obscurePasswordToggled,
     TResult? Function(_FormTypeToggled value)? formTypeToggled,
+    TResult? Function(_CloseErrorDialog value)? closeErrorDialog,
     TResult? Function(_Succeeded value)? succeeded,
   }) {
     return nameChanged?.call(this);
@@ -814,6 +843,7 @@ class _$NameChangedImpl implements _NameChanged {
     TResult Function(_Submitted value)? submitted,
     TResult Function(_ObscurePasswordToggled value)? obscurePasswordToggled,
     TResult Function(_FormTypeToggled value)? formTypeToggled,
+    TResult Function(_CloseErrorDialog value)? closeErrorDialog,
     TResult Function(_Succeeded value)? succeeded,
     required TResult orElse(),
   }) {
@@ -884,6 +914,7 @@ class _$SubmittedImpl implements _Submitted {
     required TResult Function() submitted,
     required TResult Function() obscurePasswordToggled,
     required TResult Function(FormType form) formTypeToggled,
+    required TResult Function() closeErrorDialog,
     required TResult Function() succeeded,
   }) {
     return submitted();
@@ -899,6 +930,7 @@ class _$SubmittedImpl implements _Submitted {
     TResult? Function()? submitted,
     TResult? Function()? obscurePasswordToggled,
     TResult? Function(FormType form)? formTypeToggled,
+    TResult? Function()? closeErrorDialog,
     TResult? Function()? succeeded,
   }) {
     return submitted?.call();
@@ -914,6 +946,7 @@ class _$SubmittedImpl implements _Submitted {
     TResult Function()? submitted,
     TResult Function()? obscurePasswordToggled,
     TResult Function(FormType form)? formTypeToggled,
+    TResult Function()? closeErrorDialog,
     TResult Function()? succeeded,
     required TResult orElse(),
   }) {
@@ -934,6 +967,7 @@ class _$SubmittedImpl implements _Submitted {
     required TResult Function(_ObscurePasswordToggled value)
         obscurePasswordToggled,
     required TResult Function(_FormTypeToggled value) formTypeToggled,
+    required TResult Function(_CloseErrorDialog value) closeErrorDialog,
     required TResult Function(_Succeeded value) succeeded,
   }) {
     return submitted(this);
@@ -949,6 +983,7 @@ class _$SubmittedImpl implements _Submitted {
     TResult? Function(_Submitted value)? submitted,
     TResult? Function(_ObscurePasswordToggled value)? obscurePasswordToggled,
     TResult? Function(_FormTypeToggled value)? formTypeToggled,
+    TResult? Function(_CloseErrorDialog value)? closeErrorDialog,
     TResult? Function(_Succeeded value)? succeeded,
   }) {
     return submitted?.call(this);
@@ -964,6 +999,7 @@ class _$SubmittedImpl implements _Submitted {
     TResult Function(_Submitted value)? submitted,
     TResult Function(_ObscurePasswordToggled value)? obscurePasswordToggled,
     TResult Function(_FormTypeToggled value)? formTypeToggled,
+    TResult Function(_CloseErrorDialog value)? closeErrorDialog,
     TResult Function(_Succeeded value)? succeeded,
     required TResult orElse(),
   }) {
@@ -1029,6 +1065,7 @@ class _$ObscurePasswordToggledImpl implements _ObscurePasswordToggled {
     required TResult Function() submitted,
     required TResult Function() obscurePasswordToggled,
     required TResult Function(FormType form) formTypeToggled,
+    required TResult Function() closeErrorDialog,
     required TResult Function() succeeded,
   }) {
     return obscurePasswordToggled();
@@ -1044,6 +1081,7 @@ class _$ObscurePasswordToggledImpl implements _ObscurePasswordToggled {
     TResult? Function()? submitted,
     TResult? Function()? obscurePasswordToggled,
     TResult? Function(FormType form)? formTypeToggled,
+    TResult? Function()? closeErrorDialog,
     TResult? Function()? succeeded,
   }) {
     return obscurePasswordToggled?.call();
@@ -1059,6 +1097,7 @@ class _$ObscurePasswordToggledImpl implements _ObscurePasswordToggled {
     TResult Function()? submitted,
     TResult Function()? obscurePasswordToggled,
     TResult Function(FormType form)? formTypeToggled,
+    TResult Function()? closeErrorDialog,
     TResult Function()? succeeded,
     required TResult orElse(),
   }) {
@@ -1079,6 +1118,7 @@ class _$ObscurePasswordToggledImpl implements _ObscurePasswordToggled {
     required TResult Function(_ObscurePasswordToggled value)
         obscurePasswordToggled,
     required TResult Function(_FormTypeToggled value) formTypeToggled,
+    required TResult Function(_CloseErrorDialog value) closeErrorDialog,
     required TResult Function(_Succeeded value) succeeded,
   }) {
     return obscurePasswordToggled(this);
@@ -1094,6 +1134,7 @@ class _$ObscurePasswordToggledImpl implements _ObscurePasswordToggled {
     TResult? Function(_Submitted value)? submitted,
     TResult? Function(_ObscurePasswordToggled value)? obscurePasswordToggled,
     TResult? Function(_FormTypeToggled value)? formTypeToggled,
+    TResult? Function(_CloseErrorDialog value)? closeErrorDialog,
     TResult? Function(_Succeeded value)? succeeded,
   }) {
     return obscurePasswordToggled?.call(this);
@@ -1109,6 +1150,7 @@ class _$ObscurePasswordToggledImpl implements _ObscurePasswordToggled {
     TResult Function(_Submitted value)? submitted,
     TResult Function(_ObscurePasswordToggled value)? obscurePasswordToggled,
     TResult Function(_FormTypeToggled value)? formTypeToggled,
+    TResult Function(_CloseErrorDialog value)? closeErrorDialog,
     TResult Function(_Succeeded value)? succeeded,
     required TResult orElse(),
   }) {
@@ -1199,6 +1241,7 @@ class _$FormTypeToggledImpl implements _FormTypeToggled {
     required TResult Function() submitted,
     required TResult Function() obscurePasswordToggled,
     required TResult Function(FormType form) formTypeToggled,
+    required TResult Function() closeErrorDialog,
     required TResult Function() succeeded,
   }) {
     return formTypeToggled(form);
@@ -1214,6 +1257,7 @@ class _$FormTypeToggledImpl implements _FormTypeToggled {
     TResult? Function()? submitted,
     TResult? Function()? obscurePasswordToggled,
     TResult? Function(FormType form)? formTypeToggled,
+    TResult? Function()? closeErrorDialog,
     TResult? Function()? succeeded,
   }) {
     return formTypeToggled?.call(form);
@@ -1229,6 +1273,7 @@ class _$FormTypeToggledImpl implements _FormTypeToggled {
     TResult Function()? submitted,
     TResult Function()? obscurePasswordToggled,
     TResult Function(FormType form)? formTypeToggled,
+    TResult Function()? closeErrorDialog,
     TResult Function()? succeeded,
     required TResult orElse(),
   }) {
@@ -1249,6 +1294,7 @@ class _$FormTypeToggledImpl implements _FormTypeToggled {
     required TResult Function(_ObscurePasswordToggled value)
         obscurePasswordToggled,
     required TResult Function(_FormTypeToggled value) formTypeToggled,
+    required TResult Function(_CloseErrorDialog value) closeErrorDialog,
     required TResult Function(_Succeeded value) succeeded,
   }) {
     return formTypeToggled(this);
@@ -1264,6 +1310,7 @@ class _$FormTypeToggledImpl implements _FormTypeToggled {
     TResult? Function(_Submitted value)? submitted,
     TResult? Function(_ObscurePasswordToggled value)? obscurePasswordToggled,
     TResult? Function(_FormTypeToggled value)? formTypeToggled,
+    TResult? Function(_CloseErrorDialog value)? closeErrorDialog,
     TResult? Function(_Succeeded value)? succeeded,
   }) {
     return formTypeToggled?.call(this);
@@ -1279,6 +1326,7 @@ class _$FormTypeToggledImpl implements _FormTypeToggled {
     TResult Function(_Submitted value)? submitted,
     TResult Function(_ObscurePasswordToggled value)? obscurePasswordToggled,
     TResult Function(_FormTypeToggled value)? formTypeToggled,
+    TResult Function(_CloseErrorDialog value)? closeErrorDialog,
     TResult Function(_Succeeded value)? succeeded,
     required TResult orElse(),
   }) {
@@ -1299,6 +1347,154 @@ abstract class _FormTypeToggled implements SignupEvent {
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$FormTypeToggledImplCopyWith<_$FormTypeToggledImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$CloseErrorDialogImplCopyWith<$Res> {
+  factory _$$CloseErrorDialogImplCopyWith(_$CloseErrorDialogImpl value,
+          $Res Function(_$CloseErrorDialogImpl) then) =
+      __$$CloseErrorDialogImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$CloseErrorDialogImplCopyWithImpl<$Res>
+    extends _$SignupEventCopyWithImpl<$Res, _$CloseErrorDialogImpl>
+    implements _$$CloseErrorDialogImplCopyWith<$Res> {
+  __$$CloseErrorDialogImplCopyWithImpl(_$CloseErrorDialogImpl _value,
+      $Res Function(_$CloseErrorDialogImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of SignupEvent
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$CloseErrorDialogImpl implements _CloseErrorDialog {
+  const _$CloseErrorDialogImpl();
+
+  @override
+  String toString() {
+    return 'SignupEvent.closeErrorDialog()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$CloseErrorDialogImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(FormType formType, UserType userType) initialized,
+    required TResult Function(String email) emailChanged,
+    required TResult Function(String password) passwordChanged,
+    required TResult Function(String name) nameChanged,
+    required TResult Function() submitted,
+    required TResult Function() obscurePasswordToggled,
+    required TResult Function(FormType form) formTypeToggled,
+    required TResult Function() closeErrorDialog,
+    required TResult Function() succeeded,
+  }) {
+    return closeErrorDialog();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(FormType formType, UserType userType)? initialized,
+    TResult? Function(String email)? emailChanged,
+    TResult? Function(String password)? passwordChanged,
+    TResult? Function(String name)? nameChanged,
+    TResult? Function()? submitted,
+    TResult? Function()? obscurePasswordToggled,
+    TResult? Function(FormType form)? formTypeToggled,
+    TResult? Function()? closeErrorDialog,
+    TResult? Function()? succeeded,
+  }) {
+    return closeErrorDialog?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(FormType formType, UserType userType)? initialized,
+    TResult Function(String email)? emailChanged,
+    TResult Function(String password)? passwordChanged,
+    TResult Function(String name)? nameChanged,
+    TResult Function()? submitted,
+    TResult Function()? obscurePasswordToggled,
+    TResult Function(FormType form)? formTypeToggled,
+    TResult Function()? closeErrorDialog,
+    TResult Function()? succeeded,
+    required TResult orElse(),
+  }) {
+    if (closeErrorDialog != null) {
+      return closeErrorDialog();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialized value) initialized,
+    required TResult Function(_EmailChanged value) emailChanged,
+    required TResult Function(_PasswordChanged value) passwordChanged,
+    required TResult Function(_NameChanged value) nameChanged,
+    required TResult Function(_Submitted value) submitted,
+    required TResult Function(_ObscurePasswordToggled value)
+        obscurePasswordToggled,
+    required TResult Function(_FormTypeToggled value) formTypeToggled,
+    required TResult Function(_CloseErrorDialog value) closeErrorDialog,
+    required TResult Function(_Succeeded value) succeeded,
+  }) {
+    return closeErrorDialog(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialized value)? initialized,
+    TResult? Function(_EmailChanged value)? emailChanged,
+    TResult? Function(_PasswordChanged value)? passwordChanged,
+    TResult? Function(_NameChanged value)? nameChanged,
+    TResult? Function(_Submitted value)? submitted,
+    TResult? Function(_ObscurePasswordToggled value)? obscurePasswordToggled,
+    TResult? Function(_FormTypeToggled value)? formTypeToggled,
+    TResult? Function(_CloseErrorDialog value)? closeErrorDialog,
+    TResult? Function(_Succeeded value)? succeeded,
+  }) {
+    return closeErrorDialog?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialized value)? initialized,
+    TResult Function(_EmailChanged value)? emailChanged,
+    TResult Function(_PasswordChanged value)? passwordChanged,
+    TResult Function(_NameChanged value)? nameChanged,
+    TResult Function(_Submitted value)? submitted,
+    TResult Function(_ObscurePasswordToggled value)? obscurePasswordToggled,
+    TResult Function(_FormTypeToggled value)? formTypeToggled,
+    TResult Function(_CloseErrorDialog value)? closeErrorDialog,
+    TResult Function(_Succeeded value)? succeeded,
+    required TResult orElse(),
+  }) {
+    if (closeErrorDialog != null) {
+      return closeErrorDialog(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _CloseErrorDialog implements SignupEvent {
+  const factory _CloseErrorDialog() = _$CloseErrorDialogImpl;
 }
 
 /// @nodoc
@@ -1349,6 +1545,7 @@ class _$SucceededImpl implements _Succeeded {
     required TResult Function() submitted,
     required TResult Function() obscurePasswordToggled,
     required TResult Function(FormType form) formTypeToggled,
+    required TResult Function() closeErrorDialog,
     required TResult Function() succeeded,
   }) {
     return succeeded();
@@ -1364,6 +1561,7 @@ class _$SucceededImpl implements _Succeeded {
     TResult? Function()? submitted,
     TResult? Function()? obscurePasswordToggled,
     TResult? Function(FormType form)? formTypeToggled,
+    TResult? Function()? closeErrorDialog,
     TResult? Function()? succeeded,
   }) {
     return succeeded?.call();
@@ -1379,6 +1577,7 @@ class _$SucceededImpl implements _Succeeded {
     TResult Function()? submitted,
     TResult Function()? obscurePasswordToggled,
     TResult Function(FormType form)? formTypeToggled,
+    TResult Function()? closeErrorDialog,
     TResult Function()? succeeded,
     required TResult orElse(),
   }) {
@@ -1399,6 +1598,7 @@ class _$SucceededImpl implements _Succeeded {
     required TResult Function(_ObscurePasswordToggled value)
         obscurePasswordToggled,
     required TResult Function(_FormTypeToggled value) formTypeToggled,
+    required TResult Function(_CloseErrorDialog value) closeErrorDialog,
     required TResult Function(_Succeeded value) succeeded,
   }) {
     return succeeded(this);
@@ -1414,6 +1614,7 @@ class _$SucceededImpl implements _Succeeded {
     TResult? Function(_Submitted value)? submitted,
     TResult? Function(_ObscurePasswordToggled value)? obscurePasswordToggled,
     TResult? Function(_FormTypeToggled value)? formTypeToggled,
+    TResult? Function(_CloseErrorDialog value)? closeErrorDialog,
     TResult? Function(_Succeeded value)? succeeded,
   }) {
     return succeeded?.call(this);
@@ -1429,6 +1630,7 @@ class _$SucceededImpl implements _Succeeded {
     TResult Function(_Submitted value)? submitted,
     TResult Function(_ObscurePasswordToggled value)? obscurePasswordToggled,
     TResult Function(_FormTypeToggled value)? formTypeToggled,
+    TResult Function(_CloseErrorDialog value)? closeErrorDialog,
     TResult Function(_Succeeded value)? succeeded,
     required TResult orElse(),
   }) {

@@ -1,11 +1,11 @@
-import 'package:bpm/app/appTextStyles.dart';
-import 'package:bpm/core/di/injection.dart';
-import 'package:bpm/core/domain/entities/city_model.dart';
-import 'package:bpm/features/publish_ad/domain/models/photo_model.dart';
-import 'package:bpm/features/publish_ad/presentation/blocs/publish_ad_bloc/publish_ad_bloc.dart';
-import 'package:bpm/features/publish_ad/presentation/widgets/publish_ad_photos_page.dart';
-import 'package:bpm/features/publish_ad/presentation/widgets/publish_ad_search_city_page.dart';
-import 'package:bpm/features/publish_ad/presentation/widgets/publish_ad_title_page.dart';
+import 'package:assoshare/app/appTextStyles.dart';
+import 'package:assoshare/core/di/injection.dart';
+import 'package:assoshare/core/domain/entities/city_model.dart';
+import 'package:assoshare/features/publish_ad/domain/models/photo_model.dart';
+import 'package:assoshare/features/publish_ad/presentation/blocs/publish_ad_bloc/publish_ad_bloc.dart';
+import 'package:assoshare/features/publish_ad/presentation/widgets/publish_ad_photos_page.dart';
+import 'package:assoshare/features/publish_ad/presentation/widgets/publish_ad_search_city_page.dart';
+import 'package:assoshare/features/publish_ad/presentation/widgets/publish_ad_title_page.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -51,7 +51,7 @@ class _PublishAdScreenState extends State<PublishAdScreen> {
       create: (context) => locator<PublishAdBloc>(),
       child: BlocConsumer<PublishAdBloc, PublishAdState>(
         listener: (context, state) {
-          if(state.status.isSuccess){
+          if (state.status.isSuccess) {
             Navigator.pop(context);
           }
         },
@@ -80,7 +80,7 @@ class _PublishAdScreenState extends State<PublishAdScreen> {
                   preferredSize: Size(size.width, 0),
                   child: LinearProgressIndicator(
                     color: Theme.of(context).colorScheme.primary,
-                    value: (state.pageIndex + 1) / _page_number,
+                    value: (state.pageIndex + 1) / _pageNumber,
                   ),
                 ),
               ),
@@ -112,5 +112,5 @@ class _PublishAdScreenState extends State<PublishAdScreen> {
   //CONSTANTS
   ///////////////////////////////////////////////////////////////
 
-  static const _page_number = 4;
+  static const _pageNumber = 4;
 }

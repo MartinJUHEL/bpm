@@ -1,8 +1,7 @@
-import 'package:bpm/core/domain/entities/user_model.dart';
-import 'package:bpm/core/domain/repositories/user_repository.dart';
-import 'package:bpm/features/Authentication/domain/repositories/authentication_repository.dart';
-import 'package:bpm/features/Authentication/domain/usecases/is_email_verified_usecase.dart';
-import 'package:bpm/features/Authentication/presentation/bloc/authentication_bloc.dart';
+import 'package:assoshare/core/domain/repositories/user_repository.dart';
+import 'package:assoshare/features/Authentication/domain/repositories/authentication_repository.dart';
+import 'package:assoshare/features/Authentication/domain/usecases/is_email_verified_usecase.dart';
+import 'package:assoshare/features/Authentication/presentation/bloc/authentication_bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:injectable/injectable.dart';
 

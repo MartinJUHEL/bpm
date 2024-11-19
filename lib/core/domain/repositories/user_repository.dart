@@ -1,4 +1,4 @@
-import 'package:bpm/core/domain/entities/user_model.dart';
+import 'package:assoshare/core/domain/entities/user_model.dart';
 
 abstract class IUserRepository {
   Future<UserModel?> getUser(String uid);

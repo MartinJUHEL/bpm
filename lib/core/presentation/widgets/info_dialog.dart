@@ -1,4 +1,4 @@
-import 'package:bpm/app/constants.dart';
+import 'package:assoshare/app/constants.dart';
 import 'package:flutter/material.dart';
 
 class InfoDialog extends StatelessWidget {
@@ -29,15 +29,15 @@ class InfoDialog extends StatelessWidget {
       children: <Widget>[
         Container(
           padding: const EdgeInsets.only(
-              left: Constants.basicPadding,
-              top: Constants.avatarRadius + Constants.basicPadding,
-              right: Constants.basicPadding,
-              bottom: Constants.basicPadding),
+              left: Constants.smallPadding,
+              top: Constants.avatarRadius + Constants.smallPadding,
+              right: Constants.smallPadding,
+              bottom: Constants.smallPadding),
           margin: const EdgeInsets.only(top: Constants.avatarRadius),
           decoration: BoxDecoration(
               shape: BoxShape.rectangle,
               color: Colors.white,
-              borderRadius: BorderRadius.circular(Constants.basicPadding),
+              borderRadius: BorderRadius.circular(Constants.smallPadding),
               boxShadow: const [
                 BoxShadow(
                     color: Colors.black, offset: Offset(0, 10), blurRadius: 10),
@@ -77,8 +77,8 @@ class InfoDialog extends StatelessWidget {
         ),
         img != null
             ? Positioned(
-                left: Constants.basicPadding,
-                right: Constants.basicPadding,
+                left: Constants.smallPadding,
+                right: Constants.smallPadding,
                 child: CircleAvatar(
                   backgroundColor: Colors.transparent,
                   radius: Constants.avatarRadius,

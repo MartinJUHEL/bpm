@@ -1,4 +1,4 @@
-import 'package:bpm/features/publish_ad/domain/models/photo_model.dart';
+import 'package:assoshare/features/publish_ad/domain/models/photo_model.dart';
 import 'package:flutter/material.dart';
 
 class PhotoFrameWidget extends StatelessWidget {

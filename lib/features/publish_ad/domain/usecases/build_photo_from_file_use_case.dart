@@ -1,4 +1,4 @@
-import 'package:bpm/features/publish_ad/domain/models/photo_model.dart';
+import 'package:assoshare/features/publish_ad/domain/models/photo_model.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:injectable/injectable.dart';
 import 'package:path/path.dart';

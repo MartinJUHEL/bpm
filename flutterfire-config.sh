@@ -12,27 +12,27 @@ case $1 in
     flutterfire config \
       --project=bpm-dev-71dd4 \
       --out=lib/firebase_options_dev.dart \
-      --ios-bundle-id=com.rennes.bpm.dev \
+      --ios-bundle-id=com.rennes.assoshare.dev \
       --ios-out=ios/flavors/dev/GoogleService-Info.plist \
-      --android-package-name=com.rennes.bpm.dev \
+      --android-package-name=com.rennes.assoshare.dev \
       --android-out=android/app/src/dev/google-services.json
     ;;
   sta)
     flutterfire config \
       --project=bpm-sta \
       --out=lib/firebase_options_stg.dart \
-      --ios-bundle-id=com.rennes.bpm.sta \
+      --ios-bundle-id=com.rennes.assoshare.sta \
       --ios-out=ios/flavors/stg/GoogleService-Info.plist \
-      --android-package-name=com.rennes.bpm.sta \
+      --android-package-name=com.rennes.assoshare.sta \
       --android-out=android/app/src/stg/google-services.json
     ;;
   prod)
     flutterfire config \
       --project=bpm-prod-df16a \
       --out=lib/firebase_options_prod.dart \
-      --ios-bundle-id=com.rennes.bpm \
+      --ios-bundle-id=com.rennes.assoshare \
       --ios-out=ios/flavors/prod/GoogleService-Info.plist \
-      --android-package-name=com.rennes.bpm \
+      --android-package-name=com.rennes.assoshare \
       --android-out=android/app/src/prod/google-services.json
     ;;
   *)

@@ -1,8 +1,8 @@
 
-import 'package:bpm/core/di/injection.dart';
-import 'package:bpm/core/presentation/widgets/submit_button.dart';
-import 'package:bpm/features/publish_ad/domain/models/photo_model.dart';
-import 'package:bpm/features/publish_ad/presentation/blocs/upload_photos_bloc/upload_photos_bloc.dart';
+import 'package:assoshare/core/di/injection.dart';
+import 'package:assoshare/core/presentation/widgets/submit_button.dart';
+import 'package:assoshare/features/publish_ad/domain/models/photo_model.dart';
+import 'package:assoshare/features/publish_ad/presentation/blocs/upload_photos_bloc/upload_photos_bloc.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

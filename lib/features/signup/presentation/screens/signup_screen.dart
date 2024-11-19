@@ -1,13 +1,13 @@
-import 'package:bpm/core/di/injection.dart';
-import 'package:bpm/core/domain/entities/user_model.dart';
-import 'package:bpm/core/presentation/widgets/error_dialog.dart';
-import 'package:bpm/core/presentation/widgets/submit_button.dart';
-import 'package:bpm/features/Authentication/presentation/bloc/authentication_bloc.dart';
-import 'package:bpm/features/reset_password/presentation/screens/reset_password_screen.dart';
-import 'package:bpm/features/signup/presentation/bloc/signup_bloc.dart';
-import 'package:bpm/features/signup/presentation/widgets/email_field.dart';
-import 'package:bpm/features/signup/presentation/widgets/name_field.dart';
-import 'package:bpm/features/signup/presentation/widgets/password_field.dart';
+import 'package:assoshare/core/di/injection.dart';
+import 'package:assoshare/core/domain/entities/user_model.dart';
+import 'package:assoshare/core/presentation/widgets/error_dialog.dart';
+import 'package:assoshare/core/presentation/widgets/submit_button.dart';
+import 'package:assoshare/features/Authentication/presentation/bloc/authentication_bloc.dart';
+import 'package:assoshare/features/reset_password/presentation/screens/reset_password_screen.dart';
+import 'package:assoshare/features/signup/presentation/bloc/signup_bloc.dart';
+import 'package:assoshare/features/signup/presentation/widgets/email_field.dart';
+import 'package:assoshare/features/signup/presentation/widgets/name_field.dart';
+import 'package:assoshare/features/signup/presentation/widgets/password_field.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -50,10 +50,21 @@ class SignupScreen extends StatelessWidget {
           if (state.errorMessage?.isNotEmpty == true) {
             showDialog(
                 context: context,
-                builder: (context) => ErrorDialog(
+                builder: (dialogContext) => ErrorDialog(
                       errorMessage: state.errorMessage,
-                      onPressed: () => Navigator.of(context).pop(),
-                    ));
+                      onPressed: () {
+                        context
+                            .read<SignupBloc>()
+                            .add(const SignupEvent.closeErrorDialog());
+                        Navigator.of(dialogContext).pop();
+                      },
+                    )).then((onValue) async {
+              if (context.mounted) {
+                context
+                    .read<SignupBloc>()
+                    .add(const SignupEvent.closeErrorDialog());
+              }
+            });
           } else if (state.isFormValid && !state.isLoading) {
             context.read<SignupBloc>().add(const SignupEvent.succeeded());
             context

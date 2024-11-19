@@ -1,5 +1,5 @@
 import 'package:bloc/bloc.dart';
-import 'package:bpm/core/utils/logger/logger.dart';
+import 'package:assoshare/core/utils/logger/logger.dart';
 
 class AppBlocObserver extends BlocObserver {
   @override

@@ -18,6 +18,8 @@ class SignupEvent with _$SignupEvent {
 
   const factory SignupEvent.formTypeToggled(FormType form) = _FormTypeToggled;
 
+  const factory SignupEvent.closeErrorDialog() = _CloseErrorDialog;
+
   const factory SignupEvent.succeeded() = _Succeeded;
 }
 

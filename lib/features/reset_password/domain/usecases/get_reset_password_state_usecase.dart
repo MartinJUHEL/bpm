@@ -1,6 +1,6 @@
-import 'package:bpm/core/domain/entities/common_status.dart';
-import 'package:bpm/features/Authentication/domain/repositories/authentication_repository.dart';
-import 'package:bpm/features/reset_password/presentation/bloc/reset_password_bloc.dart';
+import 'package:assoshare/core/domain/entities/common_status.dart';
+import 'package:assoshare/features/Authentication/domain/repositories/authentication_repository.dart';
+import 'package:assoshare/features/reset_password/presentation/bloc/reset_password_bloc.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:injectable/injectable.dart';
 

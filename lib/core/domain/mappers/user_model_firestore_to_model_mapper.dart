@@ -1,5 +1,5 @@
-import 'package:bpm/core/domain/entities/user_model.dart';
-import 'package:bpm/core/domain/usecases/get_user_type_from_string_usecase.dart';
+import 'package:assoshare/core/domain/entities/user_model.dart';
+import 'package:assoshare/core/domain/usecases/get_user_type_from_string_usecase.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:injectable/injectable.dart';
 

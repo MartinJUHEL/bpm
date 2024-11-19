@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:bpm/features/profil/domain/usecases/get_user_name_use_case.dart';
+import 'package:assoshare/features/profil/domain/usecases/get_user_name_use_case.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';

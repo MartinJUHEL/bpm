@@ -4,19 +4,20 @@ import 'package:injectable/injectable.dart';
 @injectable
 class ConnectivityCheckerHelper {
   Future<bool> checkConnectivity() async {
-    final ConnectivityResult connectivityResult =
+    final List<ConnectivityResult> connectivityResult =
         await Connectivity().checkConnectivity();
     return _handleResult(connectivityResult);
   }
 
-  static Stream<ConnectivityResult> listenToConnectivityChanged() {
+  static Stream<List<ConnectivityResult>> listenToConnectivityChanged() {
     return Connectivity().onConnectivityChanged;
   }
 
-  bool _handleResult(ConnectivityResult connectivityResult) {
+  bool _handleResult(List<ConnectivityResult> connectivityResult) {
     final bool connected;
-    if (connectivityResult == ConnectivityResult.mobile ||
-        connectivityResult == ConnectivityResult.wifi) {
+    if (connectivityResult.contains(ConnectivityResult.mobile) ||
+        connectivityResult.contains(ConnectivityResult.wifi) ||
+        connectivityResult.contains(ConnectivityResult.vpn)) {
       connected = true;
     } else {
       connected = false;

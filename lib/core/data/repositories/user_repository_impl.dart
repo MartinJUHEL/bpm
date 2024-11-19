@@ -1,7 +1,7 @@
-import 'package:bpm/core/data/services/local/user_local_service.dart';
-import 'package:bpm/core/data/services/remote/user_remote_service.dart';
-import 'package:bpm/core/domain/entities/user_model.dart';
-import 'package:bpm/core/domain/repositories/user_repository.dart';
+import 'package:assoshare/core/data/services/local/user_local_service.dart';
+import 'package:assoshare/core/data/services/remote/user_remote_service.dart';
+import 'package:assoshare/core/domain/entities/user_model.dart';
+import 'package:assoshare/core/domain/repositories/user_repository.dart';
 import 'package:injectable/injectable.dart';
 
 @Injectable(as: IUserRepository)

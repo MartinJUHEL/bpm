@@ -1,5 +1,5 @@
-import 'package:bpm/core/domain/entities/user_model.dart';
-import 'package:bpm/core/domain/repositories/user_repository.dart';
+import 'package:assoshare/core/domain/entities/user_model.dart';
+import 'package:assoshare/core/domain/repositories/user_repository.dart';
 import 'package:injectable/injectable.dart';
 
 @injectable

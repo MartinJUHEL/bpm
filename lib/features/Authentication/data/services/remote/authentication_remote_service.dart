@@ -1,4 +1,3 @@
-import 'package:bpm/core/domain/entities/user_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:injectable/injectable.dart';
 
@@ -31,7 +30,7 @@ class AuthenticationRemoteService {
     try {
       UserCredential userCredential =
           await _firebaseAuth.signInWithEmailAndPassword(
-              email: email, password: password!);
+              email: email, password: password);
       return userCredential;
     } on FirebaseAuthException catch (e) {
       throw FirebaseAuthException(code: e.code, message: e.message);

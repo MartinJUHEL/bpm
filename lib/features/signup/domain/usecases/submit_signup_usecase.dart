@@ -1,9 +1,9 @@
-import 'package:bpm/core/domain/entities/user_model.dart';
-import 'package:bpm/features/Authentication/domain/repositories/authentication_repository.dart';
-import 'package:bpm/features/signup/domain/usecases/is_email_valid_usecase.dart';
-import 'package:bpm/features/signup/domain/usecases/is_name_valid_usecase.dart';
-import 'package:bpm/features/signup/domain/usecases/is_password_valid_usecase.dart';
-import 'package:bpm/features/signup/presentation/bloc/signup_bloc.dart';
+import 'package:assoshare/core/domain/entities/user_model.dart';
+import 'package:assoshare/features/Authentication/domain/repositories/authentication_repository.dart';
+import 'package:assoshare/features/signup/domain/usecases/is_email_valid_usecase.dart';
+import 'package:assoshare/features/signup/domain/usecases/is_name_valid_usecase.dart';
+import 'package:assoshare/features/signup/domain/usecases/is_password_valid_usecase.dart';
+import 'package:assoshare/features/signup/presentation/bloc/signup_bloc.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:injectable/injectable.dart';

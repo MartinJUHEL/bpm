@@ -1,5 +1,5 @@
-import 'package:bpm/core/domain/entities/city_model.dart';
-import 'package:bpm/core/domain/usecases/get_location_use_case.dart';
+import 'package:assoshare/core/domain/entities/city_model.dart';
+import 'package:assoshare/core/domain/usecases/get_location_use_case.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:injectable/injectable.dart';

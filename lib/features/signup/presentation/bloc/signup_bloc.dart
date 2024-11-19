@@ -1,20 +1,19 @@
 import 'dart:async';
 
-import 'package:bpm/core/domain/entities/user_model.dart';
-import 'package:bpm/features/signup/domain/usecases/is_email_valid_usecase.dart';
-import 'package:bpm/features/signup/domain/usecases/is_name_valid_usecase.dart';
-import 'package:bpm/features/signup/domain/usecases/is_password_valid_usecase.dart';
-import 'package:bpm/features/signup/domain/usecases/submit_signin_usecase.dart';
-import 'package:bpm/features/signup/domain/usecases/submit_signup_usecase.dart';
+import 'package:assoshare/core/domain/entities/user_model.dart';
+import 'package:assoshare/core/utils/TextUtils.dart';
+import 'package:assoshare/features/signup/domain/usecases/is_email_valid_usecase.dart';
+import 'package:assoshare/features/signup/domain/usecases/is_name_valid_usecase.dart';
+import 'package:assoshare/features/signup/domain/usecases/is_password_valid_usecase.dart';
+import 'package:assoshare/features/signup/domain/usecases/submit_signin_usecase.dart';
+import 'package:assoshare/features/signup/domain/usecases/submit_signup_usecase.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
-part 'signup_event.dart';
-
-part 'signup_state.dart';
-
 part 'signup_bloc.freezed.dart';
+part 'signup_event.dart';
+part 'signup_state.dart';
 
 @injectable
 class SignupBloc extends Bloc<SignupEvent, SignupState> {
@@ -41,7 +40,8 @@ class SignupBloc extends Bloc<SignupEvent, SignupState> {
           succeeded: () => _onSucceeded(emit),
           formTypeToggled: (FormType form) => _formTypeToggled(form, emit),
           initialized: (FormType formType, UserType userType) =>
-              _initialized(formType, userType));
+              _initialized(formType, userType, emit),
+          closeErrorDialog: () => _onErrorDialogClosed(emit));
     });
   }
 
@@ -102,7 +102,12 @@ class SignupBloc extends Bloc<SignupEvent, SignupState> {
     emit(state.copyWith(formType: form));
   }
 
-  _initialized(FormType formType, UserType userType) {
+  _initialized(
+      FormType formType, UserType userType, Emitter<SignupState> emit) {
     emit(state.copyWith(formType: formType, userType: userType));
+  }
+
+  _onErrorDialogClosed(Emitter<SignupState> emit) {
+    emit(state.copyWith(errorMessage: empty));
   }
 }

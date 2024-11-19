@@ -2,6 +2,8 @@ plugins {
     id "com.android.application"
     id "kotlin-android"
     id "dev.flutter.flutter-gradle-plugin"
+    id "com.google.gms.google-services"
+    id "com.google.firebase.crashlytics"
 }
 
 def localProperties = new Properties()
@@ -10,6 +12,16 @@ if (localPropertiesFile.exists()) {
     localPropertiesFile.withReader('UTF-8') { reader ->
         localProperties.load(reader)
     }
+}
+
+def minSdkVersion = localProperties.getProperty("flutter.minSdkVersion ")
+if (minSdkVersion == null) {
+    minSdkVersion = "23"
+}
+def targetSdkVersion =
+        localProperties.getProperty("flutter.targetSdkVersion")
+if (targetSdkVersion == null) {
+    targetSdkVersion = "31"
 }
 
 def flutterVersionCode = localProperties.getProperty('flutter.versionCode')
@@ -23,9 +35,9 @@ if (flutterVersionName == null) {
 }
 
 android {
-    namespace "com.rennes.bpm"
+    namespace "com.rennes.assoshare"
     compileSdkVersion flutter.compileSdkVersion
-    ndkVersion flutter.ndkVersion
+    ndkVersion = flutter.ndkVersion
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -41,11 +53,11 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.rennes.bpm"
+        applicationId "com.rennes.assoshare"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
-        minSdkVersion flutter.minSdkVersion
-        targetSdkVersion flutter.targetSdkVersion
+        minSdk = minSdkVersion.toInteger()
+        targetSdk = targetSdkVersion.toInteger()
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
         multiDexEnabled true
@@ -89,5 +101,3 @@ dependencies {
     implementation 'com.google.firebase:firebase-core:21.1.1'
 }
 
-apply plugin: 'com.google.gms.google-services'
-apply plugin: 'com.google.firebase.crashlytics'

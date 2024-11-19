@@ -1,4 +1,4 @@
-import 'package:bpm/firebase_options_dev.dart';
+import 'package:assoshare/firebase_options_dev.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 class FirebaseService {

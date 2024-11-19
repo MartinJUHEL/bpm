@@ -1,5 +1,5 @@
-import 'package:bpm/features/Authentication/data/services/remote/authentication_remote_service.dart';
-import 'package:bpm/features/Authentication/domain/repositories/authentication_repository.dart';
+import 'package:assoshare/features/Authentication/data/services/remote/authentication_remote_service.dart';
+import 'package:assoshare/features/Authentication/domain/repositories/authentication_repository.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:injectable/injectable.dart';
 

@@ -1,7 +1,7 @@
 import 'dart:async';
 
-import 'package:bpm/core/domain/entities/common_status.dart';
-import 'package:bpm/features/reset_password/domain/usecases/get_reset_password_state_usecase.dart';
+import 'package:assoshare/core/domain/entities/common_status.dart';
+import 'package:assoshare/features/reset_password/domain/usecases/get_reset_password_state_usecase.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';

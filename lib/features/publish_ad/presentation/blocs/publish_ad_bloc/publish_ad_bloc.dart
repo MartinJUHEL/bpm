@@ -1,10 +1,10 @@
 import 'dart:async';
 
-import 'package:bpm/core/domain/entities/city_model.dart';
-import 'package:bpm/core/domain/entities/common_status.dart';
-import 'package:bpm/features/publish_ad/domain/models/photo_model.dart';
-import 'package:bpm/features/publish_ad/domain/usecases/is_ad_description_valid_use_case.dart';
-import 'package:bpm/features/publish_ad/domain/usecases/is_ad_title_valid_use_case.dart';
+import 'package:assoshare/core/domain/entities/city_model.dart';
+import 'package:assoshare/core/domain/entities/common_status.dart';
+import 'package:assoshare/features/publish_ad/domain/models/photo_model.dart';
+import 'package:assoshare/features/publish_ad/domain/usecases/is_ad_description_valid_use_case.dart';
+import 'package:assoshare/features/publish_ad/domain/usecases/is_ad_title_valid_use_case.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';

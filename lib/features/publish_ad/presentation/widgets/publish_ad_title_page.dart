@@ -1,5 +1,5 @@
-import 'package:bpm/core/presentation/widgets/submit_button.dart';
-import 'package:bpm/features/publish_ad/presentation/blocs/publish_ad_bloc/publish_ad_bloc.dart';
+import 'package:assoshare/core/presentation/widgets/submit_button.dart';
+import 'package:assoshare/features/publish_ad/presentation/blocs/publish_ad_bloc/publish_ad_bloc.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

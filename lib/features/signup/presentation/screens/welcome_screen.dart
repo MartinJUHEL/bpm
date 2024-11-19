@@ -1,5 +1,5 @@
-import 'package:bpm/features/signup/presentation/screens/choose_user_type_screen.dart';
-import 'package:bpm/features/signup/presentation/screens/signup_screen.dart';
+import 'package:assoshare/features/signup/presentation/screens/choose_user_type_screen.dart';
+import 'package:assoshare/features/signup/presentation/screens/signup_screen.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 

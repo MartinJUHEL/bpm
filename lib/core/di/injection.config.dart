@@ -128,6 +128,7 @@ Future<_i174.GetIt> $initGetIt(
       () => _i164.GetUserTypeFromStringUseCase());
   gh.factory<_i401.CheckLocationPermissionUseCase>(
       () => _i401.CheckLocationPermissionUseCase());
+  gh.factory<_i202.HomeBloc>(() => _i202.HomeBloc());
   gh.factory<_i949.IsEmailValidUseCase>(() => _i949.IsEmailValidUseCase());
   gh.factory<_i61.IsPasswordValidUseCase>(() => _i61.IsPasswordValidUseCase());
   gh.factory<_i411.IsNameValidUseCase>(() => _i411.IsNameValidUseCase());
@@ -143,7 +144,6 @@ Future<_i174.GetIt> $initGetIt(
   gh.factory<_i331.PickPhotosFromGalleryUseCase>(
       () => _i331.PickPhotosFromGalleryUseCase());
   gh.factory<_i315.IsAdTitleValidUseCase>(() => _i315.IsAdTitleValidUseCase());
-  gh.factory<_i202.HomeBloc>(() => _i202.HomeBloc());
   gh.factory<_i524.UploadPhotosToStorageUseCase>(
       () => _i524.UploadPhotosToStorageUseCase(gh<_i457.FirebaseStorage>()));
   gh.factory<_i270.RemovePhotosFromStorageUseCase>(

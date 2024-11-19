@@ -33,6 +33,5 @@ class PhotoPickerModal extends StatelessWidget {
         ],
       ),
     );
-    ;
   }
 }

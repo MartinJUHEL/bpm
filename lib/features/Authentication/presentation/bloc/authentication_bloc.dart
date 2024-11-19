@@ -1,14 +1,12 @@
-import 'package:bloc/bloc.dart';
-import 'package:bpm/features/Authentication/domain/usecases/authentication_signed_out_usecase.dart';
-import 'package:bpm/features/Authentication/domain/usecases/authentication_started_usecase.dart';
+import 'package:assoshare/features/Authentication/domain/usecases/authentication_signed_out_usecase.dart';
+import 'package:assoshare/features/Authentication/domain/usecases/authentication_started_usecase.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
-part 'authentication_event.dart';
-
-part 'authentication_state.dart';
-
 part 'authentication_bloc.freezed.dart';
+part 'authentication_event.dart';
+part 'authentication_state.dart';
 
 @injectable
 class AuthenticationBloc

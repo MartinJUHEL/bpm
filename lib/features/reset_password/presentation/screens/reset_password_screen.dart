@@ -1,9 +1,9 @@
-import 'package:bpm/core/di/injection.dart';
-import 'package:bpm/core/domain/entities/common_status.dart';
-import 'package:bpm/core/presentation/widgets/error_dialog.dart';
-import 'package:bpm/core/presentation/widgets/info_dialog.dart';
-import 'package:bpm/core/presentation/widgets/submit_button.dart';
-import 'package:bpm/features/reset_password/presentation/bloc/reset_password_bloc.dart';
+import 'package:assoshare/core/di/injection.dart';
+import 'package:assoshare/core/domain/entities/common_status.dart';
+import 'package:assoshare/core/presentation/widgets/error_dialog.dart';
+import 'package:assoshare/core/presentation/widgets/info_dialog.dart';
+import 'package:assoshare/core/presentation/widgets/submit_button.dart';
+import 'package:assoshare/features/reset_password/presentation/bloc/reset_password_bloc.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

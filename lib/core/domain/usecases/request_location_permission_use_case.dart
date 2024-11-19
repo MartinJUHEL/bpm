@@ -4,7 +4,7 @@ import 'package:permission_handler/permission_handler.dart';
 @injectable
 class RequestLocationPermissionUseCase {
   Future<bool> execute() async {
-    final permission = Permission.location;
+    const permission = Permission.location;
 
     if (await permission.isDenied) {
       final result = await permission.request();

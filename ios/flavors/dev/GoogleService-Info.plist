@@ -9,7 +9,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.rennes.bpm.dev</string>
+	<string>com.rennes.assoshare.dev</string>
 	<key>PROJECT_ID</key>
 	<string>bpm-dev-71dd4</string>
 	<key>STORAGE_BUCKET</key>
@@ -25,6 +25,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:1093219269460:ios:0985dd1ee636ae209366c1</string>
+	<string>1:1093219269460:ios:42fb39cdc444d24d9366c1</string>
 </dict>
 </plist>

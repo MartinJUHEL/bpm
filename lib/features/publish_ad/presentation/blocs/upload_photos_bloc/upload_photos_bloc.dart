@@ -1,12 +1,12 @@
 import 'dart:async';
 
-import 'package:bpm/core/domain/entities/common_status.dart';
-import 'package:bpm/features/publish_ad/domain/models/photo_model.dart';
-import 'package:bpm/features/publish_ad/domain/usecases/build_photo_from_file_use_case.dart';
-import 'package:bpm/features/publish_ad/domain/usecases/pick_photo_from_camera_use_case.dart';
-import 'package:bpm/features/publish_ad/domain/usecases/pick_photos_from_gallery_use_case.dart';
-import 'package:bpm/features/publish_ad/domain/usecases/remove_photo_from_storage_use_case.dart';
-import 'package:bpm/features/publish_ad/domain/usecases/upload_photo_to_storage_use_case.dart';
+import 'package:assoshare/core/domain/entities/common_status.dart';
+import 'package:assoshare/features/publish_ad/domain/models/photo_model.dart';
+import 'package:assoshare/features/publish_ad/domain/usecases/build_photo_from_file_use_case.dart';
+import 'package:assoshare/features/publish_ad/domain/usecases/pick_photo_from_camera_use_case.dart';
+import 'package:assoshare/features/publish_ad/domain/usecases/pick_photos_from_gallery_use_case.dart';
+import 'package:assoshare/features/publish_ad/domain/usecases/remove_photo_from_storage_use_case.dart';
+import 'package:assoshare/features/publish_ad/domain/usecases/upload_photo_to_storage_use_case.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:image_picker/image_picker.dart';

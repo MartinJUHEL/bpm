@@ -1,6 +1,4 @@
-import 'dart:io';
-
-import 'package:bpm/features/publish_ad/domain/models/photo_model.dart';
+import 'package:assoshare/features/publish_ad/domain/models/photo_model.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:injectable/injectable.dart';
 

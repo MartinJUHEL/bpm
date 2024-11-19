@@ -1,6 +1,5 @@
-import 'package:bpm/core/domain/usecases/check_location_permission_use_case.dart';
-import 'package:bpm/core/domain/usecases/request_location_permission_use_case.dart';
-import 'package:bpm/core/utils/logger/logger.dart';
+import 'package:assoshare/core/domain/usecases/check_location_permission_use_case.dart';
+import 'package:assoshare/core/domain/usecases/request_location_permission_use_case.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:injectable/injectable.dart';
 
@@ -18,14 +17,12 @@ class GetLocationUseCase {
     if (!isLocationGranted) {
       isLocationGranted = await _requestLocationPermissionUseCase.execute();
       if (isLocationGranted) {
-        return await Geolocator.getCurrentPosition(
-            desiredAccuracy: LocationAccuracy.best);
+        return await Geolocator.getCurrentPosition();
       } else {
         return null;
       }
     } else {
-      return await Geolocator.getCurrentPosition(
-          desiredAccuracy: LocationAccuracy.best);
+      return await Geolocator.getCurrentPosition();
     }
   }
 }

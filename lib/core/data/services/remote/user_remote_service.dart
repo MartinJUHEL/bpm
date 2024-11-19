@@ -1,5 +1,5 @@
-import 'package:bpm/core/domain/entities/user_model.dart';
-import 'package:bpm/core/domain/mappers/user_model_firestore_to_model_mapper.dart';
+import 'package:assoshare/core/domain/entities/user_model.dart';
+import 'package:assoshare/core/domain/mappers/user_model_firestore_to_model_mapper.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart';

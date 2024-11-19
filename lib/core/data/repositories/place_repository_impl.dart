@@ -1,5 +1,5 @@
-import 'package:bpm/core/data/services/remote/place_api_service.dart';
-import 'package:bpm/core/domain/repositories/place_repository.dart';
+import 'package:assoshare/core/data/services/remote/place_api_service.dart';
+import 'package:assoshare/core/domain/repositories/place_repository.dart';
 import 'package:injectable/injectable.dart';
 
 @Injectable(as: IPlaceRepository)

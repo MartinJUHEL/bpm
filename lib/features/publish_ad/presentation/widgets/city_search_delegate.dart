@@ -1,5 +1,5 @@
-import 'package:bpm/app/appTextStyles.dart';
-import 'package:bpm/features/publish_ad/presentation/blocs/publish_ad_search_city_bloc/publish_ad_search_city_bloc.dart';
+import 'package:assoshare/app/appTextStyles.dart';
+import 'package:assoshare/features/publish_ad/presentation/blocs/publish_ad_search_city_bloc/publish_ad_search_city_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

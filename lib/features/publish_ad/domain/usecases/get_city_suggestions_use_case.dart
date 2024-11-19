@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:bpm/core/domain/repositories/place_repository.dart';
+import 'package:assoshare/core/domain/repositories/place_repository.dart';
 import 'package:injectable/injectable.dart';
 
 @injectable
