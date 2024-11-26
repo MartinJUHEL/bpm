@@ -13,4 +13,6 @@ class Constants {
   //Home
   static const homeFloatingButtonSpace = 70.0;
   static const bottomBarHeight = 70.0;
+
+  static const smallIconSize = 15.0;
 }

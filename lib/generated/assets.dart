@@ -78,7 +78,7 @@ class Assets {
   static const String repositoriesAuthenticationRepository = 'lib/Authentication/domain/repositories/authentication_repository.dart';
   static const String repositoriesAuthenticationRepositoryImpl = 'lib/Authentication/data/repositories/authentication_repository_impl.dart';
   static const String repositoriesPlaceRepository = 'lib/core/domain/repositories/place_repository.dart';
-  static const String repositoriesPlaceRepositoryImpl = 'lib/core/data/repositories/place_repository_impl.dart';
+  static const String repositoriesPlaceRepositoryImpl = 'lib/core/data/repositories/address_repository_impl.dart';
   static const String repositoriesUserRepository = 'lib/core/domain/repositories/user_repository.dart';
   static const String repositoriesUserRepositoryImpl = 'lib/core/data/repositories/user_repository_impl.dart';
   static const String screenHomeScreen = 'lib/home/presentation/screen/home_screen.dart';

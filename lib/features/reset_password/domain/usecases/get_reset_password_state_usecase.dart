@@ -21,7 +21,7 @@ class GetResetPasswordStateUseCase {
       return const ResetPasswordState(status: CommonStatus.success);
     } catch (e) {
       return ResetPasswordState(
-          error: tr('errorOccured'), status: CommonStatus.failure);
+          error: tr('errorOccurred'), status: CommonStatus.failure);
     }
   }
 }

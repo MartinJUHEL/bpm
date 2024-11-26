@@ -49,7 +49,7 @@ class SubmitSignInUseCase {
         logger.e(e.toString());
         return state.copyWith(
             isLoading: false,
-            errorMessage: tr('errorOccured'),
+            errorMessage: tr('errorOccurred'),
             isFormValid: false);
       }
     } else {

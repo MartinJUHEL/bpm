@@ -40,7 +40,9 @@ Future<void> runMainApp(FirebaseOptions firebaseOptions) async {
     primaryColor: Colors.yellow,
     flavor: Flavor.dev,
   );
-  Bloc.observer = AppBlocObserver();
+
+  ///Use for log changes.
+  //Bloc.observer = AppBlocObserver();
   runApp(EasyLocalization(
       supportedLocales: const [Locale('en'), Locale('fr')],
       path: 'assets/translations',

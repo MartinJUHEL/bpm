@@ -4,8 +4,14 @@
     "description": "App title"
   },
   "refresh": "Refresh",
-  "errorOccured": "An error occurred please try again",
+  "errorOccurred": "An error occurred please try again",
+  "noConnectionTitle": "Oops!",
+  "noConnectionMessage": "It seems you're offline. Please connect to the internet to continue.",
   "userNotAuthenticated": "User is not authenticated",
+  "next": "Next",
+  "loan": "Loan",
+  "rent": "Rent",
+  "close": "Close",
   "@_WELCOME_PAGE": {},
   "welcomeText": "Welcome to BPM",
   "@_EMAIL_NOT_VERIFIED_PAGE": {},
@@ -53,5 +59,6 @@
   "chooseCity": "Choose a city",
   "enterYourCity": "Enter your city",
   "locationError": "Can't fetch your location",
-  "publishAd": "Publish your ad"
+  "publishAd": "Publish your ad",
+  "queryTooShortMessage": "3 characters minimum are needed"
 }

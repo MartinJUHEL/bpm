@@ -1,11 +1,14 @@
 import 'package:assoshare/app/appTextStyles.dart';
 import 'package:assoshare/core/di/injection.dart';
-import 'package:assoshare/core/domain/entities/city_model.dart';
-import 'package:assoshare/features/publish_ad/domain/models/photo_model.dart';
+import 'package:assoshare/core/domain/entities/ad_entity.dart';
 import 'package:assoshare/features/publish_ad/presentation/blocs/publish_ad_bloc/publish_ad_bloc.dart';
 import 'package:assoshare/features/publish_ad/presentation/widgets/publish_ad_photos_page.dart';
+import 'package:assoshare/features/publish_ad/presentation/widgets/publish_ad_price_page.dart';
+import 'package:assoshare/features/publish_ad/presentation/widgets/publish_ad_recap_page.dart';
 import 'package:assoshare/features/publish_ad/presentation/widgets/publish_ad_search_city_page.dart';
+import 'package:assoshare/features/publish_ad/presentation/widgets/publish_ad_select_type.dart';
 import 'package:assoshare/features/publish_ad/presentation/widgets/publish_ad_title_page.dart';
+import 'package:assoshare/features/searchaddress/domain/entities/city_entity.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -20,40 +23,15 @@ class PublishAdScreen extends StatefulWidget {
 class _PublishAdScreenState extends State<PublishAdScreen> {
   final PageController _controller = PageController();
 
-  _moveToPreviousPage(BuildContext context) {
-    context
-        .read<PublishAdBloc>()
-        .add(const PublishAdEvent.movedToPreviousPage());
-    _controller.previousPage(
-        duration: const Duration(milliseconds: 200), curve: Curves.easeIn);
-  }
-
-  _moveToNextPage(BuildContext context) {
-    context.read<PublishAdBloc>().add(const PublishAdEvent.movedToNextPage());
-    _controller.nextPage(
-        duration: const Duration(milliseconds: 200), curve: Curves.easeIn);
-  }
-
-  _savePhotos(BuildContext context, List<PhotoModel> photos) {
-    context.read<PublishAdBloc>().add(PublishAdEvent.savedPhotos(photos));
-    _controller.nextPage(
-        duration: const Duration(milliseconds: 200), curve: Curves.easeIn);
-  }
-
-  _saveCity(BuildContext context, CityModel city) {
-    context.read<PublishAdBloc>().add(PublishAdEvent.citySaved(city));
-  }
-
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return BlocProvider(
-      create: (context) => locator<PublishAdBloc>(),
-      child: BlocConsumer<PublishAdBloc, PublishAdState>(
+      create: (context) => locator<PublishAdCubit>(),
+      child: BlocConsumer<PublishAdCubit, PublishAdState>(
         listener: (context, state) {
-          if (state.status.isSuccess) {
-            Navigator.pop(context);
-          }
+          //todo finish when add created
+          _controller.animateToPage(state.pageIndex, duration: const Duration(milliseconds: 200), curve: Curves.easeIn);
         },
         builder: (context, state) {
           return SafeArea(
@@ -72,7 +50,7 @@ class _PublishAdScreenState extends State<PublishAdScreen> {
                     if (state.pageIndex == 0) {
                       Navigator.pop(context);
                     } else {
-                      _moveToPreviousPage(context);
+                      context.read<PublishAdCubit>().onMovedToPreviousPage();
                     }
                   },
                 ),
@@ -80,7 +58,7 @@ class _PublishAdScreenState extends State<PublishAdScreen> {
                   preferredSize: Size(size.width, 0),
                   child: LinearProgressIndicator(
                     color: Theme.of(context).colorScheme.primary,
-                    value: (state.pageIndex + 1) / _pageNumber,
+                    value: (state.pageIndex + 1) / state.getPageNumber(),
                   ),
                 ),
               ),
@@ -89,16 +67,19 @@ class _PublishAdScreenState extends State<PublishAdScreen> {
                 scrollDirection: Axis.horizontal,
                 controller: _controller,
                 children: [
-                  PublishAdTitlePage(submit: () => _moveToNextPage(context)),
+                  const PublishAdSelectType(),
+                  const PublishAdTitlePage(),
                   PublishAdPhotosPage(
                     //todo : adId
                     adId: 'test',
-                    submit: (photos) => _savePhotos(context, photos),
+                    submit: (photos) => context.read<PublishAdCubit>().onSavedPhotos(photos),
                     photos: state.photos,
                   ),
                   PublishAdSearchCityPage(
-                    submit: (CityModel city) => _saveCity(context, city),
-                  )
+                    submit: (CityEntity city) => context.read<PublishAdCubit>().onCitySaved(city),
+                  ),
+                  if (state.adType == AdType.rent) const PublishAdPricePage(),
+                  const PublishAdRecapPage()
                 ],
               ),
             ),
@@ -107,10 +88,4 @@ class _PublishAdScreenState extends State<PublishAdScreen> {
       ),
     );
   }
-
-  ///////////////////////////////////////////////////////////////
-  //CONSTANTS
-  ///////////////////////////////////////////////////////////////
-
-  static const _pageNumber = 4;
 }

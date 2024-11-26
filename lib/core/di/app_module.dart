@@ -1,5 +1,8 @@
 import 'package:assoshare/core/data/services/firebase_service.dart';
+import 'package:assoshare/core/network/GenericErrorTrigger.dart';
+import 'package:assoshare/core/network/GenericErrorTriggerImpl.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -11,18 +14,21 @@ abstract class AppModule {
   @preResolve
   Future<FirebaseService> get fireService => FirebaseService.init();
 
-  @injectable
+  @singleton
   FirebaseFirestore get store => FirebaseFirestore.instance;
 
-  @injectable
+  @singleton
   FirebaseCrashlytics get crashlytics => FirebaseCrashlytics.instance;
 
-  @injectable
+  @singleton
   FirebaseAuth get auth => FirebaseAuth.instance;
 
-  @injectable
+  @singleton
   FirebaseStorage get storage => FirebaseStorage.instance;
 
   @preResolve
   Future<SharedPreferences> get prefs => SharedPreferences.getInstance();
+
+  @singleton
+  Dio get dio => Dio();
 }

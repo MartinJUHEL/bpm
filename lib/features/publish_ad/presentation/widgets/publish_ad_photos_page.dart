@@ -85,7 +85,7 @@ class PublishAdPhotosPage extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.symmetric(vertical: size.height * 0.05),
                     child: SubmitButton(
-                        title: 'next',
+                        title: tr('next'),
                         isLoading: state.status.isLoading,
                         onPressed: () => submit(state.photos)),
                   )

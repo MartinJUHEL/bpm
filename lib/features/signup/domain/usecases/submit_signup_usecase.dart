@@ -47,7 +47,7 @@ class SubmitSignupUseCase {
         } else {
           return state.copyWith(
               isLoading: false,
-              errorMessage: tr('errorOccured'),
+              errorMessage: tr('errorOccurred'),
               isFormValid: false);
         }
         return state.copyWith(

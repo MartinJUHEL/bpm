@@ -13,6 +13,6 @@ class FetchAndSaveUserLocalUseCase {
     UserModel? user = await _userRepository.getUser(uid);
     return user != null
         ? _userRepository.saveUserLocal(user.displayName, user.uid)
-        : Future.error(tr('errorOccured'));
+        : Future.error(tr('errorOccurred'));
   }
 }
