@@ -1,10 +1,12 @@
-import 'package:bpm/core/domain/entities/user_model.dart';
+import 'package:assoshare/core/domain/entities/result.dart';
+import 'package:assoshare/core/domain/entities/user/user_entity.dart';
 
-abstract class IUserRepository {
-  Future<UserModel?> getUser(String uid);
-  Future<void> saveUser(UserModel userModel);
-  Future<void> saveUserLocal(String userName, String uid);
+abstract class UserRepository {
+  Future<Result<UserEntity>> fetchUser();
+
+  UserEntity? getLocalUser();
+
+  Future<void> saveUser(UserEntity user);
+
   Future<void> setUserVerified(bool isVerified);
-  String? getUserName();
-  String? getUid();
 }

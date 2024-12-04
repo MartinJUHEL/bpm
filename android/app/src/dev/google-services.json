@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1093219269460",
+    "project_id": "bpm-dev-71dd4",
+    "storage_bucket": "bpm-dev-71dd4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1093219269460:android:f947aed11c2ce73d9366c1",
+        "android_client_info": {
+          "package_name": "com.rennes.assoshare.dev"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAaynFwXWMF_HqeCAtQNeW0z5xXI8gsUsM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
