@@ -7,7 +7,6 @@ part 'ad_model.freezed.dart';
 part 'ad_model.g.dart';
 
 @freezed
-@JsonSerializable(explicitToJson: true, includeIfNull: true)
 class AdModel with _$AdModel {
   const AdModel._();
 

@@ -25,7 +25,7 @@ Map<String, dynamic> _$$AddressResultModelImplToJson(
     <String, dynamic>{
       'type': instance.type,
       'version': instance.version,
-      'features': instance.features,
+      'features': instance.features?.map((e) => e.toJson()).toList(),
       'attribution': instance.attribution,
       'licence': instance.licence,
       'query': instance.query,
@@ -44,8 +44,8 @@ _$FeaturesImpl _$$FeaturesImplFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$$FeaturesImplToJson(_$FeaturesImpl instance) =>
     <String, dynamic>{
       'type': instance.type,
-      'geometry': instance.geometry,
-      'properties': instance.properties,
+      'geometry': instance.geometry.toJson(),
+      'properties': instance.properties?.toJson(),
     };
 
 _$PropertiesImpl _$$PropertiesImplFromJson(Map<String, dynamic> json) =>

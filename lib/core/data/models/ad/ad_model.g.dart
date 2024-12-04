@@ -28,7 +28,7 @@ Map<String, dynamic> _$$AdEntityImplToJson(_$AdEntityImpl instance) =>
       'price': instance.price,
       'adType': instance.adType,
       'photosUrl': instance.photosUrl,
-      'city': instance.city,
+      'city': instance.city.toJson(),
       'renterId': instance.renterId,
       'renterName': instance.renterName,
       'renterPhotoUrl': instance.renterPhotoUrl,
