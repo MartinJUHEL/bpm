@@ -32,11 +32,7 @@ import '../../features/Authentication/domain/usecases/is_email_verified_usecase.
 import '../../features/Authentication/presentation/bloc/authentication_bloc.dart'
     as _i842;
 import '../../features/home/presentation/bloc/home_bloc.dart' as _i202;
-import '../../features/profil/domain/usecases/get_user_name_use_case.dart'
-    as _i197;
 import '../../features/profil/presentation/bloc/profil_bloc.dart' as _i282;
-import '../../features/publish_ad/domain/usecases/build_photo_from_file_use_case.dart'
-    as _i519;
 import '../../features/publish_ad/domain/usecases/is_ad_description_valid_use_case.dart'
     as _i662;
 import '../../features/publish_ad/domain/usecases/is_ad_title_valid_use_case.dart'
@@ -45,14 +41,10 @@ import '../../features/publish_ad/domain/usecases/pick_photo_from_camera_use_cas
     as _i133;
 import '../../features/publish_ad/domain/usecases/pick_photos_from_gallery_use_case.dart'
     as _i331;
-import '../../features/publish_ad/domain/usecases/remove_photo_from_storage_use_case.dart'
-    as _i270;
-import '../../features/publish_ad/domain/usecases/upload_photo_to_storage_use_case.dart'
-    as _i524;
+import '../../features/publish_ad/presentation/blocs/pick_photos_bloc/pick_photos_bloc_cubit.dart'
+    as _i962;
 import '../../features/publish_ad/presentation/blocs/publish_ad_bloc/publish_ad_bloc.dart'
     as _i54;
-import '../../features/publish_ad/presentation/blocs/upload_photos_bloc/upload_photos_bloc.dart'
-    as _i118;
 import '../../features/reset_password/domain/usecases/get_reset_password_state_usecase.dart'
     as _i841;
 import '../../features/reset_password/presentation/bloc/reset_password_bloc.dart'
@@ -69,25 +61,25 @@ import '../../features/searchaddress/domain/usecase/SearchCityUseCase.dart'
     as _i969;
 import '../../features/searchaddress/presentation/blocs/publish_ad_search_city_bloc/search_city_cubit.dart'
     as _i530;
-import '../../features/signup/domain/usecases/fetch_and_save_user_local_usecase.dart'
-    as _i951;
 import '../../features/signup/domain/usecases/is_email_valid_usecase.dart'
     as _i949;
 import '../../features/signup/domain/usecases/is_name_valid_usecase.dart'
     as _i411;
 import '../../features/signup/domain/usecases/is_password_valid_usecase.dart'
     as _i61;
-import '../../features/signup/domain/usecases/save_user_usecase.dart' as _i273;
 import '../../features/signup/domain/usecases/submit_signin_usecase.dart'
     as _i628;
 import '../../features/signup/domain/usecases/submit_signup_usecase.dart'
     as _i777;
 import '../../features/signup/presentation/bloc/signup_bloc.dart' as _i907;
+import '../data/repositories/ad_repository_impl.dart' as _i476;
 import '../data/repositories/user_repository_impl.dart' as _i223;
 import '../data/services/firebase_service.dart' as _i964;
-import '../data/services/local/user_local_service.dart' as _i812;
+import '../data/services/remote/ad_firebase_service.dart' as _i761;
+import '../data/services/remote/storage_service.dart' as _i123;
 import '../data/services/remote/user_remote_service.dart' as _i815;
 import '../domain/mappers/user_model_firestore_to_model_mapper.dart' as _i433;
+import '../domain/repositories/ad_repository.dart' as _i508;
 import '../domain/repositories/user_repository.dart' as _i544;
 import '../domain/usecases/get_location_use_case.dart' as _i493;
 import '../domain/usecases/get_user_type_from_string_usecase.dart' as _i164;
@@ -123,8 +115,6 @@ Future<_i174.GetIt> $initGetIt(
   gh.factory<_i949.IsEmailValidUseCase>(() => _i949.IsEmailValidUseCase());
   gh.factory<_i61.IsPasswordValidUseCase>(() => _i61.IsPasswordValidUseCase());
   gh.factory<_i411.IsNameValidUseCase>(() => _i411.IsNameValidUseCase());
-  gh.factory<_i519.BuildPhotoFromFileUseCase>(
-      () => _i519.BuildPhotoFromFileUseCase());
   gh.factory<_i133.PickPhotoFromCameraUseCase>(
       () => _i133.PickPhotoFromCameraUseCase());
   gh.factory<_i662.IsAdDescriptionValidUseCase>(
@@ -139,35 +129,24 @@ Future<_i174.GetIt> $initGetIt(
   gh.singleton<_i361.Dio>(() => appModule.dio);
   gh.lazySingleton<_i493.GetLocationUseCase>(
       () => const _i493.GetLocationUseCase());
-  gh.factory<_i524.UploadPhotosToStorageUseCase>(
-      () => _i524.UploadPhotosToStorageUseCase(gh<_i457.FirebaseStorage>()));
-  gh.factory<_i270.RemovePhotosFromStorageUseCase>(
-      () => _i270.RemovePhotosFromStorageUseCase(gh<_i457.FirebaseStorage>()));
+  gh.lazySingleton<_i123.StorageService>(
+      () => _i123.StorageService(gh<_i457.FirebaseStorage>()));
   gh.factory<_i433.UserModelFirestoreToModelMapper>(() =>
       _i433.UserModelFirestoreToModelMapper(
           gh<_i164.GetUserTypeFromStringUseCase>()));
   gh.lazySingleton<_i248.GenericErrorTrigger>(
       () => _i354.GenericErrorTriggerImpl());
-  gh.factory<_i815.UserRemoteService>(() => _i815.UserRemoteService(
+  gh.lazySingleton<_i815.UserRemoteService>(() => _i815.UserRemoteService(
         gh<_i974.FirebaseFirestore>(),
         gh<_i433.UserModelFirestoreToModelMapper>(),
         gh<_i59.FirebaseAuth>(),
       ));
-  gh.factory<_i118.UploadPhotosBloc>(() => _i118.UploadPhotosBloc(
-        gh<_i524.UploadPhotosToStorageUseCase>(),
-        gh<_i133.PickPhotoFromCameraUseCase>(),
-        gh<_i331.PickPhotosFromGalleryUseCase>(),
-        gh<_i270.RemovePhotosFromStorageUseCase>(),
-        gh<_i519.BuildPhotoFromFileUseCase>(),
-      ));
   gh.singleton<_i816.AppConnectivityInfo>(
       () => const _i816.AppConnectivityInfoImpl());
-  gh.factory<_i54.PublishAdCubit>(() => _i54.PublishAdCubit(
-        gh<_i315.IsAdTitleValidUseCase>(),
-        gh<_i662.IsAdDescriptionValidUseCase>(),
-      ));
   gh.lazySingleton<_i896.AddressRemoteDataSource>(
       () => _i896.AddressRemoteDataSourceImpl(dio: gh<_i361.Dio>()));
+  gh.lazySingleton<_i761.AdFirebaseService>(
+      () => _i761.AdFirebaseService(gh<_i974.FirebaseFirestore>()));
   gh.lazySingleton<_i251.AddressRepository>(() => _i47.AddressRepositoryImpl(
         gh<_i896.AddressRemoteDataSource>(),
         gh<_i248.GenericErrorTrigger>(),
@@ -175,27 +154,40 @@ Future<_i174.GetIt> $initGetIt(
       ));
   gh.factory<_i125.AuthenticationRemoteService>(
       () => _i125.AuthenticationRemoteService(gh<_i59.FirebaseAuth>()));
-  gh.factory<_i812.UserLocalService>(
-      () => _i812.UserLocalService(gh<_i460.SharedPreferences>()));
+  gh.factory<_i962.PickPhotosBlocCubit>(() => _i962.PickPhotosBlocCubit(
+        gh<_i133.PickPhotoFromCameraUseCase>(),
+        gh<_i331.PickPhotosFromGalleryUseCase>(),
+      ));
   gh.factory<_i813.GenericErrorTriggerCubit>(
       () => _i813.GenericErrorTriggerCubit(gh<_i248.GenericErrorTrigger>()));
+  gh.lazySingleton<_i508.AdRepository>(() => _i476.AdRepositoryImpl(
+        gh<_i248.GenericErrorTrigger>(),
+        gh<_i816.AppConnectivityInfo>(),
+        gh<_i761.AdFirebaseService>(),
+        gh<_i123.StorageService>(),
+      ));
   gh.factory<_i519.IAuthenticationRepository>(() =>
       _i216.AuthenticationRepositoryImpl(
           gh<_i125.AuthenticationRemoteService>()));
+  gh.lazySingleton<_i544.UserRepository>(() => _i223.UserRepositoryImpl(
+        gh<_i815.UserRemoteService>(),
+        gh<_i248.GenericErrorTrigger>(),
+        gh<_i816.AppConnectivityInfo>(),
+        gh<_i519.IAuthenticationRepository>(),
+      ));
   gh.lazySingleton<_i969.SearchCityUseCase>(
       () => _i969.SearchCityUseCase(gh<_i251.AddressRepository>()));
   gh.lazySingleton<_i92.SearchCityByLatLongUseCase>(
       () => _i92.SearchCityByLatLongUseCase(gh<_i251.AddressRepository>()));
-  gh.factory<_i544.IUserRepository>(() => _i223.UserRepositoryImpl(
-        gh<_i815.UserRemoteService>(),
-        gh<_i812.UserLocalService>(),
+  gh.factory<_i777.SubmitSignupUseCase>(() => _i777.SubmitSignupUseCase(
+        gh<_i949.IsEmailValidUseCase>(),
+        gh<_i61.IsPasswordValidUseCase>(),
+        gh<_i411.IsNameValidUseCase>(),
+        gh<_i519.IAuthenticationRepository>(),
+        gh<_i544.UserRepository>(),
       ));
-  gh.factory<_i197.GetUserNameUseCase>(
-      () => _i197.GetUserNameUseCase(gh<_i544.IUserRepository>()));
-  gh.factory<_i273.SaveUserUseCase>(
-      () => _i273.SaveUserUseCase(gh<_i544.IUserRepository>()));
-  gh.factory<_i951.FetchAndSaveUserLocalUseCase>(
-      () => _i951.FetchAndSaveUserLocalUseCase(gh<_i544.IUserRepository>()));
+  gh.factory<_i282.ProfilBloc>(
+      () => _i282.ProfilBloc(gh<_i544.UserRepository>()));
   gh.factory<_i841.GetResetPasswordStateUseCase>(() =>
       _i841.GetResetPasswordStateUseCase(
           gh<_i519.IAuthenticationRepository>()));
@@ -204,34 +196,25 @@ Future<_i174.GetIt> $initGetIt(
           gh<_i519.IAuthenticationRepository>()));
   gh.factory<_i917.IsEmailVerifiedUseCase>(() =>
       _i917.IsEmailVerifiedUseCase(gh<_i519.IAuthenticationRepository>()));
-  gh.factory<_i478.ResetPasswordBloc>(
-      () => _i478.ResetPasswordBloc(gh<_i841.GetResetPasswordStateUseCase>()));
-  gh.factory<_i282.ProfilBloc>(
-      () => _i282.ProfilBloc(gh<_i197.GetUserNameUseCase>()));
   gh.factory<_i628.SubmitSignInUseCase>(() => _i628.SubmitSignInUseCase(
         gh<_i949.IsEmailValidUseCase>(),
         gh<_i61.IsPasswordValidUseCase>(),
         gh<_i519.IAuthenticationRepository>(),
-        gh<_i951.FetchAndSaveUserLocalUseCase>(),
         gh<_i933.AuthenticationSignedOutUseCase>(),
+        gh<_i544.UserRepository>(),
+      ));
+  gh.factory<_i478.ResetPasswordBloc>(
+      () => _i478.ResetPasswordBloc(gh<_i841.GetResetPasswordStateUseCase>()));
+  gh.factory<_i54.PublishAdCubit>(() => _i54.PublishAdCubit(
+        gh<_i315.IsAdTitleValidUseCase>(),
+        gh<_i662.IsAdDescriptionValidUseCase>(),
+        gh<_i508.AdRepository>(),
+        gh<_i544.UserRepository>(),
       ));
   gh.factory<_i530.SearchCityCubit>(() => _i530.SearchCityCubit(
         searchCityUseCase: gh<_i969.SearchCityUseCase>(),
         searchCityByLatLongUseCase: gh<_i92.SearchCityByLatLongUseCase>(),
         getLocationUseCase: gh<_i493.GetLocationUseCase>(),
-      ));
-  gh.factory<_i550.AuthenticationStartedUseCase>(
-      () => _i550.AuthenticationStartedUseCase(
-            gh<_i519.IAuthenticationRepository>(),
-            gh<_i917.IsEmailVerifiedUseCase>(),
-            gh<_i544.IUserRepository>(),
-          ));
-  gh.factory<_i777.SubmitSignupUseCase>(() => _i777.SubmitSignupUseCase(
-        gh<_i949.IsEmailValidUseCase>(),
-        gh<_i61.IsPasswordValidUseCase>(),
-        gh<_i411.IsNameValidUseCase>(),
-        gh<_i519.IAuthenticationRepository>(),
-        gh<_i273.SaveUserUseCase>(),
       ));
   gh.factory<_i907.SignupBloc>(() => _i907.SignupBloc(
         gh<_i949.IsEmailValidUseCase>(),
@@ -240,6 +223,12 @@ Future<_i174.GetIt> $initGetIt(
         gh<_i777.SubmitSignupUseCase>(),
         gh<_i628.SubmitSignInUseCase>(),
       ));
+  gh.factory<_i550.AuthenticationStartedUseCase>(
+      () => _i550.AuthenticationStartedUseCase(
+            gh<_i519.IAuthenticationRepository>(),
+            gh<_i917.IsEmailVerifiedUseCase>(),
+            gh<_i544.UserRepository>(),
+          ));
   gh.factory<_i842.AuthenticationBloc>(() => _i842.AuthenticationBloc(
         gh<_i550.AuthenticationStartedUseCase>(),
         gh<_i933.AuthenticationSignedOutUseCase>(),

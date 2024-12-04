@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:assoshare/core/domain/entities/user_model.dart';
+import 'package:assoshare/core/domain/entities/user/user_entity.dart';
 import 'package:assoshare/core/utils/TextUtils.dart';
 import 'package:assoshare/features/signup/domain/usecases/is_email_valid_usecase.dart';
 import 'package:assoshare/features/signup/domain/usecases/is_name_valid_usecase.dart';

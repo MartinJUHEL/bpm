@@ -20,12 +20,14 @@ mixin _$PublishAdState {
   String get title => throw _privateConstructorUsedError;
   bool get isTitleValid => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
-  String get price => throw _privateConstructorUsedError;
+  int? get price => throw _privateConstructorUsedError;
   AdType? get adType => throw _privateConstructorUsedError;
   bool get isDescriptionValid => throw _privateConstructorUsedError;
-  List<PhotoModel> get photos => throw _privateConstructorUsedError;
+  List<PhotoEntity> get photos => throw _privateConstructorUsedError;
   CityEntity? get city => throw _privateConstructorUsedError;
   String get errorMessage => throw _privateConstructorUsedError;
+  bool get isLoading => throw _privateConstructorUsedError;
+  bool get isPublished => throw _privateConstructorUsedError;
 
   /// Create a copy of PublishAdState
   /// with the given fields replaced by the non-null parameter values.
@@ -45,12 +47,14 @@ abstract class $PublishAdStateCopyWith<$Res> {
       String title,
       bool isTitleValid,
       String description,
-      String price,
+      int? price,
       AdType? adType,
       bool isDescriptionValid,
-      List<PhotoModel> photos,
+      List<PhotoEntity> photos,
       CityEntity? city,
-      String errorMessage});
+      String errorMessage,
+      bool isLoading,
+      bool isPublished});
 
   $CityEntityCopyWith<$Res>? get city;
 }
@@ -74,12 +78,14 @@ class _$PublishAdStateCopyWithImpl<$Res, $Val extends PublishAdState>
     Object? title = null,
     Object? isTitleValid = null,
     Object? description = null,
-    Object? price = null,
+    Object? price = freezed,
     Object? adType = freezed,
     Object? isDescriptionValid = null,
     Object? photos = null,
     Object? city = freezed,
     Object? errorMessage = null,
+    Object? isLoading = null,
+    Object? isPublished = null,
   }) {
     return _then(_value.copyWith(
       pageIndex: null == pageIndex
@@ -98,10 +104,10 @@ class _$PublishAdStateCopyWithImpl<$Res, $Val extends PublishAdState>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
-      price: null == price
+      price: freezed == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int?,
       adType: freezed == adType
           ? _value.adType
           : adType // ignore: cast_nullable_to_non_nullable
@@ -113,7 +119,7 @@ class _$PublishAdStateCopyWithImpl<$Res, $Val extends PublishAdState>
       photos: null == photos
           ? _value.photos
           : photos // ignore: cast_nullable_to_non_nullable
-              as List<PhotoModel>,
+              as List<PhotoEntity>,
       city: freezed == city
           ? _value.city
           : city // ignore: cast_nullable_to_non_nullable
@@ -122,6 +128,14 @@ class _$PublishAdStateCopyWithImpl<$Res, $Val extends PublishAdState>
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String,
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isPublished: null == isPublished
+          ? _value.isPublished
+          : isPublished // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 
@@ -153,12 +167,14 @@ abstract class _$$PublishAdStateImplCopyWith<$Res>
       String title,
       bool isTitleValid,
       String description,
-      String price,
+      int? price,
       AdType? adType,
       bool isDescriptionValid,
-      List<PhotoModel> photos,
+      List<PhotoEntity> photos,
       CityEntity? city,
-      String errorMessage});
+      String errorMessage,
+      bool isLoading,
+      bool isPublished});
 
   @override
   $CityEntityCopyWith<$Res>? get city;
@@ -181,12 +197,14 @@ class __$$PublishAdStateImplCopyWithImpl<$Res>
     Object? title = null,
     Object? isTitleValid = null,
     Object? description = null,
-    Object? price = null,
+    Object? price = freezed,
     Object? adType = freezed,
     Object? isDescriptionValid = null,
     Object? photos = null,
     Object? city = freezed,
     Object? errorMessage = null,
+    Object? isLoading = null,
+    Object? isPublished = null,
   }) {
     return _then(_$PublishAdStateImpl(
       pageIndex: null == pageIndex
@@ -205,10 +223,10 @@ class __$$PublishAdStateImplCopyWithImpl<$Res>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
-      price: null == price
+      price: freezed == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int?,
       adType: freezed == adType
           ? _value.adType
           : adType // ignore: cast_nullable_to_non_nullable
@@ -220,7 +238,7 @@ class __$$PublishAdStateImplCopyWithImpl<$Res>
       photos: null == photos
           ? _value._photos
           : photos // ignore: cast_nullable_to_non_nullable
-              as List<PhotoModel>,
+              as List<PhotoEntity>,
       city: freezed == city
           ? _value.city
           : city // ignore: cast_nullable_to_non_nullable
@@ -229,6 +247,14 @@ class __$$PublishAdStateImplCopyWithImpl<$Res>
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String,
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isPublished: null == isPublished
+          ? _value.isPublished
+          : isPublished // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -241,12 +267,14 @@ class _$PublishAdStateImpl extends _PublishAdState {
       this.title = '',
       this.isTitleValid = false,
       this.description = '',
-      this.price = '',
+      this.price,
       this.adType,
       this.isDescriptionValid = false,
-      final List<PhotoModel> photos = const [],
+      final List<PhotoEntity> photos = const [],
       this.city,
-      this.errorMessage = ''})
+      this.errorMessage = '',
+      this.isLoading = false,
+      this.isPublished = false})
       : _photos = photos,
         super._();
 
@@ -263,17 +291,16 @@ class _$PublishAdStateImpl extends _PublishAdState {
   @JsonKey()
   final String description;
   @override
-  @JsonKey()
-  final String price;
+  final int? price;
   @override
   final AdType? adType;
   @override
   @JsonKey()
   final bool isDescriptionValid;
-  final List<PhotoModel> _photos;
+  final List<PhotoEntity> _photos;
   @override
   @JsonKey()
-  List<PhotoModel> get photos {
+  List<PhotoEntity> get photos {
     if (_photos is EqualUnmodifiableListView) return _photos;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_photos);
@@ -284,10 +311,16 @@ class _$PublishAdStateImpl extends _PublishAdState {
   @override
   @JsonKey()
   final String errorMessage;
+  @override
+  @JsonKey()
+  final bool isLoading;
+  @override
+  @JsonKey()
+  final bool isPublished;
 
   @override
   String toString() {
-    return 'PublishAdState(pageIndex: $pageIndex, title: $title, isTitleValid: $isTitleValid, description: $description, price: $price, adType: $adType, isDescriptionValid: $isDescriptionValid, photos: $photos, city: $city, errorMessage: $errorMessage)';
+    return 'PublishAdState(pageIndex: $pageIndex, title: $title, isTitleValid: $isTitleValid, description: $description, price: $price, adType: $adType, isDescriptionValid: $isDescriptionValid, photos: $photos, city: $city, errorMessage: $errorMessage, isLoading: $isLoading, isPublished: $isPublished)';
   }
 
   @override
@@ -309,7 +342,11 @@ class _$PublishAdStateImpl extends _PublishAdState {
             const DeepCollectionEquality().equals(other._photos, _photos) &&
             (identical(other.city, city) || other.city == city) &&
             (identical(other.errorMessage, errorMessage) ||
-                other.errorMessage == errorMessage));
+                other.errorMessage == errorMessage) &&
+            (identical(other.isLoading, isLoading) ||
+                other.isLoading == isLoading) &&
+            (identical(other.isPublished, isPublished) ||
+                other.isPublished == isPublished));
   }
 
   @override
@@ -324,7 +361,9 @@ class _$PublishAdStateImpl extends _PublishAdState {
       isDescriptionValid,
       const DeepCollectionEquality().hash(_photos),
       city,
-      errorMessage);
+      errorMessage,
+      isLoading,
+      isPublished);
 
   /// Create a copy of PublishAdState
   /// with the given fields replaced by the non-null parameter values.
@@ -342,12 +381,14 @@ abstract class _PublishAdState extends PublishAdState {
       final String title,
       final bool isTitleValid,
       final String description,
-      final String price,
+      final int? price,
       final AdType? adType,
       final bool isDescriptionValid,
-      final List<PhotoModel> photos,
+      final List<PhotoEntity> photos,
       final CityEntity? city,
-      final String errorMessage}) = _$PublishAdStateImpl;
+      final String errorMessage,
+      final bool isLoading,
+      final bool isPublished}) = _$PublishAdStateImpl;
   const _PublishAdState._() : super._();
 
   @override
@@ -359,17 +400,21 @@ abstract class _PublishAdState extends PublishAdState {
   @override
   String get description;
   @override
-  String get price;
+  int? get price;
   @override
   AdType? get adType;
   @override
   bool get isDescriptionValid;
   @override
-  List<PhotoModel> get photos;
+  List<PhotoEntity> get photos;
   @override
   CityEntity? get city;
   @override
   String get errorMessage;
+  @override
+  bool get isLoading;
+  @override
+  bool get isPublished;
 
   /// Create a copy of PublishAdState
   /// with the given fields replaced by the non-null parameter values.

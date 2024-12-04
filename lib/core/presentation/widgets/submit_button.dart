@@ -1,3 +1,4 @@
+import 'package:assoshare/app/constants.dart';
 import 'package:flutter/material.dart';
 
 class SubmitButton extends StatelessWidget {
@@ -15,10 +16,17 @@ class SubmitButton extends StatelessWidget {
     return AnimatedSize(
       duration: const Duration(milliseconds: 500),
       child: SizedBox(
-        width: isLoading ? loaderSize : size.width * 0.8,
-        child: OutlinedButton(
+        width: isLoading ? buttonHeight : size.width * 0.8,
+        child: ElevatedButton(
+          style: ElevatedButton.styleFrom(
+              fixedSize: isLoading ? Size(size.width * 0.8, buttonHeight) : Size(size.width * 0.8, buttonHeight),
+              padding: isLoading
+                  ? const EdgeInsets.symmetric(vertical: Constants.tinyPadding, horizontal: Constants.smallerPadding)
+                  : const EdgeInsets.symmetric(vertical: Constants.tinyPadding, horizontal: 0)),
           onPressed: isEnabled ? () => onPressed() : null,
-          child: isLoading ? const CircularProgressIndicator() : Text(title),
+          child: isLoading
+              ? const SizedBox(height: buttonHeight, width: buttonHeight, child: CircularProgressIndicator())
+              : Text(title),
         ),
       ),
     );
@@ -29,4 +37,4 @@ class SubmitButton extends StatelessWidget {
 // CONSTANTS
 ///////////////////////////////////////////////////////////////////////////
 
-const double loaderSize = 10.0;
+const double buttonHeight = 40.0;

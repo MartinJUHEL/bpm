@@ -9,10 +9,9 @@ import 'package:injectable/injectable.dart';
 class AuthenticationStartedUseCase {
   final IAuthenticationRepository _authenticationRepository;
   final IsEmailVerifiedUseCase _isEmailVerifiedUseCase;
-  final IUserRepository _userRepository;
+  final UserRepository _userRepository;
 
-  AuthenticationStartedUseCase(this._authenticationRepository,
-      this._isEmailVerifiedUseCase, this._userRepository);
+  AuthenticationStartedUseCase(this._authenticationRepository, this._isEmailVerifiedUseCase, this._userRepository);
 
   Future<AuthenticationState> execute() async {
     try {
@@ -23,8 +22,8 @@ class AuthenticationStartedUseCase {
           _authenticationRepository.verifyEmail();
           return const AuthenticationState.emailNotVerified();
         }
-        if (_userRepository.getUserName() == null ||
-            _userRepository.getUid() == null) {
+        final user = _userRepository.getLocalUser();
+        if (user == null) {
           return const AuthenticationState.failure();
         } else {
           await _userRepository.setUserVerified(true);

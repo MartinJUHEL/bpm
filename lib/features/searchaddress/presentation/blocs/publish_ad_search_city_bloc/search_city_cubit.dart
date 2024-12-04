@@ -9,7 +9,6 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
 part 'search_city_cubit.freezed.dart';
-
 part 'search_city_state.dart';
 
 @injectable
@@ -33,10 +32,10 @@ class SearchCityCubit extends Cubit<SearchCityState> {
   void onQueryChanged(String query) {
     if (query.length >= 3) {
       emit(state.copyWith(isLoading: true));
+      _debouncer.run(() {
+        _searchCity(query);
+      });
     }
-    _debouncer.run(() {
-      _searchCity(query);
-    });
   }
 
   void onSearchStarted() {

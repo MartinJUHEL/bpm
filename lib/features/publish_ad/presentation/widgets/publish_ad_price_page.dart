@@ -20,26 +20,22 @@ class PublishAdPricePage extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             Padding(padding: EdgeInsets.only(bottom: size.height * 0.1)),
-            const Text('adTitleInfo').tr(),
+            const Text('rentalPriceTitle').tr(),
             TextFormField(
                 onChanged: (value) {
-                  //todo
+                  int intPrice = int.tryParse(value) ?? 0;
+                  context.read<PublishAdCubit>().onPriceChanged(intPrice);
                 },
                 textInputAction: TextInputAction.done,
+                keyboardType: TextInputType.number,
                 decoration: InputDecoration(
-                  labelText: tr('adTitleLabel'),
-                  errorText: !state.isTitleValid ? tr('adTitleNotValid') : null,
-                  hintText: tr('adTitleLabel'),
+                  labelText: tr('rentalPriceLabel'),
+                  hintText: tr('rentalPriceLabel'),
                   contentPadding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
                 )),
-            Padding(padding: EdgeInsets.only(bottom: size.height * 0.04)),
+            const SizedBox(height: Constants.largePadding),
             const Expanded(child: SizedBox.shrink()),
-            SubmitButton(
-                title: tr('next'),
-                isEnabled: state.isTitleValid && state.isDescriptionValid,
-                onPressed: () => {
-                      /*TODO*/
-                    }),
+            SubmitButton(title: tr('next'), onPressed: () => {context.read<PublishAdCubit>().onMovedToNextPage()}),
             const SizedBox(height: Constants.largePadding)
           ],
         ));

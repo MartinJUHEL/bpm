@@ -1,6 +1,4 @@
 import 'package:assoshare/core/data/services/firebase_service.dart';
-import 'package:assoshare/core/network/GenericErrorTrigger.dart';
-import 'package:assoshare/core/network/GenericErrorTriggerImpl.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';

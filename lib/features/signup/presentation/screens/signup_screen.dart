@@ -1,5 +1,5 @@
 import 'package:assoshare/core/di/injection.dart';
-import 'package:assoshare/core/domain/entities/user_model.dart';
+import 'package:assoshare/core/domain/entities/user/user_entity.dart';
 import 'package:assoshare/core/presentation/widgets/error_dialog.dart';
 import 'package:assoshare/core/presentation/widgets/submit_button.dart';
 import 'package:assoshare/features/Authentication/presentation/bloc/authentication_bloc.dart';

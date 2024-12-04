@@ -1,4 +1,4 @@
-import 'package:assoshare/core/domain/entities/user_model.dart';
+import 'package:assoshare/core/domain/entities/user/user_entity.dart';
 import 'package:injectable/injectable.dart';
 
 @injectable

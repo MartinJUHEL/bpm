@@ -1,43 +1,49 @@
-import 'package:assoshare/core/data/services/local/user_local_service.dart';
+import 'package:assoshare/core/data/error/failures.dart';
+import 'package:assoshare/core/data/models/user/user_model.dart';
+import 'package:assoshare/core/data/repositories/base_repository.dart';
 import 'package:assoshare/core/data/services/remote/user_remote_service.dart';
-import 'package:assoshare/core/domain/entities/user_model.dart';
+import 'package:assoshare/core/domain/entities/result.dart';
+import 'package:assoshare/core/domain/entities/user/user_entity.dart';
 import 'package:assoshare/core/domain/repositories/user_repository.dart';
+import 'package:assoshare/features/Authentication/domain/repositories/authentication_repository.dart';
 import 'package:injectable/injectable.dart';
 
-@Injectable(as: IUserRepository)
-class UserRepositoryImpl implements IUserRepository {
+@LazySingleton(as: UserRepository)
+final class UserRepositoryImpl extends BaseRepository implements UserRepository {
   final UserRemoteService _userRemoteService;
-  final UserLocalService _userLocalService;
+  final IAuthenticationRepository _authenticationRepository;
 
-  UserRepositoryImpl(this._userRemoteService, this._userLocalService);
+  UserRepositoryImpl(
+      this._userRemoteService, super._genericErrorTrigger, super._connectivityInfo, this._authenticationRepository);
+
+  UserEntity? cachedUser;
 
   @override
-  Future<UserModel?> getUser(String uid) {
-    return _userRemoteService.getUser(uid);
+  Future<Result<UserEntity>> fetchUser() async {
+    final userUid = _authenticationRepository.getCurrentUser()?.uid;
+    if (userUid == null) {
+      return const Result.failure(Failure.unauthorized());
+    }
+    final result =
+        await safeCall(action: () => _userRemoteService.getUser(userUid), transform: (dto) => dto.toEntity());
+
+    return result.when(
+        success: (userEntity) {
+          cachedUser = userEntity;
+          return Result.success(userEntity);
+        },
+        failure: (_) => result);
   }
 
   @override
-  Future<void> saveUser(UserModel userModel) async {
-    await saveUserLocal(userModel.displayName, userModel.uid);
-    return _userRemoteService.saveUser(userModel);
+  UserEntity? getLocalUser() {
+    return cachedUser;
   }
 
   @override
-  String? getUserName() {
-    return _userLocalService.getUserName();
-  }
-
-  @override
-  String? getUid() {
-    return _userLocalService.getUid();
-  }
-
-  @override
-  Future<void> saveUserLocal(String userName, String uid) {
-    return Future.wait([
-      _userLocalService.saveUserName(userName),
-      _userLocalService.saveUid(uid)
-    ]);
+  Future<void> saveUser(UserEntity user) async {
+    cachedUser = user;
+    return _userRemoteService.saveUser(UserModel.fromEntity(user));
   }
 
   @override

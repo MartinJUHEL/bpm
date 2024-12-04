@@ -9,12 +9,14 @@ class PublishAdState with _$PublishAdState {
     @Default('') final String title,
     @Default(false) final bool isTitleValid,
     @Default('') final String description,
-    @Default('') final String price,
+    final int? price,
     final AdType? adType,
     @Default(false) final bool isDescriptionValid,
-    @Default([]) final List<PhotoModel> photos,
+    @Default([]) final List<PhotoEntity> photos,
     final CityEntity? city,
     @Default('') final String errorMessage,
+    @Default(false) final bool isLoading,
+    @Default(false) final bool isPublished,
   }) = _PublishAdState;
 
   int getPageNumber() {

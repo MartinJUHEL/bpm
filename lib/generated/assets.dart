@@ -41,7 +41,7 @@ class Assets {
   static const String entitiesCityModel = 'lib/core/domain/entities/city_model.dart';
   static const String entitiesCommonStatus = 'lib/core/domain/entities/common_status.dart';
   static const String entitiesErrorResultModel = 'lib/core/domain/entities/ErrorResultModel.dart';
-  static const String entitiesUserModel = 'lib/core/domain/entities/user_model.dart';
+  static const String entitiesUserModel = 'lib/core/domain/entities/user_entity.dart';
   static const String generatedAssets = 'lib/generated/assets.dart';
   static const String gradleWrapperGradleWrapper = 'android/gradle/wrapper/gradle-wrapper.properties';
   static const String helpersConnectivityHelper = 'lib/core/utils/helpers/connectivity_helper.dart';
@@ -63,7 +63,7 @@ class Assets {
   static const String mipmapXhdpiIcLauncher = 'android/app/src/main/res/mipmap-xhdpi/ic_launcher.png';
   static const String mipmapXxhdpiIcLauncher = 'android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png';
   static const String mipmapXxxhdpiIcLauncher = 'android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png';
-  static const String modelsPhotoModel = 'lib/publish_ad/domain/models/photo_model.dart';
+  static const String modelsPhotoModel = 'lib/publish_ad/domain/models/photo_entity.dart';
   static const String pluginsGeneratedPluginRegistrant = 'android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java';
   static const String profileAndroidManifest = 'android/app/src/profile/AndroidManifest.xml';
   static const String publishAdBlocPublishAdBloc = 'lib/publish_ad/presentation/blocs/publish_ad_bloc/publish_ad_bloc.dart';

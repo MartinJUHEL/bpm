@@ -12,7 +12,7 @@ _$UserModelImpl _$$UserModelImplFromJson(Map<String, dynamic> json) =>
       isVerified: json['isVerified'] as bool,
       email: json['email'] as String,
       displayName: json['displayName'] as String,
-      userType: $enumDecode(_$UserTypeEnumMap, json['userType']),
+      userType: json['userType'] as String,
       creationDate: const TimestampConverter()
           .fromJson(json['creationDate'] as Timestamp),
     );
@@ -23,11 +23,6 @@ Map<String, dynamic> _$$UserModelImplToJson(_$UserModelImpl instance) =>
       'isVerified': instance.isVerified,
       'email': instance.email,
       'displayName': instance.displayName,
-      'userType': _$UserTypeEnumMap[instance.userType]!,
+      'userType': instance.userType,
       'creationDate': const TimestampConverter().toJson(instance.creationDate),
     };
-
-const _$UserTypeEnumMap = {
-  UserType.individual: 'individual',
-  UserType.association: 'association',
-};

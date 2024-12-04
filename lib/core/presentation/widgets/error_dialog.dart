@@ -20,11 +20,19 @@ class ErrorDialog extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             SizedBox(width: 100, height: 100, child: image ?? const SizedBox.shrink()),
-            const SizedBox(height: Constants.largePadding),
-            errorTitle != null ? Text(errorTitle ?? '') : const SizedBox.shrink(),
-            const SizedBox(height: Constants.largePadding),
-            errorMessage != null ? Text(errorMessage ?? '') : const SizedBox.shrink(),
-            const SizedBox(height: Constants.largePadding),
+            const SizedBox(height: Constants.regularPadding),
+            errorTitle != null
+                ? Padding(
+                    padding: const EdgeInsets.only(bottom: Constants.regularPadding),
+                    child: Text(errorTitle ?? ''),
+                  )
+                : const SizedBox.shrink(),
+            errorMessage != null
+                ? Padding(
+                    padding: const EdgeInsets.only(bottom: Constants.regularPadding),
+                    child: Text(errorMessage ?? ''),
+                  )
+                : const SizedBox.shrink(),
             TextButton(
               onPressed: onPressed,
               child: Text(tr('close')),

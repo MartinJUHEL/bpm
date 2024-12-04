@@ -1,8 +1,7 @@
-
 import 'package:assoshare/core/di/injection.dart';
 import 'package:assoshare/core/presentation/widgets/submit_button.dart';
-import 'package:assoshare/features/publish_ad/domain/models/photo_model.dart';
-import 'package:assoshare/features/publish_ad/presentation/blocs/upload_photos_bloc/upload_photos_bloc.dart';
+import 'package:assoshare/features/publish_ad/domain/models/photo_entity.dart';
+import 'package:assoshare/features/publish_ad/presentation/blocs/pick_photos_bloc/pick_photos_bloc_cubit.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -12,23 +11,17 @@ import 'photo_frame_widget.dart';
 import 'photo_picker_modal.dart';
 
 class PublishAdPhotosPage extends StatelessWidget {
-  final Function(List<PhotoModel> photos) submit;
-  final String adId;
-  final List<PhotoModel> photos;
+  final Function(List<PhotoEntity> photos) submit;
+  final List<PhotoEntity> photos;
 
-  const PublishAdPhotosPage(
-      {super.key,
-      required this.submit,
-      required this.adId,
-      required this.photos});
+  const PublishAdPhotosPage({super.key, required this.submit, required this.photos});
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return BlocProvider(
-      create: (context) =>
-          locator<UploadPhotosBloc>()..add(UploadPhotosEvent.started(photos)),
-      child: BlocConsumer<UploadPhotosBloc, UploadPhotosState>(
+      create: (context) => locator<PickPhotosBlocCubit>(),
+      child: BlocConsumer<PickPhotosBlocCubit, PickPhotosBlocState>(
         listener: (context, state) {},
         builder: (context, state) {
           return Scaffold(
@@ -42,8 +35,7 @@ class PublishAdPhotosPage extends StatelessWidget {
                   Flexible(
                     child: GridView.builder(
                         scrollDirection: Axis.vertical,
-                        gridDelegate:
-                            const SliverGridDelegateWithFixedCrossAxisCount(
+                        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 2, // number of items in each row
                           mainAxisSpacing: 10.0, // spacing between rows
                           crossAxisSpacing: 10.0, // spacing between columns
@@ -53,41 +45,16 @@ class PublishAdPhotosPage extends StatelessWidget {
                           if (index == 0) {
                             return _buildAddPhotoCard(context);
                           } else {
-                            PhotoModel photo = state.photos[index - 1];
-                            return Stack(
-                              children: [
-                                Container(
-                                  margin: const EdgeInsets.all(3),
-                                  child: PhotoFrameWidget(
-                                    photo: photo,
-                                  ),
-                                ),
-                                Positioned(
-                                    right: -14,
-                                    top: -14,
-                                    child: IconButton(
-                                        icon: Icon(
-                                          Icons.cancel,
-                                          color: Theme.of(context)
-                                              .colorScheme
-                                              .primary,
-                                          size: 22,
-                                        ),
-                                        onPressed: () => context
-                                            .read<UploadPhotosBloc>()
-                                            .add(UploadPhotosEvent.removedPhoto(
-                                                index - 1))))
-                              ],
-                            );
+                            PhotoEntity photo = state.photos[index - 1];
+                            return PhotoFrameWidget(
+                                photo: photo,
+                                onDeleteClicked: () => context.read<PickPhotosBlocCubit>().onImageRemoved(photo));
                           }
                         }),
                   ),
                   Padding(
                     padding: EdgeInsets.symmetric(vertical: size.height * 0.05),
-                    child: SubmitButton(
-                        title: tr('next'),
-                        isLoading: state.status.isLoading,
-                        onPressed: () => submit(state.photos)),
+                    child: SubmitButton(title: tr('next'), onPressed: () => submit(state.photos)),
                   )
                 ],
               ),
@@ -109,17 +76,9 @@ class PublishAdPhotosPage extends StatelessWidget {
           onTap: () => showBarModalBottomSheet(
               context: context,
               builder: (BuildContext modalContext) {
-                return BlocProvider.value(
-                    value: BlocProvider.of<UploadPhotosBloc>(context),
-                    child: PhotoPickerModal(
-                        onCameraClicked: () => context
-                            .read<UploadPhotosBloc>()
-                            .add(
-                                UploadPhotosEvent.pickedImagesFromCamera(adId)),
-                        onGalleryClicked: () => context
-                            .read<UploadPhotosBloc>()
-                            .add(UploadPhotosEvent.pickedImagesFromGallery(
-                                adId))));
+                return PhotoPickerModal(
+                    onCameraClicked: () => context.read<PickPhotosBlocCubit>().onPickedImagesFromCamera(),
+                    onGalleryClicked: () => context.read<PickPhotosBlocCubit>().onPickedImagesFromGallery());
               }),
           child: const SizedBox(
               child: Icon(

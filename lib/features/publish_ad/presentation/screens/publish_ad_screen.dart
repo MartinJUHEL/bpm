@@ -70,8 +70,6 @@ class _PublishAdScreenState extends State<PublishAdScreen> {
                   const PublishAdSelectType(),
                   const PublishAdTitlePage(),
                   PublishAdPhotosPage(
-                    //todo : adId
-                    adId: 'test',
                     submit: (photos) => context.read<PublishAdCubit>().onSavedPhotos(photos),
                     photos: state.photos,
                   ),

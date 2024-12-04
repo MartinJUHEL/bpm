@@ -60,9 +60,12 @@ class App extends StatelessWidget {
   ErrorDialog _displayErrorDialog(ErrorType error, VoidCallback onDismissed) {
     return switch (error) {
       ErrorType.serverError => ErrorDialog(
-          errorMessage: tr('errorOccurred'), image: SvgPicture.asset(_serverErrorAsset), onPressed: onDismissed),
+          errorTitle: tr('errorTitle'),
+          errorMessage: tr('errorOccurred'),
+          image: SvgPicture.asset(_serverErrorAsset),
+          onPressed: onDismissed),
       ErrorType.noConnectivity => ErrorDialog(
-          errorTitle: tr('noConnectionTitle'),
+          errorTitle: tr('errorTitle'),
           errorMessage: tr('noConnectionMessage'),
           image: SvgPicture.asset(_noConnectivityAsset),
           onPressed: onDismissed),
