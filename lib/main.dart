@@ -1,4 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:firebase_app_check/firebase_app_check.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
@@ -19,6 +20,20 @@ Future<void> runMainApp(FirebaseOptions firebaseOptions) async {
 
   // Init firebase.
   await Firebase.initializeApp(options: firebaseOptions);
+
+  // Init appCheck
+  if (!kDebugMode) {
+    await FirebaseAppCheck.instance.activate(
+      androidProvider: AndroidProvider.playIntegrity,
+      appleProvider: AppleProvider.appAttest,
+      webProvider: ReCaptchaV3Provider('recaptcha-v3-site-key'),
+    );
+  } else {
+    await FirebaseAppCheck.instance.activate(
+      androidProvider: AndroidProvider.debug,
+      appleProvider: AppleProvider.debug,
+    );
+  }
 
   // Report crash with crashlytics.
   if (kReleaseMode) {
@@ -58,7 +73,7 @@ _configLoading() {
     ..maskColor = Colors.black
     ..maskType = EasyLoadingMaskType.black
     ..boxShadow = <BoxShadow>[]
-    ..progressColor = AppTheme.lightTheme.colorScheme.primary
+    ..progressColor = MaterialTheme.lightScheme().primary
     ..backgroundColor = Colors.transparent
     ..textColor = Colors.white
     ..indicatorColor = Colors.transparent

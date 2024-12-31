@@ -20,9 +20,9 @@ class Assets {
   static const String blocHomeBloc = 'lib/home/presentation/bloc/home_bloc.dart';
   static const String blocHomeEvent = 'lib/home/presentation/bloc/home_event.dart';
   static const String blocHomeState = 'lib/home/presentation/bloc/home_state.dart';
-  static const String blocProfilBloc = 'lib/profil/presentation/bloc/profil_bloc.dart';
-  static const String blocProfilEvent = 'lib/profil/presentation/bloc/profil_event.dart';
-  static const String blocProfilState = 'lib/profil/presentation/bloc/profil_state.dart';
+  static const String blocProfilBloc = 'lib/profile/presentation/bloc/profil_bloc.dart';
+  static const String blocProfilEvent = 'lib/profile/presentation/bloc/profil_event.dart';
+  static const String blocProfilState = 'lib/profile/presentation/bloc/profile_state.dart';
   static const String blocResetPasswordBloc = 'lib/reset_password/presentation/bloc/reset_password_bloc.dart';
   static const String blocResetPasswordEvent = 'lib/reset_password/presentation/bloc/reset_password_event.dart';
   static const String blocResetPasswordState = 'lib/reset_password/presentation/bloc/reset_password_state.dart';
@@ -85,7 +85,7 @@ class Assets {
   static const String screenSplashScreen = 'lib/splash/presentation/screen/splash_screen.dart';
   static const String screensChooseUserTypeScreen = 'lib/signup/presentation/screens/choose_user_type_screen.dart';
   static const String screensEmailNotVerifiedScreen = 'lib/Authentication/presentation/screens/email_not_verified_screen.dart';
-  static const String screensProfilScreen = 'lib/profil/presentation/screens/profil_screen.dart';
+  static const String screensProfilScreen = 'lib/profile/presentation/screens/profile_screen.dart';
   static const String screensPublishAdScreen = 'lib/publish_ad/presentation/screens/publish_ad_screen.dart';
   static const String screensResetPasswordScreen = 'lib/reset_password/presentation/screens/reset_password_screen.dart';
   static const String screensSignupScreen = 'lib/signup/presentation/screens/signup_screen.dart';
@@ -108,7 +108,7 @@ class Assets {
   static const String usecasesGetLocationPermissionUseCase = 'lib/core/domain/usecases/request_location_permission_use_case.dart';
   static const String usecasesGetLocationUseCase = 'lib/core/domain/usecases/get_location_use_case.dart';
   static const String usecasesGetResetPasswordStateUsecase = 'lib/reset_password/domain/usecases/get_reset_password_state_usecase.dart';
-  static const String usecasesGetUserNameUseCase = 'lib/profil/domain/usecases/get_user_name_use_case.dart';
+  static const String usecasesGetUserNameUseCase = 'lib/profile/domain/usecases/get_user_name_use_case.dart';
   static const String usecasesGetUserTypeFromStringUsecase = 'lib/core/domain/usecases/get_user_type_from_string_usecase.dart';
   static const String usecasesIsAdDescriptionValidUseCase = 'lib/publish_ad/domain/usecases/is_ad_description_valid_use_case.dart';
   static const String usecasesIsAdTitleValidUseCase = 'lib/publish_ad/domain/usecases/is_ad_title_valid_use_case.dart';
@@ -134,7 +134,7 @@ class Assets {
   static const String widgetsPasswordField = 'lib/signup/presentation/widgets/password_field.dart';
   static const String widgetsPhotoFrameWidget = 'lib/publish_ad/presentation/widgets/photo_frame_widget.dart';
   static const String widgetsPhotoPickerModal = 'lib/publish_ad/presentation/widgets/photo_picker_modal.dart';
-  static const String widgetsProfilMenuModal = 'lib/profil/presentation/widgets/profil_menu_modal.dart';
+  static const String widgetsProfilMenuModal = 'lib/profile/presentation/widgets/profile_menu_modal.dart';
   static const String widgetsPublishAdPhotosPage = 'lib/publish_ad/presentation/widgets/publish_ad_photos_page.dart';
   static const String widgetsPublishAdSearchCityPage = 'lib/publish_ad/presentation/widgets/publish_ad_search_city_page.dart';
   static const String widgetsPublishAdTitlePage = 'lib/publish_ad/presentation/widgets/publish_ad_title_page.dart';

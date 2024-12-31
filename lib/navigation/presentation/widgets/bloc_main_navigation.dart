@@ -1,12 +1,11 @@
+import 'package:assoshare/presentation/blocs/authentication/authentication_bloc.dart';
+import 'package:assoshare/presentation/screens/email_not_verified_screen.dart';
+import 'package:assoshare/presentation/screens/home_screen.dart';
+import 'package:assoshare/presentation/screens/signup/welcome_screen.dart';
+import 'package:assoshare/presentation/screens/splash_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../../../features/Authentication/presentation/bloc/authentication_bloc.dart';
-import '../../../features/Authentication/presentation/screens/email_not_verified_screen.dart';
-import '../../../features/home/presentation/screen/home_screen.dart';
-import '../../../features/signup/presentation/screens/welcome_screen.dart';
-import '../../../features/splash/presentation/screen/splash_screen.dart';
 
 class BlocMainNavigation extends StatelessWidget {
   const BlocMainNavigation({super.key});

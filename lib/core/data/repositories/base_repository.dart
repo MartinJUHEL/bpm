@@ -3,12 +3,14 @@ import 'package:assoshare/core/data/error/failures.dart';
 import 'package:assoshare/core/domain/entities/result.dart';
 import 'package:assoshare/core/network/GenericErrorTrigger.dart';
 import 'package:assoshare/core/network/app_connectivity_info.dart';
+import 'package:logger/logger.dart';
 
 base class BaseRepository {
-  BaseRepository(this._genericErrorTrigger, this._connectivityInfo);
+  BaseRepository(this._genericErrorTrigger, this._connectivityInfo, this._logger);
 
   final GenericErrorTrigger _genericErrorTrigger;
   final AppConnectivityInfo _connectivityInfo;
+  final Logger _logger;
 
   /// Performs an action (such as an HTTP call), but returns the result in a wrapped object
   /// If there is no _connectivity or a server error occurred, the [GenericErrorTrigger] class is triggered so that a generic message can be shown
@@ -28,6 +30,10 @@ base class BaseRepository {
       return Result.success(transform(result));
     } on ServerException {
       _triggerServerError();
+      _logger.e('Server Exception in safeCall');
+      return const Result.failure(Failure.server());
+    } catch (e) {
+      _logger.e('Unexpected error in safeCall: $e');
       return const Result.failure(Failure.server());
     }
   }

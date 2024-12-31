@@ -3,7 +3,10 @@
   "@appTitle": {
     "description": "App title"
   },
+  "ads": "Ads",
   "refresh": "Refresh",
+  "noAd": "No ad",
+  "retry": "Retry",
   "errorOccurred": "An error occurred please try again",
   "noConnectionTitle": "Oops!",
   "noConnectionMessage": "It seems you're offline. Please connect to the internet to continue.",
@@ -11,6 +14,7 @@
   "next": "Next",
   "loan": "Loan",
   "rent": "Rent",
+  "delete": "Delete",
   "@_WELCOME_PAGE": {},
   "welcomeText": "Welcome to BPM",
   "@_EMAIL_NOT_VERIFIED_PAGE": {},
@@ -43,6 +47,7 @@
   "profil": "Profil",
   "@_PROFIL_PAGE": {},
   "memberDate": "Member since {}",
+  "edit": "Edit",
   "logout": "Logout",
   "@_PUBLISH_AD_PAGE": {},
   "postAnAd": "Post an ad",

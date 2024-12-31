@@ -1,0 +1,8 @@
+const String empty = "";
+const String unknown = "...";
+
+extension StringExtension on String {
+  String capitalize() {
+    return "${this[0].toUpperCase()}${substring(1).toLowerCase()}";
+  }
+}

@@ -1,6 +1,7 @@
+import 'package:assoshare/app/constants.dart';
 import 'package:assoshare/core/network/GenericErrorTrigger.dart';
 import 'package:assoshare/core/network/blocs/generic_error_trigger_cubit.dart';
-import 'package:assoshare/core/presentation/widgets/error_dialog.dart';
+import 'package:assoshare/presentation/blocs/authentication/authentication_bloc.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -9,14 +10,25 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import 'app/theme.dart';
 import 'core/di/injection.dart';
-import 'features/Authentication/presentation/bloc/authentication_bloc.dart';
+import 'core/utils/theme_util.dart';
 import 'navigation/presentation/widgets/bloc_main_navigation.dart';
+import 'presentation/widgets/common/error_dialog.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final brightness = View.of(context).platformDispatcher.platformBrightness;
+
+    // Retrieves the default theme for the platform
+    //TextTheme textTheme = Theme.of(context).textTheme;
+
+    // Use with Google Fonts package to use downloadable fonts
+    TextTheme textTheme = createTextTheme(context, "Nunito", "Baloo 2");
+
+    MaterialTheme theme = MaterialTheme(textTheme);
+
     return MultiBlocProvider(
       providers: [
         BlocProvider(
@@ -29,7 +41,8 @@ class App extends StatelessWidget {
         localizationsDelegates: context.localizationDelegates,
         supportedLocales: context.supportedLocales,
         locale: context.locale,
-        theme: AppTheme.lightTheme,
+        //theme: brightness == Brightness.light ? theme.light() : theme.dark(),
+        theme: theme.light(),
         builder: EasyLoading.init(),
         home: BlocListener<GenericErrorTriggerCubit, GenericErrorTriggerState>(
           listener: (context, state) {
@@ -62,20 +75,13 @@ class App extends StatelessWidget {
       ErrorType.serverError => ErrorDialog(
           errorTitle: tr('errorTitle'),
           errorMessage: tr('errorOccurred'),
-          image: SvgPicture.asset(_serverErrorAsset),
+          image: SvgPicture.asset(Constants.serverErrorAsset),
           onPressed: onDismissed),
       ErrorType.noConnectivity => ErrorDialog(
           errorTitle: tr('errorTitle'),
           errorMessage: tr('noConnectionMessage'),
-          image: SvgPicture.asset(_noConnectivityAsset),
+          image: SvgPicture.asset(Constants.noConnectivityAsset),
           onPressed: onDismissed),
     };
   }
 }
-
-///////////////////////////////////////////////////////////////////////////
-// CONSTANTS
-///////////////////////////////////////////////////////////////////////////
-
-const String _serverErrorAsset = 'assets/images/server_error.svg';
-const String _noConnectivityAsset = 'assets/images/no_connectivity.svg';
