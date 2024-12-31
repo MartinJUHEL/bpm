@@ -1,5 +1,4 @@
 import 'package:assoshare/app/dimens.dart';
-import 'package:assoshare/core/di/injection.dart';
 import 'package:assoshare/domain/entities/user/user_entity.dart';
 import 'package:assoshare/presentation/blocs/list_ads/list_ads_cubit.dart';
 import 'package:assoshare/presentation/blocs/profile/profile_cubit.dart';
@@ -17,8 +16,8 @@ class ProfileDetailsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => locator<ListAdsCubit>()..fetchAds(user.uid),
+    return BlocProvider.value(
+      value: BlocProvider.of<ListAdsCubit>(context)..fetchAds(user.uid),
       child: Builder(builder: (blocContext) {
         return RefreshIndicator(
           onRefresh: () => Future.wait(

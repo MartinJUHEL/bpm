@@ -24,6 +24,7 @@ class ListAdsCubit extends Cubit<ListAdsState> {
     }, failure: (error) {
       emit(const ListAdsState.error());
     });
+    return;
   }
 
   Future<void> deleteAd(String adId) async {

@@ -15,8 +15,7 @@ class BlocMainNavigation extends StatelessWidget {
     return BlocListener<AuthenticationBloc, AuthenticationState>(
       listener: (context, state) {
         state.maybeMap(
-          emailNotVerified: (_) =>
-              Navigator.popUntil(context, (route) => route.isFirst),
+          emailNotVerified: (_) => Navigator.popUntil(context, (route) => route.isFirst),
           success: (_) => Navigator.popUntil(context, (route) => route.isFirst),
           orElse: () {},
         );
@@ -24,7 +23,9 @@ class BlocMainNavigation extends StatelessWidget {
       child: BlocBuilder<AuthenticationBloc, AuthenticationState>(
         builder: (context, state) {
           return state.maybeMap(
-              success: (s) => HomeScreen(),
+              success: (s) => HomeScreen(
+                    user: s.user,
+                  ),
               emailNotVerified: (_) => const EmailNotVerifiedScreen(),
               failure: (_) => const WelcomeScreen(),
               orElse: () => const SplashScreen());

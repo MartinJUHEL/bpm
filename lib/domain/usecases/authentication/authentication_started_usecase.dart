@@ -43,7 +43,7 @@ class AuthenticationStartedUseCase {
       // Set user email to verified.
       await _userRepository.setUserVerified(true);
 
-      return AuthenticationState.success(userEntity.displayName);
+      return AuthenticationState.success(userEntity);
     } catch (e) {
       return const AuthenticationState.failure();
     }

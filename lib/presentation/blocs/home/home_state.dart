@@ -1,6 +1,6 @@
-part of 'home_bloc.dart';
+part of 'home_cubit.dart';
 
 @freezed
-sealed class HomeState with _$HomeState {
+class HomeState with _$HomeState {
   const factory HomeState({@Default(0) final int tabIndex}) = _HomeState;
 }

@@ -15,49 +15,52 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(child: BlocBuilder<ProfileCubit, ProfileState>(
-      builder: (context, state) {
-        return Scaffold(
-          backgroundColor: context.colorScheme.surface,
-          body: NestedScrollView(
-            floatHeaderSlivers: true,
-            headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
-              return <Widget>[
-                SliverAppBar(
-                    titleTextStyle: TextStyle(color: Theme.of(context).colorScheme.primary, fontSize: 18),
-                    backgroundColor: Theme.of(context).colorScheme.surface,
-                    elevation: 0,
-                    snap: true,
-                    iconTheme: IconThemeData(color: Theme.of(context).colorScheme.primary),
-                    floating: true,
-                    title: switch (state) {
-                      ProfilData() => ProfileHeader(
-                          username: state.user.displayName,
-                          userNameTextStyle: context.textTheme.titleMedium,
-                          avatarTextStyle: context.textTheme.bodyLarge?.copyWith(color: Colors.white),
-                          isDropdown: true,
-                          onClicked: () => _showMenuModal(context)),
-                      ProfileInit() || ProfileError() => ProfileHeader(
-                          username: unknown,
-                          isDropdown: true,
-                          onClicked: () => _showMenuModal(context),
-                        ),
-                    }),
-              ];
-            },
-            body: switch (state) {
-              ProfilData() => ProfileDetailsWidget(user: state.user),
-              ProfileInit() => const Center(child: CircularProgressIndicator()),
-              ProfileError() => ErrorScreen(
-                  onRetryClicked: () => {
-                    /*TODO*/
-                  },
-                ),
-            },
-          ),
-        );
-      },
-    ));
+    return BlocProvider(
+      create: (context) => locator<ProfileCubit>()..initialization(),
+      child: SafeArea(child: BlocBuilder<ProfileCubit, ProfileState>(
+        builder: (context, state) {
+          return Scaffold(
+            backgroundColor: context.colorScheme.surface,
+            body: NestedScrollView(
+              floatHeaderSlivers: true,
+              headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+                return <Widget>[
+                  SliverAppBar(
+                      titleTextStyle: TextStyle(color: Theme.of(context).colorScheme.primary, fontSize: 18),
+                      backgroundColor: Theme.of(context).colorScheme.surface,
+                      elevation: 0,
+                      snap: true,
+                      iconTheme: IconThemeData(color: Theme.of(context).colorScheme.primary),
+                      floating: true,
+                      title: switch (state) {
+                        ProfilData() => ProfileHeader(
+                            username: state.user.displayName,
+                            userNameTextStyle: context.textTheme.titleMedium,
+                            avatarTextStyle: context.textTheme.bodyLarge?.copyWith(color: Colors.white),
+                            isDropdown: true,
+                            onClicked: () => _showMenuModal(context)),
+                        ProfileInit() || ProfileError() => ProfileHeader(
+                            username: unknown,
+                            isDropdown: true,
+                            onClicked: () => _showMenuModal(context),
+                          ),
+                      }),
+                ];
+              },
+              body: switch (state) {
+                ProfilData() => ProfileDetailsWidget(user: state.user),
+                ProfileInit() => const Center(child: CircularProgressIndicator()),
+                ProfileError() => ErrorScreen(
+                    onRetryClicked: () => {
+                      /*TODO*/
+                    },
+                  ),
+              },
+            ),
+          );
+        },
+      )),
+    );
   }
 
   _showMenuModal(BuildContext context) {

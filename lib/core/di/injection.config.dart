@@ -59,7 +59,7 @@ import '../../domain/usecases/signup/submit_signin_usecase.dart' as _i941;
 import '../../domain/usecases/signup/submit_signup_usecase.dart' as _i486;
 import '../../presentation/blocs/authentication/authentication_bloc.dart'
     as _i57;
-import '../../presentation/blocs/home/home_bloc.dart' as _i973;
+import '../../presentation/blocs/home/home_cubit.dart' as _i642;
 import '../../presentation/blocs/list_ads/list_ads_cubit.dart' as _i1044;
 import '../../presentation/blocs/profile/profile_cubit.dart' as _i551;
 import '../../presentation/blocs/publish_ad/pick_photos_bloc/pick_photos_bloc_cubit.dart'
@@ -111,7 +111,7 @@ Future<_i174.GetIt> $initGetIt(
   gh.factory<_i24.PickPhotosFromGalleryUseCase>(
       () => _i24.PickPhotosFromGalleryUseCase());
   gh.factory<_i903.IsAdTitleValidUseCase>(() => _i903.IsAdTitleValidUseCase());
-  gh.factory<_i973.HomeBloc>(() => _i973.HomeBloc());
+  gh.factory<_i642.HomeCubit>(() => _i642.HomeCubit());
   gh.singleton<_i974.FirebaseFirestore>(() => appModule.store);
   gh.singleton<_i141.FirebaseCrashlytics>(() => appModule.crashlytics);
   gh.singleton<_i59.FirebaseAuth>(() => appModule.auth);

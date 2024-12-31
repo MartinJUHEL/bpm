@@ -1,9 +1,9 @@
 import 'package:assoshare/app/dimens.dart';
 import 'package:assoshare/core/di/injection.dart';
 import 'package:assoshare/core/utils/build_context_ext.dart';
-import 'package:assoshare/presentation/blocs/home/home_bloc.dart';
+import 'package:assoshare/domain/entities/user/user_entity.dart';
+import 'package:assoshare/presentation/blocs/home/home_cubit.dart';
 import 'package:assoshare/presentation/blocs/list_ads/list_ads_cubit.dart';
-import 'package:assoshare/presentation/blocs/profile/profile_cubit.dart';
 import 'package:assoshare/presentation/screens/publish_ad_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -12,14 +12,16 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'profile_screen.dart';
 
 class HomeScreen extends StatelessWidget {
-  HomeScreen({super.key});
+  HomeScreen({super.key, required this.user});
+
+  final UserEntity user;
 
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => locator<HomeBloc>(),
+          create: (context) => locator<HomeCubit>(),
         ),
 
         // List ads in profile.
@@ -27,7 +29,7 @@ class HomeScreen extends StatelessWidget {
           create: (context) => locator<ListAdsCubit>(),
         ),
       ],
-      child: BlocBuilder<HomeBloc, HomeState>(
+      child: BlocBuilder<HomeCubit, HomeState>(
         builder: (context, state) {
           return SafeArea(
             child: Scaffold(
@@ -37,7 +39,7 @@ class HomeScreen extends StatelessWidget {
               floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
               floatingActionButton: FloatingActionButton(
                 shape: const CircleBorder(),
-                onPressed: () => {_goToPublishAd(context)},
+                onPressed: () => {_goToPublishAd(context, user.uid)},
                 backgroundColor: Theme.of(context).colorScheme.primary,
                 child: const FaIcon(
                   FontAwesomeIcons.plus,
@@ -53,14 +55,14 @@ class HomeScreen extends StatelessWidget {
                     Expanded(
                         flex: 1,
                         child: IconButton(
-                          onPressed: () => BlocProvider.of<HomeBloc>(context).add(const HomeEvent.tabChanged(0)),
+                          onPressed: () => context.read<HomeCubit>().tabChanged(0),
                           icon: const Icon(Icons.search),
                           color: state.tabIndex == 0 ? context.colorScheme.primary : null,
                         )),
                     Expanded(
                         flex: 1,
                         child: IconButton(
-                          onPressed: () => BlocProvider.of<HomeBloc>(context).add(const HomeEvent.tabChanged(1)),
+                          onPressed: () => context.read<HomeCubit>().tabChanged(1),
                           icon: const Icon(Icons.favorite_border_outlined),
                           color: state.tabIndex == 1 ? context.colorScheme.primary : null,
                         )),
@@ -70,14 +72,14 @@ class HomeScreen extends StatelessWidget {
                     Expanded(
                         flex: 1,
                         child: IconButton(
-                          onPressed: () => BlocProvider.of<HomeBloc>(context).add(const HomeEvent.tabChanged(2)),
+                          onPressed: () => context.read<HomeCubit>().tabChanged(2),
                           icon: const Icon(Icons.message_outlined),
                           color: state.tabIndex == 2 ? context.colorScheme.primary : null,
                         )),
                     Expanded(
                         flex: 1,
                         child: IconButton(
-                          onPressed: () => BlocProvider.of<HomeBloc>(context).add(const HomeEvent.tabChanged(3)),
+                          onPressed: () => context.read<HomeCubit>().tabChanged(3),
                           icon: const Icon(Icons.person_2_outlined),
                           color: state.tabIndex == 3 ? context.colorScheme.primary : null,
                         ))
@@ -91,7 +93,7 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  _goToPublishAd(BuildContext context) async {
+  _goToPublishAd(BuildContext context, String uid) async {
     final addNewAdSuccess = await Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => const PublishAdScreen()),
@@ -100,7 +102,7 @@ class HomeScreen extends StatelessWidget {
     if (context.mounted) {
       // If ad has been created, update list on profile page.
       if (addNewAdSuccess) {
-
+        context.read<ListAdsCubit>().fetchAds(uid);
       }
     }
   }

@@ -296,7 +296,7 @@ mixin _$AuthenticationState {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function() emailNotVerified,
-    required TResult Function(String? displayName) success,
+    required TResult Function(UserEntity user) success,
     required TResult Function() failure,
   }) =>
       throw _privateConstructorUsedError;
@@ -305,7 +305,7 @@ mixin _$AuthenticationState {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function()? emailNotVerified,
-    TResult? Function(String? displayName)? success,
+    TResult? Function(UserEntity user)? success,
     TResult? Function()? failure,
   }) =>
       throw _privateConstructorUsedError;
@@ -314,7 +314,7 @@ mixin _$AuthenticationState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function()? emailNotVerified,
-    TResult Function(String? displayName)? success,
+    TResult Function(UserEntity user)? success,
     TResult Function()? failure,
     required TResult orElse(),
   }) =>
@@ -414,7 +414,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function() emailNotVerified,
-    required TResult Function(String? displayName) success,
+    required TResult Function(UserEntity user) success,
     required TResult Function() failure,
   }) {
     return initial();
@@ -426,7 +426,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function()? emailNotVerified,
-    TResult? Function(String? displayName)? success,
+    TResult? Function(UserEntity user)? success,
     TResult? Function()? failure,
   }) {
     return initial?.call();
@@ -438,7 +438,7 @@ class _$InitialImpl implements _Initial {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function()? emailNotVerified,
-    TResult Function(String? displayName)? success,
+    TResult Function(UserEntity user)? success,
     TResult Function()? failure,
     required TResult orElse(),
   }) {
@@ -537,7 +537,7 @@ class _$LoadingImpl implements _Loading {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function() emailNotVerified,
-    required TResult Function(String? displayName) success,
+    required TResult Function(UserEntity user) success,
     required TResult Function() failure,
   }) {
     return loading();
@@ -549,7 +549,7 @@ class _$LoadingImpl implements _Loading {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function()? emailNotVerified,
-    TResult? Function(String? displayName)? success,
+    TResult? Function(UserEntity user)? success,
     TResult? Function()? failure,
   }) {
     return loading?.call();
@@ -561,7 +561,7 @@ class _$LoadingImpl implements _Loading {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function()? emailNotVerified,
-    TResult Function(String? displayName)? success,
+    TResult Function(UserEntity user)? success,
     TResult Function()? failure,
     required TResult orElse(),
   }) {
@@ -660,7 +660,7 @@ class _$EmailNotVerifiedImpl implements _EmailNotVerified {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function() emailNotVerified,
-    required TResult Function(String? displayName) success,
+    required TResult Function(UserEntity user) success,
     required TResult Function() failure,
   }) {
     return emailNotVerified();
@@ -672,7 +672,7 @@ class _$EmailNotVerifiedImpl implements _EmailNotVerified {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function()? emailNotVerified,
-    TResult? Function(String? displayName)? success,
+    TResult? Function(UserEntity user)? success,
     TResult? Function()? failure,
   }) {
     return emailNotVerified?.call();
@@ -684,7 +684,7 @@ class _$EmailNotVerifiedImpl implements _EmailNotVerified {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function()? emailNotVerified,
-    TResult Function(String? displayName)? success,
+    TResult Function(UserEntity user)? success,
     TResult Function()? failure,
     required TResult orElse(),
   }) {
@@ -745,7 +745,9 @@ abstract class _$$SuccessImplCopyWith<$Res> {
           _$SuccessImpl value, $Res Function(_$SuccessImpl) then) =
       __$$SuccessImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String? displayName});
+  $Res call({UserEntity user});
+
+  $UserEntityCopyWith<$Res> get user;
 }
 
 /// @nodoc
@@ -761,28 +763,38 @@ class __$$SuccessImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? displayName = freezed,
+    Object? user = null,
   }) {
     return _then(_$SuccessImpl(
-      freezed == displayName
-          ? _value.displayName
-          : displayName // ignore: cast_nullable_to_non_nullable
-              as String?,
+      null == user
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as UserEntity,
     ));
+  }
+
+  /// Create a copy of AuthenticationState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $UserEntityCopyWith<$Res> get user {
+    return $UserEntityCopyWith<$Res>(_value.user, (value) {
+      return _then(_value.copyWith(user: value));
+    });
   }
 }
 
 /// @nodoc
 
 class _$SuccessImpl implements _Success {
-  _$SuccessImpl(this.displayName);
+  _$SuccessImpl(this.user);
 
   @override
-  final String? displayName;
+  final UserEntity user;
 
   @override
   String toString() {
-    return 'AuthenticationState.success(displayName: $displayName)';
+    return 'AuthenticationState.success(user: $user)';
   }
 
   @override
@@ -790,12 +802,11 @@ class _$SuccessImpl implements _Success {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SuccessImpl &&
-            (identical(other.displayName, displayName) ||
-                other.displayName == displayName));
+            (identical(other.user, user) || other.user == user));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, displayName);
+  int get hashCode => Object.hash(runtimeType, user);
 
   /// Create a copy of AuthenticationState
   /// with the given fields replaced by the non-null parameter values.
@@ -811,10 +822,10 @@ class _$SuccessImpl implements _Success {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function() emailNotVerified,
-    required TResult Function(String? displayName) success,
+    required TResult Function(UserEntity user) success,
     required TResult Function() failure,
   }) {
-    return success(displayName);
+    return success(user);
   }
 
   @override
@@ -823,10 +834,10 @@ class _$SuccessImpl implements _Success {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function()? emailNotVerified,
-    TResult? Function(String? displayName)? success,
+    TResult? Function(UserEntity user)? success,
     TResult? Function()? failure,
   }) {
-    return success?.call(displayName);
+    return success?.call(user);
   }
 
   @override
@@ -835,12 +846,12 @@ class _$SuccessImpl implements _Success {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function()? emailNotVerified,
-    TResult Function(String? displayName)? success,
+    TResult Function(UserEntity user)? success,
     TResult Function()? failure,
     required TResult orElse(),
   }) {
     if (success != null) {
-      return success(displayName);
+      return success(user);
     }
     return orElse();
   }
@@ -887,9 +898,9 @@ class _$SuccessImpl implements _Success {
 }
 
 abstract class _Success implements AuthenticationState {
-  factory _Success(final String? displayName) = _$SuccessImpl;
+  factory _Success(final UserEntity user) = _$SuccessImpl;
 
-  String? get displayName;
+  UserEntity get user;
 
   /// Create a copy of AuthenticationState
   /// with the given fields replaced by the non-null parameter values.
@@ -942,7 +953,7 @@ class _$FailureImpl implements _Failure {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function() emailNotVerified,
-    required TResult Function(String? displayName) success,
+    required TResult Function(UserEntity user) success,
     required TResult Function() failure,
   }) {
     return failure();
@@ -954,7 +965,7 @@ class _$FailureImpl implements _Failure {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function()? emailNotVerified,
-    TResult? Function(String? displayName)? success,
+    TResult? Function(UserEntity user)? success,
     TResult? Function()? failure,
   }) {
     return failure?.call();
@@ -966,7 +977,7 @@ class _$FailureImpl implements _Failure {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function()? emailNotVerified,
-    TResult Function(String? displayName)? success,
+    TResult Function(UserEntity user)? success,
     TResult Function()? failure,
     required TResult orElse(),
   }) {

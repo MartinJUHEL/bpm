@@ -1,3 +1,4 @@
+import 'package:assoshare/domain/entities/user/user_entity.dart';
 import 'package:assoshare/domain/usecases/authentication/authentication_signed_out_usecase.dart';
 import 'package:assoshare/domain/usecases/authentication/authentication_started_usecase.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
