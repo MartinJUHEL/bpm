@@ -81,7 +81,7 @@ class PublishAdCubit extends Cubit<PublishAdState> {
     result.when(
         success: (_) => {emit(state.copyWith(isLoading: false, isPublished: true))},
         failure: (_) {
-          emit(state.copyWith(isLoading: false));
+          emit(state.copyWith(isLoading: false, isPublished: false));
         });
   }
 }

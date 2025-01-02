@@ -103,6 +103,8 @@ dev_dependencies:
   injectable_generator: ^2.4.1
   json_serializable: ^6.9.0
   change_app_package_name: ^1.4.0
+  mockito: ^5.4.4
+  bloc_test: ^9.1.6
 
 dependency_overrides:
   modal_bottom_sheet: ^3.0.0-pre

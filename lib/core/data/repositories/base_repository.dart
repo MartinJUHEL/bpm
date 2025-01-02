@@ -19,22 +19,24 @@ base class BaseRepository {
   /// [action] the action to perform to get a DTO (a HTTP call, for example).
   /// [transform] transform the action to perform to convert the DTO to OUTPUT
   /// Return the [OUTPUT] object wrapped inside a response object, which may be an error object.
-  Future<Result<OUTPUT>> safeCall<JSON, OUTPUT>(
-      {required Future<JSON> Function() action, required OUTPUT Function(JSON) transform}) async {
+  Future<Result<OUTPUT>> safeCall<JSON, OUTPUT>({
+    required Future<JSON> Function() action,
+    required OUTPUT Function(JSON) transform,
+  }) async {
     if (!(await _connectivityInfo.isConnected)) {
       _triggerNoConnectivity();
-      return const Result.failure(Failure.offline());
+      return Result<OUTPUT>.failure(const Failure.offline()); // Explicit OUTPUT type
     }
     try {
       final JSON result = await action();
-      return Result.success(transform(result));
+      return Result<OUTPUT>.success(transform(result)); // Explicit OUTPUT type
     } on ServerException {
       _triggerServerError();
       _logger.e('Server Exception in safeCall');
-      return const Result.failure(Failure.server());
+      return Result<OUTPUT>.failure(const Failure.server()); // Explicit OUTPUT type
     } catch (e) {
       _logger.e('Unexpected error in safeCall: $e');
-      return const Result.failure(Failure.server());
+      return Result<OUTPUT>.failure(const Failure.server()); // Explicit OUTPUT type
     }
   }
 

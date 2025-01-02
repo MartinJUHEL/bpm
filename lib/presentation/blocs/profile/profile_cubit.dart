@@ -2,9 +2,7 @@ import 'dart:async';
 
 import 'package:assoshare/core/domain/entities/result.dart';
 import 'package:assoshare/domain/entities/user/user_entity.dart';
-import 'package:assoshare/domain/repositories/ad_repository.dart';
 import 'package:assoshare/domain/repositories/user_repository.dart';
-import 'package:assoshare/presentation/blocs/list_ads/list_ads_cubit.dart';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
@@ -21,14 +19,12 @@ class ProfileCubit extends Cubit<ProfileState> {
 
   void initialization() async {
     _userStreamSubscription = _userRepository.watchUser().listen((result) {
-      result.when(
-          success: (user) => emit(ProfileState.data(user: user)),
-          failure: (_) => emit(ProfileState.error()));
+      result.when(success: (user) => emit(ProfileState.data(user: user)), failure: (_) => emit(ProfileState.error()));
     });
   }
 
   Future<void> refresh() async {
-      await _userRepository.fetchUser();
+    await _userRepository.fetchUser();
   }
 
   @override
