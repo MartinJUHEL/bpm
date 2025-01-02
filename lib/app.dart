@@ -1,6 +1,7 @@
 import 'package:assoshare/app/constants.dart';
 import 'package:assoshare/core/network/GenericErrorTrigger.dart';
 import 'package:assoshare/core/network/blocs/generic_error_trigger_cubit.dart';
+import 'package:assoshare/core/router/app_router.dart';
 import 'package:assoshare/presentation/blocs/authentication/authentication_bloc.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -11,7 +12,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'app/theme.dart';
 import 'core/di/injection.dart';
 import 'core/utils/theme_util.dart';
-import 'navigation/presentation/widgets/bloc_main_navigation.dart';
 import 'presentation/widgets/common/error_dialog.dart';
 
 class App extends StatelessWidget {
@@ -36,31 +36,36 @@ class App extends StatelessWidget {
         ),
         BlocProvider(create: (context) => locator<GenericErrorTriggerCubit>()..checkConnection())
       ],
-      child: MaterialApp(
-        title: 'Flutter Demo Production',
-        localizationsDelegates: context.localizationDelegates,
-        supportedLocales: context.supportedLocales,
-        locale: context.locale,
-        //theme: brightness == Brightness.light ? theme.light() : theme.dark(),
-        theme: theme.light(),
-        builder: EasyLoading.init(),
-        home: BlocListener<GenericErrorTriggerCubit, GenericErrorTriggerState>(
+      child: BlocListener<GenericErrorTriggerCubit, GenericErrorTriggerState>(
+        listener: (context, state) {
+          ErrorType? errorType = state.errorType;
+          if (errorType != null) {
+            showDialog(
+                context: context,
+                builder: (BuildContext dialogContext) => _displayErrorDialog(errorType, () {
+                      context.read<GenericErrorTriggerCubit>().onDialogClosed();
+                      Navigator.pop(dialogContext);
+                    })).then((onValue) async {
+              if (context.mounted) {
+                context.read<GenericErrorTriggerCubit>().onDialogClosed();
+              }
+            });
+          }
+        },
+        child: BlocListener<AuthenticationBloc, AuthenticationState>(
           listener: (context, state) {
-            ErrorType? errorType = state.errorType;
-            if (errorType != null) {
-              showDialog(
-                  context: context,
-                  builder: (BuildContext dialogContext) => _displayErrorDialog(errorType, () {
-                        context.read<GenericErrorTriggerCubit>().onDialogClosed();
-                        Navigator.pop(dialogContext);
-                      })).then((onValue) async {
-                if (context.mounted) {
-                  context.read<GenericErrorTriggerCubit>().onDialogClosed();
-                }
-              });
-            }
+            AppRouter.router.refresh();
           },
-          child: const BlocMainNavigation(),
+          child: MaterialApp.router(
+            title: 'Asso share',
+            localizationsDelegates: context.localizationDelegates,
+            supportedLocales: context.supportedLocales,
+            locale: context.locale,
+            //theme: brightness == Brightness.light ? theme.light() : theme.dark(),
+            theme: theme.light(),
+            builder: EasyLoading.init(),
+            routerConfig: AppRouter.router,
+          ),
         ),
       ),
     );

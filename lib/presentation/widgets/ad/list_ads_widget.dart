@@ -36,7 +36,7 @@ class ListAdsWidget extends StatelessWidget {
           return AdCardWidget(
             adEntity: ad,
             onClicked: () {
-              /*TODO*/
+
             },
             optionWidget: isEditable
                 ? CircleIconButton(onPressed: () => onMoreClicked?.call(ad.id), icon: Icons.more_horiz)

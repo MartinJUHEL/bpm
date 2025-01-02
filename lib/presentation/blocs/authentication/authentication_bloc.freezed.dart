@@ -321,29 +321,29 @@ mixin _$AuthenticationState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_EmailNotVerified value) emailNotVerified,
-    required TResult Function(_Success value) success,
-    required TResult Function(_Failure value) failure,
+    required TResult Function(Initial value) initial,
+    required TResult Function(Loading value) loading,
+    required TResult Function(EmailNotVerified value) emailNotVerified,
+    required TResult Function(Success value) success,
+    required TResult Function(Failure value) failure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_EmailNotVerified value)? emailNotVerified,
-    TResult? Function(_Success value)? success,
-    TResult? Function(_Failure value)? failure,
+    TResult? Function(Initial value)? initial,
+    TResult? Function(Loading value)? loading,
+    TResult? Function(EmailNotVerified value)? emailNotVerified,
+    TResult? Function(Success value)? success,
+    TResult? Function(Failure value)? failure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_EmailNotVerified value)? emailNotVerified,
-    TResult Function(_Success value)? success,
-    TResult Function(_Failure value)? failure,
+    TResult Function(Initial value)? initial,
+    TResult Function(Loading value)? loading,
+    TResult Function(EmailNotVerified value)? emailNotVerified,
+    TResult Function(Success value)? success,
+    TResult Function(Failure value)? failure,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -391,7 +391,7 @@ class __$$InitialImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$InitialImpl implements _Initial {
+class _$InitialImpl implements Initial {
   const _$InitialImpl();
 
   @override
@@ -451,11 +451,11 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_EmailNotVerified value) emailNotVerified,
-    required TResult Function(_Success value) success,
-    required TResult Function(_Failure value) failure,
+    required TResult Function(Initial value) initial,
+    required TResult Function(Loading value) loading,
+    required TResult Function(EmailNotVerified value) emailNotVerified,
+    required TResult Function(Success value) success,
+    required TResult Function(Failure value) failure,
   }) {
     return initial(this);
   }
@@ -463,11 +463,11 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_EmailNotVerified value)? emailNotVerified,
-    TResult? Function(_Success value)? success,
-    TResult? Function(_Failure value)? failure,
+    TResult? Function(Initial value)? initial,
+    TResult? Function(Loading value)? loading,
+    TResult? Function(EmailNotVerified value)? emailNotVerified,
+    TResult? Function(Success value)? success,
+    TResult? Function(Failure value)? failure,
   }) {
     return initial?.call(this);
   }
@@ -475,11 +475,11 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_EmailNotVerified value)? emailNotVerified,
-    TResult Function(_Success value)? success,
-    TResult Function(_Failure value)? failure,
+    TResult Function(Initial value)? initial,
+    TResult Function(Loading value)? loading,
+    TResult Function(EmailNotVerified value)? emailNotVerified,
+    TResult Function(Success value)? success,
+    TResult Function(Failure value)? failure,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -489,8 +489,8 @@ class _$InitialImpl implements _Initial {
   }
 }
 
-abstract class _Initial implements AuthenticationState {
-  const factory _Initial() = _$InitialImpl;
+abstract class Initial implements AuthenticationState {
+  const factory Initial() = _$InitialImpl;
 }
 
 /// @nodoc
@@ -514,7 +514,7 @@ class __$$LoadingImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$LoadingImpl implements _Loading {
+class _$LoadingImpl implements Loading {
   const _$LoadingImpl();
 
   @override
@@ -574,11 +574,11 @@ class _$LoadingImpl implements _Loading {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_EmailNotVerified value) emailNotVerified,
-    required TResult Function(_Success value) success,
-    required TResult Function(_Failure value) failure,
+    required TResult Function(Initial value) initial,
+    required TResult Function(Loading value) loading,
+    required TResult Function(EmailNotVerified value) emailNotVerified,
+    required TResult Function(Success value) success,
+    required TResult Function(Failure value) failure,
   }) {
     return loading(this);
   }
@@ -586,11 +586,11 @@ class _$LoadingImpl implements _Loading {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_EmailNotVerified value)? emailNotVerified,
-    TResult? Function(_Success value)? success,
-    TResult? Function(_Failure value)? failure,
+    TResult? Function(Initial value)? initial,
+    TResult? Function(Loading value)? loading,
+    TResult? Function(EmailNotVerified value)? emailNotVerified,
+    TResult? Function(Success value)? success,
+    TResult? Function(Failure value)? failure,
   }) {
     return loading?.call(this);
   }
@@ -598,11 +598,11 @@ class _$LoadingImpl implements _Loading {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_EmailNotVerified value)? emailNotVerified,
-    TResult Function(_Success value)? success,
-    TResult Function(_Failure value)? failure,
+    TResult Function(Initial value)? initial,
+    TResult Function(Loading value)? loading,
+    TResult Function(EmailNotVerified value)? emailNotVerified,
+    TResult Function(Success value)? success,
+    TResult Function(Failure value)? failure,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -612,8 +612,8 @@ class _$LoadingImpl implements _Loading {
   }
 }
 
-abstract class _Loading implements AuthenticationState {
-  const factory _Loading() = _$LoadingImpl;
+abstract class Loading implements AuthenticationState {
+  const factory Loading() = _$LoadingImpl;
 }
 
 /// @nodoc
@@ -637,7 +637,7 @@ class __$$EmailNotVerifiedImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$EmailNotVerifiedImpl implements _EmailNotVerified {
+class _$EmailNotVerifiedImpl implements EmailNotVerified {
   const _$EmailNotVerifiedImpl();
 
   @override
@@ -697,11 +697,11 @@ class _$EmailNotVerifiedImpl implements _EmailNotVerified {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_EmailNotVerified value) emailNotVerified,
-    required TResult Function(_Success value) success,
-    required TResult Function(_Failure value) failure,
+    required TResult Function(Initial value) initial,
+    required TResult Function(Loading value) loading,
+    required TResult Function(EmailNotVerified value) emailNotVerified,
+    required TResult Function(Success value) success,
+    required TResult Function(Failure value) failure,
   }) {
     return emailNotVerified(this);
   }
@@ -709,11 +709,11 @@ class _$EmailNotVerifiedImpl implements _EmailNotVerified {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_EmailNotVerified value)? emailNotVerified,
-    TResult? Function(_Success value)? success,
-    TResult? Function(_Failure value)? failure,
+    TResult? Function(Initial value)? initial,
+    TResult? Function(Loading value)? loading,
+    TResult? Function(EmailNotVerified value)? emailNotVerified,
+    TResult? Function(Success value)? success,
+    TResult? Function(Failure value)? failure,
   }) {
     return emailNotVerified?.call(this);
   }
@@ -721,11 +721,11 @@ class _$EmailNotVerifiedImpl implements _EmailNotVerified {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_EmailNotVerified value)? emailNotVerified,
-    TResult Function(_Success value)? success,
-    TResult Function(_Failure value)? failure,
+    TResult Function(Initial value)? initial,
+    TResult Function(Loading value)? loading,
+    TResult Function(EmailNotVerified value)? emailNotVerified,
+    TResult Function(Success value)? success,
+    TResult Function(Failure value)? failure,
     required TResult orElse(),
   }) {
     if (emailNotVerified != null) {
@@ -735,8 +735,8 @@ class _$EmailNotVerifiedImpl implements _EmailNotVerified {
   }
 }
 
-abstract class _EmailNotVerified implements AuthenticationState {
-  const factory _EmailNotVerified() = _$EmailNotVerifiedImpl;
+abstract class EmailNotVerified implements AuthenticationState {
+  const factory EmailNotVerified() = _$EmailNotVerifiedImpl;
 }
 
 /// @nodoc
@@ -786,7 +786,7 @@ class __$$SuccessImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$SuccessImpl implements _Success {
+class _$SuccessImpl implements Success {
   _$SuccessImpl(this.user);
 
   @override
@@ -859,11 +859,11 @@ class _$SuccessImpl implements _Success {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_EmailNotVerified value) emailNotVerified,
-    required TResult Function(_Success value) success,
-    required TResult Function(_Failure value) failure,
+    required TResult Function(Initial value) initial,
+    required TResult Function(Loading value) loading,
+    required TResult Function(EmailNotVerified value) emailNotVerified,
+    required TResult Function(Success value) success,
+    required TResult Function(Failure value) failure,
   }) {
     return success(this);
   }
@@ -871,11 +871,11 @@ class _$SuccessImpl implements _Success {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_EmailNotVerified value)? emailNotVerified,
-    TResult? Function(_Success value)? success,
-    TResult? Function(_Failure value)? failure,
+    TResult? Function(Initial value)? initial,
+    TResult? Function(Loading value)? loading,
+    TResult? Function(EmailNotVerified value)? emailNotVerified,
+    TResult? Function(Success value)? success,
+    TResult? Function(Failure value)? failure,
   }) {
     return success?.call(this);
   }
@@ -883,11 +883,11 @@ class _$SuccessImpl implements _Success {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_EmailNotVerified value)? emailNotVerified,
-    TResult Function(_Success value)? success,
-    TResult Function(_Failure value)? failure,
+    TResult Function(Initial value)? initial,
+    TResult Function(Loading value)? loading,
+    TResult Function(EmailNotVerified value)? emailNotVerified,
+    TResult Function(Success value)? success,
+    TResult Function(Failure value)? failure,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -897,8 +897,8 @@ class _$SuccessImpl implements _Success {
   }
 }
 
-abstract class _Success implements AuthenticationState {
-  factory _Success(final UserEntity user) = _$SuccessImpl;
+abstract class Success implements AuthenticationState {
+  factory Success(final UserEntity user) = _$SuccessImpl;
 
   UserEntity get user;
 
@@ -930,7 +930,7 @@ class __$$FailureImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$FailureImpl implements _Failure {
+class _$FailureImpl implements Failure {
   const _$FailureImpl();
 
   @override
@@ -990,11 +990,11 @@ class _$FailureImpl implements _Failure {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_EmailNotVerified value) emailNotVerified,
-    required TResult Function(_Success value) success,
-    required TResult Function(_Failure value) failure,
+    required TResult Function(Initial value) initial,
+    required TResult Function(Loading value) loading,
+    required TResult Function(EmailNotVerified value) emailNotVerified,
+    required TResult Function(Success value) success,
+    required TResult Function(Failure value) failure,
   }) {
     return failure(this);
   }
@@ -1002,11 +1002,11 @@ class _$FailureImpl implements _Failure {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_EmailNotVerified value)? emailNotVerified,
-    TResult? Function(_Success value)? success,
-    TResult? Function(_Failure value)? failure,
+    TResult? Function(Initial value)? initial,
+    TResult? Function(Loading value)? loading,
+    TResult? Function(EmailNotVerified value)? emailNotVerified,
+    TResult? Function(Success value)? success,
+    TResult? Function(Failure value)? failure,
   }) {
     return failure?.call(this);
   }
@@ -1014,11 +1014,11 @@ class _$FailureImpl implements _Failure {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_EmailNotVerified value)? emailNotVerified,
-    TResult Function(_Success value)? success,
-    TResult Function(_Failure value)? failure,
+    TResult Function(Initial value)? initial,
+    TResult Function(Loading value)? loading,
+    TResult Function(EmailNotVerified value)? emailNotVerified,
+    TResult Function(Success value)? success,
+    TResult Function(Failure value)? failure,
     required TResult orElse(),
   }) {
     if (failure != null) {
@@ -1028,6 +1028,6 @@ class _$FailureImpl implements _Failure {
   }
 }
 
-abstract class _Failure implements AuthenticationState {
-  const factory _Failure() = _$FailureImpl;
+abstract class Failure implements AuthenticationState {
+  const factory Failure() = _$FailureImpl;
 }

@@ -71,6 +71,7 @@ import '../../presentation/blocs/reset_password/reset_password_bloc.dart'
 import '../../presentation/blocs/search_address/search_city_cubit.dart'
     as _i725;
 import '../../presentation/blocs/signup/signup_bloc.dart' as _i274;
+import '../../presentation/navigation/navigation_cubit.dart' as _i83;
 import '../data/services/firebase_service.dart' as _i964;
 import '../network/app_connectivity_info.dart' as _i816;
 import '../network/blocs/generic_error_trigger_cubit.dart' as _i813;
@@ -111,7 +112,7 @@ Future<_i174.GetIt> $initGetIt(
   gh.factory<_i24.PickPhotosFromGalleryUseCase>(
       () => _i24.PickPhotosFromGalleryUseCase());
   gh.factory<_i903.IsAdTitleValidUseCase>(() => _i903.IsAdTitleValidUseCase());
-  gh.factory<_i642.HomeCubit>(() => _i642.HomeCubit());
+  gh.factory<_i83.NavigationCubit>(() => _i83.NavigationCubit());
   gh.singleton<_i974.FirebaseFirestore>(() => appModule.store);
   gh.singleton<_i141.FirebaseCrashlytics>(() => appModule.crashlytics);
   gh.singleton<_i59.FirebaseAuth>(() => appModule.auth);
@@ -187,6 +188,8 @@ Future<_i174.GetIt> $initGetIt(
             gh<_i411.IsEmailVerifiedUseCase>(),
             gh<_i271.UserRepository>(),
           ));
+  gh.factory<_i642.HomeCubit>(
+      () => _i642.HomeCubit(gh<_i271.UserRepository>()));
   gh.factory<_i551.ProfileCubit>(
       () => _i551.ProfileCubit(gh<_i271.UserRepository>()));
   gh.factory<_i941.SubmitSignInUseCase>(() => _i941.SubmitSignInUseCase(

@@ -1,7 +1,9 @@
+import 'package:assoshare/core/router/route_list.dart';
 import 'package:assoshare/domain/entities/user/user_entity.dart';
 import 'package:assoshare/presentation/blocs/signup/signup_bloc.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import 'signup_screen.dart';
 
@@ -17,25 +19,19 @@ class ChooseUserTypeScreen extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               OutlinedButton(
-                onPressed: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const SignupScreen(
-                            formType: FormType.signUp,
-                            userType: UserType.individual,
-                          )),
-                ),
+                onPressed: () => context.goNamed(RouteList.signup.name,
+                    extra: const SignupScreenArgs(
+                      formType: FormType.signUp,
+                      userType: UserType.individual,
+                    )),
                 child: const Text('individual').tr(),
               ),
               OutlinedButton(
-                onPressed: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const SignupScreen(
-                            formType: FormType.signUp,
-                            userType: UserType.association,
-                          )),
-                ),
+                onPressed: () => context.goNamed(RouteList.signup.name,
+                    extra: const SignupScreenArgs(
+                      formType: FormType.signUp,
+                      userType: UserType.association,
+                    )),
                 child: const Text('association').tr(),
               ),
             ],

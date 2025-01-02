@@ -1,1 +1,2 @@
 - US1: List Ad Profile
+- US2: Create ad details

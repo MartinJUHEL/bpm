@@ -1,8 +1,9 @@
+import 'package:assoshare/core/router/route_list.dart';
 import 'package:assoshare/presentation/blocs/signup/signup_bloc.dart';
-import 'package:assoshare/presentation/screens/signup/choose_user_type_screen.dart';
 import 'package:assoshare/presentation/screens/signup/signup_screen.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
@@ -16,17 +17,12 @@ class WelcomeScreen extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             OutlinedButton(
-              onPressed: () => Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const ChooseUserTypeScreen()),
-              ),
-              child: Text('signup').tr(),
+              onPressed: () => context.pushNamed(RouteList.chooseUserType.name),
+              child: const Text('signup').tr(),
             ),
             OutlinedButton(
-              onPressed: () => Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const SignupScreen(formType: FormType.signIn)),
-              ),
+              onPressed: () =>
+                  context.pushNamed(RouteList.signup.name, extra: const SignupScreenArgs(formType: FormType.signIn)),
               child: const Text('signin').tr(),
             ),
           ],
