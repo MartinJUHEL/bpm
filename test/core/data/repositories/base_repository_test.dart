@@ -5,7 +5,6 @@ import 'package:assoshare/core/domain/entities/result.dart';
 import 'package:assoshare/core/network/GenericErrorTrigger.dart';
 import 'package:assoshare/core/network/app_connectivity_info.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:logger/logger.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 

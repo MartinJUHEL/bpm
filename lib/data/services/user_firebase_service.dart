@@ -4,7 +4,6 @@ import 'package:assoshare/data/models/user/user_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:injectable/injectable.dart';
-import 'package:logger/logger.dart';
 
 @LazySingleton()
 class UserRemoteService extends BaseFirebaseService {
