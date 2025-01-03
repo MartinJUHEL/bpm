@@ -44,5 +44,27 @@ void main() {
       // Assert
       expect(result, '${'rent'.tr()} : \$123.45'); // Assuming 'rent' is translated and price is formatted
     });
+
+    test('hasPhoto returns true', () {
+      // Arrange
+      final ad = adEntity.copyWith(adType: AdType.rent);
+
+      // Act
+      final result = ad.hasPhoto();
+
+      // Assert
+      expect(result, true); // Assuming 'rent' is translated and price is formatted
+    });
+
+    test('hasPhoto returns false', () {
+      // Arrange
+      final ad = adEntity.copyWith(adType: AdType.rent, photosUrl: []);
+
+      // Act
+      final result = ad.hasPhoto();
+
+      // Assert
+      expect(result, false); // Assuming 'rent' is translated and price is formatted
+    });
   });
 }

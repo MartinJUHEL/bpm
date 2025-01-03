@@ -89,7 +89,12 @@ class _AdDetailsScreenState extends State<AdDetailsScreen> with TickerProviderSt
                   Hero(
                     tag: Constants.adImageHeroTag.buildHeroTag(widget.ad.id),
                     child: GestureDetector(
-                      onTap: () => context.pushNamed(RouteList.profileAdPhotoPager.name, extra: widget.ad.photosUrl),
+                      onTap: () => {
+                        if (widget.ad.hasPhoto())
+                          {
+                            context.pushNamed(RouteList.profileAdPhotoPager.name, extra: widget.ad.photosUrl),
+                          }
+                      },
                       child: SizedBox(
                         width: double.infinity,
                         height: _imageHeight,
@@ -109,13 +114,14 @@ class _AdDetailsScreenState extends State<AdDetailsScreen> with TickerProviderSt
                                       color: Colors.white,
                                     ),
                                   ),
-                            Padding(
-                              padding: const EdgeInsets.all(Dimens.paddingPage),
-                              child: Align(
-                                  alignment: Alignment.bottomRight,
-                                  child: PageNumberImage(
-                                      pageNumber: widget.ad.photosUrl.length, currentPageIndex: _initialPage)),
-                            ),
+                            if (widget.ad.hasPhoto())
+                              Padding(
+                                padding: const EdgeInsets.all(Dimens.paddingPage),
+                                child: Align(
+                                    alignment: Alignment.bottomRight,
+                                    child: PageNumberImage(
+                                        pageNumber: widget.ad.photosUrl.length, currentPageIndex: _initialPage)),
+                              ),
                             Container(
                               decoration: BoxDecoration(
                                 gradient: LinearGradient(

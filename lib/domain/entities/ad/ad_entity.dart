@@ -30,6 +30,8 @@ class AdEntity with _$AdEntity {
       AdType.rent => '${tr('rent')} : ${price?.displayPrice(locale: locale)}',
     };
   }
+
+  bool hasPhoto() => photosUrl.isNotEmpty;
 }
 
 enum AdType { loan, rent }
