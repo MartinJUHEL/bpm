@@ -20,7 +20,7 @@ mixin _$PublishAdState {
   String get title => throw _privateConstructorUsedError;
   bool get isTitleValid => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
-  int? get price => throw _privateConstructorUsedError;
+  double? get price => throw _privateConstructorUsedError;
   AdType? get adType => throw _privateConstructorUsedError;
   bool get isDescriptionValid => throw _privateConstructorUsedError;
   List<PhotoEntity> get photos => throw _privateConstructorUsedError;
@@ -47,7 +47,7 @@ abstract class $PublishAdStateCopyWith<$Res> {
       String title,
       bool isTitleValid,
       String description,
-      int? price,
+      double? price,
       AdType? adType,
       bool isDescriptionValid,
       List<PhotoEntity> photos,
@@ -107,7 +107,7 @@ class _$PublishAdStateCopyWithImpl<$Res, $Val extends PublishAdState>
       price: freezed == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as double?,
       adType: freezed == adType
           ? _value.adType
           : adType // ignore: cast_nullable_to_non_nullable
@@ -167,7 +167,7 @@ abstract class _$$PublishAdStateImplCopyWith<$Res>
       String title,
       bool isTitleValid,
       String description,
-      int? price,
+      double? price,
       AdType? adType,
       bool isDescriptionValid,
       List<PhotoEntity> photos,
@@ -226,7 +226,7 @@ class __$$PublishAdStateImplCopyWithImpl<$Res>
       price: freezed == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as double?,
       adType: freezed == adType
           ? _value.adType
           : adType // ignore: cast_nullable_to_non_nullable
@@ -291,7 +291,7 @@ class _$PublishAdStateImpl extends _PublishAdState {
   @JsonKey()
   final String description;
   @override
-  final int? price;
+  final double? price;
   @override
   final AdType? adType;
   @override
@@ -381,7 +381,7 @@ abstract class _PublishAdState extends PublishAdState {
       final String title,
       final bool isTitleValid,
       final String description,
-      final int? price,
+      final double? price,
       final AdType? adType,
       final bool isDescriptionValid,
       final List<PhotoEntity> photos,
@@ -400,7 +400,7 @@ abstract class _PublishAdState extends PublishAdState {
   @override
   String get description;
   @override
-  int? get price;
+  double? get price;
   @override
   AdType? get adType;
   @override

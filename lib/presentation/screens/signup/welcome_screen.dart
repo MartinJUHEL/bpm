@@ -22,7 +22,7 @@ class WelcomeScreen extends StatelessWidget {
             ),
             OutlinedButton(
               onPressed: () =>
-                  context.pushNamed(RouteList.signup.name, extra: const SignupScreenArgs(formType: FormType.signIn)),
+                  context.pushNamed(RouteList.signIn.name, extra: const SignupScreenArgs(formType: FormType.signIn)),
               child: const Text('signin').tr(),
             ),
           ],

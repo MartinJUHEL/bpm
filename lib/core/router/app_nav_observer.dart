@@ -10,6 +10,6 @@ class AppNavObserver extends NavigatorObserver {
 
   @override
   void didPop(Route<dynamic> route, Route<dynamic>? previousRoute) {
-    log('did push route : ${route.settings.name}');
+    log('did pop route : ${route.settings.name}');
   }
 }

@@ -14,7 +14,7 @@ class PostAdModel with _$PostAdModel {
       {
       required final String title,
       required final String description,
-      final int? price,
+      final double? price,
       required final String adType,
       required final CityModel city,
       required final String renterId,
@@ -28,6 +28,7 @@ class PostAdModel with _$PostAdModel {
       title: entity.title,
       description: entity.description,
       adType: entity.adType.name,
+      price: entity.price,
       city: CityModel.fromEntity(entity.city),
       renterId: entity.renterId,
       renterName: entity.renterName,

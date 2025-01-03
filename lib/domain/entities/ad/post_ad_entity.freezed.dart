@@ -18,7 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$PostAdEntity {
   String get title => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
-  int? get price => throw _privateConstructorUsedError;
+  double? get price => throw _privateConstructorUsedError;
   AdType get adType => throw _privateConstructorUsedError;
   List<PhotoEntity> get photos => throw _privateConstructorUsedError;
   CityEntity get city => throw _privateConstructorUsedError;
@@ -43,7 +43,7 @@ abstract class $PostAdEntityCopyWith<$Res> {
   $Res call(
       {String title,
       String description,
-      int? price,
+      double? price,
       AdType adType,
       List<PhotoEntity> photos,
       CityEntity city,
@@ -93,7 +93,7 @@ class _$PostAdEntityCopyWithImpl<$Res, $Val extends PostAdEntity>
       price: freezed == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as double?,
       adType: null == adType
           ? _value.adType
           : adType // ignore: cast_nullable_to_non_nullable
@@ -147,7 +147,7 @@ abstract class _$$PostAdEntityImplCopyWith<$Res>
   $Res call(
       {String title,
       String description,
-      int? price,
+      double? price,
       AdType adType,
       List<PhotoEntity> photos,
       CityEntity city,
@@ -196,7 +196,7 @@ class __$$PostAdEntityImplCopyWithImpl<$Res>
       price: freezed == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as double?,
       adType: null == adType
           ? _value.adType
           : adType // ignore: cast_nullable_to_non_nullable
@@ -250,7 +250,7 @@ class _$PostAdEntityImpl implements _PostAdEntity {
   @override
   final String description;
   @override
-  final int? price;
+  final double? price;
   @override
   final AdType adType;
   final List<PhotoEntity> _photos;
@@ -326,7 +326,7 @@ abstract class _PostAdEntity implements PostAdEntity {
   const factory _PostAdEntity(
       {required final String title,
       required final String description,
-      final int? price,
+      final double? price,
       required final AdType adType,
       required final List<PhotoEntity> photos,
       required final CityEntity city,
@@ -340,7 +340,7 @@ abstract class _PostAdEntity implements PostAdEntity {
   @override
   String get description;
   @override
-  int? get price;
+  double? get price;
   @override
   AdType get adType;
   @override

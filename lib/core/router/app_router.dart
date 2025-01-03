@@ -7,6 +7,7 @@ import 'package:assoshare/presentation/blocs/publish_ad/publish_ad_bloc/publish_
 import 'package:assoshare/presentation/navigation/navigation_cubit.dart';
 import 'package:assoshare/presentation/screens/ad_details_screen.dart';
 import 'package:assoshare/presentation/screens/home_screen.dart';
+import 'package:assoshare/presentation/screens/photo_pager_screen.dart';
 import 'package:assoshare/presentation/screens/publish_ad_screen.dart';
 import 'package:assoshare/presentation/screens/signup/choose_user_type_screen.dart';
 import 'package:assoshare/presentation/screens/signup/reset_password_screen.dart';
@@ -132,12 +133,21 @@ abstract class AppRouter {
         ),
         routes: [
           GoRoute(
-            name: RouteList.profileAdDetails.name,
-            path: RouteList.profileAdDetails.path,
-            builder: (context, state) => _Page(
-              child: AdDetailsScreen(ad: state.extra! as AdEntity),
-            ),
-          ),
+              name: RouteList.profileAdDetails.name,
+              path: RouteList.profileAdDetails.path,
+              builder: (context, state) => _Page(
+                    child: AdDetailsScreen(
+                      ad: state.extra! as AdEntity,
+                      fromUserProfile: true,
+                    ),
+                  ),
+              routes: [
+                GoRoute(
+                  name: RouteList.profileAdPhotoPager.name,
+                  path: RouteList.profileAdPhotoPager.path,
+                  builder: (context, state) => _Page(child: PhotoPagerScreen(photosUrl: state.extra as List<String>)),
+                ),
+              ]),
         ],
       ),
     ],

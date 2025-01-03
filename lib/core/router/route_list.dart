@@ -13,7 +13,8 @@ enum RouteList {
 
   // PROFILE.
   profile(name: 'profile', path: '/profile'),
-  profileAdDetails(name: 'adDetails', path: '/adDetails', parent: RouteList.profile),
+  profileAdDetails(name: 'profileAdDetails', path: '/adDetails', parent: RouteList.profile),
+  profileAdPhotoPager(name: 'profileAdPhotoPager', path: '/photoPager', parent: RouteList.profileAdDetails),
 
   // MESSAGES.
   messages(name: 'messages', path: '/messages'),

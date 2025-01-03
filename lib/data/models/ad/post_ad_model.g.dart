@@ -10,7 +10,7 @@ _$PostAdModelImpl _$$PostAdModelImplFromJson(Map<String, dynamic> json) =>
     _$PostAdModelImpl(
       title: json['title'] as String,
       description: json['description'] as String,
-      price: (json['price'] as num?)?.toInt(),
+      price: (json['price'] as num?)?.toDouble(),
       adType: json['adType'] as String,
       city: CityModel.fromJson(json['city'] as Map<String, dynamic>),
       renterId: json['renterId'] as String,

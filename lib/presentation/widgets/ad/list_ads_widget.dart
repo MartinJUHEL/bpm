@@ -1,8 +1,10 @@
 import 'package:assoshare/app/dimens.dart';
+import 'package:assoshare/core/router/route_list.dart';
 import 'package:assoshare/domain/entities/ad/ad_entity.dart';
 import 'package:assoshare/presentation/widgets/ad/ad_card_widget.dart';
 import 'package:assoshare/presentation/widgets/common/circle_icon_button.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class ListAdsWidget extends StatelessWidget {
   final List<AdEntity> ads;
@@ -36,7 +38,7 @@ class ListAdsWidget extends StatelessWidget {
           return AdCardWidget(
             adEntity: ad,
             onClicked: () {
-
+              context.pushNamed(RouteList.profileAdDetails.name, extra: ad);
             },
             optionWidget: isEditable
                 ? CircleIconButton(onPressed: () => onMoreClicked?.call(ad.id), icon: Icons.more_horiz)

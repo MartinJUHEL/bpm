@@ -55,7 +55,7 @@ class PublishAdCubit extends Cubit<PublishAdState> {
     onMovedToNextPage();
   }
 
-  void onPriceChanged(int newPrice) {
+  void onPriceChanged(double newPrice) {
     emit(state.copyWith(price: newPrice));
   }
 

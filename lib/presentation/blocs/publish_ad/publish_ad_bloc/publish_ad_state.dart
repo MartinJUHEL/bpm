@@ -9,7 +9,7 @@ class PublishAdState with _$PublishAdState {
     @Default('') final String title,
     @Default(false) final bool isTitleValid,
     @Default('') final String description,
-    final int? price,
+    final double? price,
     final AdType? adType,
     @Default(false) final bool isDescriptionValid,
     @Default([]) final List<PhotoEntity> photos,

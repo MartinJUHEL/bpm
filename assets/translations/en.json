@@ -64,5 +64,8 @@
   "enterYourCity": "Enter your city",
   "locationError": "Can't fetch your location",
   "publishAd": "Publish your ad",
-  "queryTooShortMessage": "3 characters minimum are needed"
+  "queryTooShortMessage": "3 characters minimum are needed",
+  "@_AD_DETAIL": {},
+  "description": "Description",
+  "contact": "Contact"
 }

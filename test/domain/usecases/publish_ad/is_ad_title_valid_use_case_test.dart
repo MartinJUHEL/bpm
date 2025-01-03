@@ -3,16 +3,43 @@ import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   group('IsAdTitleValidUseCase', () {
-    test('returns true when title is valid', () {
-      final useCase = IsAdTitleValidUseCase();
-      final result = useCase.execute('Valid Title');
-      expect(result, isTrue);
+    late IsAdTitleValidUseCase useCase;
+
+    setUp(() {
+      useCase = IsAdTitleValidUseCase(); // Create an instance of the use case
     });
 
-    test('returns false when title is invalid', () {
-      final useCase = IsAdTitleValidUseCase();
-      final result = useCase.execute('In');
-      expect(result, isFalse);
+    test('returns true for valid title length', () {
+      // Arrange
+      const validTitle = 'Valid Title';
+
+      // Act
+      final result = useCase.execute(validTitle);
+
+      // Assert
+      expect(result, true);
+    });
+
+    test('returns false for title shorter than 3 characters', () {
+      // Arrange
+      const shortTitle = 'ab';
+
+      // Act
+      final result = useCase.execute(shortTitle);
+
+      // Assert
+      expect(result, false);
+    });
+
+    test('returns false for title longer than 30 characters', () {
+      // Arrange
+      const longTitle = 'This is a very long title exceeding 30 characters';
+
+      // Act
+      final result = useCase.execute(longTitle);
+
+      // Assert
+      expect(result, false);
     });
   });
 }

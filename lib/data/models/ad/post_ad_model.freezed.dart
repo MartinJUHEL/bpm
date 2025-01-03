@@ -22,7 +22,7 @@ PostAdModel _$PostAdModelFromJson(Map<String, dynamic> json) {
 mixin _$PostAdModel {
   String get title => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
-  int? get price => throw _privateConstructorUsedError;
+  double? get price => throw _privateConstructorUsedError;
   String get adType => throw _privateConstructorUsedError;
   CityModel get city => throw _privateConstructorUsedError;
   String get renterId => throw _privateConstructorUsedError;
@@ -49,7 +49,7 @@ abstract class $PostAdModelCopyWith<$Res> {
   $Res call(
       {String title,
       String description,
-      int? price,
+      double? price,
       String adType,
       CityModel city,
       String renterId,
@@ -97,7 +97,7 @@ class _$PostAdModelCopyWithImpl<$Res, $Val extends PostAdModel>
       price: freezed == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as double?,
       adType: null == adType
           ? _value.adType
           : adType // ignore: cast_nullable_to_non_nullable
@@ -147,7 +147,7 @@ abstract class _$$PostAdModelImplCopyWith<$Res>
   $Res call(
       {String title,
       String description,
-      int? price,
+      double? price,
       String adType,
       CityModel city,
       String renterId,
@@ -194,7 +194,7 @@ class __$$PostAdModelImplCopyWithImpl<$Res>
       price: freezed == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as double?,
       adType: null == adType
           ? _value.adType
           : adType // ignore: cast_nullable_to_non_nullable
@@ -246,7 +246,7 @@ class _$PostAdModelImpl extends _PostAdModel {
   @override
   final String description;
   @override
-  final int? price;
+  final double? price;
   @override
   final String adType;
   @override
@@ -311,7 +311,7 @@ abstract class _PostAdModel extends PostAdModel {
   const factory _PostAdModel(
       {required final String title,
       required final String description,
-      final int? price,
+      final double? price,
       required final String adType,
       required final CityModel city,
       required final String renterId,
@@ -328,7 +328,7 @@ abstract class _PostAdModel extends PostAdModel {
   @override
   String get description;
   @override
-  int? get price;
+  double? get price;
   @override
   String get adType;
   @override

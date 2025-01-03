@@ -8,6 +8,8 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
+import 'dart:ui' as _i264;
+
 import 'package:cloud_firestore/cloud_firestore.dart' as _i974;
 import 'package:dio/dio.dart' as _i361;
 import 'package:firebase_auth/firebase_auth.dart' as _i59;
@@ -119,6 +121,7 @@ Future<_i174.GetIt> $initGetIt(
   gh.singleton<_i457.FirebaseStorage>(() => appModule.storage);
   gh.singleton<_i361.Dio>(() => appModule.dio);
   gh.singleton<_i974.Logger>(() => appModule.logger);
+  gh.singleton<_i264.Locale>(() => appModule.currentLocale);
   gh.lazySingleton<_i882.GetLocationUseCase>(
       () => const _i882.GetLocationUseCase());
   gh.lazySingleton<_i545.AdFirebaseService>(() => _i545.AdFirebaseService(

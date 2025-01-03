@@ -10,7 +10,7 @@ class PostAdEntity with _$PostAdEntity {
   const factory PostAdEntity(
       {required final String title,
       required final String description,
-      final int? price,
+      final double? price,
       required final AdType adType,
       required final List<PhotoEntity> photos,
       required final CityEntity city,
