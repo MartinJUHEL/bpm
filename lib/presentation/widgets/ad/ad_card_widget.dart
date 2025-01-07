@@ -6,7 +6,7 @@ import 'package:assoshare/core/utils/date_ext.dart';
 import 'package:assoshare/core/utils/text_utils.dart';
 import 'package:assoshare/domain/entities/ad/ad_entity.dart';
 import 'package:assoshare/presentation/widgets/common/base_shimmer.dart';
-import 'package:assoshare/presentation/widgets/profile/profile_header.dart';
+import 'package:assoshare/presentation/widgets/common/user_icon_with_name_widget.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -31,15 +31,13 @@ class AdCardWidget extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          ProfileHeader(
+          UserIconWithNameWidget(
               username: adEntity.renterName,
               photoUrl: adEntity.renterPhotoUrl,
               userNameTextStyle: context.textTheme.bodySmall,
               avatarTextStyle: context.textTheme.bodySmall?.copyWith(color: AppColors.white),
               padding: Dimens.paddingSmaller,
-              avatarRadius: _avatarRadius,
-              isDropdown: false,
-              onClicked: () => {}),
+              avatarRadius: _avatarRadius),
           const Gap(Dimens.paddingSmaller),
           Stack(children: [
             Hero(

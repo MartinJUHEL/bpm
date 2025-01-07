@@ -6,6 +6,7 @@
   "ads": "Ads",
   "refresh": "Refresh",
   "retry": "Retry",
+  "cancel": "Annuler",
   "noAd": "No ad",
   "errorOccurred": "An error occurred please try again",
   "errorTitle": "Oops!",
@@ -70,6 +71,7 @@
   "rentalPriceLabel": "Your rental price",
   "post": "Post",
   "@_AD_DETAIL": {},
-  "description" : "Description",
-  "contact" : "Contacter"
+  "description": "Description",
+  "contact": "Contacter",
+  "confirmDeletion": "Es-tu sur de vouloir supprimer ton annonce ?"
 }

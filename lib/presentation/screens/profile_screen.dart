@@ -5,8 +5,8 @@ import 'package:assoshare/presentation/blocs/authentication/authentication_bloc.
 import 'package:assoshare/presentation/blocs/profile/profile_cubit.dart';
 import 'package:assoshare/presentation/widgets/common/error_screen.dart';
 import 'package:assoshare/presentation/widgets/profile/profile_details_widget.dart';
-import 'package:assoshare/presentation/widgets/profile/profile_header.dart';
 import 'package:assoshare/presentation/widgets/profile/profile_menu_modal.dart';
+import 'package:assoshare/presentation/widgets/profile/user_profile_header.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -33,16 +33,16 @@ class ProfileScreen extends StatelessWidget {
                       iconTheme: IconThemeData(color: Theme.of(context).colorScheme.primary),
                       floating: true,
                       title: switch (state) {
-                        ProfilData() => ProfileHeader(
+                        ProfilData() => UserProfileHeader(
                             username: state.user.displayName,
-                            userNameTextStyle: context.textTheme.titleMedium,
-                            avatarTextStyle: context.textTheme.bodyLarge?.copyWith(color: Colors.white),
-                            isDropdown: true,
-                            onClicked: () => _showMenuModal(context)),
-                        ProfileInit() || ProfileError() => ProfileHeader(
-                            username: unknown,
-                            isDropdown: true,
                             onClicked: () => _showMenuModal(context),
+                            onShareClicked: () {
+                              /*TODO SHARE PROFILE*/
+                            },
+                          ),
+                        ProfileInit() || ProfileError() => UserProfileHeader(
+                            username: unknown,
+                            onClicked: () => _showMenuModal(context), onShareClicked: () {  },
                           ),
                       }),
                 ];

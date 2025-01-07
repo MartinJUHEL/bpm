@@ -2,9 +2,9 @@ import 'package:assoshare/app/dimens.dart';
 import 'package:assoshare/domain/entities/user/user_entity.dart';
 import 'package:assoshare/presentation/blocs/list_ads/list_ads_cubit.dart';
 import 'package:assoshare/presentation/blocs/profile/profile_cubit.dart';
+import 'package:assoshare/presentation/widgets/ad/ad_menu_modal.dart';
 import 'package:assoshare/presentation/widgets/profile/profile_ads.dart';
 import 'package:assoshare/presentation/widgets/profile/profile_info.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
@@ -59,28 +59,13 @@ class ProfileDetailsWidget extends StatelessWidget {
         useSafeArea: true,
         isScrollControlled: true,
         builder: (BuildContext modalContext) {
-          return Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              ListTile(
-                leading: const Icon(Icons.edit),
-                title: const Text("edit").tr(),
-                onTap: () {
-                  onEditClicked();
-                  Navigator.pop(context);
-                },
-              ),
-              ListTile(
-                leading: const Icon(Icons.delete),
-                title: const Text("delete").tr(),
-                onTap: () {
-                  onDeleteClicked();
-                  Navigator.pop(context);
-                },
-              ),
-              const Gap(Dimens.paddingRegular)
-            ],
-          );
+          return AdMenuModal(onEditClicked: () {
+            onEditClicked();
+            Navigator.pop(modalContext);
+          }, onDeleteClicked: () {
+            onDeleteClicked();
+            Navigator.pop(modalContext);
+          });
         });
   }
 }

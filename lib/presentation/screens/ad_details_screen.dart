@@ -6,8 +6,10 @@ import 'package:assoshare/core/utils/build_context_ext.dart';
 import 'package:assoshare/core/utils/date_ext.dart';
 import 'package:assoshare/core/utils/text_utils.dart';
 import 'package:assoshare/domain/entities/ad/ad_entity.dart';
+import 'package:assoshare/presentation/widgets/ad/ad_menu_modal.dart';
 import 'package:assoshare/presentation/widgets/ad_details/ad_details_top_bar_widget.dart';
 import 'package:assoshare/presentation/widgets/common/base_shimmer.dart';
+import 'package:assoshare/presentation/widgets/common/confirmation_dialog.dart';
 import 'package:assoshare/presentation/widgets/common/page_number_image.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -69,7 +71,10 @@ class _AdDetailsScreenState extends State<AdDetailsScreen> with TickerProviderSt
           /*TODO*/
         },
         onEditClicked: () {
-          /*TODO*/
+          _showAdMenuModal(
+            adId: widget.ad.id,
+            context: context,
+          );
         },
         onFavoriteClicked: () {
           /*TODO*/
@@ -183,6 +188,39 @@ class _AdDetailsScreenState extends State<AdDetailsScreen> with TickerProviderSt
       ),
     );
   }
+}
+
+_showAdMenuModal({required BuildContext context, required String adId}) {
+  showModalBottomSheet(
+      showDragHandle: true,
+      context: context,
+      useSafeArea: true,
+      isScrollControlled: true,
+      builder: (BuildContext modalContext) {
+        return AdMenuModal(
+            onEditClicked: () => {
+                  /*TODO AD EDITION*/
+                },
+            onDeleteClicked: () {
+              Navigator.pop(modalContext);
+              _showDeletionDialog(context, adId);
+            });
+      });
+}
+
+_showDeletionDialog(BuildContext context, String adId) {
+  showDialog(
+      context: context,
+      builder: (dialogContext) => ConfirmationDialog(
+            message: tr('confirmDeletion'),
+            onCancelClicked: () => Navigator.pop(context),
+            onConfirmClicked: () {
+              Navigator.pop(dialogContext);
+              // return true to trigger deletion on adlist.
+              context.pop(true);
+            },
+            confirmText: tr('delete'),
+          ));
 }
 
 ///////////////////////////////////////////////////////////////////////////
