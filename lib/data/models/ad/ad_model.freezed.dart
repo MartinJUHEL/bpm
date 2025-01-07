@@ -23,7 +23,7 @@ mixin _$AdModel {
   String get id => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
-  int? get price => throw _privateConstructorUsedError;
+  double? get price => throw _privateConstructorUsedError;
   String get adType => throw _privateConstructorUsedError;
   List<String> get photosUrl => throw _privateConstructorUsedError;
   CityModel get city => throw _privateConstructorUsedError;
@@ -50,7 +50,7 @@ abstract class $AdModelCopyWith<$Res> {
       {String id,
       String title,
       String description,
-      int? price,
+      double? price,
       String adType,
       List<String> photosUrl,
       CityModel city,
@@ -105,7 +105,7 @@ class _$AdModelCopyWithImpl<$Res, $Val extends AdModel>
       price: freezed == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as double?,
       adType: null == adType
           ? _value.adType
           : adType // ignore: cast_nullable_to_non_nullable
@@ -159,7 +159,7 @@ abstract class _$$AdEntityImplCopyWith<$Res> implements $AdModelCopyWith<$Res> {
       {String id,
       String title,
       String description,
-      int? price,
+      double? price,
       String adType,
       List<String> photosUrl,
       CityModel city,
@@ -213,7 +213,7 @@ class __$$AdEntityImplCopyWithImpl<$Res>
       price: freezed == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as double?,
       adType: null == adType
           ? _value.adType
           : adType // ignore: cast_nullable_to_non_nullable
@@ -274,7 +274,7 @@ class _$AdEntityImpl extends _AdEntity {
   @override
   final String description;
   @override
-  final int? price;
+  final double? price;
   @override
   final String adType;
   final List<String> _photosUrl;
@@ -363,7 +363,7 @@ abstract class _AdEntity extends AdModel {
       {required final String id,
       required final String title,
       required final String description,
-      final int? price,
+      final double? price,
       required final String adType,
       final List<String> photosUrl,
       required final CityModel city,
@@ -383,7 +383,7 @@ abstract class _AdEntity extends AdModel {
   @override
   String get description;
   @override
-  int? get price;
+  double? get price;
   @override
   String get adType;
   @override

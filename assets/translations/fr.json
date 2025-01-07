@@ -1,7 +1,7 @@
 {
   "appTitle": "BPM",
   "@appTitle": {
-    "description": "App title"
+    "description": "Asso Share"
   },
   "ads": "Ads",
   "refresh": "Refresh",
@@ -13,8 +13,8 @@
   "userNotAuthenticated": "User is not authenticated",
   "delete": "Supprimer",
   "next": "Next",
-  "loan": "Loan",
-  "rent": "Rent",
+  "loan": "Prêt",
+  "rent": "Location",
   "close": "Close",
   "@_WELCOME_PAGE": {},
   "welcomeText": "Welcome to BPM",
@@ -68,5 +68,8 @@
   "queryTooShortMessage": "3 characters minimum are needed",
   "rentalPriceTitle": "What is your rental price?",
   "rentalPriceLabel": "Your rental price",
-  "post": "Post"
+  "post": "Post",
+  "@_AD_DETAIL": {},
+  "description" : "Description",
+  "contact" : "Contacter"
 }

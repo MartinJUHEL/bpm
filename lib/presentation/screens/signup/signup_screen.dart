@@ -1,8 +1,8 @@
 import 'package:assoshare/core/di/injection.dart';
+import 'package:assoshare/core/router/route_list.dart';
 import 'package:assoshare/domain/entities/user/user_entity.dart';
 import 'package:assoshare/presentation/blocs/authentication/authentication_bloc.dart';
 import 'package:assoshare/presentation/blocs/signup/signup_bloc.dart';
-import 'package:assoshare/presentation/screens/reset_password_screen.dart';
 import 'package:assoshare/presentation/widgets/common/error_dialog.dart';
 import 'package:assoshare/presentation/widgets/common/submit_button.dart';
 import 'package:assoshare/presentation/widgets/signup/email_field.dart';
@@ -13,13 +13,12 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:go_router/go_router.dart';
 
 class SignupScreen extends StatelessWidget {
-  const SignupScreen(
-      {super.key, required this.formType, this.userType = UserType.individual});
+  const SignupScreen({super.key, required this.args});
 
-  final FormType formType;
-  final UserType userType;
+  final SignupScreenArgs args;
 
   String _getSubmitButtonTitle(FormType formType) {
     switch (formType) {
@@ -42,8 +41,7 @@ class SignupScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return BlocProvider(
-      create: (context) => locator<SignupBloc>()
-        ..add(SignupEvent.initialized(formType, userType)),
+      create: (context) => locator<SignupBloc>()..add(SignupEvent.initialized(args.formType, args.userType)),
       child: BlocListener<SignupBloc, SignupState>(
         listener: (context, state) {
           _showLoader(state.isLoading);
@@ -53,26 +51,19 @@ class SignupScreen extends StatelessWidget {
                 builder: (dialogContext) => ErrorDialog(
                       errorMessage: state.errorMessage,
                       onPressed: () {
-                        context
-                            .read<SignupBloc>()
-                            .add(const SignupEvent.closeErrorDialog());
+                        context.read<SignupBloc>().add(const SignupEvent.closeErrorDialog());
                         Navigator.of(dialogContext).pop();
                       },
                     )).then((onValue) async {
               if (context.mounted) {
-                context
-                    .read<SignupBloc>()
-                    .add(const SignupEvent.closeErrorDialog());
+                context.read<SignupBloc>().add(const SignupEvent.closeErrorDialog());
               }
             });
           } else if (state.isFormValid && !state.isLoading) {
             context.read<SignupBloc>().add(const SignupEvent.succeeded());
-            context
-                .read<AuthenticationBloc>()
-                .add(const AuthenticationEvent.started());
+            context.read<AuthenticationBloc>().add(const AuthenticationEvent.started());
           } else if (state.isFormValidateFailed) {
-            ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(content: const Text('textFillIssue').tr()));
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: const Text('textFillIssue').tr()));
           }
         },
         child: SafeArea(
@@ -83,11 +74,9 @@ class SignupScreen extends StatelessWidget {
                   return Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
-                      Padding(
-                          padding: EdgeInsets.only(bottom: size.height * 0.04)),
+                      Padding(padding: EdgeInsets.only(bottom: size.height * 0.04)),
                       const Text('appTitle').tr(),
-                      Padding(
-                          padding: EdgeInsets.only(bottom: size.height * 0.02)),
+                      Padding(padding: EdgeInsets.only(bottom: size.height * 0.02)),
                       _buildFormBody(size, state, context),
                     ],
                   );
@@ -100,8 +89,7 @@ class SignupScreen extends StatelessWidget {
     );
   }
 
-  SingleChildScrollView _buildFormBody(
-      Size size, SignupState state, BuildContext context) {
+  SingleChildScrollView _buildFormBody(Size size, SignupState state, BuildContext context) {
     return SingleChildScrollView(
       child: Column(
         children: [
@@ -127,28 +115,27 @@ class SignupScreen extends StatelessWidget {
                           ),
                           text: tr('forgotPassword'),
                           recognizer: TapGestureRecognizer()
-                            ..onTap = () => Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          const ResetPasswordScreen()),
-                                )),
+                            ..onTap = () => context.goNamed(RouteList.resetPassword.name)),
                     ),
                     SizedBox(height: size.height * 0.01),
                   ],
                 )
               : const SizedBox(),
           SubmitButton(
-            title: _getSubmitButtonTitle(formType),
+            title: _getSubmitButtonTitle(args.formType),
             isLoading: state.isLoading,
-            onPressed: !state.isFormValid
-                ? () => context
-                    .read<SignupBloc>()
-                    .add(const SignupEvent.submitted())
-                : () => {},
+            onPressed:
+                !state.isFormValid ? () => context.read<SignupBloc>().add(const SignupEvent.submitted()) : () => {},
           )
         ],
       ),
     );
   }
+}
+
+class SignupScreenArgs {
+  const SignupScreenArgs({required this.formType, this.userType = UserType.individual});
+
+  final FormType formType;
+  final UserType userType;
 }

@@ -16,7 +16,7 @@ class SubmitButton extends StatelessWidget {
     return AnimatedSize(
       duration: const Duration(milliseconds: 500),
       child: SizedBox(
-        width: isLoading ? buttonHeight : size.width * 0.8,
+        width: isLoading ? buttonWidth : size.width * 0.8,
         child: ElevatedButton(
           style: ElevatedButton.styleFrom(
               fixedSize: isLoading ? Size(size.width * 0.8, buttonHeight) : Size(size.width * 0.8, buttonHeight),
@@ -38,4 +38,4 @@ class SubmitButton extends StatelessWidget {
 ///////////////////////////////////////////////////////////////////////////
 
 const double buttonHeight = 40.0;
-const double buttonWidth = 50.0;
+const double buttonWidth = 40.0;

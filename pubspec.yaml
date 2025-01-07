@@ -92,6 +92,9 @@ dependencies:
   #https://pub.dev/packages/nested
   nested: ^1.0.0
 
+  #https://pub.dev/packages/go_router
+  go_router: ^14.6.2
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

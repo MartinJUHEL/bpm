@@ -19,7 +19,7 @@ mixin _$AdEntity {
   String get id => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
-  int? get price => throw _privateConstructorUsedError;
+  double? get price => throw _privateConstructorUsedError;
   AdType get adType => throw _privateConstructorUsedError;
   List<String> get photosUrl => throw _privateConstructorUsedError;
   CityEntity get city => throw _privateConstructorUsedError;
@@ -44,7 +44,7 @@ abstract class $AdEntityCopyWith<$Res> {
       {String id,
       String title,
       String description,
-      int? price,
+      double? price,
       AdType adType,
       List<String> photosUrl,
       CityEntity city,
@@ -99,7 +99,7 @@ class _$AdEntityCopyWithImpl<$Res, $Val extends AdEntity>
       price: freezed == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as double?,
       adType: null == adType
           ? _value.adType
           : adType // ignore: cast_nullable_to_non_nullable
@@ -154,7 +154,7 @@ abstract class _$$AdEntityImplCopyWith<$Res>
       {String id,
       String title,
       String description,
-      int? price,
+      double? price,
       AdType adType,
       List<String> photosUrl,
       CityEntity city,
@@ -208,7 +208,7 @@ class __$$AdEntityImplCopyWithImpl<$Res>
       price: freezed == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as double?,
       adType: null == adType
           ? _value.adType
           : adType // ignore: cast_nullable_to_non_nullable
@@ -243,7 +243,7 @@ class __$$AdEntityImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$AdEntityImpl implements _AdEntity {
+class _$AdEntityImpl extends _AdEntity {
   const _$AdEntityImpl(
       {required this.id,
       required this.title,
@@ -256,7 +256,8 @@ class _$AdEntityImpl implements _AdEntity {
       required this.renterName,
       this.renterPhotoUrl,
       required this.creationDate})
-      : _photosUrl = photosUrl;
+      : _photosUrl = photosUrl,
+        super._();
 
   @override
   final String id;
@@ -265,7 +266,7 @@ class _$AdEntityImpl implements _AdEntity {
   @override
   final String description;
   @override
-  final int? price;
+  final double? price;
   @override
   final AdType adType;
   final List<String> _photosUrl;
@@ -340,12 +341,12 @@ class _$AdEntityImpl implements _AdEntity {
       __$$AdEntityImplCopyWithImpl<_$AdEntityImpl>(this, _$identity);
 }
 
-abstract class _AdEntity implements AdEntity {
+abstract class _AdEntity extends AdEntity {
   const factory _AdEntity(
       {required final String id,
       required final String title,
       required final String description,
-      final int? price,
+      final double? price,
       required final AdType adType,
       required final List<String> photosUrl,
       required final CityEntity city,
@@ -353,6 +354,7 @@ abstract class _AdEntity implements AdEntity {
       required final String renterName,
       final String? renterPhotoUrl,
       required final DateTime creationDate}) = _$AdEntityImpl;
+  const _AdEntity._() : super._();
 
   @override
   String get id;
@@ -361,7 +363,7 @@ abstract class _AdEntity implements AdEntity {
   @override
   String get description;
   @override
-  int? get price;
+  double? get price;
   @override
   AdType get adType;
   @override

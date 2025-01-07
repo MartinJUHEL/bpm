@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$HomeState {
-  int get tabIndex => throw _privateConstructorUsedError;
+  UserEntity? get user => throw _privateConstructorUsedError;
 
   /// Create a copy of HomeState
   /// with the given fields replaced by the non-null parameter values.
@@ -30,7 +30,9 @@ abstract class $HomeStateCopyWith<$Res> {
   factory $HomeStateCopyWith(HomeState value, $Res Function(HomeState) then) =
       _$HomeStateCopyWithImpl<$Res, HomeState>;
   @useResult
-  $Res call({int tabIndex});
+  $Res call({UserEntity? user});
+
+  $UserEntityCopyWith<$Res>? get user;
 }
 
 /// @nodoc
@@ -48,14 +50,28 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? tabIndex = null,
+    Object? user = freezed,
   }) {
     return _then(_value.copyWith(
-      tabIndex: null == tabIndex
-          ? _value.tabIndex
-          : tabIndex // ignore: cast_nullable_to_non_nullable
-              as int,
+      user: freezed == user
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as UserEntity?,
     ) as $Val);
+  }
+
+  /// Create a copy of HomeState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $UserEntityCopyWith<$Res>? get user {
+    if (_value.user == null) {
+      return null;
+    }
+
+    return $UserEntityCopyWith<$Res>(_value.user!, (value) {
+      return _then(_value.copyWith(user: value) as $Val);
+    });
   }
 }
 
@@ -67,7 +83,10 @@ abstract class _$$HomeStateImplCopyWith<$Res>
       __$$HomeStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int tabIndex});
+  $Res call({UserEntity? user});
+
+  @override
+  $UserEntityCopyWith<$Res>? get user;
 }
 
 /// @nodoc
@@ -83,13 +102,13 @@ class __$$HomeStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? tabIndex = null,
+    Object? user = freezed,
   }) {
     return _then(_$HomeStateImpl(
-      tabIndex: null == tabIndex
-          ? _value.tabIndex
-          : tabIndex // ignore: cast_nullable_to_non_nullable
-              as int,
+      user: freezed == user
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as UserEntity?,
     ));
   }
 }
@@ -97,15 +116,15 @@ class __$$HomeStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$HomeStateImpl implements _HomeState {
-  const _$HomeStateImpl({this.tabIndex = 0});
+  const _$HomeStateImpl({this.user = null});
 
   @override
   @JsonKey()
-  final int tabIndex;
+  final UserEntity? user;
 
   @override
   String toString() {
-    return 'HomeState(tabIndex: $tabIndex)';
+    return 'HomeState(user: $user)';
   }
 
   @override
@@ -113,12 +132,11 @@ class _$HomeStateImpl implements _HomeState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$HomeStateImpl &&
-            (identical(other.tabIndex, tabIndex) ||
-                other.tabIndex == tabIndex));
+            (identical(other.user, user) || other.user == user));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, tabIndex);
+  int get hashCode => Object.hash(runtimeType, user);
 
   /// Create a copy of HomeState
   /// with the given fields replaced by the non-null parameter values.
@@ -130,10 +148,10 @@ class _$HomeStateImpl implements _HomeState {
 }
 
 abstract class _HomeState implements HomeState {
-  const factory _HomeState({final int tabIndex}) = _$HomeStateImpl;
+  const factory _HomeState({final UserEntity? user}) = _$HomeStateImpl;
 
   @override
-  int get tabIndex;
+  UserEntity? get user;
 
   /// Create a copy of HomeState
   /// with the given fields replaced by the non-null parameter values.

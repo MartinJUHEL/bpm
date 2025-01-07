@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:assoshare/core/data/services/firebase_service.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dio/dio.dart';
@@ -33,4 +35,7 @@ abstract class AppModule {
 
   @singleton
   Logger get logger => Logger();
+
+  @singleton
+  Locale get currentLocale => PlatformDispatcher.instance.locale;
 }

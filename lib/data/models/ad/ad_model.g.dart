@@ -11,7 +11,7 @@ _$AdEntityImpl _$$AdEntityImplFromJson(Map<String, dynamic> json) =>
       id: json['id'] as String,
       title: json['title'] as String,
       description: json['description'] as String,
-      price: (json['price'] as num?)?.toInt(),
+      price: (json['price'] as num?)?.toDouble(),
       adType: json['adType'] as String,
       photosUrl: (json['photosUrl'] as List<dynamic>?)
               ?.map((e) => e as String)

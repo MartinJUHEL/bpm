@@ -1,4 +1,5 @@
 import 'package:assoshare/app/colors.dart';
+import 'package:assoshare/app/constants.dart';
 import 'package:assoshare/app/dimens.dart';
 import 'package:assoshare/core/utils/build_context_ext.dart';
 import 'package:assoshare/core/utils/date_ext.dart';
@@ -41,29 +42,32 @@ class AdCardWidget extends StatelessWidget {
               onClicked: () => {}),
           const Gap(Dimens.paddingSmaller),
           Stack(children: [
-            Container(
-              height: _imageHeight,
-              width: double.infinity,
-              clipBehavior: Clip.antiAlias,
-              decoration: const BoxDecoration(
-                borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(Dimens.adImageCornerRadius),
-                    topRight: Radius.circular(Dimens.adImageCornerRadius),
-                    bottomRight: Radius.circular(Dimens.adImageCornerRadius)),
-              ),
-              child: adEntity.photosUrl.isNotEmpty && adEntity.photosUrl[0].isNotEmpty
-                  ? CachedNetworkImage(
-                      imageUrl: adEntity.photosUrl[0],
-                      fit: BoxFit.cover,
-                      placeholder: (context, url) => BaseShimmer(child: Container()),
-                    )
-                  : Container(
-                      color: context.colorScheme.outline,
-                      child: const Icon(
-                        Icons.photo_library_outlined,
-                        color: Colors.white,
+            Hero(
+              tag: Constants.adImageHeroTag.buildHeroTag(adEntity.id),
+              child: Container(
+                height: _imageHeight,
+                width: double.infinity,
+                clipBehavior: Clip.antiAlias,
+                decoration: const BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(Dimens.adImageCornerRadius),
+                      topRight: Radius.circular(Dimens.adImageCornerRadius),
+                      bottomRight: Radius.circular(Dimens.adImageCornerRadius)),
+                ),
+                child: adEntity.photosUrl.isNotEmpty && adEntity.photosUrl[0].isNotEmpty
+                    ? CachedNetworkImage(
+                        imageUrl: adEntity.photosUrl[0],
+                        fit: BoxFit.cover,
+                        placeholder: (context, url) => BaseShimmer(child: Container()),
+                      )
+                    : Container(
+                        color: context.colorScheme.outline,
+                        child: const Icon(
+                          Icons.photo_library_outlined,
+                          color: Colors.white,
+                        ),
                       ),
-                    ),
+              ),
             ),
             Align(
                 alignment: Alignment.topRight,
@@ -74,7 +78,7 @@ class AdCardWidget extends StatelessWidget {
           ]),
           const Gap(Dimens.paddingTinier),
           Text(adEntity.title, maxLines: 2, style: context.textTheme.titleMedium, overflow: TextOverflow.ellipsis),
-          Text(adEntity.adType.toString(), style: context.textTheme.titleSmall, overflow: TextOverflow.ellipsis),
+          Text(adEntity.displayTypeAndPrice(), style: context.textTheme.titleSmall, overflow: TextOverflow.ellipsis),
           Text(adEntity.city.displayCity(), style: context.textTheme.labelSmall, overflow: TextOverflow.ellipsis),
           Text(adEntity.creationDate.format(eEEEdMMMMHHmm).capitalize(),
               style: context.textTheme.labelSmall, overflow: TextOverflow.ellipsis),

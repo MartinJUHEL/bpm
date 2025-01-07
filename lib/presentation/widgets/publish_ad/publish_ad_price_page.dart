@@ -23,8 +23,8 @@ class PublishAdPricePage extends StatelessWidget {
             const Text('rentalPriceTitle').tr(),
             TextFormField(
                 onChanged: (value) {
-                  int intPrice = int.tryParse(value) ?? 0;
-                  context.read<PublishAdCubit>().onPriceChanged(intPrice);
+                  double price = double.tryParse(value) ?? 0;
+                  context.read<PublishAdCubit>().onPriceChanged(price);
                 },
                 textInputAction: TextInputAction.done,
                 keyboardType: TextInputType.number,
