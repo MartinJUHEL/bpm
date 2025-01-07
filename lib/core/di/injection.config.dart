@@ -161,8 +161,6 @@ Future<_i174.GetIt> $initGetIt(
         gh<_i545.AdFirebaseService>(),
         gh<_i27.StorageService>(),
       ));
-  gh.factory<_i1044.ListAdsCubit>(
-      () => _i1044.ListAdsCubit(gh<_i1053.AdRepository>()));
   gh.factory<_i67.GetResetPasswordStateUseCase>(() =>
       _i67.GetResetPasswordStateUseCase(gh<_i277.IAuthenticationRepository>()));
   gh.factory<_i652.AuthenticationSignedOutUseCase>(() =>
@@ -172,6 +170,8 @@ Future<_i174.GetIt> $initGetIt(
       _i411.IsEmailVerifiedUseCase(gh<_i277.IAuthenticationRepository>()));
   gh.factory<_i463.ResetPasswordBloc>(
       () => _i463.ResetPasswordBloc(gh<_i67.GetResetPasswordStateUseCase>()));
+  gh.factory<_i1044.ListAdsCubit>(
+      () => _i1044.ListAdsCubit(gh<_i1053.AdRepository>()));
   gh.lazySingleton<_i271.UserRepository>(() => _i790.UserRepositoryImpl(
         gh<_i144.UserRemoteService>(),
         gh<_i248.GenericErrorTrigger>(),

@@ -47,7 +47,7 @@ abstract class AppRouter {
                     path: RouteList.signup.path,
                     builder: (context, state) => _Page(
                         child: SignupScreen(
-                      args: state.extra! as SignupScreenArgs,
+                      args: state.extra as SignupScreenArgs,
                     )),
                   ),
                 ]),
@@ -56,7 +56,7 @@ abstract class AppRouter {
                 path: RouteList.signIn.path,
                 builder: (context, state) => _Page(
                         child: SignupScreen(
-                      args: state.extra! as SignupScreenArgs,
+                      args: state.extra as SignupScreenArgs,
                     )),
                 routes: [
                   GoRoute(

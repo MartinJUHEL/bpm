@@ -9,12 +9,12 @@ part 'list_ads_state.dart';
 
 @injectable
 class ListAdsCubit extends Cubit<ListAdsState> {
-  final AdRepository adRepository;
+  final AdRepository _adRepository;
 
-  ListAdsCubit(this.adRepository) : super(const ListAdsState.initial());
+  ListAdsCubit(this._adRepository) : super(const ListAdsState.initial());
 
   Future<void> fetchAds(String uid) async {
-    final result = await adRepository.fetchAdsByUserId(uid);
+    final result = await _adRepository.fetchAdsByUserId(uid);
     result.when(success: (ads) {
       if (ads.isEmpty) {
         emit(const ListAdsState.empty());
@@ -29,7 +29,7 @@ class ListAdsCubit extends Cubit<ListAdsState> {
 
   Future<void> deleteAd(String adId) async {
     if (state is ListAdsData) {
-      final result = await adRepository.deleteAd(adId);
+      final result = await _adRepository.deleteAd(adId);
       result.when(success: (_) {
         final List<AdEntity> updatedList = List.from((state as ListAdsData).ads)..removeWhere((ad) => ad.id == adId);
         emit(ListAdsState.data(updatedList));

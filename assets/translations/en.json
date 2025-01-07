@@ -7,6 +7,7 @@
   "refresh": "Refresh",
   "noAd": "No ad",
   "retry": "Retry",
+  "cancel": "Annuler",
   "errorOccurred": "An error occurred please try again",
   "noConnectionTitle": "Oops!",
   "noConnectionMessage": "It seems you're offline. Please connect to the internet to continue.",
@@ -67,5 +68,6 @@
   "queryTooShortMessage": "3 characters minimum are needed",
   "@_AD_DETAIL": {},
   "description": "Description",
-  "contact": "Contact"
+  "contact": "Contact",
+  "confirmDeletion" : "Are you sure you want to delete your ad?"
 }
