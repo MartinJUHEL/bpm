@@ -1,6 +1,8 @@
 import 'dart:ui';
 
+import 'package:algolia/algolia.dart';
 import 'package:assoshare/core/data/services/firebase_service.dart';
+import 'package:assoshare/core/environment_var.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -38,4 +40,8 @@ abstract class AppModule {
 
   @singleton
   Locale get currentLocale => PlatformDispatcher.instance.locale;
+
+  @singleton
+  Algolia get algolia =>
+      const Algolia.init(applicationId: EnvironmentVar.algoliaAppId, apiKey: EnvironmentVar.algoliaApiKey);
 }

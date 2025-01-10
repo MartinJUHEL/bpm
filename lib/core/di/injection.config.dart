@@ -10,6 +10,7 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'dart:ui' as _i264;
 
+import 'package:algolia/algolia.dart' as _i909;
 import 'package:cloud_firestore/cloud_firestore.dart' as _i974;
 import 'package:dio/dio.dart' as _i361;
 import 'package:firebase_auth/firebase_auth.dart' as _i59;
@@ -70,6 +71,7 @@ import '../../presentation/blocs/publish_ad/publish_ad_bloc/publish_ad_bloc.dart
     as _i702;
 import '../../presentation/blocs/reset_password/reset_password_bloc.dart'
     as _i463;
+import '../../presentation/blocs/search_ad/search_ad_cubit.dart' as _i722;
 import '../../presentation/blocs/search_address/search_city_cubit.dart'
     as _i725;
 import '../../presentation/blocs/signup/signup_bloc.dart' as _i274;
@@ -115,6 +117,7 @@ Future<_i174.GetIt> $initGetIt(
       () => _i24.PickPhotosFromGalleryUseCase());
   gh.factory<_i903.IsAdTitleValidUseCase>(() => _i903.IsAdTitleValidUseCase());
   gh.factory<_i83.NavigationCubit>(() => _i83.NavigationCubit());
+  gh.factory<_i722.SearchAdCubit>(() => _i722.SearchAdCubit());
   gh.singleton<_i974.FirebaseFirestore>(() => appModule.store);
   gh.singleton<_i141.FirebaseCrashlytics>(() => appModule.crashlytics);
   gh.singleton<_i59.FirebaseAuth>(() => appModule.auth);
@@ -122,6 +125,7 @@ Future<_i174.GetIt> $initGetIt(
   gh.singleton<_i361.Dio>(() => appModule.dio);
   gh.singleton<_i974.Logger>(() => appModule.logger);
   gh.singleton<_i264.Locale>(() => appModule.currentLocale);
+  gh.singleton<_i909.Algolia>(() => appModule.algolia);
   gh.lazySingleton<_i882.GetLocationUseCase>(
       () => const _i882.GetLocationUseCase());
   gh.lazySingleton<_i545.AdFirebaseService>(() => _i545.AdFirebaseService(

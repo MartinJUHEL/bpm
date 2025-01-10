@@ -16,6 +16,8 @@
   "loan": "Loan",
   "rent": "Rent",
   "delete": "Delete",
+  "recommended": "Recommended",
+  "favorites": "Favorites",
   "@_WELCOME_PAGE": {},
   "welcomeText": "Welcome to BPM",
   "@_EMAIL_NOT_VERIFIED_PAGE": {},

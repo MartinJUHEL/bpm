@@ -61,8 +61,13 @@ dependencies:
   image_picker: ^1.0.4
   path: ^1.8.3
   photo_view: ^0.14.0
-  uuid: ^4.2.2
-  http: ^1.1.0
+
+  #https://pub.dev/packages/uuid
+  uuid: ^3.0.5
+
+  #https://pub.dev/packages/http
+  http: ^0.13.0
+
   permission_handler: ^11.0.1
 
   #https://pub.dev/packages/dio
@@ -95,6 +100,9 @@ dependencies:
   #https://pub.dev/packages/go_router
   go_router: ^14.6.2
 
+  #https://pub.dev/packages/algolia
+  algolia: ^1.1.2
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -111,6 +119,8 @@ dev_dependencies:
 
 dependency_overrides:
   modal_bottom_sheet: ^3.0.0-pre
+  http: ^1.2.2
+  uuid: ^4.5.1
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
