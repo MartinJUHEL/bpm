@@ -7,8 +7,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 class ErrorScreen extends StatelessWidget {
   final VoidCallback? onRetryClicked;
+  final String assetPath;
 
-  const ErrorScreen({super.key, this.onRetryClicked});
+  const ErrorScreen({super.key, this.onRetryClicked, this.assetPath = Constants.noConnectivityAsset});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +17,7 @@ class ErrorScreen extends StatelessWidget {
       mainAxisSize: MainAxisSize.max,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        SvgPicture.asset(Constants.noConnectivityAsset),
+        SvgPicture.asset(assetPath),
         const SizedBox(height: Dimens.paddingLarge),
         Text(tr('errorTitle')),
         const SizedBox(height: Dimens.paddingRegular),

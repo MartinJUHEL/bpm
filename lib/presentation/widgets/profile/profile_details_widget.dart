@@ -1,7 +1,7 @@
 import 'package:assoshare/app/dimens.dart';
 import 'package:assoshare/domain/entities/user/user_entity.dart';
-import 'package:assoshare/presentation/blocs/list_ads/list_ads_cubit.dart';
 import 'package:assoshare/presentation/blocs/profile/profile_cubit.dart';
+import 'package:assoshare/presentation/blocs/profile_ads/profile_ads_cubit.dart';
 import 'package:assoshare/presentation/widgets/ad/ad_menu_modal.dart';
 import 'package:assoshare/presentation/widgets/profile/profile_ads.dart';
 import 'package:assoshare/presentation/widgets/profile/profile_info.dart';
@@ -17,11 +17,11 @@ class ProfileDetailsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider.value(
-      value: BlocProvider.of<ListAdsCubit>(context)..fetchAds(user.uid),
+      value: BlocProvider.of<ProfileAdsCubit>(context)..fetchAds(user.uid),
       child: Builder(builder: (blocContext) {
         return RefreshIndicator(
           onRefresh: () => Future.wait(
-              [blocContext.read<ProfileCubit>().refresh(), blocContext.read<ListAdsCubit>().fetchAds(user.uid)]),
+              [blocContext.read<ProfileCubit>().refresh(), blocContext.read<ProfileAdsCubit>().fetchAds(user.uid)]),
           child: SingleChildScrollView(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: Dimens.paddingPage),
@@ -36,7 +36,7 @@ class ProfileDetailsWidget extends StatelessWidget {
                       uid: user.uid,
                       onMoreClicked: (adId) => _showAdMenuModal(
                             context: blocContext,
-                            onDeleteClicked: () => blocContext.read<ListAdsCubit>().deleteAd(adId),
+                            onDeleteClicked: () => blocContext.read<ProfileAdsCubit>().deleteAd(adId),
                             onEditClicked: () {
                               /*TODO*/
                             },

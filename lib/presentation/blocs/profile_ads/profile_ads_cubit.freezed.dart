@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'list_ads_cubit.dart';
+part of 'profile_ads_cubit.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$ListAdsState {
+mixin _$ProfileAdsState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
@@ -43,85 +43,85 @@ mixin _$ListAdsState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ListAdsInitial value) initial,
-    required TResult Function(ListAdsError value) error,
-    required TResult Function(ListAdsEmpty value) empty,
-    required TResult Function(ListAdsData value) data,
+    required TResult Function(ProfileAdsInitial value) initial,
+    required TResult Function(ProfileAdsError value) error,
+    required TResult Function(ProfileAdsEmpty value) empty,
+    required TResult Function(ProfileAdsData value) data,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ListAdsInitial value)? initial,
-    TResult? Function(ListAdsError value)? error,
-    TResult? Function(ListAdsEmpty value)? empty,
-    TResult? Function(ListAdsData value)? data,
+    TResult? Function(ProfileAdsInitial value)? initial,
+    TResult? Function(ProfileAdsError value)? error,
+    TResult? Function(ProfileAdsEmpty value)? empty,
+    TResult? Function(ProfileAdsData value)? data,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ListAdsInitial value)? initial,
-    TResult Function(ListAdsError value)? error,
-    TResult Function(ListAdsEmpty value)? empty,
-    TResult Function(ListAdsData value)? data,
+    TResult Function(ProfileAdsInitial value)? initial,
+    TResult Function(ProfileAdsError value)? error,
+    TResult Function(ProfileAdsEmpty value)? empty,
+    TResult Function(ProfileAdsData value)? data,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ListAdsStateCopyWith<$Res> {
-  factory $ListAdsStateCopyWith(
-          ListAdsState value, $Res Function(ListAdsState) then) =
-      _$ListAdsStateCopyWithImpl<$Res, ListAdsState>;
+abstract class $ProfileAdsStateCopyWith<$Res> {
+  factory $ProfileAdsStateCopyWith(
+          ProfileAdsState value, $Res Function(ProfileAdsState) then) =
+      _$ProfileAdsStateCopyWithImpl<$Res, ProfileAdsState>;
 }
 
 /// @nodoc
-class _$ListAdsStateCopyWithImpl<$Res, $Val extends ListAdsState>
-    implements $ListAdsStateCopyWith<$Res> {
-  _$ListAdsStateCopyWithImpl(this._value, this._then);
+class _$ProfileAdsStateCopyWithImpl<$Res, $Val extends ProfileAdsState>
+    implements $ProfileAdsStateCopyWith<$Res> {
+  _$ProfileAdsStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of ListAdsState
+  /// Create a copy of ProfileAdsState
   /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
-abstract class _$$ListAdsInitialImplCopyWith<$Res> {
-  factory _$$ListAdsInitialImplCopyWith(_$ListAdsInitialImpl value,
-          $Res Function(_$ListAdsInitialImpl) then) =
-      __$$ListAdsInitialImplCopyWithImpl<$Res>;
+abstract class _$$ProfileAdsInitialImplCopyWith<$Res> {
+  factory _$$ProfileAdsInitialImplCopyWith(_$ProfileAdsInitialImpl value,
+          $Res Function(_$ProfileAdsInitialImpl) then) =
+      __$$ProfileAdsInitialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$ListAdsInitialImplCopyWithImpl<$Res>
-    extends _$ListAdsStateCopyWithImpl<$Res, _$ListAdsInitialImpl>
-    implements _$$ListAdsInitialImplCopyWith<$Res> {
-  __$$ListAdsInitialImplCopyWithImpl(
-      _$ListAdsInitialImpl _value, $Res Function(_$ListAdsInitialImpl) _then)
+class __$$ProfileAdsInitialImplCopyWithImpl<$Res>
+    extends _$ProfileAdsStateCopyWithImpl<$Res, _$ProfileAdsInitialImpl>
+    implements _$$ProfileAdsInitialImplCopyWith<$Res> {
+  __$$ProfileAdsInitialImplCopyWithImpl(_$ProfileAdsInitialImpl _value,
+      $Res Function(_$ProfileAdsInitialImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of ListAdsState
+  /// Create a copy of ProfileAdsState
   /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
-class _$ListAdsInitialImpl implements ListAdsInitial {
-  const _$ListAdsInitialImpl();
+class _$ProfileAdsInitialImpl implements ProfileAdsInitial {
+  const _$ProfileAdsInitialImpl();
 
   @override
   String toString() {
-    return 'ListAdsState.initial()';
+    return 'ProfileAdsState.initial()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$ListAdsInitialImpl);
+        (other.runtimeType == runtimeType && other is _$ProfileAdsInitialImpl);
   }
 
   @override
@@ -167,10 +167,10 @@ class _$ListAdsInitialImpl implements ListAdsInitial {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ListAdsInitial value) initial,
-    required TResult Function(ListAdsError value) error,
-    required TResult Function(ListAdsEmpty value) empty,
-    required TResult Function(ListAdsData value) data,
+    required TResult Function(ProfileAdsInitial value) initial,
+    required TResult Function(ProfileAdsError value) error,
+    required TResult Function(ProfileAdsEmpty value) empty,
+    required TResult Function(ProfileAdsData value) data,
   }) {
     return initial(this);
   }
@@ -178,10 +178,10 @@ class _$ListAdsInitialImpl implements ListAdsInitial {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ListAdsInitial value)? initial,
-    TResult? Function(ListAdsError value)? error,
-    TResult? Function(ListAdsEmpty value)? empty,
-    TResult? Function(ListAdsData value)? data,
+    TResult? Function(ProfileAdsInitial value)? initial,
+    TResult? Function(ProfileAdsError value)? error,
+    TResult? Function(ProfileAdsEmpty value)? empty,
+    TResult? Function(ProfileAdsData value)? data,
   }) {
     return initial?.call(this);
   }
@@ -189,10 +189,10 @@ class _$ListAdsInitialImpl implements ListAdsInitial {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ListAdsInitial value)? initial,
-    TResult Function(ListAdsError value)? error,
-    TResult Function(ListAdsEmpty value)? empty,
-    TResult Function(ListAdsData value)? data,
+    TResult Function(ProfileAdsInitial value)? initial,
+    TResult Function(ProfileAdsError value)? error,
+    TResult Function(ProfileAdsEmpty value)? empty,
+    TResult Function(ProfileAdsData value)? data,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -202,43 +202,43 @@ class _$ListAdsInitialImpl implements ListAdsInitial {
   }
 }
 
-abstract class ListAdsInitial implements ListAdsState {
-  const factory ListAdsInitial() = _$ListAdsInitialImpl;
+abstract class ProfileAdsInitial implements ProfileAdsState {
+  const factory ProfileAdsInitial() = _$ProfileAdsInitialImpl;
 }
 
 /// @nodoc
-abstract class _$$ListAdsErrorImplCopyWith<$Res> {
-  factory _$$ListAdsErrorImplCopyWith(
-          _$ListAdsErrorImpl value, $Res Function(_$ListAdsErrorImpl) then) =
-      __$$ListAdsErrorImplCopyWithImpl<$Res>;
+abstract class _$$ProfileAdsErrorImplCopyWith<$Res> {
+  factory _$$ProfileAdsErrorImplCopyWith(_$ProfileAdsErrorImpl value,
+          $Res Function(_$ProfileAdsErrorImpl) then) =
+      __$$ProfileAdsErrorImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$ListAdsErrorImplCopyWithImpl<$Res>
-    extends _$ListAdsStateCopyWithImpl<$Res, _$ListAdsErrorImpl>
-    implements _$$ListAdsErrorImplCopyWith<$Res> {
-  __$$ListAdsErrorImplCopyWithImpl(
-      _$ListAdsErrorImpl _value, $Res Function(_$ListAdsErrorImpl) _then)
+class __$$ProfileAdsErrorImplCopyWithImpl<$Res>
+    extends _$ProfileAdsStateCopyWithImpl<$Res, _$ProfileAdsErrorImpl>
+    implements _$$ProfileAdsErrorImplCopyWith<$Res> {
+  __$$ProfileAdsErrorImplCopyWithImpl(
+      _$ProfileAdsErrorImpl _value, $Res Function(_$ProfileAdsErrorImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of ListAdsState
+  /// Create a copy of ProfileAdsState
   /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
-class _$ListAdsErrorImpl implements ListAdsError {
-  const _$ListAdsErrorImpl();
+class _$ProfileAdsErrorImpl implements ProfileAdsError {
+  const _$ProfileAdsErrorImpl();
 
   @override
   String toString() {
-    return 'ListAdsState.error()';
+    return 'ProfileAdsState.error()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$ListAdsErrorImpl);
+        (other.runtimeType == runtimeType && other is _$ProfileAdsErrorImpl);
   }
 
   @override
@@ -284,10 +284,10 @@ class _$ListAdsErrorImpl implements ListAdsError {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ListAdsInitial value) initial,
-    required TResult Function(ListAdsError value) error,
-    required TResult Function(ListAdsEmpty value) empty,
-    required TResult Function(ListAdsData value) data,
+    required TResult Function(ProfileAdsInitial value) initial,
+    required TResult Function(ProfileAdsError value) error,
+    required TResult Function(ProfileAdsEmpty value) empty,
+    required TResult Function(ProfileAdsData value) data,
   }) {
     return error(this);
   }
@@ -295,10 +295,10 @@ class _$ListAdsErrorImpl implements ListAdsError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ListAdsInitial value)? initial,
-    TResult? Function(ListAdsError value)? error,
-    TResult? Function(ListAdsEmpty value)? empty,
-    TResult? Function(ListAdsData value)? data,
+    TResult? Function(ProfileAdsInitial value)? initial,
+    TResult? Function(ProfileAdsError value)? error,
+    TResult? Function(ProfileAdsEmpty value)? empty,
+    TResult? Function(ProfileAdsData value)? data,
   }) {
     return error?.call(this);
   }
@@ -306,10 +306,10 @@ class _$ListAdsErrorImpl implements ListAdsError {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ListAdsInitial value)? initial,
-    TResult Function(ListAdsError value)? error,
-    TResult Function(ListAdsEmpty value)? empty,
-    TResult Function(ListAdsData value)? data,
+    TResult Function(ProfileAdsInitial value)? initial,
+    TResult Function(ProfileAdsError value)? error,
+    TResult Function(ProfileAdsEmpty value)? empty,
+    TResult Function(ProfileAdsData value)? data,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -319,43 +319,43 @@ class _$ListAdsErrorImpl implements ListAdsError {
   }
 }
 
-abstract class ListAdsError implements ListAdsState {
-  const factory ListAdsError() = _$ListAdsErrorImpl;
+abstract class ProfileAdsError implements ProfileAdsState {
+  const factory ProfileAdsError() = _$ProfileAdsErrorImpl;
 }
 
 /// @nodoc
-abstract class _$$ListAdsEmptyImplCopyWith<$Res> {
-  factory _$$ListAdsEmptyImplCopyWith(
-          _$ListAdsEmptyImpl value, $Res Function(_$ListAdsEmptyImpl) then) =
-      __$$ListAdsEmptyImplCopyWithImpl<$Res>;
+abstract class _$$ProfileAdsEmptyImplCopyWith<$Res> {
+  factory _$$ProfileAdsEmptyImplCopyWith(_$ProfileAdsEmptyImpl value,
+          $Res Function(_$ProfileAdsEmptyImpl) then) =
+      __$$ProfileAdsEmptyImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$ListAdsEmptyImplCopyWithImpl<$Res>
-    extends _$ListAdsStateCopyWithImpl<$Res, _$ListAdsEmptyImpl>
-    implements _$$ListAdsEmptyImplCopyWith<$Res> {
-  __$$ListAdsEmptyImplCopyWithImpl(
-      _$ListAdsEmptyImpl _value, $Res Function(_$ListAdsEmptyImpl) _then)
+class __$$ProfileAdsEmptyImplCopyWithImpl<$Res>
+    extends _$ProfileAdsStateCopyWithImpl<$Res, _$ProfileAdsEmptyImpl>
+    implements _$$ProfileAdsEmptyImplCopyWith<$Res> {
+  __$$ProfileAdsEmptyImplCopyWithImpl(
+      _$ProfileAdsEmptyImpl _value, $Res Function(_$ProfileAdsEmptyImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of ListAdsState
+  /// Create a copy of ProfileAdsState
   /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
-class _$ListAdsEmptyImpl implements ListAdsEmpty {
-  const _$ListAdsEmptyImpl();
+class _$ProfileAdsEmptyImpl implements ProfileAdsEmpty {
+  const _$ProfileAdsEmptyImpl();
 
   @override
   String toString() {
-    return 'ListAdsState.empty()';
+    return 'ProfileAdsState.empty()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$ListAdsEmptyImpl);
+        (other.runtimeType == runtimeType && other is _$ProfileAdsEmptyImpl);
   }
 
   @override
@@ -401,10 +401,10 @@ class _$ListAdsEmptyImpl implements ListAdsEmpty {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ListAdsInitial value) initial,
-    required TResult Function(ListAdsError value) error,
-    required TResult Function(ListAdsEmpty value) empty,
-    required TResult Function(ListAdsData value) data,
+    required TResult Function(ProfileAdsInitial value) initial,
+    required TResult Function(ProfileAdsError value) error,
+    required TResult Function(ProfileAdsEmpty value) empty,
+    required TResult Function(ProfileAdsData value) data,
   }) {
     return empty(this);
   }
@@ -412,10 +412,10 @@ class _$ListAdsEmptyImpl implements ListAdsEmpty {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ListAdsInitial value)? initial,
-    TResult? Function(ListAdsError value)? error,
-    TResult? Function(ListAdsEmpty value)? empty,
-    TResult? Function(ListAdsData value)? data,
+    TResult? Function(ProfileAdsInitial value)? initial,
+    TResult? Function(ProfileAdsError value)? error,
+    TResult? Function(ProfileAdsEmpty value)? empty,
+    TResult? Function(ProfileAdsData value)? data,
   }) {
     return empty?.call(this);
   }
@@ -423,10 +423,10 @@ class _$ListAdsEmptyImpl implements ListAdsEmpty {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ListAdsInitial value)? initial,
-    TResult Function(ListAdsError value)? error,
-    TResult Function(ListAdsEmpty value)? empty,
-    TResult Function(ListAdsData value)? data,
+    TResult Function(ProfileAdsInitial value)? initial,
+    TResult Function(ProfileAdsError value)? error,
+    TResult Function(ProfileAdsEmpty value)? empty,
+    TResult Function(ProfileAdsData value)? data,
     required TResult orElse(),
   }) {
     if (empty != null) {
@@ -436,35 +436,35 @@ class _$ListAdsEmptyImpl implements ListAdsEmpty {
   }
 }
 
-abstract class ListAdsEmpty implements ListAdsState {
-  const factory ListAdsEmpty() = _$ListAdsEmptyImpl;
+abstract class ProfileAdsEmpty implements ProfileAdsState {
+  const factory ProfileAdsEmpty() = _$ProfileAdsEmptyImpl;
 }
 
 /// @nodoc
-abstract class _$$ListAdsDataImplCopyWith<$Res> {
-  factory _$$ListAdsDataImplCopyWith(
-          _$ListAdsDataImpl value, $Res Function(_$ListAdsDataImpl) then) =
-      __$$ListAdsDataImplCopyWithImpl<$Res>;
+abstract class _$$ProfileAdsDataImplCopyWith<$Res> {
+  factory _$$ProfileAdsDataImplCopyWith(_$ProfileAdsDataImpl value,
+          $Res Function(_$ProfileAdsDataImpl) then) =
+      __$$ProfileAdsDataImplCopyWithImpl<$Res>;
   @useResult
   $Res call({List<AdEntity> ads});
 }
 
 /// @nodoc
-class __$$ListAdsDataImplCopyWithImpl<$Res>
-    extends _$ListAdsStateCopyWithImpl<$Res, _$ListAdsDataImpl>
-    implements _$$ListAdsDataImplCopyWith<$Res> {
-  __$$ListAdsDataImplCopyWithImpl(
-      _$ListAdsDataImpl _value, $Res Function(_$ListAdsDataImpl) _then)
+class __$$ProfileAdsDataImplCopyWithImpl<$Res>
+    extends _$ProfileAdsStateCopyWithImpl<$Res, _$ProfileAdsDataImpl>
+    implements _$$ProfileAdsDataImplCopyWith<$Res> {
+  __$$ProfileAdsDataImplCopyWithImpl(
+      _$ProfileAdsDataImpl _value, $Res Function(_$ProfileAdsDataImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of ListAdsState
+  /// Create a copy of ProfileAdsState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? ads = null,
   }) {
-    return _then(_$ListAdsDataImpl(
+    return _then(_$ProfileAdsDataImpl(
       null == ads
           ? _value._ads
           : ads // ignore: cast_nullable_to_non_nullable
@@ -475,8 +475,8 @@ class __$$ListAdsDataImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ListAdsDataImpl implements ListAdsData {
-  const _$ListAdsDataImpl(final List<AdEntity> ads) : _ads = ads;
+class _$ProfileAdsDataImpl implements ProfileAdsData {
+  const _$ProfileAdsDataImpl(final List<AdEntity> ads) : _ads = ads;
 
   final List<AdEntity> _ads;
   @override
@@ -488,14 +488,14 @@ class _$ListAdsDataImpl implements ListAdsData {
 
   @override
   String toString() {
-    return 'ListAdsState.data(ads: $ads)';
+    return 'ProfileAdsState.data(ads: $ads)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ListAdsDataImpl &&
+            other is _$ProfileAdsDataImpl &&
             const DeepCollectionEquality().equals(other._ads, _ads));
   }
 
@@ -503,13 +503,14 @@ class _$ListAdsDataImpl implements ListAdsData {
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_ads));
 
-  /// Create a copy of ListAdsState
+  /// Create a copy of ProfileAdsState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$ListAdsDataImplCopyWith<_$ListAdsDataImpl> get copyWith =>
-      __$$ListAdsDataImplCopyWithImpl<_$ListAdsDataImpl>(this, _$identity);
+  _$$ProfileAdsDataImplCopyWith<_$ProfileAdsDataImpl> get copyWith =>
+      __$$ProfileAdsDataImplCopyWithImpl<_$ProfileAdsDataImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -551,10 +552,10 @@ class _$ListAdsDataImpl implements ListAdsData {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ListAdsInitial value) initial,
-    required TResult Function(ListAdsError value) error,
-    required TResult Function(ListAdsEmpty value) empty,
-    required TResult Function(ListAdsData value) data,
+    required TResult Function(ProfileAdsInitial value) initial,
+    required TResult Function(ProfileAdsError value) error,
+    required TResult Function(ProfileAdsEmpty value) empty,
+    required TResult Function(ProfileAdsData value) data,
   }) {
     return data(this);
   }
@@ -562,10 +563,10 @@ class _$ListAdsDataImpl implements ListAdsData {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ListAdsInitial value)? initial,
-    TResult? Function(ListAdsError value)? error,
-    TResult? Function(ListAdsEmpty value)? empty,
-    TResult? Function(ListAdsData value)? data,
+    TResult? Function(ProfileAdsInitial value)? initial,
+    TResult? Function(ProfileAdsError value)? error,
+    TResult? Function(ProfileAdsEmpty value)? empty,
+    TResult? Function(ProfileAdsData value)? data,
   }) {
     return data?.call(this);
   }
@@ -573,10 +574,10 @@ class _$ListAdsDataImpl implements ListAdsData {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ListAdsInitial value)? initial,
-    TResult Function(ListAdsError value)? error,
-    TResult Function(ListAdsEmpty value)? empty,
-    TResult Function(ListAdsData value)? data,
+    TResult Function(ProfileAdsInitial value)? initial,
+    TResult Function(ProfileAdsError value)? error,
+    TResult Function(ProfileAdsEmpty value)? empty,
+    TResult Function(ProfileAdsData value)? data,
     required TResult orElse(),
   }) {
     if (data != null) {
@@ -586,14 +587,14 @@ class _$ListAdsDataImpl implements ListAdsData {
   }
 }
 
-abstract class ListAdsData implements ListAdsState {
-  const factory ListAdsData(final List<AdEntity> ads) = _$ListAdsDataImpl;
+abstract class ProfileAdsData implements ProfileAdsState {
+  const factory ProfileAdsData(final List<AdEntity> ads) = _$ProfileAdsDataImpl;
 
   List<AdEntity> get ads;
 
-  /// Create a copy of ListAdsState
+  /// Create a copy of ProfileAdsState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ListAdsDataImplCopyWith<_$ListAdsDataImpl> get copyWith =>
+  _$$ProfileAdsDataImplCopyWith<_$ProfileAdsDataImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

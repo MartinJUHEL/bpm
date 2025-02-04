@@ -8,7 +8,7 @@ import 'package:assoshare/domain/repositories/address_repository.dart';
 import 'package:injectable/injectable.dart';
 
 @LazySingleton(as: AddressRepository)
-final class AddressRepositoryImpl extends BaseRepository implements AddressRepository {
+final class AddressRepositoryImpl extends BaseRemoteRepository implements AddressRepository {
   final AddressRemoteDataSource _addressRemoteDataSource;
 
   AddressRepositoryImpl(

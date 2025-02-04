@@ -20,10 +20,13 @@ CityModel _$CityModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$CityModel {
+  @HiveField(0)
   String get postcode => throw _privateConstructorUsedError;
+  @HiveField(1)
   String get city => throw _privateConstructorUsedError;
-  String get cityCode => throw _privateConstructorUsedError;
+  @HiveField(2)
   double get lat => throw _privateConstructorUsedError;
+  @HiveField(3)
   double get long => throw _privateConstructorUsedError;
 
   /// Serializes this CityModel to a JSON map.
@@ -42,7 +45,10 @@ abstract class $CityModelCopyWith<$Res> {
       _$CityModelCopyWithImpl<$Res, CityModel>;
   @useResult
   $Res call(
-      {String postcode, String city, String cityCode, double lat, double long});
+      {@HiveField(0) String postcode,
+      @HiveField(1) String city,
+      @HiveField(2) double lat,
+      @HiveField(3) double long});
 }
 
 /// @nodoc
@@ -62,7 +68,6 @@ class _$CityModelCopyWithImpl<$Res, $Val extends CityModel>
   $Res call({
     Object? postcode = null,
     Object? city = null,
-    Object? cityCode = null,
     Object? lat = null,
     Object? long = null,
   }) {
@@ -74,10 +79,6 @@ class _$CityModelCopyWithImpl<$Res, $Val extends CityModel>
       city: null == city
           ? _value.city
           : city // ignore: cast_nullable_to_non_nullable
-              as String,
-      cityCode: null == cityCode
-          ? _value.cityCode
-          : cityCode // ignore: cast_nullable_to_non_nullable
               as String,
       lat: null == lat
           ? _value.lat
@@ -100,7 +101,10 @@ abstract class _$$CityModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String postcode, String city, String cityCode, double lat, double long});
+      {@HiveField(0) String postcode,
+      @HiveField(1) String city,
+      @HiveField(2) double lat,
+      @HiveField(3) double long});
 }
 
 /// @nodoc
@@ -118,7 +122,6 @@ class __$$CityModelImplCopyWithImpl<$Res>
   $Res call({
     Object? postcode = null,
     Object? city = null,
-    Object? cityCode = null,
     Object? lat = null,
     Object? long = null,
   }) {
@@ -130,10 +133,6 @@ class __$$CityModelImplCopyWithImpl<$Res>
       city: null == city
           ? _value.city
           : city // ignore: cast_nullable_to_non_nullable
-              as String,
-      cityCode: null == cityCode
-          ? _value.cityCode
-          : cityCode // ignore: cast_nullable_to_non_nullable
               as String,
       lat: null == lat
           ? _value.lat
@@ -149,32 +148,34 @@ class __$$CityModelImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
+@HiveType(typeId: 1, adapterName: 'CityAdapter')
 class _$CityModelImpl extends _CityModel {
   const _$CityModelImpl(
-      {required this.postcode,
-      required this.city,
-      required this.cityCode,
-      required this.lat,
-      required this.long})
+      {@HiveField(0) required this.postcode,
+      @HiveField(1) required this.city,
+      @HiveField(2) required this.lat,
+      @HiveField(3) required this.long})
       : super._();
 
   factory _$CityModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$CityModelImplFromJson(json);
 
   @override
+  @HiveField(0)
   final String postcode;
   @override
+  @HiveField(1)
   final String city;
   @override
-  final String cityCode;
-  @override
+  @HiveField(2)
   final double lat;
   @override
+  @HiveField(3)
   final double long;
 
   @override
   String toString() {
-    return 'CityModel(postcode: $postcode, city: $city, cityCode: $cityCode, lat: $lat, long: $long)';
+    return 'CityModel(postcode: $postcode, city: $city, lat: $lat, long: $long)';
   }
 
   @override
@@ -185,16 +186,13 @@ class _$CityModelImpl extends _CityModel {
             (identical(other.postcode, postcode) ||
                 other.postcode == postcode) &&
             (identical(other.city, city) || other.city == city) &&
-            (identical(other.cityCode, cityCode) ||
-                other.cityCode == cityCode) &&
             (identical(other.lat, lat) || other.lat == lat) &&
             (identical(other.long, long) || other.long == long));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, postcode, city, cityCode, lat, long);
+  int get hashCode => Object.hash(runtimeType, postcode, city, lat, long);
 
   /// Create a copy of CityModel
   /// with the given fields replaced by the non-null parameter values.
@@ -214,25 +212,26 @@ class _$CityModelImpl extends _CityModel {
 
 abstract class _CityModel extends CityModel {
   const factory _CityModel(
-      {required final String postcode,
-      required final String city,
-      required final String cityCode,
-      required final double lat,
-      required final double long}) = _$CityModelImpl;
+      {@HiveField(0) required final String postcode,
+      @HiveField(1) required final String city,
+      @HiveField(2) required final double lat,
+      @HiveField(3) required final double long}) = _$CityModelImpl;
   const _CityModel._() : super._();
 
   factory _CityModel.fromJson(Map<String, dynamic> json) =
       _$CityModelImpl.fromJson;
 
   @override
+  @HiveField(0)
   String get postcode;
   @override
+  @HiveField(1)
   String get city;
   @override
-  String get cityCode;
-  @override
+  @HiveField(2)
   double get lat;
   @override
+  @HiveField(3)
   double get long;
 
   /// Create a copy of CityModel

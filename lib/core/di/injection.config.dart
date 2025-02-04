@@ -17,22 +17,27 @@ import 'package:firebase_auth/firebase_auth.dart' as _i59;
 import 'package:firebase_crashlytics/firebase_crashlytics.dart' as _i141;
 import 'package:firebase_storage/firebase_storage.dart' as _i457;
 import 'package:get_it/get_it.dart' as _i174;
+import 'package:hive/hive.dart' as _i979;
 import 'package:injectable/injectable.dart' as _i526;
 import 'package:logger/logger.dart' as _i974;
 import 'package:shared_preferences/shared_preferences.dart' as _i460;
 
 import '../../data/datasources/address_remote_data_source.dart' as _i187;
+import '../../data/datasources/filter_local_data_source.dart' as _i1053;
 import '../../data/repositories/ad_repository_impl.dart' as _i996;
 import '../../data/repositories/address_repository_impl.dart' as _i1071;
 import '../../data/repositories/authentication_repository_impl.dart' as _i143;
+import '../../data/repositories/filter_repository_impl.dart' as _i851;
 import '../../data/repositories/user_repository_impl.dart' as _i790;
 import '../../data/services/ad_firebase_service.dart' as _i545;
 import '../../data/services/authentication_firebase_service.dart' as _i271;
+import '../../data/services/search_ad_service.dart' as _i427;
 import '../../data/services/storage_service.dart' as _i27;
 import '../../data/services/user_firebase_service.dart' as _i144;
 import '../../domain/repositories/ad_repository.dart' as _i1053;
 import '../../domain/repositories/address_repository.dart' as _i956;
 import '../../domain/repositories/authentication_repository.dart' as _i277;
+import '../../domain/repositories/filter_repository.dart' as _i884;
 import '../../domain/repositories/user_repository.dart' as _i271;
 import '../../domain/usecases/authentication/authentication_signed_out_usecase.dart'
     as _i652;
@@ -62,9 +67,10 @@ import '../../domain/usecases/signup/submit_signin_usecase.dart' as _i941;
 import '../../domain/usecases/signup/submit_signup_usecase.dart' as _i486;
 import '../../presentation/blocs/authentication/authentication_bloc.dart'
     as _i57;
+import '../../presentation/blocs/filter/filter_cubit.dart' as _i1021;
 import '../../presentation/blocs/home/home_cubit.dart' as _i642;
-import '../../presentation/blocs/list_ads/list_ads_cubit.dart' as _i1044;
 import '../../presentation/blocs/profile/profile_cubit.dart' as _i551;
+import '../../presentation/blocs/profile_ads/profile_ads_cubit.dart' as _i368;
 import '../../presentation/blocs/publish_ad/pick_photos_bloc/pick_photos_bloc_cubit.dart'
     as _i84;
 import '../../presentation/blocs/publish_ad/publish_ad_bloc/publish_ad_bloc.dart'
@@ -117,7 +123,6 @@ Future<_i174.GetIt> $initGetIt(
       () => _i24.PickPhotosFromGalleryUseCase());
   gh.factory<_i903.IsAdTitleValidUseCase>(() => _i903.IsAdTitleValidUseCase());
   gh.factory<_i83.NavigationCubit>(() => _i83.NavigationCubit());
-  gh.factory<_i722.SearchAdCubit>(() => _i722.SearchAdCubit());
   gh.singleton<_i974.FirebaseFirestore>(() => appModule.store);
   gh.singleton<_i141.FirebaseCrashlytics>(() => appModule.crashlytics);
   gh.singleton<_i59.FirebaseAuth>(() => appModule.auth);
@@ -126,14 +131,24 @@ Future<_i174.GetIt> $initGetIt(
   gh.singleton<_i974.Logger>(() => appModule.logger);
   gh.singleton<_i264.Locale>(() => appModule.currentLocale);
   gh.singleton<_i909.Algolia>(() => appModule.algolia);
+  await gh.singletonAsync<_i979.HiveInterface>(
+    () => appModule.hive,
+    preResolve: true,
+  );
   gh.lazySingleton<_i882.GetLocationUseCase>(
       () => const _i882.GetLocationUseCase());
+  gh.lazySingleton<_i1053.FilterLocalDataSource>(
+      () => _i1053.FilterLocalDataSourceImpl(hive: gh<_i979.HiveInterface>()));
   gh.lazySingleton<_i545.AdFirebaseService>(() => _i545.AdFirebaseService(
         gh<_i974.FirebaseFirestore>(),
         gh<_i974.Logger>(),
       ));
   gh.lazySingleton<_i248.GenericErrorTrigger>(
       () => _i354.GenericErrorTriggerImpl());
+  gh.lazySingleton<_i884.FilterRepository>(
+      () => _i851.FilterRepositoryImpl(gh<_i1053.FilterLocalDataSource>()));
+  gh.lazySingleton<_i427.SearchAdService>(
+      () => _i427.SearchAdService(algolia: gh<_i909.Algolia>()));
   gh.singleton<_i816.AppConnectivityInfo>(
       () => const _i816.AppConnectivityInfoImpl());
   gh.lazySingleton<_i144.UserRemoteService>(() => _i144.UserRemoteService(
@@ -153,18 +168,21 @@ Future<_i174.GetIt> $initGetIt(
       ));
   gh.lazySingleton<_i187.AddressRemoteDataSource>(
       () => _i187.AddressRemoteDataSourceImpl(dio: gh<_i361.Dio>()));
-  gh.factory<_i813.GenericErrorTriggerCubit>(
-      () => _i813.GenericErrorTriggerCubit(gh<_i248.GenericErrorTrigger>()));
-  gh.factory<_i277.IAuthenticationRepository>(() =>
-      _i143.AuthenticationRepositoryImpl(
-          gh<_i271.AuthenticationRemoteService>()));
   gh.lazySingleton<_i1053.AdRepository>(() => _i996.AdRepositoryImpl(
         gh<_i248.GenericErrorTrigger>(),
         gh<_i816.AppConnectivityInfo>(),
         gh<_i974.Logger>(),
         gh<_i545.AdFirebaseService>(),
         gh<_i27.StorageService>(),
+        gh<_i427.SearchAdService>(),
       ));
+  gh.factory<_i813.GenericErrorTriggerCubit>(
+      () => _i813.GenericErrorTriggerCubit(gh<_i248.GenericErrorTrigger>()));
+  gh.factory<_i1021.FilterCubit>(
+      () => _i1021.FilterCubit(gh<_i884.FilterRepository>()));
+  gh.factory<_i277.IAuthenticationRepository>(() =>
+      _i143.AuthenticationRepositoryImpl(
+          gh<_i271.AuthenticationRemoteService>()));
   gh.factory<_i67.GetResetPasswordStateUseCase>(() =>
       _i67.GetResetPasswordStateUseCase(gh<_i277.IAuthenticationRepository>()));
   gh.factory<_i652.AuthenticationSignedOutUseCase>(() =>
@@ -174,8 +192,8 @@ Future<_i174.GetIt> $initGetIt(
       _i411.IsEmailVerifiedUseCase(gh<_i277.IAuthenticationRepository>()));
   gh.factory<_i463.ResetPasswordBloc>(
       () => _i463.ResetPasswordBloc(gh<_i67.GetResetPasswordStateUseCase>()));
-  gh.factory<_i1044.ListAdsCubit>(
-      () => _i1044.ListAdsCubit(gh<_i1053.AdRepository>()));
+  gh.factory<_i368.ProfileAdsCubit>(
+      () => _i368.ProfileAdsCubit(gh<_i1053.AdRepository>()));
   gh.lazySingleton<_i271.UserRepository>(() => _i790.UserRepositoryImpl(
         gh<_i144.UserRemoteService>(),
         gh<_i248.GenericErrorTrigger>(),
@@ -188,6 +206,10 @@ Future<_i174.GetIt> $initGetIt(
         gh<_i248.GenericErrorTrigger>(),
         gh<_i816.AppConnectivityInfo>(),
         gh<_i974.Logger>(),
+      ));
+  gh.factory<_i722.SearchAdCubit>(() => _i722.SearchAdCubit(
+        gh<_i1053.AdRepository>(),
+        gh<_i884.FilterRepository>(),
       ));
   gh.factory<_i36.AuthenticationStartedUseCase>(
       () => _i36.AuthenticationStartedUseCase(

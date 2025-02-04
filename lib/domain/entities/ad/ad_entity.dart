@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:assoshare/core/utils/number_ext.dart';
 import 'package:assoshare/domain/entities/city/city_entity.dart';
+import 'package:collection/collection.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -35,3 +36,5 @@ class AdEntity with _$AdEntity {
 }
 
 enum AdType { loan, rent }
+
+AdType adTypeFromString(String value) => AdType.values.firstWhereOrNull((type) => type.name == value) ?? AdType.loan;

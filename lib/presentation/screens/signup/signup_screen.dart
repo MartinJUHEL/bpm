@@ -1,3 +1,4 @@
+import 'package:assoshare/app/dimens.dart';
 import 'package:assoshare/core/di/injection.dart';
 import 'package:assoshare/core/router/route_list.dart';
 import 'package:assoshare/domain/entities/user/user_entity.dart';
@@ -13,6 +14,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 
 class SignupScreen extends StatelessWidget {
@@ -71,14 +73,16 @@ class SignupScreen extends StatelessWidget {
             body: Center(
               child: BlocBuilder<SignupBloc, SignupState>(
                 builder: (context, state) {
-                  return Column(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Padding(padding: EdgeInsets.only(bottom: size.height * 0.04)),
-                      const Text('appTitle').tr(),
-                      Padding(padding: EdgeInsets.only(bottom: size.height * 0.02)),
-                      _buildFormBody(size, state, context),
-                    ],
+                  return SingleChildScrollView(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Padding(padding: EdgeInsets.only(bottom: size.height * 0.04)),
+                        const Text('appTitle').tr(),
+                        Padding(padding: EdgeInsets.only(bottom: size.height * 0.02)),
+                        _buildFormBody(size, state, context),
+                      ],
+                    ),
                   );
                 },
               ),
@@ -115,12 +119,13 @@ class SignupScreen extends StatelessWidget {
                           ),
                           text: tr('forgotPassword'),
                           recognizer: TapGestureRecognizer()
-                            ..onTap = () => context.goNamed(RouteList.resetPassword.name)),
+                            ..onTap = () => context.pushNamed(RouteList.resetPassword.name)),
                     ),
                     SizedBox(height: size.height * 0.01),
                   ],
                 )
               : const SizedBox(),
+          const Gap(Dimens.paddingLarge),
           SubmitButton(
             title: _getSubmitButtonTitle(args.formType),
             isLoading: state.isLoading,

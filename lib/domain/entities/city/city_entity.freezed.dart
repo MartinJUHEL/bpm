@@ -18,7 +18,6 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$CityEntity {
   String get postcode => throw _privateConstructorUsedError;
   String get city => throw _privateConstructorUsedError;
-  String get cityCode => throw _privateConstructorUsedError;
   LatLong get latLong => throw _privateConstructorUsedError;
 
   /// Create a copy of CityEntity
@@ -34,7 +33,7 @@ abstract class $CityEntityCopyWith<$Res> {
           CityEntity value, $Res Function(CityEntity) then) =
       _$CityEntityCopyWithImpl<$Res, CityEntity>;
   @useResult
-  $Res call({String postcode, String city, String cityCode, LatLong latLong});
+  $Res call({String postcode, String city, LatLong latLong});
 
   $LatLongCopyWith<$Res> get latLong;
 }
@@ -56,7 +55,6 @@ class _$CityEntityCopyWithImpl<$Res, $Val extends CityEntity>
   $Res call({
     Object? postcode = null,
     Object? city = null,
-    Object? cityCode = null,
     Object? latLong = null,
   }) {
     return _then(_value.copyWith(
@@ -67,10 +65,6 @@ class _$CityEntityCopyWithImpl<$Res, $Val extends CityEntity>
       city: null == city
           ? _value.city
           : city // ignore: cast_nullable_to_non_nullable
-              as String,
-      cityCode: null == cityCode
-          ? _value.cityCode
-          : cityCode // ignore: cast_nullable_to_non_nullable
               as String,
       latLong: null == latLong
           ? _value.latLong
@@ -98,7 +92,7 @@ abstract class _$$CityEntityImplCopyWith<$Res>
       __$$CityEntityImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String postcode, String city, String cityCode, LatLong latLong});
+  $Res call({String postcode, String city, LatLong latLong});
 
   @override
   $LatLongCopyWith<$Res> get latLong;
@@ -119,7 +113,6 @@ class __$$CityEntityImplCopyWithImpl<$Res>
   $Res call({
     Object? postcode = null,
     Object? city = null,
-    Object? cityCode = null,
     Object? latLong = null,
   }) {
     return _then(_$CityEntityImpl(
@@ -130,10 +123,6 @@ class __$$CityEntityImplCopyWithImpl<$Res>
       city: null == city
           ? _value.city
           : city // ignore: cast_nullable_to_non_nullable
-              as String,
-      cityCode: null == cityCode
-          ? _value.cityCode
-          : cityCode // ignore: cast_nullable_to_non_nullable
               as String,
       latLong: null == latLong
           ? _value.latLong
@@ -147,10 +136,7 @@ class __$$CityEntityImplCopyWithImpl<$Res>
 
 class _$CityEntityImpl extends _CityEntity {
   const _$CityEntityImpl(
-      {required this.postcode,
-      required this.city,
-      required this.cityCode,
-      required this.latLong})
+      {required this.postcode, required this.city, required this.latLong})
       : super._();
 
   @override
@@ -158,13 +144,11 @@ class _$CityEntityImpl extends _CityEntity {
   @override
   final String city;
   @override
-  final String cityCode;
-  @override
   final LatLong latLong;
 
   @override
   String toString() {
-    return 'CityEntity(postcode: $postcode, city: $city, cityCode: $cityCode, latLong: $latLong)';
+    return 'CityEntity(postcode: $postcode, city: $city, latLong: $latLong)';
   }
 
   @override
@@ -175,14 +159,11 @@ class _$CityEntityImpl extends _CityEntity {
             (identical(other.postcode, postcode) ||
                 other.postcode == postcode) &&
             (identical(other.city, city) || other.city == city) &&
-            (identical(other.cityCode, cityCode) ||
-                other.cityCode == cityCode) &&
             (identical(other.latLong, latLong) || other.latLong == latLong));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, postcode, city, cityCode, latLong);
+  int get hashCode => Object.hash(runtimeType, postcode, city, latLong);
 
   /// Create a copy of CityEntity
   /// with the given fields replaced by the non-null parameter values.
@@ -197,7 +178,6 @@ abstract class _CityEntity extends CityEntity {
   const factory _CityEntity(
       {required final String postcode,
       required final String city,
-      required final String cityCode,
       required final LatLong latLong}) = _$CityEntityImpl;
   const _CityEntity._() : super._();
 
@@ -205,8 +185,6 @@ abstract class _CityEntity extends CityEntity {
   String get postcode;
   @override
   String get city;
-  @override
-  String get cityCode;
   @override
   LatLong get latLong;
 

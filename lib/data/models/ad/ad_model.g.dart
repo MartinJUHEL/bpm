@@ -6,8 +6,8 @@ part of 'ad_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$AdEntityImpl _$$AdEntityImplFromJson(Map<String, dynamic> json) =>
-    _$AdEntityImpl(
+_$AdModelImpl _$$AdModelImplFromJson(Map<String, dynamic> json) =>
+    _$AdModelImpl(
       id: json['id'] as String,
       title: json['title'] as String,
       description: json['description'] as String,
@@ -24,7 +24,7 @@ _$AdEntityImpl _$$AdEntityImplFromJson(Map<String, dynamic> json) =>
       creationDate: DateTime.parse(json['creationDate'] as String),
     );
 
-Map<String, dynamic> _$$AdEntityImplToJson(_$AdEntityImpl instance) =>
+Map<String, dynamic> _$$AdModelImplToJson(_$AdModelImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'title': instance.title,

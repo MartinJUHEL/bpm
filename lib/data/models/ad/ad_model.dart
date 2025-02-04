@@ -1,6 +1,5 @@
 import 'package:assoshare/data/models/city/city_model.dart';
 import 'package:assoshare/domain/entities/ad/ad_entity.dart';
-import 'package:collection/collection.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'ad_model.freezed.dart';
@@ -21,7 +20,7 @@ class AdModel with _$AdModel {
       required final String renterId,
       required final String renterName,
       final String? renterPhotoUrl,
-      required final DateTime creationDate}) = _AdEntity;
+      required final DateTime creationDate}) = _AdModel;
 
   factory AdModel.fromJson(Map<String, Object?> json) => _$AdModelFromJson(json);
 
@@ -36,6 +35,4 @@ class AdModel with _$AdModel {
       renterId: renterId,
       renterName: renterName,
       creationDate: creationDate);
-
-  AdType adTypeFromString(String value) => AdType.values.firstWhereOrNull((type) => type.name == value) ?? AdType.loan;
 }

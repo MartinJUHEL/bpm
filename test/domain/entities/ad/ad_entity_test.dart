@@ -3,25 +3,12 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import '../../../presentation/domain/entities/city_entity.dart';
+import '../../../presentation/domain/entities/ad_entity.dart';
 
 void main() {
   group('AdEntity', () {
     // Sample data for testing
-    const city = defaultCity;
-    var adEntity = AdEntity(
-      id: '1',
-      title: 'Test Ad',
-      description: 'This is a test ad.',
-      price: 100.0,
-      adType: AdType.rent,
-      photosUrl: const ['photo1.jpg', 'photo2.jpg'],
-      city: city,
-      renterId: 'user123',
-      renterName: 'John Doe',
-      renterPhotoUrl: 'profile.jpg',
-      creationDate: DateTime(2023, 10, 27),
-    );
+    var adEntity = defaultAd;
 
     test('displayTypeAndPrice returns correct string for loan type', () {
       // Arrange
@@ -65,6 +52,22 @@ void main() {
 
       // Assert
       expect(result, false); // Assuming 'rent' is translated and price is formatted
+    });
+  });
+
+  group('adTypeFromString', () {
+    test('should return AdType.loan for unknown values', () {
+      expect(adTypeFromString('invalid'), AdType.loan);
+      expect(adTypeFromString(''), AdType.loan);
+      expect(adTypeFromString('somethingElse'), AdType.loan);
+    });
+
+    test('should return AdType.loan for "loan"', () {
+      expect(adTypeFromString('loan'), AdType.loan);
+    });
+
+    test('should return AdType.rent for "rent"', () {
+      expect(adTypeFromString('rent'), AdType.rent);
     });
   });
 }

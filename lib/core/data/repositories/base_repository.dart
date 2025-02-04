@@ -5,8 +5,8 @@ import 'package:assoshare/core/network/GenericErrorTrigger.dart';
 import 'package:assoshare/core/network/app_connectivity_info.dart';
 import 'package:logger/logger.dart';
 
-base class BaseRepository {
-  BaseRepository(this._genericErrorTrigger, this._connectivityInfo, this._logger);
+base class BaseRemoteRepository {
+  BaseRemoteRepository(this._genericErrorTrigger, this._connectivityInfo, this._logger);
 
   final GenericErrorTrigger _genericErrorTrigger;
   final AppConnectivityInfo _connectivityInfo;

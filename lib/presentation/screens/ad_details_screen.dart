@@ -66,7 +66,7 @@ class _AdDetailsScreenState extends State<AdDetailsScreen> with TickerProviderSt
         parentContext: context,
         animationController: _colorAnimationController,
         onBackPressed: () => context.pop(),
-        isFromProfile: true,
+        isFromProfile: widget.fromUserProfile,
         onShareClicked: () {
           /*TODO*/
         },
@@ -97,7 +97,7 @@ class _AdDetailsScreenState extends State<AdDetailsScreen> with TickerProviderSt
                       onTap: () => {
                         if (widget.ad.hasPhoto())
                           {
-                            context.pushNamed(RouteList.profileAdPhotoPager.name, extra: widget.ad.photosUrl),
+                            context.pushNamed(RouteList.adPhotoPager.name, extra: widget.ad.photosUrl),
                           }
                       },
                       child: SizedBox(
