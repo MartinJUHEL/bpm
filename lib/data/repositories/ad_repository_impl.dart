@@ -10,6 +10,7 @@ import 'package:assoshare/domain/entities/ad/post_ad_entity.dart';
 import 'package:assoshare/domain/entities/filter/filter_entity.dart';
 import 'package:assoshare/domain/repositories/ad_repository.dart';
 import 'package:injectable/injectable.dart';
+import 'package:uuid/uuid.dart';
 
 @LazySingleton(as: AdRepository)
 final class AdRepositoryImpl extends BaseRemoteRepository implements AdRepository {
@@ -22,38 +23,26 @@ final class AdRepositoryImpl extends BaseRemoteRepository implements AdRepositor
 
   @override
   Future<Result<void>> postAd(PostAdEntity postAd) async {
-    // 1. Post ad and get id.
-    final postAdResult = await safeCall(
-      action: () => _adFirebaseService.postAd(PostAdModel.fromEntity(postAd)),
-      transform: (adId) => adId,
-    );
+    final adId = const Uuid().v4();
 
-    // 2. Handle potential failure.
-    if (postAdResult is IsFailure) {
-      return postAdResult;
-    }
-
-    // 3. Extract adId if successful.
-    final adId = (postAdResult as IsSuccess).data;
-
-    // 4. Upload photos.
+    // 1. Upload photos.
     final uploadPhotosResult = await safeCall(
       action: () => _storageService.uploadAdPhotos(postAd.photos, adId),
       transform: (urls) => urls,
     );
 
-    // 5. Handle potential failure.
+    // 2. Handle potential failure.
     if (uploadPhotosResult is IsFailure) {
       return uploadPhotosResult;
     }
 
-    // 6. Extract URLs if successful.
+    // 3. Extract URLs if successful.
     final urls = (uploadPhotosResult as IsSuccess).data;
 
-    // 7. Update ad with photo URLs.
+    // 4. Post ad and get id.
     return safeCall(
-      action: () => _adFirebaseService.updatePhotosUrl(urls, adId),
-      transform: (_) => {},
+      action: () => _adFirebaseService.postAd(PostAdModel.fromEntity(postAd, urls)),
+      transform: (adId) => adId,
     );
   }
 

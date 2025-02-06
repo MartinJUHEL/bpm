@@ -5,18 +5,17 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'post_ad_model.freezed.dart';
 part 'post_ad_model.g.dart';
 
-
 @freezed
 class PostAdModel with _$PostAdModel {
   const PostAdModel._();
 
   const factory PostAdModel(
-      {
-      required final String title,
+      {required final String title,
       required final String description,
       final double? price,
       required final String adType,
       required final CityModel city,
+      required final List<String> photosUrl,
       required final String renterId,
       required final String renterName,
       final String? renterPhotoUrl,
@@ -24,14 +23,14 @@ class PostAdModel with _$PostAdModel {
 
   factory PostAdModel.fromJson(Map<String, Object?> json) => _$PostAdModelFromJson(json);
 
-  factory PostAdModel.fromEntity(PostAdEntity entity) => PostAdModel(
+  factory PostAdModel.fromEntity(PostAdEntity entity, List<String> photosUrl) => PostAdModel(
       title: entity.title,
       description: entity.description,
       adType: entity.adType.name,
       price: entity.price,
       city: CityModel.fromEntity(entity.city),
       renterId: entity.renterId,
+      photosUrl: photosUrl,
       renterName: entity.renterName,
       creationDate: entity.creationDate);
-
 }
