@@ -19,7 +19,7 @@ class SuggestionsListWidget extends StatelessWidget {
           itemCount: suggestions.length + 1,
           itemBuilder: (context, index) {
             if (index == 0) {
-              return const Text('Suggestions').tr();
+              return const Text('suggestions').tr();
             }
             final suggestion = suggestions[index - 1];
             return SuggestionTile(title: suggestion, onTap: () => onSuggestionTap(suggestion));

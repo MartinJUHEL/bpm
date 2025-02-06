@@ -7,8 +7,9 @@ import 'dart:async' as _i5;
 
 import 'package:assoshare/core/domain/entities/result.dart' as _i6;
 import 'package:assoshare/domain/entities/ad/ad_entity.dart' as _i9;
+import 'package:assoshare/domain/entities/ad/ads_page_entity.dart' as _i10;
 import 'package:assoshare/domain/entities/ad/post_ad_entity.dart' as _i7;
-import 'package:assoshare/domain/entities/filter/filter_entity.dart' as _i10;
+import 'package:assoshare/domain/entities/filter/filter_entity.dart' as _i11;
 import 'package:assoshare/domain/repositories/ad_repository.dart' as _i4;
 import 'package:assoshare/domain/usecases/publish_ad/is_ad_description_valid_use_case.dart'
     as _i3;
@@ -127,10 +128,10 @@ class MockAdRepository extends _i1.Mock implements _i4.AdRepository {
       ) as _i5.Future<_i6.Result<void>>);
 
   @override
-  _i5.Future<_i6.Result<List<_i9.AdEntity>>> searchAd(
+  _i5.Future<_i6.Result<_i10.AdsPageEntity>> searchAd(
     String? query,
     int? page,
-    _i10.FilterEntity? filter,
+    _i11.FilterEntity? filter,
   ) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -141,8 +142,8 @@ class MockAdRepository extends _i1.Mock implements _i4.AdRepository {
             filter,
           ],
         ),
-        returnValue: _i5.Future<_i6.Result<List<_i9.AdEntity>>>.value(
-            _i8.dummyValue<_i6.Result<List<_i9.AdEntity>>>(
+        returnValue: _i5.Future<_i6.Result<_i10.AdsPageEntity>>.value(
+            _i8.dummyValue<_i6.Result<_i10.AdsPageEntity>>(
           this,
           Invocation.method(
             #searchAd,
@@ -153,7 +154,7 @@ class MockAdRepository extends _i1.Mock implements _i4.AdRepository {
             ],
           ),
         )),
-      ) as _i5.Future<_i6.Result<List<_i9.AdEntity>>>);
+      ) as _i5.Future<_i6.Result<_i10.AdsPageEntity>>);
 
   @override
   _i5.Future<_i6.Result<List<String>>> getAdSuggestions(String? query) =>

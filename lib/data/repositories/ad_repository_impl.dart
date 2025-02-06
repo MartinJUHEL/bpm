@@ -5,8 +5,8 @@ import 'package:assoshare/data/services/ad_firebase_service.dart';
 import 'package:assoshare/data/services/search_ad_service.dart';
 import 'package:assoshare/data/services/storage_service.dart';
 import 'package:assoshare/domain/entities/ad/ad_entity.dart';
+import 'package:assoshare/domain/entities/ad/ads_page_entity.dart';
 import 'package:assoshare/domain/entities/ad/post_ad_entity.dart';
-import 'package:assoshare/domain/entities/latlong/lat_long_entity.dart';
 import 'package:assoshare/domain/entities/filter/filter_entity.dart';
 import 'package:assoshare/domain/repositories/ad_repository.dart';
 import 'package:injectable/injectable.dart';
@@ -92,10 +92,9 @@ final class AdRepositoryImpl extends BaseRemoteRepository implements AdRepositor
   }
 
   @override
-  Future<Result<List<AdEntity>>> searchAd(String query, int page, FilterEntity filter) {
+  Future<Result<AdsPageEntity>> searchAd(String query, int page, FilterEntity filter) {
     return safeCall(
-        action: () => _searchAdService.searchAd(query, page, filter),
-        transform: (ads) => ads.map((soughtAdModel) => soughtAdModel.toEntity()).toList());
+        action: () => _searchAdService.searchAd(query, page, filter), transform: (adPage) => adPage.toEntity());
   }
 
   @override

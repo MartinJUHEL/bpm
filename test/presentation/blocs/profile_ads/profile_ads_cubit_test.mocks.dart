@@ -7,8 +7,9 @@ import 'dart:async' as _i3;
 
 import 'package:assoshare/core/domain/entities/result.dart' as _i4;
 import 'package:assoshare/domain/entities/ad/ad_entity.dart' as _i7;
+import 'package:assoshare/domain/entities/ad/ads_page_entity.dart' as _i8;
 import 'package:assoshare/domain/entities/ad/post_ad_entity.dart' as _i5;
-import 'package:assoshare/domain/entities/filter/filter_entity.dart' as _i8;
+import 'package:assoshare/domain/entities/filter/filter_entity.dart' as _i9;
 import 'package:assoshare/domain/repositories/ad_repository.dart' as _i2;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:mockito/src/dummies.dart' as _i6;
@@ -106,10 +107,10 @@ class MockAdRepository extends _i1.Mock implements _i2.AdRepository {
       ) as _i3.Future<_i4.Result<void>>);
 
   @override
-  _i3.Future<_i4.Result<List<_i7.AdEntity>>> searchAd(
+  _i3.Future<_i4.Result<_i8.AdsPageEntity>> searchAd(
     String? query,
     int? page,
-    _i8.FilterEntity? filter,
+    _i9.FilterEntity? filter,
   ) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -120,8 +121,8 @@ class MockAdRepository extends _i1.Mock implements _i2.AdRepository {
             filter,
           ],
         ),
-        returnValue: _i3.Future<_i4.Result<List<_i7.AdEntity>>>.value(
-            _i6.dummyValue<_i4.Result<List<_i7.AdEntity>>>(
+        returnValue: _i3.Future<_i4.Result<_i8.AdsPageEntity>>.value(
+            _i6.dummyValue<_i4.Result<_i8.AdsPageEntity>>(
           this,
           Invocation.method(
             #searchAd,
@@ -133,8 +134,8 @@ class MockAdRepository extends _i1.Mock implements _i2.AdRepository {
           ),
         )),
         returnValueForMissingStub:
-            _i3.Future<_i4.Result<List<_i7.AdEntity>>>.value(
-                _i6.dummyValue<_i4.Result<List<_i7.AdEntity>>>(
+            _i3.Future<_i4.Result<_i8.AdsPageEntity>>.value(
+                _i6.dummyValue<_i4.Result<_i8.AdsPageEntity>>(
           this,
           Invocation.method(
             #searchAd,
@@ -145,7 +146,7 @@ class MockAdRepository extends _i1.Mock implements _i2.AdRepository {
             ],
           ),
         )),
-      ) as _i3.Future<_i4.Result<List<_i7.AdEntity>>>);
+      ) as _i3.Future<_i4.Result<_i8.AdsPageEntity>>);
 
   @override
   _i3.Future<_i4.Result<List<String>>> getAdSuggestions(String? query) =>

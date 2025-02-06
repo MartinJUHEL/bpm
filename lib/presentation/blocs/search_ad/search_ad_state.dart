@@ -11,7 +11,12 @@ sealed class SearchAdState with _$SearchAdState {
   const factory SearchAdState.searching({required String query, required List<String> suggestions}) = SearchAdSearching;
 
   const factory SearchAdState.displayResults(
-      {required String query, required List<AdEntity> result, required FilterEntity filter}) = SearchAdDisplayResults;
+      {required String query,
+      required List<AdEntity> result,
+      required FilterEntity filter,
+      required int page,
+      required int totalAds,
+      required bool isNextPageLoading}) = SearchAdDisplayResults;
 
   const factory SearchAdState.emptyResult({required String query, required FilterEntity filter}) = SearchAdEmptyResult;
 

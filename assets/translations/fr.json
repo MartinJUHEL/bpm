@@ -22,6 +22,7 @@
   "favorites": "Favoris",
   "@_SEARCH_PAGE": {},
   "km": "{} Km",
+  "numberResult": "{} annonces",
   "searchWithoutLimit": "Rechercher sans limite de distance",
   "allOverFrance": "Dans toute la France",
   "recommended": "Recommandé pour toi",

@@ -1,0 +1,226 @@
+[
+  {
+    "title": "Perceuse sans fil 18V",
+    "description": "Location de Perceuse sans fil 18V en bon état, prêt à l'emploi.",
+    "price": 10.0,
+    "adType": "rent",
+    "city": {
+      "postcode": "75001",
+      "city": "Paris",
+      "lat": 48.8566,
+      "long": 2.3522
+    },
+    "renterId": "GkoPv0ATY0O1OuGsDxcYxjvKrq93",
+    "renterName": "Martin",
+    "renterPhotoUrl": "https://source.unsplash.com/featured/?drill",
+    "creationDate": "2024-02-05T12:00:00Z"
+  },
+  {
+    "title": "Échafaudage pliable",
+    "description": "Location de Échafaudage pliable en bon état, prêt à l'emploi.",
+    "price": 12.5,
+    "adType": "rent",
+    "city": {
+      "postcode": "69001",
+      "city": "Lyon",
+      "lat": 45.7640,
+      "long": 4.8357
+    },
+    "renterId": "GkoPv0ATY0O1OuGsDxcYxjvKrq93",
+    "renterName": "Martin",
+    "renterPhotoUrl": "https://source.unsplash.com/featured/?scaffolding",
+    "creationDate": "2024-02-05T12:00:00Z"
+  },
+  {
+    "title": "Ponceuse électrique",
+    "description": "Location de Ponceuse électrique en bon état, prêt à l'emploi.",
+    "price": 15.0,
+    "adType": "rent",
+    "city": {
+      "postcode": "13001",
+      "city": "Marseille",
+      "lat": 43.2965,
+      "long": 5.3698
+    },
+    "renterId": "GkoPv0ATY0O1OuGsDxcYxjvKrq93",
+    "renterName": "Martin",
+    "renterPhotoUrl": "https://source.unsplash.com/featured/?sander",
+    "creationDate": "2024-02-05T12:00:00Z"
+  },
+  {
+    "title": "Bétonnière 160L",
+    "description": "Location de Bétonnière 160L en bon état, prêt à l'emploi.",
+    "price": 17.5,
+    "adType": "rent",
+    "city": {
+      "postcode": "31000",
+      "city": "Toulouse",
+      "lat": 43.6047,
+      "long": 1.4442
+    },
+    "renterId": "GkoPv0ATY0O1OuGsDxcYxjvKrq93",
+    "renterName": "Martin",
+    "renterPhotoUrl": "https://source.unsplash.com/featured/?cementmixer",
+    "creationDate": "2024-02-05T12:00:00Z"
+  },
+  {
+    "title": "Karcher haute pression",
+    "description": "Location de Karcher haute pression en bon état, prêt à l'emploi.",
+    "price": 20.0,
+    "adType": "rent",
+    "city": {
+      "postcode": "44000",
+      "city": "Nantes",
+      "lat": 47.2184,
+      "long": -1.5536
+    },
+    "renterId": "GkoPv0ATY0O1OuGsDxcYxjvKrq93",
+    "renterName": "Martin",
+    "renterPhotoUrl": "https://source.unsplash.com/featured/?pressurewasher",
+    "creationDate": "2024-02-05T12:00:00Z"
+  },
+  {
+    "title": "Scie circulaire 1400W",
+    "description": "Location de Scie circulaire 1400W en bon état, prêt à l'emploi.",
+    "price": 22.5,
+    "adType": "rent",
+    "city": {
+      "postcode": "67000",
+      "city": "Strasbourg",
+      "lat": 48.5734,
+      "long": 7.7521
+    },
+    "renterId": "GkoPv0ATY0O1OuGsDxcYxjvKrq93",
+    "renterName": "Martin",
+    "renterPhotoUrl": "https://source.unsplash.com/featured/?circularsaw",
+    "creationDate": "2024-02-05T12:00:00Z"
+  },
+  {
+    "title": "Tondeuse thermique",
+    "description": "Location de Tondeuse thermique en bon état, prêt à l'emploi.",
+    "price": 25.0,
+    "adType": "rent",
+    "city": {
+      "postcode": "59000",
+      "city": "Lille",
+      "lat": 50.6292,
+      "long": 3.0573
+    },
+    "renterId": "GkoPv0ATY0O1OuGsDxcYxjvKrq93",
+    "renterName": "Martin",
+    "renterPhotoUrl": "https://source.unsplash.com/featured/?lawnmower",
+    "creationDate": "2024-02-05T12:00:00Z"
+  },
+  {
+    "title": "Décolleuse à papier peint",
+    "description": "Location de Décolleuse à papier peint en bon état, prêt à l'emploi.",
+    "price": 27.5,
+    "adType": "rent",
+    "city": {
+      "postcode": "80000",
+      "city": "Amiens",
+      "lat": 49.8951,
+      "long": 2.3023
+    },
+    "renterId": "GkoPv0ATY0O1OuGsDxcYxjvKrq93",
+    "renterName": "Martin",
+    "renterPhotoUrl": "https://source.unsplash.com/featured/?steamer",
+    "creationDate": "2024-02-05T12:00:00Z"
+  },
+  {
+    "title": "Groupe électrogène 3000W",
+    "description": "Location de Groupe électrogène 3000W en bon état, prêt à l'emploi.",
+    "price": 30.0,
+    "adType": "rent",
+    "city": {
+      "postcode": "06000",
+      "city": "Nice",
+      "lat": 43.7102,
+      "long": 7.2620
+    },
+    "renterId": "GkoPv0ATY0O1OuGsDxcYxjvKrq93",
+    "renterName": "Martin",
+    "renterPhotoUrl": "https://source.unsplash.com/featured/?generator",
+    "creationDate": "2024-02-05T12:00:00Z"
+  },
+  {
+    "title": "Marteau-piqueur électrique",
+    "description": "Location de Marteau-piqueur électrique en bon état, prêt à l'emploi.",
+    "price": 32.5,
+    "adType": "rent",
+    "city": {
+      "postcode": "33000",
+      "city": "Bordeaux",
+      "lat": 44.8378,
+      "long": -0.5792
+    },
+    "renterId": "GkoPv0ATY0O1OuGsDxcYxjvKrq93",
+    "renterName": "Martin",
+    "renterPhotoUrl": "https://source.unsplash.com/featured/?jackhammer",
+    "creationDate": "2024-02-05T12:00:00Z"
+  },
+  {
+    "title": "Souffleur de feuilles",
+    "description": "Location de Souffleur de feuilles en bon état, prêt à l'emploi.",
+    "price": 35.0,
+    "adType": "rent",
+    "city": {
+      "postcode": "75001",
+      "city": "Paris",
+      "lat": 48.8566,
+      "long": 2.3522
+    },
+    "renterId": "GkoPv0ATY0O1OuGsDxcYxjvKrq93",
+    "renterName": "Martin",
+    "renterPhotoUrl": "https://source.unsplash.com/featured/?blower",
+    "creationDate": "2024-02-05T12:00:00Z"
+  },
+  {
+    "title": "Meuleuse d'angle",
+    "description": "Location de Meuleuse d'angle en bon état, prêt à l'emploi.",
+    "price": 37.5,
+    "adType": "rent",
+    "city": {
+      "postcode": "69001",
+      "city": "Lyon",
+      "lat": 45.7640,
+      "long": 4.8357
+    },
+    "renterId": "GkoPv0ATY0O1OuGsDxcYxjvKrq93",
+    "renterName": "Martin",
+    "renterPhotoUrl": "https://source.unsplash.com/featured/?grinder",
+    "creationDate": "2024-02-05T12:00:00Z"
+  },
+  {
+    "title": "Compresseur d'air 50L",
+    "description": "Location de Compresseur d'air 50L en bon état, prêt à l'emploi.",
+    "price": 40.0,
+    "adType": "rent",
+    "city": {
+      "postcode": "13001",
+      "city": "Marseille",
+      "lat": 43.2965,
+      "long": 5.3698
+    },
+    "renterId": "GkoPv0ATY0O1OuGsDxcYxjvKrq93",
+    "renterName": "Martin",
+    "renterPhotoUrl": "https://source.unsplash.com/featured/?aircompressor",
+    "creationDate": "2024-02-05T12:00:00Z"
+  },
+  {
+    "title": "Scie sauteuse",
+    "description": "Location de Scie sauteuse en bon état, prêt à l'emploi.",
+    "price": 42.5,
+    "adType": "rent",
+    "city": {
+      "postcode": "31000",
+      "city": "Toulouse",
+      "lat": 43.6047,
+      "long": 1.4442
+    },
+    "renterId": "GkoPv0ATY0O1OuGsDxcYxjvKrq93",
+    "renterName": "Martin",
+    "renterPhotoUrl": "https://source.unsplash.com/featured/?jigsaw",
+    "creationDate": "2024-02-05T12:00:00Z"
+  }
+]

@@ -82,6 +82,10 @@ class _SearchTabState extends State<SearchTab> {
                           }),
                       SearchAdDisplayResults() => DisplaySearchResultWidget(
                           ads: state.result,
+                          onRefresh: () => blocContext.read<SearchAdCubit>().onRefresh(),
+                          onNextPage: () => blocContext.read<SearchAdCubit>().onEndPageReached(),
+                          totalAds: state.totalAds,
+                          isNextPageLoading: state.isNextPageLoading,
                         ),
                       SearchAdSuggestionEmpty() => SuggestionTile(
                           title: 'searchFor'.tr(args: [state.query]),

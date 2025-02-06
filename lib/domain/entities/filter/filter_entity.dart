@@ -8,7 +8,6 @@ part 'filter_entity.freezed.dart';
 
 @freezed
 class FilterEntity with _$FilterEntity {
-  // Lats value is to search without boundaries.
   static const List<int> radiusValues = [5, 10, 20, 30, 50, 70, 100, 200];
   static const _defaultCity = 'Rennes';
   static const _defaultPostCode = '35000';

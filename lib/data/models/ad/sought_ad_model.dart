@@ -6,6 +6,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'sought_ad_model.freezed.dart';
 part 'sought_ad_model.g.dart';
 
+/// Model used for algolia.
 @freezed
 class SoughtAdModel with _$SoughtAdModel {
   const SoughtAdModel._();

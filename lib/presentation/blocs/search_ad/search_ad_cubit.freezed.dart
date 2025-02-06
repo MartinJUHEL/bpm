@@ -348,7 +348,13 @@ abstract class _$$SearchAdDisplayResultsImplCopyWith<$Res> {
           $Res Function(_$SearchAdDisplayResultsImpl) then) =
       __$$SearchAdDisplayResultsImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String query, List<AdEntity> result, FilterEntity filter});
+  $Res call(
+      {String query,
+      List<AdEntity> result,
+      FilterEntity filter,
+      int page,
+      int totalAds,
+      bool isNextPageLoading});
 
   $FilterEntityCopyWith<$Res> get filter;
 }
@@ -370,6 +376,9 @@ class __$$SearchAdDisplayResultsImplCopyWithImpl<$Res>
     Object? query = null,
     Object? result = null,
     Object? filter = null,
+    Object? page = null,
+    Object? totalAds = null,
+    Object? isNextPageLoading = null,
   }) {
     return _then(_$SearchAdDisplayResultsImpl(
       query: null == query
@@ -384,6 +393,18 @@ class __$$SearchAdDisplayResultsImplCopyWithImpl<$Res>
           ? _value.filter
           : filter // ignore: cast_nullable_to_non_nullable
               as FilterEntity,
+      page: null == page
+          ? _value.page
+          : page // ignore: cast_nullable_to_non_nullable
+              as int,
+      totalAds: null == totalAds
+          ? _value.totalAds
+          : totalAds // ignore: cast_nullable_to_non_nullable
+              as int,
+      isNextPageLoading: null == isNextPageLoading
+          ? _value.isNextPageLoading
+          : isNextPageLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 
@@ -404,7 +425,10 @@ class _$SearchAdDisplayResultsImpl implements SearchAdDisplayResults {
   const _$SearchAdDisplayResultsImpl(
       {required this.query,
       required final List<AdEntity> result,
-      required this.filter})
+      required this.filter,
+      required this.page,
+      required this.totalAds,
+      required this.isNextPageLoading})
       : _result = result;
 
   @override
@@ -419,10 +443,16 @@ class _$SearchAdDisplayResultsImpl implements SearchAdDisplayResults {
 
   @override
   final FilterEntity filter;
+  @override
+  final int page;
+  @override
+  final int totalAds;
+  @override
+  final bool isNextPageLoading;
 
   @override
   String toString() {
-    return 'SearchAdState.displayResults(query: $query, result: $result, filter: $filter)';
+    return 'SearchAdState.displayResults(query: $query, result: $result, filter: $filter, page: $page, totalAds: $totalAds, isNextPageLoading: $isNextPageLoading)';
   }
 
   @override
@@ -432,12 +462,23 @@ class _$SearchAdDisplayResultsImpl implements SearchAdDisplayResults {
             other is _$SearchAdDisplayResultsImpl &&
             (identical(other.query, query) || other.query == query) &&
             const DeepCollectionEquality().equals(other._result, _result) &&
-            (identical(other.filter, filter) || other.filter == filter));
+            (identical(other.filter, filter) || other.filter == filter) &&
+            (identical(other.page, page) || other.page == page) &&
+            (identical(other.totalAds, totalAds) ||
+                other.totalAds == totalAds) &&
+            (identical(other.isNextPageLoading, isNextPageLoading) ||
+                other.isNextPageLoading == isNextPageLoading));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, query, const DeepCollectionEquality().hash(_result), filter);
+      runtimeType,
+      query,
+      const DeepCollectionEquality().hash(_result),
+      filter,
+      page,
+      totalAds,
+      isNextPageLoading);
 
   /// Create a copy of SearchAdState
   /// with the given fields replaced by the non-null parameter values.
@@ -453,11 +494,17 @@ abstract class SearchAdDisplayResults implements SearchAdState {
   const factory SearchAdDisplayResults(
       {required final String query,
       required final List<AdEntity> result,
-      required final FilterEntity filter}) = _$SearchAdDisplayResultsImpl;
+      required final FilterEntity filter,
+      required final int page,
+      required final int totalAds,
+      required final bool isNextPageLoading}) = _$SearchAdDisplayResultsImpl;
 
   String get query;
   List<AdEntity> get result;
   FilterEntity get filter;
+  int get page;
+  int get totalAds;
+  bool get isNextPageLoading;
 
   /// Create a copy of SearchAdState
   /// with the given fields replaced by the non-null parameter values.

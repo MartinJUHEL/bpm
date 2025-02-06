@@ -22,15 +22,10 @@ class ListAdsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var size = MediaQuery.of(context).size;
-
-    final double itemHeight = size.height / 1.5;
-    final double itemWidth = size.width / 2;
-
     return GridView.builder(
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
-          childAspectRatio: itemWidth / itemHeight,
+          childAspectRatio: 0.53,
           crossAxisSpacing: Dimens.paddingRegular,
           mainAxisSpacing: Dimens.paddingRegular,
         ),

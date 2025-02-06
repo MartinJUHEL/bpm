@@ -1,4 +1,5 @@
 import 'package:algolia/algolia.dart';
+import 'package:assoshare/data/models/ad/ad_page_model.dart';
 import 'package:assoshare/data/models/ad/sought_ad_model.dart';
 import 'package:assoshare/data/models/ad/suggestion_model.dart';
 import 'package:assoshare/domain/entities/filter/filter_entity.dart';
@@ -18,10 +19,12 @@ class SearchAdService {
   Future<List<SuggestionModel>> getSuggestions(String query) async {
     AlgoliaQuery algoliaQuery = _algolia.index(_adsAutoCompleteIndex).query(query).setHitsPerPage(_hitsPerPage);
     AlgoliaQuerySnapshot snap = await algoliaQuery.getObjects();
-    return snap.hits.map((snapshot) => SuggestionModel.fromJson(snapshot.data)).toList();
+
+    // Transform to set to avoid duplicate.
+    return snap.hits.map((snapshot) => SuggestionModel.fromJson(snapshot.data)).toSet().toList();
   }
 
-  Future<List<SoughtAdModel>> searchAd(String query, int page, FilterEntity filter) async {
+  Future<AdPageModel> searchAd(String query, int page, FilterEntity filter) async {
     final location = filter.city?.latLong;
     AlgoliaQuery algoliaQuery = _algolia.index(_adsIndex).query(query).setHitsPerPage(_hitsPerPage).setPage(page);
 
@@ -34,6 +37,7 @@ class SearchAdService {
           .setAroundRadius(radiusInMeters ?? _noRadius);
     }
     AlgoliaQuerySnapshot snap = await algoliaQuery.getObjects();
-    return snap.hits.map((snapshot) => SoughtAdModel.fromJson(snapshot.data)).toList();
+    return AdPageModel(
+        ads: snap.hits.map((snapshot) => SoughtAdModel.fromJson(snapshot.data)).toList(), total: snap.nbHits);
   }
 }
