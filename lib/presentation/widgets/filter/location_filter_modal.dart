@@ -179,13 +179,14 @@ class _LocationFilterModalState extends State<LocationFilterModal> {
                       style: context.textTheme.titleMedium,
                     ),
                     const Gap(Dimens.paddingRegular),
-                    CustomCheckboxWidget(
-                      title: 'searchWithoutLimit'.tr(),
-                      textStyle: context.textTheme.bodyMedium,
-                      onChanged: (value) => context.read<FilterCubit>().onSearchWithoutLimitChanged(value),
-                      value: filter.locationRadius == null,
-                      scale: 0.8,
-                    ),
+                    if (filter.city != null)
+                      CustomCheckboxWidget(
+                        title: 'searchWithoutLimit'.tr(),
+                        textStyle: context.textTheme.bodyMedium,
+                        onChanged: (value) => context.read<FilterCubit>().onSearchWithoutLimitChanged(value),
+                        value: filter.locationRadius == null,
+                        scale: 0.8,
+                      ),
                     const Gap(Dimens.paddingSmall),
                     if (filter.locationRadius != null)
                       LocationRadiusSliderWidget(
@@ -215,9 +216,7 @@ class _LocationFilterModalState extends State<LocationFilterModal> {
       );
     }
 
-    final IconData icon = searchState.query.isNotEmpty
-        ? Icons.clear
-        : Icons.location_searching;
+    final IconData icon = searchState.query.isNotEmpty ? Icons.clear : Icons.location_searching;
 
     return IconButton(
       padding: EdgeInsets.zero,

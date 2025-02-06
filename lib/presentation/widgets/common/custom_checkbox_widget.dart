@@ -22,9 +22,12 @@ class CustomCheckboxWidget extends StatelessWidget {
               width: 20, height: 20, child: Checkbox(value: value, onChanged: (newValue) => onChanged(newValue))),
         ),
         const Gap(Dimens.paddingSmall),
-        Text(
-          title,
-          style: textStyle,
+        GestureDetector(
+          onTap: () => onChanged(!value),
+          child: Text(
+            title,
+            style: textStyle,
+          ),
         )
       ],
     );
