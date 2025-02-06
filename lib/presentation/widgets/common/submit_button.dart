@@ -38,4 +38,4 @@ class SubmitButton extends StatelessWidget {
 ///////////////////////////////////////////////////////////////////////////
 
 const double buttonHeight = 40.0;
-const double buttonWidth = 40.0;
+const double buttonWidth = 45.0;

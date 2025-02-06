@@ -14,7 +14,6 @@ enum RouteList {
   // PROFILE.
   profile(name: 'profile', path: '/profile'),
   profileAdDetails(name: 'profileAdDetails', path: '/adDetails', parent: RouteList.profile),
-  profileAdPhotoPager(name: 'profileAdPhotoPager', path: '/photoPager', parent: RouteList.profileAdDetails),
 
   // MESSAGES.
   messages(name: 'messages', path: '/messages'),
@@ -23,7 +22,11 @@ enum RouteList {
   favorites(name: 'favorites', path: '/favorites'),
 
   // SEARCH.
-  search(name: 'search', path: '/search');
+  search(name: 'search', path: '/search'),
+  searchAdDetails(name: 'searchAdDetails', path: '/adDetails', parent: RouteList.search),
+
+  // AD DETAILS.
+  adPhotoPager(name: 'adPhotoPager', path: '/photoPager');
 
   const RouteList({required this.name, required this.path, RouteList? parent}) : _parent = parent;
 
@@ -36,7 +39,12 @@ enum RouteList {
 
 extension RouteExtension on String {
   /// Return true if this route can be reached when unlogged.
-  bool isSignOutRoute() => [RouteList.welcome, RouteList.chooseUserType, RouteList.signup, RouteList.signIn]
-      .map((route) => route.fullPath)
-      .contains(this);
+  bool isSignOutRoute() => [
+        RouteList.welcome,
+        RouteList.splash,
+        RouteList.chooseUserType,
+        RouteList.signup,
+        RouteList.signIn,
+        RouteList.resetPassword
+      ].map((route) => route.fullPath).contains(this);
 }

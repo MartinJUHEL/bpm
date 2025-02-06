@@ -10,8 +10,8 @@ import 'package:assoshare/presentation/widgets/profile/user_profile_header.dart'
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({super.key});
+class ProfileTab extends StatelessWidget {
+  const ProfileTab({super.key});
 
   @override
   Widget build(BuildContext context) {

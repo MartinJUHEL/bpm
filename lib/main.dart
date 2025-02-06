@@ -18,6 +18,8 @@ Future<void> runMainApp(FirebaseOptions firebaseOptions) async {
   // Init easy localization for translation.
   await EasyLocalization.ensureInitialized();
 
+  // Init Hive.
+
   // Init firebase.
   await Firebase.initializeApp(options: firebaseOptions);
 

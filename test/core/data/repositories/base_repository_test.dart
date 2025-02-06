@@ -72,6 +72,6 @@ void main() {
   });
 }
 
-final class ConcreteRepository extends BaseRepository {
+final class ConcreteRepository extends BaseRemoteRepository {
   ConcreteRepository(super.genericErrorTrigger, super.connectivityInfo, super.logger);
 }

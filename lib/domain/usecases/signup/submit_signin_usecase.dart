@@ -30,9 +30,9 @@ class SubmitSignInUseCase {
           await _userRepository.fetchUser();
         } else {
           await _authenticationSignedOutUseCase.execute();
-          return state.copyWith(isLoading: false, errorMessage: 'tessssst', isFormValid: false);
+          return state.copyWith(isLoading: false, errorMessage: tr('errorOccurred'), isFormValid: false);
         }
-        return state.copyWith(isLoading: false, errorMessage: "", isFormValid: true);
+        return state.copyWith(isLoading: false, errorMessage: null, isFormValid: true);
       } on FirebaseAuthException catch (e) {
         logger.e(e.toString());
         return state.copyWith(isLoading: false, errorMessage: e.message, isFormValid: false);

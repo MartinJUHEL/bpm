@@ -1,0 +1,10 @@
+{
+  "projects": {
+    "dev": "bpm-dev-71dd4",
+    "prod": "bpm-prod-df16a",
+    "sta": "bpm-sta",
+    "default": "bpm-dev-71dd4"
+  },
+  "targets": {},
+  "etags": {}
+}

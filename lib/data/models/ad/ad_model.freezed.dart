@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 AdModel _$AdModelFromJson(Map<String, dynamic> json) {
-  return _AdEntity.fromJson(json);
+  return _AdModel.fromJson(json);
 }
 
 /// @nodoc
@@ -149,10 +149,10 @@ class _$AdModelCopyWithImpl<$Res, $Val extends AdModel>
 }
 
 /// @nodoc
-abstract class _$$AdEntityImplCopyWith<$Res> implements $AdModelCopyWith<$Res> {
-  factory _$$AdEntityImplCopyWith(
-          _$AdEntityImpl value, $Res Function(_$AdEntityImpl) then) =
-      __$$AdEntityImplCopyWithImpl<$Res>;
+abstract class _$$AdModelImplCopyWith<$Res> implements $AdModelCopyWith<$Res> {
+  factory _$$AdModelImplCopyWith(
+          _$AdModelImpl value, $Res Function(_$AdModelImpl) then) =
+      __$$AdModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -173,11 +173,11 @@ abstract class _$$AdEntityImplCopyWith<$Res> implements $AdModelCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$AdEntityImplCopyWithImpl<$Res>
-    extends _$AdModelCopyWithImpl<$Res, _$AdEntityImpl>
-    implements _$$AdEntityImplCopyWith<$Res> {
-  __$$AdEntityImplCopyWithImpl(
-      _$AdEntityImpl _value, $Res Function(_$AdEntityImpl) _then)
+class __$$AdModelImplCopyWithImpl<$Res>
+    extends _$AdModelCopyWithImpl<$Res, _$AdModelImpl>
+    implements _$$AdModelImplCopyWith<$Res> {
+  __$$AdModelImplCopyWithImpl(
+      _$AdModelImpl _value, $Res Function(_$AdModelImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of AdModel
@@ -197,7 +197,7 @@ class __$$AdEntityImplCopyWithImpl<$Res>
     Object? renterPhotoUrl = freezed,
     Object? creationDate = null,
   }) {
-    return _then(_$AdEntityImpl(
+    return _then(_$AdModelImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -248,8 +248,8 @@ class __$$AdEntityImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$AdEntityImpl extends _AdEntity {
-  const _$AdEntityImpl(
+class _$AdModelImpl extends _AdModel {
+  const _$AdModelImpl(
       {required this.id,
       required this.title,
       required this.description,
@@ -264,8 +264,8 @@ class _$AdEntityImpl extends _AdEntity {
       : _photosUrl = photosUrl,
         super._();
 
-  factory _$AdEntityImpl.fromJson(Map<String, dynamic> json) =>
-      _$$AdEntityImplFromJson(json);
+  factory _$AdModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$AdModelImplFromJson(json);
 
   @override
   final String id;
@@ -306,7 +306,7 @@ class _$AdEntityImpl extends _AdEntity {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$AdEntityImpl &&
+            other is _$AdModelImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.description, description) ||
@@ -347,19 +347,19 @@ class _$AdEntityImpl extends _AdEntity {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$AdEntityImplCopyWith<_$AdEntityImpl> get copyWith =>
-      __$$AdEntityImplCopyWithImpl<_$AdEntityImpl>(this, _$identity);
+  _$$AdModelImplCopyWith<_$AdModelImpl> get copyWith =>
+      __$$AdModelImplCopyWithImpl<_$AdModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$AdEntityImplToJson(
+    return _$$AdModelImplToJson(
       this,
     );
   }
 }
 
-abstract class _AdEntity extends AdModel {
-  const factory _AdEntity(
+abstract class _AdModel extends AdModel {
+  const factory _AdModel(
       {required final String id,
       required final String title,
       required final String description,
@@ -370,11 +370,10 @@ abstract class _AdEntity extends AdModel {
       required final String renterId,
       required final String renterName,
       final String? renterPhotoUrl,
-      required final DateTime creationDate}) = _$AdEntityImpl;
-  const _AdEntity._() : super._();
+      required final DateTime creationDate}) = _$AdModelImpl;
+  const _AdModel._() : super._();
 
-  factory _AdEntity.fromJson(Map<String, dynamic> json) =
-      _$AdEntityImpl.fromJson;
+  factory _AdModel.fromJson(Map<String, dynamic> json) = _$AdModelImpl.fromJson;
 
   @override
   String get id;
@@ -403,6 +402,6 @@ abstract class _AdEntity extends AdModel {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$AdEntityImplCopyWith<_$AdEntityImpl> get copyWith =>
+  _$$AdModelImplCopyWith<_$AdModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

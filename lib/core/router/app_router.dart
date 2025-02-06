@@ -4,6 +4,7 @@ import 'package:assoshare/core/router/route_list.dart';
 import 'package:assoshare/domain/entities/ad/ad_entity.dart';
 import 'package:assoshare/presentation/blocs/authentication/authentication_bloc.dart';
 import 'package:assoshare/presentation/blocs/publish_ad/publish_ad_bloc/publish_ad_bloc.dart';
+import 'package:assoshare/presentation/blocs/signup/signup_bloc.dart';
 import 'package:assoshare/presentation/navigation/navigation_cubit.dart';
 import 'package:assoshare/presentation/screens/ad_details_screen.dart';
 import 'package:assoshare/presentation/screens/home_screen.dart';
@@ -47,7 +48,7 @@ abstract class AppRouter {
                     path: RouteList.signup.path,
                     builder: (context, state) => _Page(
                         child: SignupScreen(
-                      args: state.extra as SignupScreenArgs,
+                      args: state.extra as SignupScreenArgs? ?? const SignupScreenArgs(formType: FormType.signUp),
                     )),
                   ),
                 ]),
@@ -56,7 +57,7 @@ abstract class AppRouter {
                 path: RouteList.signIn.path,
                 builder: (context, state) => _Page(
                         child: SignupScreen(
-                      args: state.extra as SignupScreenArgs,
+                      args: state.extra as SignupScreenArgs? ?? const SignupScreenArgs(formType: FormType.signIn),
                     )),
                 routes: [
                   GoRoute(
@@ -66,6 +67,11 @@ abstract class AppRouter {
                   ),
                 ]),
           ]),
+      GoRoute(
+        name: RouteList.adPhotoPager.name,
+        path: RouteList.adPhotoPager.path,
+        builder: (context, state) => _Page(child: PhotoPagerScreen(photosUrl: state.extra as List<String>)),
+      ),
       GoRoute(
           name: RouteList.home.name,
           path: RouteList.home.path,
@@ -112,16 +118,27 @@ abstract class AppRouter {
             )),
       ),
       GoRoute(
-        name: RouteList.search.name,
-        path: RouteList.search.path,
-        builder: (context, state) => _Page(
-            providers: [
-              BlocProvider(create: (_) => locator<NavigationCubit>()),
-            ],
-            child: const HomeScreen(
-              selectedNavbarItem: NavbarItem.search,
-            )),
-      ),
+          name: RouteList.search.name,
+          path: RouteList.search.path,
+          builder: (context, state) => _Page(
+                  providers: [
+                    BlocProvider(create: (_) => locator<NavigationCubit>()),
+                  ],
+                  child: const HomeScreen(
+                    selectedNavbarItem: NavbarItem.search,
+                  )),
+          routes: [
+            GoRoute(
+              name: RouteList.searchAdDetails.name,
+              path: RouteList.searchAdDetails.path,
+              builder: (context, state) => _Page(
+                child: AdDetailsScreen(
+                  ad: state.extra! as AdEntity,
+                  fromUserProfile: false,
+                ),
+              ),
+            ),
+          ]),
       GoRoute(
         name: RouteList.profile.name,
         path: RouteList.profile.path,
@@ -133,21 +150,15 @@ abstract class AppRouter {
         ),
         routes: [
           GoRoute(
-              name: RouteList.profileAdDetails.name,
-              path: RouteList.profileAdDetails.path,
-              builder: (context, state) => _Page(
-                    child: AdDetailsScreen(
-                      ad: state.extra! as AdEntity,
-                      fromUserProfile: true,
-                    ),
-                  ),
-              routes: [
-                GoRoute(
-                  name: RouteList.profileAdPhotoPager.name,
-                  path: RouteList.profileAdPhotoPager.path,
-                  builder: (context, state) => _Page(child: PhotoPagerScreen(photosUrl: state.extra as List<String>)),
-                ),
-              ]),
+            name: RouteList.profileAdDetails.name,
+            path: RouteList.profileAdDetails.path,
+            builder: (context, state) => _Page(
+              child: AdDetailsScreen(
+                ad: state.extra! as AdEntity,
+                fromUserProfile: true,
+              ),
+            ),
+          ),
         ],
       ),
     ],
@@ -171,7 +182,7 @@ abstract class AppRouter {
           },
           success: (_) {
             // Redirection to HomePage.
-            if (state.uri.toString() == RouteList.splash.fullPath) {
+            if (state.uri.toString().isSignOutRoute()) {
               return RouteList.home.path;
             }
             return null;

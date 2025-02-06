@@ -10,7 +10,6 @@ class CityEntity with _$CityEntity {
   const factory CityEntity(
       {required String postcode,
       required String city,
-      required String cityCode,
       required LatLong latLong}) = _CityEntity;
 
   String displayCity() {

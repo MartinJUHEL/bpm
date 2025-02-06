@@ -85,7 +85,7 @@ class Assets {
   static const String screenSplashScreen = 'lib/splash/presentation/screen/splash_screen.dart';
   static const String screensChooseUserTypeScreen = 'lib/signup/presentation/screens/choose_user_type_screen.dart';
   static const String screensEmailNotVerifiedScreen = 'lib/Authentication/presentation/screens/email_not_verified_screen.dart';
-  static const String screensProfilScreen = 'lib/profile/presentation/screens/profile_screen.dart';
+  static const String screensProfilScreen = 'lib/profile/presentation/screens/profile_tab.dart';
   static const String screensPublishAdScreen = 'lib/publish_ad/presentation/screens/publish_ad_screen.dart';
   static const String screensResetPasswordScreen = 'lib/reset_password/presentation/screens/reset_password_screen.dart';
   static const String screensSignupScreen = 'lib/signup/presentation/screens/signup_screen.dart';

@@ -1,15 +1,16 @@
 import 'package:assoshare/core/di/injection.dart';
 import 'package:assoshare/core/router/route_list.dart';
 import 'package:assoshare/presentation/blocs/home/home_cubit.dart';
-import 'package:assoshare/presentation/blocs/list_ads/list_ads_cubit.dart';
+import 'package:assoshare/presentation/blocs/profile_ads/profile_ads_cubit.dart';
 import 'package:assoshare/presentation/navigation/navigation_cubit.dart';
+import 'package:assoshare/presentation/screens/search_tab.dart';
 import 'package:assoshare/presentation/widgets/home/bottom_navigation_bar_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 
-import 'profile_screen.dart';
+import 'profile_tab.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key, this.selectedNavbarItem});
@@ -39,7 +40,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
         // List ads in profile.
         BlocProvider(
-          create: (context) => locator<ListAdsCubit>(),
+          create: (context) => locator<ProfileAdsCubit>(),
         ),
       ],
       child: BlocBuilder<HomeCubit, HomeState>(builder: (context, state) {
@@ -49,13 +50,17 @@ class _HomeScreenState extends State<HomeScreen> {
             builder: (context, navState) {
               return SafeArea(
                 child: Scaffold(
+                    resizeToAvoidBottomInset: false,
                     body: Center(
-                      child: switch (navState.navbarItem) {
-                        NavbarItem.search => const SizedBox.shrink(),
-                        NavbarItem.favorites => const SizedBox.shrink(),
-                        NavbarItem.messages => const SizedBox.shrink(),
-                        NavbarItem.profile => const ProfileScreen(),
-                      },
+                      child: IndexedStack(
+                        index: navState.navbarItem.itemIndex,
+                        children: const [
+                          SearchTab(),
+                          SizedBox.shrink(),
+                          SizedBox.shrink(),
+                          ProfileTab(),
+                        ],
+                      ),
                     ),
                     floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
                     floatingActionButton: FloatingActionButton(
@@ -84,7 +89,7 @@ class _HomeScreenState extends State<HomeScreen> {
     if (context.mounted) {
       // If ad has been created, update list on profile page.
       if (addNewAdSuccess == true) {
-        context.read<ListAdsCubit>().fetchAds(uid);
+        context.read<ProfileAdsCubit>().fetchAds(uid);
       }
     }
   }

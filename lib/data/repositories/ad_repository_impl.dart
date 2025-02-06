@@ -2,19 +2,23 @@ import 'package:assoshare/core/data/repositories/base_repository.dart';
 import 'package:assoshare/core/domain/entities/result.dart';
 import 'package:assoshare/data/models/ad/post_ad_model.dart';
 import 'package:assoshare/data/services/ad_firebase_service.dart';
+import 'package:assoshare/data/services/search_ad_service.dart';
 import 'package:assoshare/data/services/storage_service.dart';
 import 'package:assoshare/domain/entities/ad/ad_entity.dart';
+import 'package:assoshare/domain/entities/ad/ads_page_entity.dart';
 import 'package:assoshare/domain/entities/ad/post_ad_entity.dart';
+import 'package:assoshare/domain/entities/filter/filter_entity.dart';
 import 'package:assoshare/domain/repositories/ad_repository.dart';
 import 'package:injectable/injectable.dart';
 
 @LazySingleton(as: AdRepository)
-final class AdRepositoryImpl extends BaseRepository implements AdRepository {
+final class AdRepositoryImpl extends BaseRemoteRepository implements AdRepository {
   final AdFirebaseService _adFirebaseService;
   final StorageService _storageService;
+  final SearchAdService _searchAdService;
 
-  AdRepositoryImpl(
-      super.genericErrorTrigger, super.connectivityInfo, super.logger, this._adFirebaseService, this._storageService);
+  AdRepositoryImpl(super.genericErrorTrigger, super.connectivityInfo, super.logger, this._adFirebaseService,
+      this._storageService, this._searchAdService);
 
   @override
   Future<Result<void>> postAd(PostAdEntity postAd) async {
@@ -85,5 +89,18 @@ final class AdRepositoryImpl extends BaseRepository implements AdRepository {
     }
 
     return const Result.success(null);
+  }
+
+  @override
+  Future<Result<AdsPageEntity>> searchAd(String query, int page, FilterEntity filter) {
+    return safeCall(
+        action: () => _searchAdService.searchAd(query, page, filter), transform: (adPage) => adPage.toEntity());
+  }
+
+  @override
+  Future<Result<List<String>>> getAdSuggestions(String query) {
+    return safeCall(
+        action: () => _searchAdService.getSuggestions(query),
+        transform: (ads) => ads.map((soughtAdModel) => soughtAdModel.title).toList());
   }
 }

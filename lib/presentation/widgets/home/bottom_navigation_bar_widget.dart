@@ -29,7 +29,8 @@ class BottomNavigationBarWidget extends StatelessWidget {
                 flex: 1,
                 child: IconButton(
                   onPressed: () => context.read<NavigationCubit>().getNavBarItemFromIndex(1),
-                  icon: const Icon(Icons.favorite_border_outlined),
+                  icon:
+                      tabIndex == 1 ? const Icon(Icons.favorite_outlined) : const Icon(Icons.favorite_border_outlined),
                   color: tabIndex == 1 ? context.colorScheme.primary : null,
                 )),
             const SizedBox(
@@ -39,14 +40,14 @@ class BottomNavigationBarWidget extends StatelessWidget {
                 flex: 1,
                 child: IconButton(
                   onPressed: () => context.read<NavigationCubit>().getNavBarItemFromIndex(2),
-                  icon: const Icon(Icons.message_outlined),
+                  icon: tabIndex == 2 ? const Icon(Icons.message) : const Icon(Icons.message_outlined),
                   color: tabIndex == 2 ? context.colorScheme.primary : null,
                 )),
             Expanded(
                 flex: 1,
                 child: IconButton(
                   onPressed: () => context.read<NavigationCubit>().getNavBarItemFromIndex(3),
-                  icon: const Icon(Icons.person_2_outlined),
+                  icon: tabIndex == 3 ? const Icon(Icons.person_2) : const Icon(Icons.person_2_outlined),
                   color: tabIndex == 3 ? context.colorScheme.primary : null,
                 ))
           ],

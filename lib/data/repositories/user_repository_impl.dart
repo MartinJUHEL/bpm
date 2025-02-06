@@ -9,7 +9,7 @@ import 'package:assoshare/domain/repositories/user_repository.dart';
 import 'package:injectable/injectable.dart';
 
 @LazySingleton(as: UserRepository)
-final class UserRepositoryImpl extends BaseRepository implements UserRepository {
+final class UserRepositoryImpl extends BaseRemoteRepository implements UserRepository {
   final UserRemoteService _userRemoteService;
   final IAuthenticationRepository _authenticationRepository;
 

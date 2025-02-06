@@ -1,7 +1,8 @@
+import 'package:assoshare/core/utils/debouncer.dart';
+import 'package:assoshare/core/utils/text_utils.dart';
 import 'package:assoshare/domain/entities/city/city_entity.dart';
 import 'package:assoshare/domain/entities/latlong/lat_long_entity.dart';
 import 'package:assoshare/domain/usecases/get_location_use_case.dart';
-import 'package:assoshare/core/utils/debouncer.dart';
 import 'package:assoshare/domain/usecases/search_adress/search_city_by_lat_long_usecase.dart';
 import 'package:assoshare/domain/usecases/search_adress/search_city_usecase.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -14,12 +15,17 @@ part 'search_city_state.dart';
 @injectable
 class SearchCityCubit extends Cubit<SearchCityState> {
   SearchCityCubit(
-      {required this.searchCityUseCase, required this.searchCityByLatLongUseCase, required this.getLocationUseCase})
-      : super(const SearchCityState());
+      {required SearchCityUseCase searchCityUseCase,
+      required SearchCityByLatLongUseCase searchCityByLatLongUseCase,
+      required GetLocationUseCase getLocationUseCase})
+      : _getLocationUseCase = getLocationUseCase,
+        _searchCityByLatLongUseCase = searchCityByLatLongUseCase,
+        _searchCityUseCase = searchCityUseCase,
+        super(const SearchCityState());
 
-  final SearchCityUseCase searchCityUseCase;
-  final SearchCityByLatLongUseCase searchCityByLatLongUseCase;
-  final GetLocationUseCase getLocationUseCase;
+  final SearchCityUseCase _searchCityUseCase;
+  final SearchCityByLatLongUseCase _searchCityByLatLongUseCase;
+  final GetLocationUseCase _getLocationUseCase;
 
   final _debouncer = Debouncer(milliseconds: 400);
 
@@ -30,6 +36,7 @@ class SearchCityCubit extends Cubit<SearchCityState> {
   }
 
   void onQueryChanged(String query) {
+    emit(state.copyWith(query: query));
     if (query.length >= 3) {
       emit(state.copyWith(isLoading: true));
       _debouncer.run(() {
@@ -42,18 +49,24 @@ class SearchCityCubit extends Cubit<SearchCityState> {
     emit(state.copyWith(selectedCity: null, locationLoading: false, isLoading: false));
   }
 
+  void onQueryCleared() {
+    emit(const SearchCityState(query: empty, suggestions: []));
+  }
+
   Future<void> searchCityFromUserLocation() async {
     emit(state.copyWith(locationLoading: true));
     final userLocation = await _askAndGetUserLocation(forceAsk: true);
-    if (userLocation == null) return;
-    final result = await searchCityByLatLongUseCase(userLocation);
+    if (userLocation == null) {
+      return emit(state.copyWith(hasError: true, locationLoading: false));
+    }
+    final result = await _searchCityByLatLongUseCase(userLocation);
     result.when(
         success: (city) => emit(state.copyWith(selectedCity: city, locationLoading: false)),
-        failure: (_) => state.copyWith(hasError: true, locationLoading: false));
+        failure: (_) => emit(state.copyWith(hasError: true, locationLoading: false)));
   }
 
   void selectCity(CityEntity city) {
-    emit(state.copyWith(selectedCity: city));
+    emit(state.copyWith(selectedCity: city, query: empty));
   }
 
   ///////////////////////////////////////////////////////////////////////////
@@ -61,7 +74,7 @@ class SearchCityCubit extends Cubit<SearchCityState> {
   ///////////////////////////////////////////////////////////////////////////
 
   Future<void> _searchCity(query) async {
-    final result = await searchCityUseCase.call(SearchCityUseCaseParams(query: query, latLong: _userLocation));
+    final result = await _searchCityUseCase.call(SearchCityUseCaseParams(query: query, latLong: _userLocation));
 
     result.when(
         success: (suggestions) => emit(state.copyWith(suggestions: suggestions, isLoading: false)),
@@ -70,7 +83,7 @@ class SearchCityCubit extends Cubit<SearchCityState> {
 
   /// Ask user location, if [forceAsk] true show dialog if disabled or permission denied.
   Future<LatLong?> _askAndGetUserLocation({required bool forceAsk}) async {
-    final userLocationResult = await getLocationUseCase.execute();
+    final userLocationResult = await _getLocationUseCase.execute();
     _userLocation = switch (userLocationResult) {
       LocationSuccess() => userLocationResult.latLong,
       LocationDisabled() => null, //todo handle popup

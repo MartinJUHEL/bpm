@@ -14,14 +14,12 @@ import 'package:gap/gap.dart';
 class AdCardWidget extends StatelessWidget {
   final AdEntity adEntity;
   final VoidCallback onClicked;
-  final bool fromUserProfile;
   final Widget optionWidget;
 
   const AdCardWidget(
       {super.key,
       required this.adEntity,
       required this.onClicked,
-      this.fromUserProfile = false,
       required this.optionWidget});
 
   @override

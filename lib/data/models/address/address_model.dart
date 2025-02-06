@@ -40,7 +40,6 @@ class Features with _$Features {
   CityEntity toCityEntity() => CityEntity(
       postcode: properties?.postcode ?? empty,
       city: properties?.city ?? empty,
-      cityCode: properties?.citycode ?? empty,
       latLong: LatLong(lat: geometry.coordinates[1], long: geometry.coordinates[0]));
 }
 

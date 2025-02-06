@@ -19,7 +19,7 @@ class ChooseUserTypeScreen extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               OutlinedButton(
-                onPressed: () => context.goNamed(RouteList.signup.name,
+                onPressed: () => context.pushNamed(RouteList.signup.name,
                     extra: const SignupScreenArgs(
                       formType: FormType.signUp,
                       userType: UserType.individual,
@@ -27,7 +27,7 @@ class ChooseUserTypeScreen extends StatelessWidget {
                 child: const Text('individual').tr(),
               ),
               OutlinedButton(
-                onPressed: () => context.goNamed(RouteList.signup.name,
+                onPressed: () => context.pushNamed(RouteList.signup.name,
                     extra: const SignupScreenArgs(
                       formType: FormType.signUp,
                       userType: UserType.association,
