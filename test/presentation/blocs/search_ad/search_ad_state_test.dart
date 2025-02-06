@@ -1,6 +1,9 @@
+import 'package:assoshare/core/utils/text_utils.dart';
 import 'package:assoshare/domain/entities/filter/filter_entity.dart';
 import 'package:assoshare/presentation/blocs/search_ad/search_ad_cubit.dart';
 import 'package:flutter_test/flutter_test.dart';
+
+import '../../domain/entities/ad_entity.dart';
 
 void main() {
   group('SearchAdState', () {
@@ -19,7 +22,14 @@ void main() {
           const SearchAdState.error(query: 'test'),
           const SearchAdState.suggestionEmpty(query: 'test'),
           const SearchAdState.searching(query: 'test', suggestions: ['suggestion']),
-          SearchAdState.displayResults(query: 'test', result: [], filter: testFilter),
+          SearchAdState.displayResults(
+            query: 'test',
+            result: [defaultAd],
+            filter: testFilter,
+            page: 0,
+            totalAds: 1,
+            isNextPageLoading: false,
+          ),
           SearchAdState.emptyResult(query: 'test', filter: testFilter),
         ];
 
@@ -32,7 +42,14 @@ void main() {
     group('displayCity', () {
       test('should return true only for SearchAdDisplayResults and SearchAdEmptyResult', () {
         final statesWithCity = [
-          SearchAdState.displayResults(query: 'test', result: [], filter: testFilter),
+          SearchAdState.displayResults(
+            query: 'test',
+            result: [defaultAd],
+            filter: testFilter,
+            page: 0,
+            totalAds: 1,
+            isNextPageLoading: false,
+          ),
           SearchAdState.emptyResult(query: 'test', filter: testFilter),
         ];
 
@@ -59,8 +76,11 @@ void main() {
       test('should return filter location string for SearchAdDisplayResults', () {
         final state = SearchAdState.displayResults(
           query: 'test',
-          result: [],
+          result: [defaultAd],
           filter: testFilter,
+          page: 0,
+          totalAds: 1,
+          isNextPageLoading: false,
         );
 
         expect(state.displayLocationFilter(), testFilter.displayFilterLocationString());
@@ -86,7 +106,7 @@ void main() {
         ];
 
         for (final state in states) {
-          expect(state.displayLocationFilter(), '', reason: 'State ${state.runtimeType} should return empty string');
+          expect(state.displayLocationFilter(), empty, reason: 'State ${state.runtimeType} should return empty string');
         }
       });
     });

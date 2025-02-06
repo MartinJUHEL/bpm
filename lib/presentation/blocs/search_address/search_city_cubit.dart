@@ -5,7 +5,6 @@ import 'package:assoshare/domain/entities/latlong/lat_long_entity.dart';
 import 'package:assoshare/domain/usecases/get_location_use_case.dart';
 import 'package:assoshare/domain/usecases/search_adress/search_city_by_lat_long_usecase.dart';
 import 'package:assoshare/domain/usecases/search_adress/search_city_usecase.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';

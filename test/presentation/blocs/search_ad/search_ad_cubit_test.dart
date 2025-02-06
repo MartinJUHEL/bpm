@@ -1,5 +1,4 @@
 import 'package:assoshare/core/domain/entities/result.dart';
-import 'package:assoshare/domain/entities/ad/ad_entity.dart';
 import 'package:assoshare/domain/entities/ad/ads_page_entity.dart';
 import 'package:assoshare/domain/entities/city/city_entity.dart';
 import 'package:assoshare/domain/entities/filter/filter_entity.dart';
@@ -13,7 +12,6 @@ import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
 import '../../domain/entities/ad_entity.dart';
-
 @GenerateNiceMocks([MockSpec<AdRepository>(), MockSpec<FilterRepository>()])
 import 'search_ad_cubit_test.mocks.dart';
 
