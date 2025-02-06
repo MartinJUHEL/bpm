@@ -13,6 +13,8 @@ _$PostAdModelImpl _$$PostAdModelImplFromJson(Map<String, dynamic> json) =>
       price: (json['price'] as num?)?.toDouble(),
       adType: json['adType'] as String,
       city: CityModel.fromJson(json['city'] as Map<String, dynamic>),
+      photosUrl:
+          (json['photosUrl'] as List<dynamic>).map((e) => e as String).toList(),
       renterId: json['renterId'] as String,
       renterName: json['renterName'] as String,
       renterPhotoUrl: json['renterPhotoUrl'] as String?,
@@ -26,6 +28,7 @@ Map<String, dynamic> _$$PostAdModelImplToJson(_$PostAdModelImpl instance) =>
       'price': instance.price,
       'adType': instance.adType,
       'city': instance.city.toJson(),
+      'photosUrl': instance.photosUrl,
       'renterId': instance.renterId,
       'renterName': instance.renterName,
       'renterPhotoUrl': instance.renterPhotoUrl,

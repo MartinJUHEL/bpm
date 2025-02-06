@@ -25,6 +25,7 @@ mixin _$PostAdModel {
   double? get price => throw _privateConstructorUsedError;
   String get adType => throw _privateConstructorUsedError;
   CityModel get city => throw _privateConstructorUsedError;
+  List<String> get photosUrl => throw _privateConstructorUsedError;
   String get renterId => throw _privateConstructorUsedError;
   String get renterName => throw _privateConstructorUsedError;
   String? get renterPhotoUrl => throw _privateConstructorUsedError;
@@ -52,6 +53,7 @@ abstract class $PostAdModelCopyWith<$Res> {
       double? price,
       String adType,
       CityModel city,
+      List<String> photosUrl,
       String renterId,
       String renterName,
       String? renterPhotoUrl,
@@ -80,6 +82,7 @@ class _$PostAdModelCopyWithImpl<$Res, $Val extends PostAdModel>
     Object? price = freezed,
     Object? adType = null,
     Object? city = null,
+    Object? photosUrl = null,
     Object? renterId = null,
     Object? renterName = null,
     Object? renterPhotoUrl = freezed,
@@ -106,6 +109,10 @@ class _$PostAdModelCopyWithImpl<$Res, $Val extends PostAdModel>
           ? _value.city
           : city // ignore: cast_nullable_to_non_nullable
               as CityModel,
+      photosUrl: null == photosUrl
+          ? _value.photosUrl
+          : photosUrl // ignore: cast_nullable_to_non_nullable
+              as List<String>,
       renterId: null == renterId
           ? _value.renterId
           : renterId // ignore: cast_nullable_to_non_nullable
@@ -150,6 +157,7 @@ abstract class _$$PostAdModelImplCopyWith<$Res>
       double? price,
       String adType,
       CityModel city,
+      List<String> photosUrl,
       String renterId,
       String renterName,
       String? renterPhotoUrl,
@@ -177,6 +185,7 @@ class __$$PostAdModelImplCopyWithImpl<$Res>
     Object? price = freezed,
     Object? adType = null,
     Object? city = null,
+    Object? photosUrl = null,
     Object? renterId = null,
     Object? renterName = null,
     Object? renterPhotoUrl = freezed,
@@ -203,6 +212,10 @@ class __$$PostAdModelImplCopyWithImpl<$Res>
           ? _value.city
           : city // ignore: cast_nullable_to_non_nullable
               as CityModel,
+      photosUrl: null == photosUrl
+          ? _value._photosUrl
+          : photosUrl // ignore: cast_nullable_to_non_nullable
+              as List<String>,
       renterId: null == renterId
           ? _value.renterId
           : renterId // ignore: cast_nullable_to_non_nullable
@@ -232,11 +245,13 @@ class _$PostAdModelImpl extends _PostAdModel {
       this.price,
       required this.adType,
       required this.city,
+      required final List<String> photosUrl,
       required this.renterId,
       required this.renterName,
       this.renterPhotoUrl,
       required this.creationDate})
-      : super._();
+      : _photosUrl = photosUrl,
+        super._();
 
   factory _$PostAdModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$PostAdModelImplFromJson(json);
@@ -251,6 +266,14 @@ class _$PostAdModelImpl extends _PostAdModel {
   final String adType;
   @override
   final CityModel city;
+  final List<String> _photosUrl;
+  @override
+  List<String> get photosUrl {
+    if (_photosUrl is EqualUnmodifiableListView) return _photosUrl;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_photosUrl);
+  }
+
   @override
   final String renterId;
   @override
@@ -262,7 +285,7 @@ class _$PostAdModelImpl extends _PostAdModel {
 
   @override
   String toString() {
-    return 'PostAdModel(title: $title, description: $description, price: $price, adType: $adType, city: $city, renterId: $renterId, renterName: $renterName, renterPhotoUrl: $renterPhotoUrl, creationDate: $creationDate)';
+    return 'PostAdModel(title: $title, description: $description, price: $price, adType: $adType, city: $city, photosUrl: $photosUrl, renterId: $renterId, renterName: $renterName, renterPhotoUrl: $renterPhotoUrl, creationDate: $creationDate)';
   }
 
   @override
@@ -276,6 +299,8 @@ class _$PostAdModelImpl extends _PostAdModel {
             (identical(other.price, price) || other.price == price) &&
             (identical(other.adType, adType) || other.adType == adType) &&
             (identical(other.city, city) || other.city == city) &&
+            const DeepCollectionEquality()
+                .equals(other._photosUrl, _photosUrl) &&
             (identical(other.renterId, renterId) ||
                 other.renterId == renterId) &&
             (identical(other.renterName, renterName) ||
@@ -288,8 +313,18 @@ class _$PostAdModelImpl extends _PostAdModel {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, title, description, price,
-      adType, city, renterId, renterName, renterPhotoUrl, creationDate);
+  int get hashCode => Object.hash(
+      runtimeType,
+      title,
+      description,
+      price,
+      adType,
+      city,
+      const DeepCollectionEquality().hash(_photosUrl),
+      renterId,
+      renterName,
+      renterPhotoUrl,
+      creationDate);
 
   /// Create a copy of PostAdModel
   /// with the given fields replaced by the non-null parameter values.
@@ -314,6 +349,7 @@ abstract class _PostAdModel extends PostAdModel {
       final double? price,
       required final String adType,
       required final CityModel city,
+      required final List<String> photosUrl,
       required final String renterId,
       required final String renterName,
       final String? renterPhotoUrl,
@@ -333,6 +369,8 @@ abstract class _PostAdModel extends PostAdModel {
   String get adType;
   @override
   CityModel get city;
+  @override
+  List<String> get photosUrl;
   @override
   String get renterId;
   @override
