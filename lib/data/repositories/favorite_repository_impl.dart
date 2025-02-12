@@ -146,6 +146,27 @@ final class FavoriteRepositoryImpl extends BaseRemoteRepository implements Favor
     _favoriteIdsController.add(_cache);
   }
 
+  /// Retrieves a single favorite with its ad details
+  /// @param userId User ID
+  /// @param adId ID of the ad to retrieve
+  /// @return Result containing the favorite entity
+  @override
+  Future<Result<FavoriteEntity>> getFavorite(String userId, String adId) {
+    return safeCall(
+      action: () async {
+        final favorite = await _favoriteService.getFavorite(userId, adId);
+        final adModel = await _adFirebaseService.getAd(favorite.adId);
+        return FavoriteEntity(
+          ad: adModel.toEntity(),
+          addedAt: favorite.createdAt,
+        );
+      },
+      transform: (favorite) => favorite,
+    );
+  }
+
+  /// Dispose of any resources
+  @override
   @disposeMethod
   void dispose() {
     _favoriteIdsController.close();

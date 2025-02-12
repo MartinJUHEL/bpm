@@ -33,8 +33,8 @@ class _FavoriteButtonWidgetState extends State<FavoriteButtonWidget> with Single
   Widget build(BuildContext context) {
     return GestureDetector(
         onTap: () {
-          widget.onPressed();
           _controller.reverse().then((value) => _controller.forward());
+          widget.onPressed();
         },
         child: Container(
           decoration: BoxDecoration(

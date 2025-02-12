@@ -4,9 +4,13 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'favorite_list_state.freezed.dart';
 
 @freezed
-class FavoriteListState with _$FavoriteListState {
-  const factory FavoriteListState.initial() = _Initial;
-  const factory FavoriteListState.loading() = _Loading;
-  const factory FavoriteListState.error() = _Error;
-  const factory FavoriteListState.success(List<FavoriteEntity> favorites) = _Success;
+sealed class FavoriteListState with _$FavoriteListState {
+  const factory FavoriteListState.initial() = FavoriteListInitial;
+
+  const factory FavoriteListState.loading() = FavoriteListLoading;
+
+  const factory FavoriteListState.error() = FavoriteListError;
+
+  const factory FavoriteListState.success(List<FavoriteEntity> favorites) =
+      FavoriteListSuccess;
 }

@@ -43,6 +43,16 @@ final class AdFirebaseService extends BaseFirebaseService {
       return doc.docs.map((query) => AdModel.fromJson(query.data())).toList();
     }, 'getAdByIds');
   }
+
+  /// Retrieves a single ad by its ID
+  /// @param adId ID of the ad to retrieve
+  /// @return The ad model
+  Future<AdModel> getAd(String adId) async {
+    return executeWithErrorHandling(() async {
+      final doc = await _firestore.collection(_adCollection).doc(adId).get();
+      return AdModel.fromJson(doc.data()!);
+    }, 'getAd');
+  }
 }
 
 ///////////////////////////////////////////////////////////////////////////

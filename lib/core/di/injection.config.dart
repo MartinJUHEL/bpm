@@ -48,6 +48,7 @@ import '../../domain/usecases/authentication/authentication_started_usecase.dart
     as _i36;
 import '../../domain/usecases/authentication/is_email_verified_usecase.dart'
     as _i411;
+import '../../domain/usecases/favorite/update_favorites_use_case.dart' as _i206;
 import '../../domain/usecases/get_location_use_case.dart' as _i882;
 import '../../domain/usecases/get_user_type_from_string_usecase.dart' as _i425;
 import '../../domain/usecases/publish_ad/is_ad_description_valid_use_case.dart'
@@ -168,13 +169,15 @@ Future<_i174.GetIt> $initGetIt(
         gh<_i24.PickPhotosFromGalleryUseCase>(),
       ));
   gh.lazySingleton<_i780.FavoriteRepository>(
-      () => _i1024.FavoriteRepositoryImpl(
-            gh<_i864.FavoriteFirebaseService>(),
-            gh<_i545.AdFirebaseService>(),
-            gh<_i248.GenericErrorTrigger>(),
-            gh<_i816.AppConnectivityInfo>(),
-            gh<_i974.Logger>(),
-          ));
+    () => _i1024.FavoriteRepositoryImpl(
+      gh<_i864.FavoriteFirebaseService>(),
+      gh<_i545.AdFirebaseService>(),
+      gh<_i248.GenericErrorTrigger>(),
+      gh<_i816.AppConnectivityInfo>(),
+      gh<_i974.Logger>(),
+    ),
+    dispose: (i) => i.dispose(),
+  );
   gh.factory<_i271.AuthenticationRemoteService>(
       () => _i271.AuthenticationRemoteService(gh<_i59.FirebaseAuth>()));
   gh.lazySingleton<_i27.StorageService>(() => _i27.StorageService(
@@ -253,11 +256,12 @@ Future<_i174.GetIt> $initGetIt(
         gh<_i1053.AdRepository>(),
         gh<_i271.UserRepository>(),
       ));
+  gh.lazySingleton<_i206.UpdateFavoritesUseCase>(
+      () => _i206.UpdateFavoritesUseCase(
+            gh<_i780.FavoriteRepository>(),
+            gh<_i271.UserRepository>(),
+          ));
   gh.factory<_i133.FavoriteIdsCubit>(() => _i133.FavoriteIdsCubit(
-        gh<_i780.FavoriteRepository>(),
-        gh<_i271.UserRepository>(),
-      ));
-  gh.factory<_i781.FavoriteListCubit>(() => _i781.FavoriteListCubit(
         gh<_i780.FavoriteRepository>(),
         gh<_i271.UserRepository>(),
       ));
@@ -271,6 +275,11 @@ Future<_i174.GetIt> $initGetIt(
         gh<_i794.IsNameValidUseCase>(),
         gh<_i277.IAuthenticationRepository>(),
         gh<_i271.UserRepository>(),
+      ));
+  gh.factory<_i781.FavoriteListCubit>(() => _i781.FavoriteListCubit(
+        gh<_i780.FavoriteRepository>(),
+        gh<_i271.UserRepository>(),
+        gh<_i206.UpdateFavoritesUseCase>(),
       ));
   gh.factory<_i725.SearchCityCubit>(() => _i725.SearchCityCubit(
         searchCityUseCase: gh<_i833.SearchCityUseCase>(),

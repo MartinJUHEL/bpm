@@ -31,6 +31,15 @@ class FavoriteFirebaseService {
         .toList();
   }
 
+  /// Retrieves a specific favorite
+  /// @param userId User ID
+  /// @param adId ID of the ad to retrieve
+  /// @return The favorite with its creation date
+  Future<FavoriteFirebaseModel> getFavorite(String userId, String adId) async {
+    final doc = await _getFavoritesCollection(userId).doc(adId).get();
+    return FavoriteFirebaseModel.fromFirestore(doc);
+  }
+
   /// Adds an ad to user's favorites
   /// @param userId User ID
   /// @param adId ID of the ad to add

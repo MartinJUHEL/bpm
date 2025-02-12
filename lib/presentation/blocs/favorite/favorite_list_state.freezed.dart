@@ -43,26 +43,26 @@ mixin _$FavoriteListState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Error value) error,
-    required TResult Function(_Success value) success,
+    required TResult Function(FavoriteListInitial value) initial,
+    required TResult Function(FavoriteListLoading value) loading,
+    required TResult Function(FavoriteListError value) error,
+    required TResult Function(FavoriteListSuccess value) success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Error value)? error,
-    TResult? Function(_Success value)? success,
+    TResult? Function(FavoriteListInitial value)? initial,
+    TResult? Function(FavoriteListLoading value)? loading,
+    TResult? Function(FavoriteListError value)? error,
+    TResult? Function(FavoriteListSuccess value)? success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Error value)? error,
-    TResult Function(_Success value)? success,
+    TResult Function(FavoriteListInitial value)? initial,
+    TResult Function(FavoriteListLoading value)? loading,
+    TResult Function(FavoriteListError value)? error,
+    TResult Function(FavoriteListSuccess value)? success,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -90,18 +90,18 @@ class _$FavoriteListStateCopyWithImpl<$Res, $Val extends FavoriteListState>
 }
 
 /// @nodoc
-abstract class _$$InitialImplCopyWith<$Res> {
-  factory _$$InitialImplCopyWith(
-          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
-      __$$InitialImplCopyWithImpl<$Res>;
+abstract class _$$FavoriteListInitialImplCopyWith<$Res> {
+  factory _$$FavoriteListInitialImplCopyWith(_$FavoriteListInitialImpl value,
+          $Res Function(_$FavoriteListInitialImpl) then) =
+      __$$FavoriteListInitialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$InitialImplCopyWithImpl<$Res>
-    extends _$FavoriteListStateCopyWithImpl<$Res, _$InitialImpl>
-    implements _$$InitialImplCopyWith<$Res> {
-  __$$InitialImplCopyWithImpl(
-      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
+class __$$FavoriteListInitialImplCopyWithImpl<$Res>
+    extends _$FavoriteListStateCopyWithImpl<$Res, _$FavoriteListInitialImpl>
+    implements _$$FavoriteListInitialImplCopyWith<$Res> {
+  __$$FavoriteListInitialImplCopyWithImpl(_$FavoriteListInitialImpl _value,
+      $Res Function(_$FavoriteListInitialImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of FavoriteListState
@@ -110,8 +110,8 @@ class __$$InitialImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$InitialImpl implements _Initial {
-  const _$InitialImpl();
+class _$FavoriteListInitialImpl implements FavoriteListInitial {
+  const _$FavoriteListInitialImpl();
 
   @override
   String toString() {
@@ -121,7 +121,8 @@ class _$InitialImpl implements _Initial {
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$InitialImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$FavoriteListInitialImpl);
   }
 
   @override
@@ -167,10 +168,10 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Error value) error,
-    required TResult Function(_Success value) success,
+    required TResult Function(FavoriteListInitial value) initial,
+    required TResult Function(FavoriteListLoading value) loading,
+    required TResult Function(FavoriteListError value) error,
+    required TResult Function(FavoriteListSuccess value) success,
   }) {
     return initial(this);
   }
@@ -178,10 +179,10 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Error value)? error,
-    TResult? Function(_Success value)? success,
+    TResult? Function(FavoriteListInitial value)? initial,
+    TResult? Function(FavoriteListLoading value)? loading,
+    TResult? Function(FavoriteListError value)? error,
+    TResult? Function(FavoriteListSuccess value)? success,
   }) {
     return initial?.call(this);
   }
@@ -189,10 +190,10 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Error value)? error,
-    TResult Function(_Success value)? success,
+    TResult Function(FavoriteListInitial value)? initial,
+    TResult Function(FavoriteListLoading value)? loading,
+    TResult Function(FavoriteListError value)? error,
+    TResult Function(FavoriteListSuccess value)? success,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -202,23 +203,23 @@ class _$InitialImpl implements _Initial {
   }
 }
 
-abstract class _Initial implements FavoriteListState {
-  const factory _Initial() = _$InitialImpl;
+abstract class FavoriteListInitial implements FavoriteListState {
+  const factory FavoriteListInitial() = _$FavoriteListInitialImpl;
 }
 
 /// @nodoc
-abstract class _$$LoadingImplCopyWith<$Res> {
-  factory _$$LoadingImplCopyWith(
-          _$LoadingImpl value, $Res Function(_$LoadingImpl) then) =
-      __$$LoadingImplCopyWithImpl<$Res>;
+abstract class _$$FavoriteListLoadingImplCopyWith<$Res> {
+  factory _$$FavoriteListLoadingImplCopyWith(_$FavoriteListLoadingImpl value,
+          $Res Function(_$FavoriteListLoadingImpl) then) =
+      __$$FavoriteListLoadingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$LoadingImplCopyWithImpl<$Res>
-    extends _$FavoriteListStateCopyWithImpl<$Res, _$LoadingImpl>
-    implements _$$LoadingImplCopyWith<$Res> {
-  __$$LoadingImplCopyWithImpl(
-      _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
+class __$$FavoriteListLoadingImplCopyWithImpl<$Res>
+    extends _$FavoriteListStateCopyWithImpl<$Res, _$FavoriteListLoadingImpl>
+    implements _$$FavoriteListLoadingImplCopyWith<$Res> {
+  __$$FavoriteListLoadingImplCopyWithImpl(_$FavoriteListLoadingImpl _value,
+      $Res Function(_$FavoriteListLoadingImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of FavoriteListState
@@ -227,8 +228,8 @@ class __$$LoadingImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$LoadingImpl implements _Loading {
-  const _$LoadingImpl();
+class _$FavoriteListLoadingImpl implements FavoriteListLoading {
+  const _$FavoriteListLoadingImpl();
 
   @override
   String toString() {
@@ -238,7 +239,8 @@ class _$LoadingImpl implements _Loading {
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$LoadingImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$FavoriteListLoadingImpl);
   }
 
   @override
@@ -284,10 +286,10 @@ class _$LoadingImpl implements _Loading {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Error value) error,
-    required TResult Function(_Success value) success,
+    required TResult Function(FavoriteListInitial value) initial,
+    required TResult Function(FavoriteListLoading value) loading,
+    required TResult Function(FavoriteListError value) error,
+    required TResult Function(FavoriteListSuccess value) success,
   }) {
     return loading(this);
   }
@@ -295,10 +297,10 @@ class _$LoadingImpl implements _Loading {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Error value)? error,
-    TResult? Function(_Success value)? success,
+    TResult? Function(FavoriteListInitial value)? initial,
+    TResult? Function(FavoriteListLoading value)? loading,
+    TResult? Function(FavoriteListError value)? error,
+    TResult? Function(FavoriteListSuccess value)? success,
   }) {
     return loading?.call(this);
   }
@@ -306,10 +308,10 @@ class _$LoadingImpl implements _Loading {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Error value)? error,
-    TResult Function(_Success value)? success,
+    TResult Function(FavoriteListInitial value)? initial,
+    TResult Function(FavoriteListLoading value)? loading,
+    TResult Function(FavoriteListError value)? error,
+    TResult Function(FavoriteListSuccess value)? success,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -319,23 +321,23 @@ class _$LoadingImpl implements _Loading {
   }
 }
 
-abstract class _Loading implements FavoriteListState {
-  const factory _Loading() = _$LoadingImpl;
+abstract class FavoriteListLoading implements FavoriteListState {
+  const factory FavoriteListLoading() = _$FavoriteListLoadingImpl;
 }
 
 /// @nodoc
-abstract class _$$ErrorImplCopyWith<$Res> {
-  factory _$$ErrorImplCopyWith(
-          _$ErrorImpl value, $Res Function(_$ErrorImpl) then) =
-      __$$ErrorImplCopyWithImpl<$Res>;
+abstract class _$$FavoriteListErrorImplCopyWith<$Res> {
+  factory _$$FavoriteListErrorImplCopyWith(_$FavoriteListErrorImpl value,
+          $Res Function(_$FavoriteListErrorImpl) then) =
+      __$$FavoriteListErrorImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$ErrorImplCopyWithImpl<$Res>
-    extends _$FavoriteListStateCopyWithImpl<$Res, _$ErrorImpl>
-    implements _$$ErrorImplCopyWith<$Res> {
-  __$$ErrorImplCopyWithImpl(
-      _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
+class __$$FavoriteListErrorImplCopyWithImpl<$Res>
+    extends _$FavoriteListStateCopyWithImpl<$Res, _$FavoriteListErrorImpl>
+    implements _$$FavoriteListErrorImplCopyWith<$Res> {
+  __$$FavoriteListErrorImplCopyWithImpl(_$FavoriteListErrorImpl _value,
+      $Res Function(_$FavoriteListErrorImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of FavoriteListState
@@ -344,8 +346,8 @@ class __$$ErrorImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ErrorImpl implements _Error {
-  const _$ErrorImpl();
+class _$FavoriteListErrorImpl implements FavoriteListError {
+  const _$FavoriteListErrorImpl();
 
   @override
   String toString() {
@@ -355,7 +357,7 @@ class _$ErrorImpl implements _Error {
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$ErrorImpl);
+        (other.runtimeType == runtimeType && other is _$FavoriteListErrorImpl);
   }
 
   @override
@@ -401,10 +403,10 @@ class _$ErrorImpl implements _Error {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Error value) error,
-    required TResult Function(_Success value) success,
+    required TResult Function(FavoriteListInitial value) initial,
+    required TResult Function(FavoriteListLoading value) loading,
+    required TResult Function(FavoriteListError value) error,
+    required TResult Function(FavoriteListSuccess value) success,
   }) {
     return error(this);
   }
@@ -412,10 +414,10 @@ class _$ErrorImpl implements _Error {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Error value)? error,
-    TResult? Function(_Success value)? success,
+    TResult? Function(FavoriteListInitial value)? initial,
+    TResult? Function(FavoriteListLoading value)? loading,
+    TResult? Function(FavoriteListError value)? error,
+    TResult? Function(FavoriteListSuccess value)? success,
   }) {
     return error?.call(this);
   }
@@ -423,10 +425,10 @@ class _$ErrorImpl implements _Error {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Error value)? error,
-    TResult Function(_Success value)? success,
+    TResult Function(FavoriteListInitial value)? initial,
+    TResult Function(FavoriteListLoading value)? loading,
+    TResult Function(FavoriteListError value)? error,
+    TResult Function(FavoriteListSuccess value)? success,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -436,25 +438,25 @@ class _$ErrorImpl implements _Error {
   }
 }
 
-abstract class _Error implements FavoriteListState {
-  const factory _Error() = _$ErrorImpl;
+abstract class FavoriteListError implements FavoriteListState {
+  const factory FavoriteListError() = _$FavoriteListErrorImpl;
 }
 
 /// @nodoc
-abstract class _$$SuccessImplCopyWith<$Res> {
-  factory _$$SuccessImplCopyWith(
-          _$SuccessImpl value, $Res Function(_$SuccessImpl) then) =
-      __$$SuccessImplCopyWithImpl<$Res>;
+abstract class _$$FavoriteListSuccessImplCopyWith<$Res> {
+  factory _$$FavoriteListSuccessImplCopyWith(_$FavoriteListSuccessImpl value,
+          $Res Function(_$FavoriteListSuccessImpl) then) =
+      __$$FavoriteListSuccessImplCopyWithImpl<$Res>;
   @useResult
   $Res call({List<FavoriteEntity> favorites});
 }
 
 /// @nodoc
-class __$$SuccessImplCopyWithImpl<$Res>
-    extends _$FavoriteListStateCopyWithImpl<$Res, _$SuccessImpl>
-    implements _$$SuccessImplCopyWith<$Res> {
-  __$$SuccessImplCopyWithImpl(
-      _$SuccessImpl _value, $Res Function(_$SuccessImpl) _then)
+class __$$FavoriteListSuccessImplCopyWithImpl<$Res>
+    extends _$FavoriteListStateCopyWithImpl<$Res, _$FavoriteListSuccessImpl>
+    implements _$$FavoriteListSuccessImplCopyWith<$Res> {
+  __$$FavoriteListSuccessImplCopyWithImpl(_$FavoriteListSuccessImpl _value,
+      $Res Function(_$FavoriteListSuccessImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of FavoriteListState
@@ -464,7 +466,7 @@ class __$$SuccessImplCopyWithImpl<$Res>
   $Res call({
     Object? favorites = null,
   }) {
-    return _then(_$SuccessImpl(
+    return _then(_$FavoriteListSuccessImpl(
       null == favorites
           ? _value._favorites
           : favorites // ignore: cast_nullable_to_non_nullable
@@ -475,8 +477,8 @@ class __$$SuccessImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$SuccessImpl implements _Success {
-  const _$SuccessImpl(final List<FavoriteEntity> favorites)
+class _$FavoriteListSuccessImpl implements FavoriteListSuccess {
+  const _$FavoriteListSuccessImpl(final List<FavoriteEntity> favorites)
       : _favorites = favorites;
 
   final List<FavoriteEntity> _favorites;
@@ -496,7 +498,7 @@ class _$SuccessImpl implements _Success {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SuccessImpl &&
+            other is _$FavoriteListSuccessImpl &&
             const DeepCollectionEquality()
                 .equals(other._favorites, _favorites));
   }
@@ -510,8 +512,9 @@ class _$SuccessImpl implements _Success {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
-      __$$SuccessImplCopyWithImpl<_$SuccessImpl>(this, _$identity);
+  _$$FavoriteListSuccessImplCopyWith<_$FavoriteListSuccessImpl> get copyWith =>
+      __$$FavoriteListSuccessImplCopyWithImpl<_$FavoriteListSuccessImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -553,10 +556,10 @@ class _$SuccessImpl implements _Success {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Error value) error,
-    required TResult Function(_Success value) success,
+    required TResult Function(FavoriteListInitial value) initial,
+    required TResult Function(FavoriteListLoading value) loading,
+    required TResult Function(FavoriteListError value) error,
+    required TResult Function(FavoriteListSuccess value) success,
   }) {
     return success(this);
   }
@@ -564,10 +567,10 @@ class _$SuccessImpl implements _Success {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Error value)? error,
-    TResult? Function(_Success value)? success,
+    TResult? Function(FavoriteListInitial value)? initial,
+    TResult? Function(FavoriteListLoading value)? loading,
+    TResult? Function(FavoriteListError value)? error,
+    TResult? Function(FavoriteListSuccess value)? success,
   }) {
     return success?.call(this);
   }
@@ -575,10 +578,10 @@ class _$SuccessImpl implements _Success {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Error value)? error,
-    TResult Function(_Success value)? success,
+    TResult Function(FavoriteListInitial value)? initial,
+    TResult Function(FavoriteListLoading value)? loading,
+    TResult Function(FavoriteListError value)? error,
+    TResult Function(FavoriteListSuccess value)? success,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -588,14 +591,15 @@ class _$SuccessImpl implements _Success {
   }
 }
 
-abstract class _Success implements FavoriteListState {
-  const factory _Success(final List<FavoriteEntity> favorites) = _$SuccessImpl;
+abstract class FavoriteListSuccess implements FavoriteListState {
+  const factory FavoriteListSuccess(final List<FavoriteEntity> favorites) =
+      _$FavoriteListSuccessImpl;
 
   List<FavoriteEntity> get favorites;
 
   /// Create a copy of FavoriteListState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
+  _$$FavoriteListSuccessImplCopyWith<_$FavoriteListSuccessImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

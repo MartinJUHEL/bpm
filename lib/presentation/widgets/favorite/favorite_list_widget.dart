@@ -19,10 +19,9 @@ class FavoriteListWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.separated(
+    return ListView.builder(
       padding: const EdgeInsets.symmetric(horizontal: Dimens.paddingPage),
       itemCount: favorites.length,
-      separatorBuilder: (context, index) => const Divider(),
       itemBuilder: (context, index) {
         final favorite = favorites[index];
         return Dismissible(

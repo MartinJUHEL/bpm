@@ -2,8 +2,8 @@ import 'dart:async';
 
 import 'package:assoshare/domain/repositories/favorite_repository.dart';
 import 'package:assoshare/domain/repositories/user_repository.dart';
+import 'package:assoshare/domain/usecases/favorite/update_favorites_use_case.dart';
 import 'package:assoshare/presentation/blocs/favorite/favorite_list_state.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 
@@ -12,12 +12,16 @@ import 'package:injectable/injectable.dart';
 class FavoriteListCubit extends Cubit<FavoriteListState> {
   final FavoriteRepository _favoriteRepository;
   final UserRepository _userRepository;
+  final UpdateFavoritesUseCase _updateFavoritesUseCase;
   StreamSubscription<Set<String>>? _subscription;
 
-  FavoriteListCubit(this._favoriteRepository, this._userRepository)
-      : super(const FavoriteListState.initial()) {
-    _subscription = _favoriteRepository.favoriteIdsStream.listen((_) {
-      loadFavorites();
+  FavoriteListCubit(
+    this._favoriteRepository,
+    this._userRepository,
+    this._updateFavoritesUseCase,
+  ) : super(const FavoriteListState.initial()) {
+    _subscription = _favoriteRepository.favoriteIdsStream.listen((newIds) {
+      _handleFavoriteIdsChange(newIds);
     });
   }
 
@@ -25,6 +29,23 @@ class FavoriteListCubit extends Cubit<FavoriteListState> {
   Future<void> close() {
     _subscription?.cancel();
     return super.close();
+  }
+
+  /// Handles changes in favorite IDs
+  Future<void> _handleFavoriteIdsChange(Set<String> newIds) async {
+    final currentState = state;
+    if (currentState is! FavoriteListSuccess) {
+      // If we don't have favorites loaded yet, load everything
+      loadFavorites();
+      return;
+    }
+
+    final updatedFavorites = await _updateFavoritesUseCase(
+      newIds,
+      currentState.favorites,
+    );
+
+    emit(FavoriteListState.success(updatedFavorites));
   }
 
   /// Loads all favorites with complete ad details
