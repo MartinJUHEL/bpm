@@ -48,10 +48,14 @@ class _FavoriteTabState extends State<FavoriteTab> {
                   child: CircularProgressIndicator(),
                 ),
               ),
-              error: () => const ExpandedCenterWidget(child: ErrorScreen()),
+              error: () => ExpandedCenterWidget(
+                  child: ErrorScreen(
+                onRetryClicked: () =>
+                    context.read<FavoriteListCubit>().loadFavorites(),
+              )),
               success: (favorites) => Expanded(
                 child: RefreshIndicator(
-                  onRefresh: () async =>
+                  onRefresh: () =>
                       context.read<FavoriteListCubit>().loadFavorites(),
                   child: favorites.isEmpty
                       ? _buildEmptyState(context)
