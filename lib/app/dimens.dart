@@ -33,4 +33,9 @@ class Dimens {
   static const double iconLarge = 24;
   static const double iconLarger = 28;
   static const double iconHuge = 32;
+
+  // OTHER.
+
+  static const double adVerticalCardImageSize = 180;
+  static const double adHorizontalCardImageSize = 110;
 }

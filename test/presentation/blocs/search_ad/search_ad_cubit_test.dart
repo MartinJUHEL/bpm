@@ -22,7 +22,7 @@ void main() {
 
   setUpAll(() {
     provideDummy<Result<List<String>>>(const Result.success([]));
-    provideDummy<Result<AdsPageEntity>>(Result.success(const AdsPageEntity(ads: [], total: 0)));
+    provideDummy<Result<AdsPageEntity>>(const Result.success(AdsPageEntity(ads: [], total: 0)));
   });
 
   const mockFilter = FilterEntity(
@@ -86,7 +86,7 @@ void main() {
       'emits [SearchAdSearching] with suggestions when query has results',
       build: () {
         when(mockAdRepository.getAdSuggestions('test'))
-            .thenAnswer((_) async => Result.success(['suggestion1', 'suggestion2']));
+            .thenAnswer((_) async => const Result.success(['suggestion1', 'suggestion2']));
         return searchAdCubit;
       },
       act: (cubit) => cubit.onQueryChanged('test'),
@@ -102,8 +102,7 @@ void main() {
     blocTest<SearchAdCubit, SearchAdState>(
       'emits [SearchAdSuggestionEmpty] when no suggestions found',
       build: () {
-        when(mockAdRepository.getAdSuggestions('test'))
-            .thenAnswer((_) async => const Result.success([]));
+        when(mockAdRepository.getAdSuggestions('test')).thenAnswer((_) async => const Result.success([]));
         return searchAdCubit;
       },
       act: (cubit) => cubit.onQueryChanged('test'),
@@ -118,8 +117,7 @@ void main() {
     blocTest<SearchAdCubit, SearchAdState>(
       'emits [SearchAdLoading, SearchAdDisplayResults] when search has results',
       build: () {
-        when(mockFilterRepository.retrieveFilters())
-            .thenAnswer((_) async => mockFilter);
+        when(mockFilterRepository.retrieveFilters()).thenAnswer((_) async => mockFilter);
         when(mockAdRepository.searchAd('test', 0, mockFilter))
             .thenAnswer((_) async => Result.success(AdsPageEntity(ads: [defaultAd], total: 1)));
         return searchAdCubit;
@@ -141,16 +139,15 @@ void main() {
     blocTest<SearchAdCubit, SearchAdState>(
       'emits [SearchAdLoading, SearchAdEmptyResult] when no results found',
       build: () {
-        when(mockFilterRepository.retrieveFilters())
-            .thenAnswer((_) async => mockFilter);
+        when(mockFilterRepository.retrieveFilters()).thenAnswer((_) async => mockFilter);
         when(mockAdRepository.searchAd('test', 0, mockFilter))
-            .thenAnswer((_) async => Result.success(const AdsPageEntity(ads: [], total: 0)));
+            .thenAnswer((_) async => const Result.success(AdsPageEntity(ads: [], total: 0)));
         return searchAdCubit;
       },
       act: (cubit) => cubit.onSearchStarted('test'),
       expect: () => [
         const SearchAdState.loading(),
-        SearchAdState.emptyResult(
+        const SearchAdState.emptyResult(
           query: 'test',
           filter: mockFilter,
         ),

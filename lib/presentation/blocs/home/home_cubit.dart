@@ -1,6 +1,6 @@
 import 'package:assoshare/domain/entities/user/user_entity.dart';
 import 'package:assoshare/domain/repositories/user_repository.dart';
-import 'package:bloc/bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 

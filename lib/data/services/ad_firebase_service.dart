@@ -1,3 +1,4 @@
+import 'package:assoshare/core/data/error/exceptions.dart';
 import 'package:assoshare/core/data/services/base_firebase_service.dart';
 import 'package:assoshare/data/models/ad/ad_model.dart';
 import 'package:assoshare/data/models/ad/post_ad_model.dart';
@@ -30,8 +31,22 @@ final class AdFirebaseService extends BaseFirebaseService {
     return doc.docs.map((query) => AdModel.fromJson(query.data())).toList();
   }
 
+  /// Supprime une annonce
   Future<void> deleteAd(String adId) async {
     return await executeWithErrorHandling(() => _firestore.collection(_adCollection).doc(adId).delete(), 'deleteAd');
+  }
+
+  /// Récupère une annonce par son ID
+  /// @param adId ID de l'annonce à récupérer
+  Future<AdModel> getAd(String adId) async {
+    return await executeWithErrorHandling(() async {
+      final doc = await _firestore.collection(_adCollection).doc(adId).get();
+      if (doc.data() != null) {
+        return AdModel.fromJson(doc.data()!);
+      } else {
+        throw ServerException();
+      }
+    }, 'getAd');
   }
 }
 

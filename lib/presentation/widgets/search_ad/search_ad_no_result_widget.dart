@@ -1,4 +1,5 @@
 import 'package:assoshare/app/dimens.dart';
+import 'package:assoshare/core/ressources/lotties.dart';
 import 'package:assoshare/core/utils/build_context_ext.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
@@ -19,7 +20,7 @@ class SearchAdNoResultWidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Gap(Dimens.paddingPage),
-            Lottie.asset(_notFoundLottie, height: _imageSize, width: _imageSize),
+            Lottie.asset(Lotties.notFound, height: _imageSize, width: _imageSize),
             const Gap(Dimens.paddingRegular),
             Text(
               'noResultTitle',
@@ -43,5 +44,4 @@ class SearchAdNoResultWidget extends StatelessWidget {
 // CONSTANTS
 ///////////////////////////////////////////////////////////////////////////
 
-const String _notFoundLottie = 'assets/lottie/search_not_found.json';
 const double _imageSize = 150;

@@ -20,6 +20,7 @@ enum RouteList {
 
   // FAVORITES.
   favorites(name: 'favorites', path: '/favorites'),
+  favoritesAdDetails(name: 'favoritesAdDetails', path: '/favoritesAdDetails', parent: RouteList.favorites),
 
   // SEARCH.
   search(name: 'search', path: '/search'),
