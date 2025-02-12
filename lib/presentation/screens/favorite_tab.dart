@@ -5,6 +5,7 @@ import 'package:assoshare/presentation/blocs/favorite/favorite_list_cubit.dart';
 import 'package:assoshare/presentation/blocs/favorite/favorite_list_state.dart';
 import 'package:assoshare/presentation/screens/ad_details_screen.dart';
 import 'package:assoshare/presentation/widgets/common/error_screen.dart';
+import 'package:assoshare/presentation/widgets/common/expanded_center_widget.dart';
 import 'package:assoshare/presentation/widgets/favorite/favorite_list_widget.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -43,11 +44,11 @@ class _FavoriteTabState extends State<FavoriteTab> {
             return state.when(
               initial: () => const SizedBox.shrink(),
               loading: () => const Expanded(
-                child: Center(
+                child: ExpandedCenterWidget(
                   child: CircularProgressIndicator(),
                 ),
               ),
-              error: () => const ErrorScreen(),
+              error: () => const ExpandedCenterWidget(child: ErrorScreen()),
               success: (favorites) => Expanded(
                 child: RefreshIndicator(
                   onRefresh: () async =>
