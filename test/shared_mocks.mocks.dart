@@ -6,13 +6,15 @@
 import 'dart:async' as _i3;
 
 import 'package:assoshare/core/domain/entities/result.dart' as _i4;
+import 'package:assoshare/domain/entities/favorite/favorite_entity.dart' as _i8;
 import 'package:assoshare/domain/entities/user/user_entity.dart' as _i5;
+import 'package:assoshare/domain/repositories/favorite_repository.dart' as _i7;
 import 'package:assoshare/domain/repositories/user_repository.dart' as _i2;
-import 'package:logger/src/log_level.dart' as _i8;
-import 'package:logger/src/logger.dart' as _i7;
+import 'package:logger/src/log_level.dart' as _i10;
+import 'package:logger/src/logger.dart' as _i9;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:mockito/src/dummies.dart' as _i6;
-import 'package:shared_preferences/src/shared_preferences_legacy.dart' as _i9;
+import 'package:shared_preferences/src/shared_preferences_legacy.dart' as _i11;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -81,10 +83,157 @@ class MockUserRepository extends _i1.Mock implements _i2.UserRepository {
       ) as _i3.Future<void>);
 }
 
+/// A class which mocks [FavoriteRepository].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockFavoriteRepository extends _i1.Mock
+    implements _i7.FavoriteRepository {
+  MockFavoriteRepository() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i3.Stream<Set<String>> get favoriteIdsStream => (super.noSuchMethod(
+        Invocation.getter(#favoriteIdsStream),
+        returnValue: _i3.Stream<Set<String>>.empty(),
+      ) as _i3.Stream<Set<String>>);
+
+  @override
+  _i3.Future<_i4.Result<List<String>>> getFavoriteIds(String? userId) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getFavoriteIds,
+          [userId],
+        ),
+        returnValue: _i3.Future<_i4.Result<List<String>>>.value(
+            _i6.dummyValue<_i4.Result<List<String>>>(
+          this,
+          Invocation.method(
+            #getFavoriteIds,
+            [userId],
+          ),
+        )),
+      ) as _i3.Future<_i4.Result<List<String>>>);
+
+  @override
+  _i3.Future<_i4.Result<List<_i8.FavoriteEntity>>> getFavorites(
+          String? userId) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getFavorites,
+          [userId],
+        ),
+        returnValue: _i3.Future<_i4.Result<List<_i8.FavoriteEntity>>>.value(
+            _i6.dummyValue<_i4.Result<List<_i8.FavoriteEntity>>>(
+          this,
+          Invocation.method(
+            #getFavorites,
+            [userId],
+          ),
+        )),
+      ) as _i3.Future<_i4.Result<List<_i8.FavoriteEntity>>>);
+
+  @override
+  _i3.Future<_i4.Result<_i8.FavoriteEntity>> getFavorite(
+    String? userId,
+    String? adId,
+  ) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getFavorite,
+          [
+            userId,
+            adId,
+          ],
+        ),
+        returnValue: _i3.Future<_i4.Result<_i8.FavoriteEntity>>.value(
+            _i6.dummyValue<_i4.Result<_i8.FavoriteEntity>>(
+          this,
+          Invocation.method(
+            #getFavorite,
+            [
+              userId,
+              adId,
+            ],
+          ),
+        )),
+      ) as _i3.Future<_i4.Result<_i8.FavoriteEntity>>);
+
+  @override
+  _i3.Future<_i4.Result<void>> addFavorite(
+    String? userId,
+    String? adId,
+  ) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #addFavorite,
+          [
+            userId,
+            adId,
+          ],
+        ),
+        returnValue:
+            _i3.Future<_i4.Result<void>>.value(_i6.dummyValue<_i4.Result<void>>(
+          this,
+          Invocation.method(
+            #addFavorite,
+            [
+              userId,
+              adId,
+            ],
+          ),
+        )),
+      ) as _i3.Future<_i4.Result<void>>);
+
+  @override
+  _i3.Future<_i4.Result<void>> removeFavorite(
+    String? userId,
+    String? adId,
+  ) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #removeFavorite,
+          [
+            userId,
+            adId,
+          ],
+        ),
+        returnValue:
+            _i3.Future<_i4.Result<void>>.value(_i6.dummyValue<_i4.Result<void>>(
+          this,
+          Invocation.method(
+            #removeFavorite,
+            [
+              userId,
+              adId,
+            ],
+          ),
+        )),
+      ) as _i3.Future<_i4.Result<void>>);
+
+  @override
+  void clearCache() => super.noSuchMethod(
+        Invocation.method(
+          #clearCache,
+          [],
+        ),
+        returnValueForMissingStub: null,
+      );
+
+  @override
+  void dispose() => super.noSuchMethod(
+        Invocation.method(
+          #dispose,
+          [],
+        ),
+        returnValueForMissingStub: null,
+      );
+}
+
 /// A class which mocks [Logger].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockLogger extends _i1.Mock implements _i7.Logger {
+class MockLogger extends _i1.Mock implements _i9.Logger {
   MockLogger() {
     _i1.throwOnMissingStub(this);
   }
@@ -257,7 +406,7 @@ class MockLogger extends _i1.Mock implements _i7.Logger {
 
   @override
   void log(
-    _i8.Level? level,
+    _i10.Level? level,
     dynamic message, {
     DateTime? time,
     Object? error,
@@ -302,7 +451,7 @@ class MockLogger extends _i1.Mock implements _i7.Logger {
 /// A class which mocks [SharedPreferences].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockSharedPreferences extends _i1.Mock implements _i9.SharedPreferences {
+class MockSharedPreferences extends _i1.Mock implements _i11.SharedPreferences {
   MockSharedPreferences() {
     _i1.throwOnMissingStub(this);
   }
