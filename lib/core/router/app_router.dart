@@ -2,6 +2,7 @@ import 'package:assoshare/core/di/injection.dart';
 import 'package:assoshare/core/router/app_nav_observer.dart';
 import 'package:assoshare/core/router/route_list.dart';
 import 'package:assoshare/presentation/blocs/authentication/authentication_bloc.dart';
+import 'package:assoshare/presentation/blocs/favorite/favorite_list_cubit.dart';
 import 'package:assoshare/presentation/blocs/publish_ad/publish_ad_bloc/publish_ad_bloc.dart';
 import 'package:assoshare/presentation/blocs/signup/signup_bloc.dart';
 import 'package:assoshare/presentation/navigation/navigation_cubit.dart';
@@ -76,6 +77,7 @@ abstract class AppRouter {
           path: RouteList.home.path,
           builder: (context, state) => _Page(
                 providers: [
+                  BlocProvider(create: (_) => locator<FavoriteListCubit>()),
                   BlocProvider(create: (_) => locator<NavigationCubit>()),
                 ],
                 child: const HomeScreen(),

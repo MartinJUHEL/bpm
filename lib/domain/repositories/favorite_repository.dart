@@ -6,6 +6,8 @@ abstract class FavoriteRepository {
   Future<Result<List<FavoriteEntity>>> getFavorites(String userId);
   Future<Result<void>> addFavorite(String userId, String adId);
   Future<Result<void>> removeFavorite(String userId, String adId);
-  bool isFavorite(String userId, String adId);
   void clearCache();
+
+  /// Stream qui émet à chaque changement du cache des favoris
+  Stream<Set<String>> get favoriteIdsStream;
 }

@@ -6,8 +6,7 @@ part 'favorite_entity.freezed.dart';
 @freezed
 class FavoriteEntity with _$FavoriteEntity {
   const factory FavoriteEntity({
-    required String id,
     required AdEntity ad,
-    required DateTime createdAt,
+    required DateTime addedAt,
   }) = _FavoriteEntity;
-} 
+}

@@ -2,7 +2,7 @@ import 'package:assoshare/app/dimens.dart';
 import 'package:assoshare/core/router/route_list.dart';
 import 'package:assoshare/core/utils/build_context_ext.dart';
 import 'package:assoshare/domain/entities/ad/ad_entity.dart';
-import 'package:assoshare/presentation/blocs/favorite/favorite_cubit.dart';
+import 'package:assoshare/presentation/blocs/favorite/favorite_ids_cubit.dart';
 import 'package:assoshare/presentation/screens/ad_details_screen.dart';
 import 'package:assoshare/presentation/widgets/ad/list_ads_widget.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -74,7 +74,7 @@ class _DisplaySearchResultWidgetState extends State<DisplaySearchResultWidget> {
                       fromUserProfile: false,
                     ),
                   ),
-                  onFavoriteClicked: (adId) => context.read<FavoriteCubit>().toggleFavorite(adId),
+                  onFavoriteClicked: (adId) => context.read<FavoriteIdsCubit>().toggleFavorite(adId),
                 ),
                 if (widget.isNextPageLoading)
                   const Column(

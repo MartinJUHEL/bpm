@@ -9,13 +9,13 @@ part of 'favorite_firebase_model.dart';
 _$FavoriteFirebaseModelImpl _$$FavoriteFirebaseModelImplFromJson(
         Map<String, dynamic> json) =>
     _$FavoriteFirebaseModelImpl(
-      id: json['id'] as String,
+      adId: json['adId'] as String,
       createdAt: DateTime.parse(json['createdAt'] as String),
     );
 
 Map<String, dynamic> _$$FavoriteFirebaseModelImplToJson(
         _$FavoriteFirebaseModelImpl instance) =>
     <String, dynamic>{
-      'id': instance.id,
+      'adId': instance.adId,
       'createdAt': instance.createdAt.toIso8601String(),
     };

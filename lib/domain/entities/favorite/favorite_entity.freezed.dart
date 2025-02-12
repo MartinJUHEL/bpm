@@ -16,9 +16,8 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$FavoriteEntity {
-  String get id => throw _privateConstructorUsedError;
   AdEntity get ad => throw _privateConstructorUsedError;
-  DateTime get createdAt => throw _privateConstructorUsedError;
+  DateTime get addedAt => throw _privateConstructorUsedError;
 
   /// Create a copy of FavoriteEntity
   /// with the given fields replaced by the non-null parameter values.
@@ -33,7 +32,7 @@ abstract class $FavoriteEntityCopyWith<$Res> {
           FavoriteEntity value, $Res Function(FavoriteEntity) then) =
       _$FavoriteEntityCopyWithImpl<$Res, FavoriteEntity>;
   @useResult
-  $Res call({String id, AdEntity ad, DateTime createdAt});
+  $Res call({AdEntity ad, DateTime addedAt});
 
   $AdEntityCopyWith<$Res> get ad;
 }
@@ -53,22 +52,17 @@ class _$FavoriteEntityCopyWithImpl<$Res, $Val extends FavoriteEntity>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
     Object? ad = null,
-    Object? createdAt = null,
+    Object? addedAt = null,
   }) {
     return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
       ad: null == ad
           ? _value.ad
           : ad // ignore: cast_nullable_to_non_nullable
               as AdEntity,
-      createdAt: null == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
+      addedAt: null == addedAt
+          ? _value.addedAt
+          : addedAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
     ) as $Val);
   }
@@ -92,7 +86,7 @@ abstract class _$$FavoriteEntityImplCopyWith<$Res>
       __$$FavoriteEntityImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String id, AdEntity ad, DateTime createdAt});
+  $Res call({AdEntity ad, DateTime addedAt});
 
   @override
   $AdEntityCopyWith<$Res> get ad;
@@ -111,22 +105,17 @@ class __$$FavoriteEntityImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
     Object? ad = null,
-    Object? createdAt = null,
+    Object? addedAt = null,
   }) {
     return _then(_$FavoriteEntityImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
       ad: null == ad
           ? _value.ad
           : ad // ignore: cast_nullable_to_non_nullable
               as AdEntity,
-      createdAt: null == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
+      addedAt: null == addedAt
+          ? _value.addedAt
+          : addedAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
     ));
   }
@@ -135,19 +124,16 @@ class __$$FavoriteEntityImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$FavoriteEntityImpl implements _FavoriteEntity {
-  const _$FavoriteEntityImpl(
-      {required this.id, required this.ad, required this.createdAt});
+  const _$FavoriteEntityImpl({required this.ad, required this.addedAt});
 
-  @override
-  final String id;
   @override
   final AdEntity ad;
   @override
-  final DateTime createdAt;
+  final DateTime addedAt;
 
   @override
   String toString() {
-    return 'FavoriteEntity(id: $id, ad: $ad, createdAt: $createdAt)';
+    return 'FavoriteEntity(ad: $ad, addedAt: $addedAt)';
   }
 
   @override
@@ -155,14 +141,12 @@ class _$FavoriteEntityImpl implements _FavoriteEntity {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$FavoriteEntityImpl &&
-            (identical(other.id, id) || other.id == id) &&
             (identical(other.ad, ad) || other.ad == ad) &&
-            (identical(other.createdAt, createdAt) ||
-                other.createdAt == createdAt));
+            (identical(other.addedAt, addedAt) || other.addedAt == addedAt));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id, ad, createdAt);
+  int get hashCode => Object.hash(runtimeType, ad, addedAt);
 
   /// Create a copy of FavoriteEntity
   /// with the given fields replaced by the non-null parameter values.
@@ -176,16 +160,13 @@ class _$FavoriteEntityImpl implements _FavoriteEntity {
 
 abstract class _FavoriteEntity implements FavoriteEntity {
   const factory _FavoriteEntity(
-      {required final String id,
-      required final AdEntity ad,
-      required final DateTime createdAt}) = _$FavoriteEntityImpl;
+      {required final AdEntity ad,
+      required final DateTime addedAt}) = _$FavoriteEntityImpl;
 
-  @override
-  String get id;
   @override
   AdEntity get ad;
   @override
-  DateTime get createdAt;
+  DateTime get addedAt;
 
   /// Create a copy of FavoriteEntity
   /// with the given fields replaced by the non-null parameter values.

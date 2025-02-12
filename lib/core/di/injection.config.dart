@@ -70,7 +70,8 @@ import '../../domain/usecases/signup/submit_signin_usecase.dart' as _i941;
 import '../../domain/usecases/signup/submit_signup_usecase.dart' as _i486;
 import '../../presentation/blocs/authentication/authentication_bloc.dart'
     as _i57;
-import '../../presentation/blocs/favorite/favorite_cubit.dart' as _i1072;
+import '../../presentation/blocs/favorite/favorite_ids_cubit.dart' as _i133;
+import '../../presentation/blocs/favorite/favorite_list_cubit.dart' as _i781;
 import '../../presentation/blocs/filter/filter_cubit.dart' as _i1021;
 import '../../presentation/blocs/home/home_cubit.dart' as _i642;
 import '../../presentation/blocs/profile/profile_cubit.dart' as _i551;
@@ -252,7 +253,11 @@ Future<_i174.GetIt> $initGetIt(
         gh<_i1053.AdRepository>(),
         gh<_i271.UserRepository>(),
       ));
-  gh.factory<_i1072.FavoriteCubit>(() => _i1072.FavoriteCubit(
+  gh.factory<_i133.FavoriteIdsCubit>(() => _i133.FavoriteIdsCubit(
+        gh<_i780.FavoriteRepository>(),
+        gh<_i271.UserRepository>(),
+      ));
+  gh.factory<_i781.FavoriteListCubit>(() => _i781.FavoriteListCubit(
         gh<_i780.FavoriteRepository>(),
         gh<_i271.UserRepository>(),
       ));

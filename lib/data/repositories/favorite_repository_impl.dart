@@ -1,25 +1,30 @@
+import 'dart:async';
+
 import 'package:assoshare/core/data/repositories/base_repository.dart';
 import 'package:assoshare/core/domain/entities/result.dart';
+import 'package:assoshare/data/models/ad/ad_model.dart';
 import 'package:assoshare/data/services/ad_firebase_service.dart';
 import 'package:assoshare/data/services/favorite_firebase_service.dart';
 import 'package:assoshare/domain/entities/favorite/favorite_entity.dart';
 import 'package:assoshare/domain/repositories/favorite_repository.dart';
 import 'package:injectable/injectable.dart';
 
-/// Implémentation du repository des favoris
-/// Gère :
-/// - La mise en cache des IDs des favoris
-/// - La récupération des annonces complètes via AdFirebaseService
-/// - La transformation des données en entités
+/// Implementation of the favorites repository
+/// Manages:
+/// - Caching of favorite IDs
+/// - Fetching complete ads via AdFirebaseService
+/// - Data transformation into entities
 @LazySingleton(as: FavoriteRepository)
-final class FavoriteRepositoryImpl extends BaseRemoteRepository
-    implements FavoriteRepository {
+final class FavoriteRepositoryImpl extends BaseRemoteRepository implements FavoriteRepository {
   final FavoriteFirebaseService _favoriteService;
   final AdFirebaseService _adFirebaseService;
 
-  /// Cache local des IDs des favoris
-  /// Permet d'éviter des requêtes inutiles pour vérifier si une annonce est en favori
+  /// Local cache of favorite IDs
+  /// Avoids unnecessary requests to check if an ad is favorited
   final Set<String> _cache = {};
+
+  /// StreamController to notify cache changes
+  final _favoriteIdsController = StreamController<Set<String>>.broadcast();
 
   FavoriteRepositoryImpl(
     this._favoriteService,
@@ -29,21 +34,32 @@ final class FavoriteRepositoryImpl extends BaseRemoteRepository
     super._logger,
   );
 
-  /// Récupère uniquement les IDs des favoris
-  /// Utilise le cache si disponible, sinon fait une requête
-  /// @param userId ID de l'utilisateur
-  /// @return Result contenant la liste des IDs des annonces en favori
+  @override
+  Stream<Set<String>> get favoriteIdsStream => _favoriteIdsController.stream;
+
+  /// Updates the cache and notifies listeners
+  void _updateCache(Set<String> newCache) {
+    _cache
+      ..clear()
+      ..addAll(newCache);
+    _favoriteIdsController.add(_cache);
+  }
+
+  /// Retrieves only favorite IDs
+  /// Uses cache if available, otherwise makes a request
+  /// @param userId User ID
+  /// @return Result containing the list of favorited ad IDs
   @override
   Future<Result<List<String>>> getFavoriteIds(String userId) async {
     if (_cache.isEmpty) {
       final result = await safeCall(
         action: () => _favoriteService.getFavorites(userId),
-        transform: (favorites) => favorites.map((f) => f.id).toList(),
+        transform: (favorites) => favorites.map((f) => f.adId).toList(),
       );
 
       return result.when(
           success: (List<String> favorites) {
-            _cache.addAll(favorites);
+            _updateCache(favorites.toSet());
             return Result.success(favorites);
           },
           failure: (_) => result);
@@ -51,35 +67,41 @@ final class FavoriteRepositoryImpl extends BaseRemoteRepository
     return Result.success(_cache.toList());
   }
 
-  /// Récupère les favoris complets avec les détails des annonces
-  /// Pour chaque favori :
-  /// 1. Récupère l'annonce complète via AdFirebaseService
-  /// 2. Crée directement l'entité avec l'annonce et la date de mise en favori
-  /// @param userId ID de l'utilisateur
-  /// @return Result contenant la liste des favoris complets
+  /// Retrieves complete favorites with ad details
+  /// For each favorite:
+  /// 1. Fetches complete ad via AdFirebaseService
+  /// 2. Creates entity directly with ad and favorite date
+  /// @param userId User ID
+  /// @return Result containing the list of complete favorites
   @override
   Future<Result<List<FavoriteEntity>>> getFavorites(String userId) {
     return safeCall(
       action: () async {
         final favorites = await _favoriteService.getFavorites(userId);
-        final futures = favorites.map((favorite) async {
-          final adModel = await _adFirebaseService.getAd(favorite.id);
+
+        if (favorites.isEmpty) {
+          return <FavoriteEntity>[];
+        }
+
+        final List<AdModel> ads =
+            await _adFirebaseService.getAdByIds(favorites.map((favorite) => favorite.adId).toList());
+
+        return favorites.map((favorite) {
+          final adModel = ads.firstWhere((ad) => ad.id == favorite.adId);
           return FavoriteEntity(
-            id: favorite.id,
             ad: adModel.toEntity(),
-            createdAt: favorite.createdAt,
+            addedAt: favorite.createdAt,
           );
-        });
-        return Future.wait(futures);
+        }).toList();
       },
       transform: (favorites) => favorites,
     );
   }
 
-  /// Ajoute une annonce aux favoris
-  /// Met à jour le cache local après l'opération
-  /// @param userId ID de l'utilisateur
-  /// @param adId ID de l'annonce à ajouter
+  /// Adds an ad to favorites
+  /// Updates local cache after operation
+  /// @param userId User ID
+  /// @param adId ID of the ad to add
   @override
   Future<Result<void>> addFavorite(String userId, String adId) async {
     final result = await safeCall(
@@ -89,17 +111,17 @@ final class FavoriteRepositoryImpl extends BaseRemoteRepository
 
     return result.when(
       success: (_) {
-        _cache.add(adId);
+        _updateCache(_cache.union({adId}));
         return result;
       },
       failure: (_) => result,
     );
   }
 
-  /// Supprime une annonce des favoris
-  /// Met à jour le cache local après l'opération
-  /// @param userId ID de l'utilisateur
-  /// @param adId ID de l'annonce à supprimer
+  /// Removes an ad from favorites
+  /// Updates local cache after operation
+  /// @param userId User ID
+  /// @param adId ID of the ad to remove
   @override
   Future<Result<void>> removeFavorite(String userId, String adId) async {
     final result = await safeCall(
@@ -109,27 +131,23 @@ final class FavoriteRepositoryImpl extends BaseRemoteRepository
 
     return result.when(
       success: (_) {
-        _cache.remove(adId);
+        _updateCache(_cache.difference({adId}));
         return result;
       },
       failure: (_) => result,
     );
   }
 
-  /// Vérifie si une annonce est en favori
-  /// Utilise uniquement le cache local
-  /// @param userId ID de l'utilisateur
-  /// @param adId ID de l'annonce à vérifier
-  /// @return true si l'annonce est en favori, false sinon
-  @override
-  bool isFavorite(String userId, String adId) {
-    return _cache.contains(adId);
-  }
-
-  /// Vide le cache local
-  /// Appelé lors de la déconnexion ou en cas d'erreur
+  /// Clears local cache
+  /// Called on logout or error
   @override
   void clearCache() {
     _cache.clear();
+    _favoriteIdsController.add(_cache);
+  }
+
+  @disposeMethod
+  void dispose() {
+    _favoriteIdsController.close();
   }
 }

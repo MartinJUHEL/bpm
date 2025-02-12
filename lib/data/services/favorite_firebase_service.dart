@@ -2,8 +2,8 @@ import 'package:assoshare/data/models/favorite/favorite_firebase_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:injectable/injectable.dart';
 
-/// Service qui gère les interactions avec la collection Favorites dans Firebase.
-/// Structure de la base de données:
+/// Service that handles interactions with the Favorites collection in Firebase.
+/// Database structure:
 /// /favorites/{userId}/ads/{adId}
 ///   - createdAt: Timestamp
 @lazySingleton
@@ -12,7 +12,7 @@ class FavoriteFirebaseService {
 
   FavoriteFirebaseService(this._firestore);
 
-  /// Retourne la référence à la collection des favoris d'un utilisateur
+  /// Returns reference to user's favorites collection
   /// Structure: /favorites/{userId}/ads/
   CollectionReference<Map<String, dynamic>> _getFavoritesCollection(
           String userId) =>
@@ -21,9 +21,9 @@ class FavoriteFirebaseService {
           .doc(userId)
           .collection(_adsCollection);
 
-  /// Récupère tous les favoris d'un utilisateur
-  /// @param userId ID de l'utilisateur
-  /// @return Liste des favoris avec leur date de création
+  /// Retrieves all favorites for a user
+  /// @param userId User ID
+  /// @return List of favorites with their creation date
   Future<List<FavoriteFirebaseModel>> getFavorites(String userId) async {
     final snapshot = await _getFavoritesCollection(userId).get();
     return snapshot.docs
@@ -31,23 +31,21 @@ class FavoriteFirebaseService {
         .toList();
   }
 
-  /// Ajoute une annonce aux favoris d'un utilisateur
-  /// @param userId ID de l'utilisateur
-  /// @param adId ID de l'annonce à ajouter
-  /// Le document est créé avec l'ID de l'annonce et un timestamp serveur
+  /// Adds an ad to user's favorites
+  /// @param userId User ID
+  /// @param adId ID of the ad to add
+  /// Document is created with ad ID and server timestamp
   Future<void> addFavorite(String userId, String adId) async {
     final favorite = FavoriteFirebaseModel(
-      id: adId,
+      adId: adId,
       createdAt: DateTime.now(),
     );
-    await _getFavoritesCollection(userId)
-        .doc(adId)
-        .set(favorite.toFirestore());
+    await _getFavoritesCollection(userId).doc(adId).set(favorite.toFirestore());
   }
 
-  /// Supprime une annonce des favoris d'un utilisateur
-  /// @param userId ID de l'utilisateur
-  /// @param adId ID de l'annonce à supprimer
+  /// Removes an ad from user's favorites
+  /// @param userId User ID
+  /// @param adId ID of the ad to remove
   Future<void> removeFavorite(String userId, String adId) async {
     await _getFavoritesCollection(userId).doc(adId).delete();
   }
@@ -57,8 +55,8 @@ class FavoriteFirebaseService {
 // CONSTANTS
 ///////////////////////////////////////////////////////////////////////////
 
-/// Nom de la collection racine des favoris
+/// Root collection name for favorites
 const _favoritesCollection = 'favorites';
 
-/// Nom de la sous-collection contenant les annonces favorites
+/// Sub-collection name containing favorite ads
 const _adsCollection = 'ads';

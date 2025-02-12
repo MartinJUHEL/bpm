@@ -21,7 +21,7 @@ FavoriteFirebaseModel _$FavoriteFirebaseModelFromJson(
 
 /// @nodoc
 mixin _$FavoriteFirebaseModel {
-  String get id => throw _privateConstructorUsedError;
+  String get adId => throw _privateConstructorUsedError;
   DateTime get createdAt => throw _privateConstructorUsedError;
 
   /// Serializes this FavoriteFirebaseModel to a JSON map.
@@ -40,7 +40,7 @@ abstract class $FavoriteFirebaseModelCopyWith<$Res> {
           $Res Function(FavoriteFirebaseModel) then) =
       _$FavoriteFirebaseModelCopyWithImpl<$Res, FavoriteFirebaseModel>;
   @useResult
-  $Res call({String id, DateTime createdAt});
+  $Res call({String adId, DateTime createdAt});
 }
 
 /// @nodoc
@@ -59,13 +59,13 @@ class _$FavoriteFirebaseModelCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
+    Object? adId = null,
     Object? createdAt = null,
   }) {
     return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
+      adId: null == adId
+          ? _value.adId
+          : adId // ignore: cast_nullable_to_non_nullable
               as String,
       createdAt: null == createdAt
           ? _value.createdAt
@@ -84,7 +84,7 @@ abstract class _$$FavoriteFirebaseModelImplCopyWith<$Res>
       __$$FavoriteFirebaseModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String id, DateTime createdAt});
+  $Res call({String adId, DateTime createdAt});
 }
 
 /// @nodoc
@@ -101,13 +101,13 @@ class __$$FavoriteFirebaseModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
+    Object? adId = null,
     Object? createdAt = null,
   }) {
     return _then(_$FavoriteFirebaseModelImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
+      adId: null == adId
+          ? _value.adId
+          : adId // ignore: cast_nullable_to_non_nullable
               as String,
       createdAt: null == createdAt
           ? _value.createdAt
@@ -120,20 +120,21 @@ class __$$FavoriteFirebaseModelImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$FavoriteFirebaseModelImpl extends _FavoriteFirebaseModel {
-  const _$FavoriteFirebaseModelImpl({required this.id, required this.createdAt})
+  const _$FavoriteFirebaseModelImpl(
+      {required this.adId, required this.createdAt})
       : super._();
 
   factory _$FavoriteFirebaseModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$FavoriteFirebaseModelImplFromJson(json);
 
   @override
-  final String id;
+  final String adId;
   @override
   final DateTime createdAt;
 
   @override
   String toString() {
-    return 'FavoriteFirebaseModel(id: $id, createdAt: $createdAt)';
+    return 'FavoriteFirebaseModel(adId: $adId, createdAt: $createdAt)';
   }
 
   @override
@@ -141,14 +142,14 @@ class _$FavoriteFirebaseModelImpl extends _FavoriteFirebaseModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$FavoriteFirebaseModelImpl &&
-            (identical(other.id, id) || other.id == id) &&
+            (identical(other.adId, adId) || other.adId == adId) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, createdAt);
+  int get hashCode => Object.hash(runtimeType, adId, createdAt);
 
   /// Create a copy of FavoriteFirebaseModel
   /// with the given fields replaced by the non-null parameter values.
@@ -169,7 +170,7 @@ class _$FavoriteFirebaseModelImpl extends _FavoriteFirebaseModel {
 
 abstract class _FavoriteFirebaseModel extends FavoriteFirebaseModel {
   const factory _FavoriteFirebaseModel(
-      {required final String id,
+      {required final String adId,
       required final DateTime createdAt}) = _$FavoriteFirebaseModelImpl;
   const _FavoriteFirebaseModel._() : super._();
 
@@ -177,7 +178,7 @@ abstract class _FavoriteFirebaseModel extends FavoriteFirebaseModel {
       _$FavoriteFirebaseModelImpl.fromJson;
 
   @override
-  String get id;
+  String get adId;
   @override
   DateTime get createdAt;
 

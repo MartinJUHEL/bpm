@@ -22,7 +22,7 @@ FavoriteModel _$FavoriteModelFromJson(Map<String, dynamic> json) {
 mixin _$FavoriteModel {
   String get id => throw _privateConstructorUsedError;
   AdModel get ad => throw _privateConstructorUsedError;
-  DateTime get createdAt => throw _privateConstructorUsedError;
+  DateTime get addedAt => throw _privateConstructorUsedError;
 
   /// Serializes this FavoriteModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -40,7 +40,7 @@ abstract class $FavoriteModelCopyWith<$Res> {
           FavoriteModel value, $Res Function(FavoriteModel) then) =
       _$FavoriteModelCopyWithImpl<$Res, FavoriteModel>;
   @useResult
-  $Res call({String id, AdModel ad, DateTime createdAt});
+  $Res call({String id, AdModel ad, DateTime addedAt});
 
   $AdModelCopyWith<$Res> get ad;
 }
@@ -62,7 +62,7 @@ class _$FavoriteModelCopyWithImpl<$Res, $Val extends FavoriteModel>
   $Res call({
     Object? id = null,
     Object? ad = null,
-    Object? createdAt = null,
+    Object? addedAt = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -73,9 +73,9 @@ class _$FavoriteModelCopyWithImpl<$Res, $Val extends FavoriteModel>
           ? _value.ad
           : ad // ignore: cast_nullable_to_non_nullable
               as AdModel,
-      createdAt: null == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
+      addedAt: null == addedAt
+          ? _value.addedAt
+          : addedAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
     ) as $Val);
   }
@@ -99,7 +99,7 @@ abstract class _$$FavoriteModelImplCopyWith<$Res>
       __$$FavoriteModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String id, AdModel ad, DateTime createdAt});
+  $Res call({String id, AdModel ad, DateTime addedAt});
 
   @override
   $AdModelCopyWith<$Res> get ad;
@@ -120,7 +120,7 @@ class __$$FavoriteModelImplCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? ad = null,
-    Object? createdAt = null,
+    Object? addedAt = null,
   }) {
     return _then(_$FavoriteModelImpl(
       id: null == id
@@ -131,9 +131,9 @@ class __$$FavoriteModelImplCopyWithImpl<$Res>
           ? _value.ad
           : ad // ignore: cast_nullable_to_non_nullable
               as AdModel,
-      createdAt: null == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
+      addedAt: null == addedAt
+          ? _value.addedAt
+          : addedAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
     ));
   }
@@ -143,7 +143,7 @@ class __$$FavoriteModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$FavoriteModelImpl extends _FavoriteModel {
   const _$FavoriteModelImpl(
-      {required this.id, required this.ad, required this.createdAt})
+      {required this.id, required this.ad, required this.addedAt})
       : super._();
 
   factory _$FavoriteModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -154,11 +154,11 @@ class _$FavoriteModelImpl extends _FavoriteModel {
   @override
   final AdModel ad;
   @override
-  final DateTime createdAt;
+  final DateTime addedAt;
 
   @override
   String toString() {
-    return 'FavoriteModel(id: $id, ad: $ad, createdAt: $createdAt)';
+    return 'FavoriteModel(id: $id, ad: $ad, addedAt: $addedAt)';
   }
 
   @override
@@ -168,13 +168,12 @@ class _$FavoriteModelImpl extends _FavoriteModel {
             other is _$FavoriteModelImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.ad, ad) || other.ad == ad) &&
-            (identical(other.createdAt, createdAt) ||
-                other.createdAt == createdAt));
+            (identical(other.addedAt, addedAt) || other.addedAt == addedAt));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, ad, createdAt);
+  int get hashCode => Object.hash(runtimeType, id, ad, addedAt);
 
   /// Create a copy of FavoriteModel
   /// with the given fields replaced by the non-null parameter values.
@@ -196,7 +195,7 @@ abstract class _FavoriteModel extends FavoriteModel {
   const factory _FavoriteModel(
       {required final String id,
       required final AdModel ad,
-      required final DateTime createdAt}) = _$FavoriteModelImpl;
+      required final DateTime addedAt}) = _$FavoriteModelImpl;
   const _FavoriteModel._() : super._();
 
   factory _FavoriteModel.fromJson(Map<String, dynamic> json) =
@@ -207,7 +206,7 @@ abstract class _FavoriteModel extends FavoriteModel {
   @override
   AdModel get ad;
   @override
-  DateTime get createdAt;
+  DateTime get addedAt;
 
   /// Create a copy of FavoriteModel
   /// with the given fields replaced by the non-null parameter values.

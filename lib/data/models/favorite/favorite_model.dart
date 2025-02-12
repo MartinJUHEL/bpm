@@ -12,15 +12,14 @@ class FavoriteModel with _$FavoriteModel {
   const factory FavoriteModel({
     required String id,
     required AdModel ad,
-    required DateTime createdAt,
+    required DateTime addedAt,
   }) = _FavoriteModel;
 
   factory FavoriteModel.fromJson(Map<String, dynamic> json) =>
       _$FavoriteModelFromJson(json);
 
   FavoriteEntity toEntity() => FavoriteEntity(
-        id: id,
         ad: ad.toEntity(),
-        createdAt: createdAt,
+        addedAt: addedAt,
       );
 }

@@ -1,14 +1,12 @@
 import 'package:assoshare/app/dimens.dart';
 import 'package:assoshare/core/utils/callback_utils.dart';
 import 'package:assoshare/domain/entities/ad/ad_entity.dart';
-import 'package:assoshare/presentation/blocs/favorite/favorite_cubit.dart';
+import 'package:assoshare/presentation/blocs/favorite/favorite_ids_cubit.dart';
 import 'package:assoshare/presentation/widgets/ad/ad_card_widget.dart';
 import 'package:assoshare/presentation/widgets/common/circle_icon_button.dart';
 import 'package:assoshare/presentation/widgets/common/favorite_button_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../../blocs/favorite/favorite_state.dart';
 
 class ListAdsWidget extends StatelessWidget {
   final List<AdEntity> ads;
@@ -28,8 +26,9 @@ class ListAdsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<FavoriteCubit, FavoriteState>(
+    return BlocBuilder<FavoriteIdsCubit, Set<String>>(
       builder: (context, state) {
+        debugPrint('TOTO : ${state.toString()}');
         return GridView.builder(
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
@@ -43,7 +42,7 @@ class ListAdsWidget extends StatelessWidget {
           physics: const NeverScrollableScrollPhysics(),
           itemBuilder: (BuildContext context, int index) {
             final AdEntity ad = ads[index];
-            final bool isFavorite = context.read<FavoriteCubit>().isFavorite(ad.id);
+            final bool isFavorite = context.read<FavoriteIdsCubit>().isFavorite(ad.id);
             return AdCardVerticalWidget(
                 adEntity: ad,
                 onClicked: () => onAdClicked(ad),

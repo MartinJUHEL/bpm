@@ -1,5 +1,6 @@
 import 'package:assoshare/core/data/error/exceptions.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:logger/logger.dart';
 
 class BaseFirebaseService {
@@ -12,6 +13,7 @@ class BaseFirebaseService {
     String actionDescription,
   ) async {
     try {
+      logger.i('FIREBASE : $actionDescription');
       return await operation();
     } on FirebaseException catch (e) {
       logger.e('Firebase error during $actionDescription: $e');

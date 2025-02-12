@@ -3,7 +3,7 @@ import 'package:assoshare/core/network/GenericErrorTrigger.dart';
 import 'package:assoshare/core/network/blocs/generic_error_trigger_cubit.dart';
 import 'package:assoshare/core/router/app_router.dart';
 import 'package:assoshare/presentation/blocs/authentication/authentication_bloc.dart';
-import 'package:assoshare/presentation/blocs/favorite/favorite_cubit.dart';
+import 'package:assoshare/presentation/blocs/favorite/favorite_ids_cubit.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -39,7 +39,7 @@ class App extends StatelessWidget {
           create: (context) => locator<GenericErrorTriggerCubit>()..checkConnection(),
         ),
         BlocProvider(
-          create: (context) => locator<FavoriteCubit>(),
+          create: (context) => locator<FavoriteIdsCubit>(),
         ),
       ],
       child: MultiBlocListener(
@@ -51,9 +51,9 @@ class App extends StatelessWidget {
                 showDialog(
                     context: context,
                     builder: (BuildContext dialogContext) => _displayErrorDialog(errorType, () {
-                      context.read<GenericErrorTriggerCubit>().onDialogClosed();
-                      Navigator.pop(dialogContext);
-                    })).then((onValue) async {
+                          context.read<GenericErrorTriggerCubit>().onDialogClosed();
+                          Navigator.pop(dialogContext);
+                        })).then((onValue) async {
                   if (context.mounted) {
                     context.read<GenericErrorTriggerCubit>().onDialogClosed();
                   }
@@ -65,9 +65,9 @@ class App extends StatelessWidget {
             listener: (context, state) {
               AppRouter.router.refresh();
               if (state is Success) {
-                context.read<FavoriteCubit>().loadFavorites();
+                context.read<FavoriteIdsCubit>().loadFavoriteIds();
               } else {
-                context.read<FavoriteCubit>().clearCache();
+                context.read<FavoriteIdsCubit>().clearCache();
               }
             },
           ),

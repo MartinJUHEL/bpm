@@ -24,7 +24,7 @@ class AdCardHorizontalWidget extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: Container(
-        padding: const EdgeInsets.all(Dimens.paddingSmall),
+        padding: const EdgeInsets.symmetric(vertical: Dimens.paddingTiny),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -45,7 +45,8 @@ class AdCardHorizontalWidget extends StatelessWidget {
                     ? CachedNetworkImage(
                         imageUrl: ad.photosUrl[0],
                         fit: BoxFit.cover,
-                        placeholder: (context, url) => BaseShimmer(child: Container()),
+                        placeholder: (context, url) =>
+                            BaseShimmer(child: Container()),
                       )
                     : Container(
                         color: context.colorScheme.outline,
@@ -87,7 +88,8 @@ class AdCardHorizontalWidget extends StatelessWidget {
                 ),
                 const Gap(Dimens.paddingTiny),
                 Text(ad.creationDate.format(eEEEdMMMMHHmm).capitalize(),
-                    style: context.textTheme.labelSmall?.copyWith(color: context.colorScheme.outline),
+                    style: context.textTheme.labelSmall
+                        ?.copyWith(color: context.colorScheme.outline),
                     overflow: TextOverflow.ellipsis),
               ],
             ),
