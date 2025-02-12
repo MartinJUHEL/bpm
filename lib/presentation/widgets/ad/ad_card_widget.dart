@@ -11,12 +11,12 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
-class AdCardWidget extends StatelessWidget {
+class AdCardVerticalWidget extends StatelessWidget {
   final AdEntity adEntity;
   final VoidCallback onClicked;
   final Widget optionWidget;
 
-  const AdCardWidget(
+  const AdCardVerticalWidget(
       {super.key,
       required this.adEntity,
       required this.onClicked,
@@ -41,7 +41,7 @@ class AdCardWidget extends StatelessWidget {
             Hero(
               tag: Constants.adImageHeroTag.buildHeroTag(adEntity.id),
               child: Container(
-                height: _imageHeight,
+                height: Dimens.adVerticalCardImageSize,
                 width: double.infinity,
                 clipBehavior: Clip.antiAlias,
                 decoration: const BoxDecoration(
@@ -88,5 +88,4 @@ class AdCardWidget extends StatelessWidget {
 // CONSTANTS
 ///////////////////////////////////////////////////////////////////////////
 
-const double _imageHeight = 180;
 const double _avatarRadius = 10;

@@ -27,16 +27,19 @@ import '../../data/datasources/filter_local_data_source.dart' as _i1053;
 import '../../data/repositories/ad_repository_impl.dart' as _i996;
 import '../../data/repositories/address_repository_impl.dart' as _i1071;
 import '../../data/repositories/authentication_repository_impl.dart' as _i143;
+import '../../data/repositories/favorite_repository_impl.dart' as _i1024;
 import '../../data/repositories/filter_repository_impl.dart' as _i851;
 import '../../data/repositories/user_repository_impl.dart' as _i790;
 import '../../data/services/ad_firebase_service.dart' as _i545;
 import '../../data/services/authentication_firebase_service.dart' as _i271;
+import '../../data/services/favorite_firebase_service.dart' as _i864;
 import '../../data/services/search_ad_service.dart' as _i427;
 import '../../data/services/storage_service.dart' as _i27;
 import '../../data/services/user_firebase_service.dart' as _i144;
 import '../../domain/repositories/ad_repository.dart' as _i1053;
 import '../../domain/repositories/address_repository.dart' as _i956;
 import '../../domain/repositories/authentication_repository.dart' as _i277;
+import '../../domain/repositories/favorite_repository.dart' as _i780;
 import '../../domain/repositories/filter_repository.dart' as _i884;
 import '../../domain/repositories/user_repository.dart' as _i271;
 import '../../domain/usecases/authentication/authentication_signed_out_usecase.dart'
@@ -45,6 +48,7 @@ import '../../domain/usecases/authentication/authentication_started_usecase.dart
     as _i36;
 import '../../domain/usecases/authentication/is_email_verified_usecase.dart'
     as _i411;
+import '../../domain/usecases/favorite/update_favorites_use_case.dart' as _i206;
 import '../../domain/usecases/get_location_use_case.dart' as _i882;
 import '../../domain/usecases/get_user_type_from_string_usecase.dart' as _i425;
 import '../../domain/usecases/publish_ad/is_ad_description_valid_use_case.dart'
@@ -67,6 +71,8 @@ import '../../domain/usecases/signup/submit_signin_usecase.dart' as _i941;
 import '../../domain/usecases/signup/submit_signup_usecase.dart' as _i486;
 import '../../presentation/blocs/authentication/authentication_bloc.dart'
     as _i57;
+import '../../presentation/blocs/favorite/favorite_ids_cubit.dart' as _i133;
+import '../../presentation/blocs/favorite/favorite_list_cubit.dart' as _i781;
 import '../../presentation/blocs/filter/filter_cubit.dart' as _i1021;
 import '../../presentation/blocs/home/home_cubit.dart' as _i642;
 import '../../presentation/blocs/profile/profile_cubit.dart' as _i551;
@@ -156,10 +162,22 @@ Future<_i174.GetIt> $initGetIt(
         gh<_i59.FirebaseAuth>(),
         gh<_i974.Logger>(),
       ));
+  gh.lazySingleton<_i864.FavoriteFirebaseService>(
+      () => _i864.FavoriteFirebaseService(gh<_i974.FirebaseFirestore>()));
   gh.factory<_i84.PickPhotosBlocCubit>(() => _i84.PickPhotosBlocCubit(
         gh<_i850.PickPhotoFromCameraUseCase>(),
         gh<_i24.PickPhotosFromGalleryUseCase>(),
       ));
+  gh.lazySingleton<_i780.FavoriteRepository>(
+    () => _i1024.FavoriteRepositoryImpl(
+      gh<_i864.FavoriteFirebaseService>(),
+      gh<_i545.AdFirebaseService>(),
+      gh<_i248.GenericErrorTrigger>(),
+      gh<_i816.AppConnectivityInfo>(),
+      gh<_i974.Logger>(),
+    ),
+    dispose: (i) => i.dispose(),
+  );
   gh.factory<_i271.AuthenticationRemoteService>(
       () => _i271.AuthenticationRemoteService(gh<_i59.FirebaseAuth>()));
   gh.lazySingleton<_i27.StorageService>(() => _i27.StorageService(
@@ -238,6 +256,15 @@ Future<_i174.GetIt> $initGetIt(
         gh<_i1053.AdRepository>(),
         gh<_i271.UserRepository>(),
       ));
+  gh.lazySingleton<_i206.UpdateFavoritesUseCase>(
+      () => _i206.UpdateFavoritesUseCase(
+            gh<_i780.FavoriteRepository>(),
+            gh<_i271.UserRepository>(),
+          ));
+  gh.factory<_i133.FavoriteIdsCubit>(() => _i133.FavoriteIdsCubit(
+        gh<_i780.FavoriteRepository>(),
+        gh<_i271.UserRepository>(),
+      ));
   gh.lazySingleton<_i217.SearchCityByLatLongUseCase>(
       () => _i217.SearchCityByLatLongUseCase(gh<_i956.AddressRepository>()));
   gh.lazySingleton<_i833.SearchCityUseCase>(
@@ -248,6 +275,11 @@ Future<_i174.GetIt> $initGetIt(
         gh<_i794.IsNameValidUseCase>(),
         gh<_i277.IAuthenticationRepository>(),
         gh<_i271.UserRepository>(),
+      ));
+  gh.factory<_i781.FavoriteListCubit>(() => _i781.FavoriteListCubit(
+        gh<_i780.FavoriteRepository>(),
+        gh<_i271.UserRepository>(),
+        gh<_i206.UpdateFavoritesUseCase>(),
       ));
   gh.factory<_i725.SearchCityCubit>(() => _i725.SearchCityCubit(
         searchCityUseCase: gh<_i833.SearchCityUseCase>(),

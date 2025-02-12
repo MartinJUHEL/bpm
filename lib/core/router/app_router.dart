@@ -1,8 +1,8 @@
 import 'package:assoshare/core/di/injection.dart';
 import 'package:assoshare/core/router/app_nav_observer.dart';
 import 'package:assoshare/core/router/route_list.dart';
-import 'package:assoshare/domain/entities/ad/ad_entity.dart';
 import 'package:assoshare/presentation/blocs/authentication/authentication_bloc.dart';
+import 'package:assoshare/presentation/blocs/favorite/favorite_list_cubit.dart';
 import 'package:assoshare/presentation/blocs/publish_ad/publish_ad_bloc/publish_ad_bloc.dart';
 import 'package:assoshare/presentation/blocs/signup/signup_bloc.dart';
 import 'package:assoshare/presentation/navigation/navigation_cubit.dart';
@@ -77,6 +77,7 @@ abstract class AppRouter {
           path: RouteList.home.path,
           builder: (context, state) => _Page(
                 providers: [
+                  BlocProvider(create: (_) => locator<FavoriteListCubit>()),
                   BlocProvider(create: (_) => locator<NavigationCubit>()),
                 ],
                 child: const HomeScreen(),
@@ -107,16 +108,26 @@ abstract class AppRouter {
             )),
       ),
       GoRoute(
-        name: RouteList.favorites.name,
-        path: RouteList.favorites.path,
-        builder: (context, state) => _Page(
-            providers: [
-              BlocProvider(create: (_) => locator<NavigationCubit>()),
-            ],
-            child: const HomeScreen(
-              selectedNavbarItem: NavbarItem.favorites,
-            )),
-      ),
+          name: RouteList.favorites.name,
+          path: RouteList.favorites.path,
+          builder: (context, state) => _Page(
+                  providers: [
+                    BlocProvider(create: (_) => locator<NavigationCubit>()),
+                  ],
+                  child: const HomeScreen(
+                    selectedNavbarItem: NavbarItem.favorites,
+                  )),
+          routes: [
+            GoRoute(
+              name: RouteList.favoritesAdDetails.name,
+              path: RouteList.favoritesAdDetails.path,
+              builder: (context, state) => _Page(
+                child: AdDetailsScreen(
+                  args: state.extra as AdDetailsScreenArgs,
+                ),
+              ),
+            ),
+          ]),
       GoRoute(
           name: RouteList.search.name,
           path: RouteList.search.path,
@@ -133,8 +144,7 @@ abstract class AppRouter {
               path: RouteList.searchAdDetails.path,
               builder: (context, state) => _Page(
                 child: AdDetailsScreen(
-                  ad: state.extra! as AdEntity,
-                  fromUserProfile: false,
+                  args: state.extra as AdDetailsScreenArgs,
                 ),
               ),
             ),
@@ -154,8 +164,7 @@ abstract class AppRouter {
             path: RouteList.profileAdDetails.path,
             builder: (context, state) => _Page(
               child: AdDetailsScreen(
-                ad: state.extra! as AdEntity,
-                fromUserProfile: true,
+                args: state.extra as AdDetailsScreenArgs,
               ),
             ),
           ),

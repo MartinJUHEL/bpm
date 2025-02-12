@@ -8,11 +8,11 @@ void main() {
     const testCity = 'Paris';
     const testLat = 48.8566;
     const testLong = 2.3522;
-    
-    final cityEntity = CityEntity(
+
+    final cityEntity = const CityEntity(
       postcode: testPostcode,
       city: testCity,
-      latLong: const LatLong(lat: testLat, long: testLong),
+      latLong: LatLong(lat: testLat, long: testLong),
     );
 
     test('should create CityEntity with correct values', () {
@@ -27,19 +27,19 @@ void main() {
     });
 
     test('should create a copy with new values', () {
-      final newPostcode = '75002';
+      const newPostcode = '75002';
       final copiedCity = cityEntity.copyWith(postcode: newPostcode);
-      
+
       expect(copiedCity.postcode, newPostcode);
       expect(copiedCity.city, testCity);
       expect(copiedCity.latLong, cityEntity.latLong);
     });
 
     test('should compare equal entities correctly', () {
-      final sameCityEntity = CityEntity(
+      const sameCityEntity = CityEntity(
         postcode: testPostcode,
         city: testCity,
-        latLong: const LatLong(lat: testLat, long: testLong),
+        latLong: LatLong(lat: testLat, long: testLong),
       );
 
       expect(cityEntity == sameCityEntity, true);
@@ -47,13 +47,13 @@ void main() {
     });
 
     test('should compare different entities correctly', () {
-      final differentCityEntity = CityEntity(
+      const differentCityEntity = CityEntity(
         postcode: '75002',
         city: testCity,
-        latLong: const LatLong(lat: testLat, long: testLong),
+        latLong: LatLong(lat: testLat, long: testLong),
       );
 
       expect(cityEntity == differentCityEntity, false);
     });
   });
-} 
+}

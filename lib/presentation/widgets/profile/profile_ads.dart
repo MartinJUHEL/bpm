@@ -2,6 +2,7 @@ import 'package:assoshare/app/dimens.dart';
 import 'package:assoshare/core/router/route_list.dart';
 import 'package:assoshare/core/utils/build_context_ext.dart';
 import 'package:assoshare/presentation/blocs/profile_ads/profile_ads_cubit.dart';
+import 'package:assoshare/presentation/screens/ad_details_screen.dart';
 import 'package:assoshare/presentation/widgets/ad/list_ads_empty_widget.dart';
 import 'package:assoshare/presentation/widgets/ad/list_ads_loading_widget.dart';
 import 'package:assoshare/presentation/widgets/ad/list_ads_widget.dart';
@@ -39,7 +40,13 @@ class ProfileAds extends StatelessWidget {
             // TODO : is editable only on own user profile.
             ProfileAdsData() => ListAdsWidget(
                 onAdClicked: (ad) async {
-                  final isDeleted = await context.pushNamed(RouteList.profileAdDetails.name, extra: ad);
+                  final isDeleted = await context.pushNamed(
+                    RouteList.profileAdDetails.name,
+                    extra: AdDetailsScreenArgs(
+                      ad: ad,
+                      fromUserProfile: true,
+                    ),
+                  );
                   if (context.mounted && isDeleted == true) {
                     context.read<ProfileAdsCubit>().deleteAd(ad.id);
                   }

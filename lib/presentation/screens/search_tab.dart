@@ -1,6 +1,7 @@
 import 'package:assoshare/app/constants.dart';
 import 'package:assoshare/app/dimens.dart';
 import 'package:assoshare/core/di/injection.dart';
+import 'package:assoshare/core/ressources/lotties.dart';
 import 'package:assoshare/core/utils/build_context_ext.dart';
 import 'package:assoshare/core/utils/text_utils.dart';
 import 'package:assoshare/presentation/blocs/search_ad/search_ad_cubit.dart';
@@ -29,7 +30,6 @@ class SearchTab extends StatefulWidget {
 
 class _SearchTabState extends State<SearchTab> {
   final _searchTextController = TextEditingController();
-  static const String _searchingLottie = 'assets/lottie/searching.json';
 
   @override
   Widget build(BuildContext context) {
@@ -95,9 +95,9 @@ class _SearchTabState extends State<SearchTab> {
                             child: ErrorScreen(
                           assetPath: Constants.serverErrorAsset,
                         )),
-                      SearchAdQueryEmpty() => SizedBox(), // TODO: Handle search history
+                      SearchAdQueryEmpty() => const SizedBox(), // TODO: Handle search history
                       SearchAdEmptyResult() => const SearchAdNoResultWidget(),
-                      SearchAdLoading() => ExpandedCenterWidget(child: Lottie.asset(_searchingLottie)),
+                      SearchAdLoading() => ExpandedCenterWidget(child: Lottie.asset(Lotties.searching)),
                     },
                   ],
                 )),

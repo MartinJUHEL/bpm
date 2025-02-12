@@ -30,8 +30,28 @@ final class AdFirebaseService extends BaseFirebaseService {
     return doc.docs.map((query) => AdModel.fromJson(query.data())).toList();
   }
 
+  /// Supprime une annonce
   Future<void> deleteAd(String adId) async {
     return await executeWithErrorHandling(() => _firestore.collection(_adCollection).doc(adId).delete(), 'deleteAd');
+  }
+
+  /// Récupère une annonce par son ID
+  /// @param adId ID de l'annonce à récupérer
+  Future<List<AdModel>> getAdByIds(List<String> adIds) async {
+    return await executeWithErrorHandling(() async {
+      final doc = await _firestore.collection(_adCollection).where(FieldPath.documentId, whereIn: adIds).get();
+      return doc.docs.map((query) => AdModel.fromJson(query.data())).toList();
+    }, 'getAdByIds');
+  }
+
+  /// Retrieves a single ad by its ID
+  /// @param adId ID of the ad to retrieve
+  /// @return The ad model
+  Future<AdModel> getAd(String adId) async {
+    return executeWithErrorHandling(() async {
+      final doc = await _firestore.collection(_adCollection).doc(adId).get();
+      return AdModel.fromJson(doc.data()!);
+    }, 'getAd');
   }
 }
 

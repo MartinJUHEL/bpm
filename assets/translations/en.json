@@ -85,5 +85,8 @@
   "@_AD_DETAIL": {},
   "description": "Description",
   "contact": "Contact",
-  "confirmDeletion": "Are you sure you want to delete your ad?"
+  "confirmDeletion": "Are you sure you want to delete your ad?",
+  "noFavorites": "No favorites",
+  "noFavoritesDescription": "Add ads to your favorites to find them easily",
+  "myFavorites": "My favorites"
 }

@@ -1,5 +1,7 @@
 import 'package:assoshare/app/colors.dart';
+import 'package:assoshare/app/dimens.dart';
 import 'package:assoshare/core/utils/build_context_ext.dart';
+import 'package:assoshare/presentation/widgets/common/favorite_button_widget.dart';
 import 'package:flutter/material.dart';
 
 class AdDetailsTopBarWidget extends StatefulWidget implements PreferredSizeWidget {
@@ -10,14 +12,14 @@ class AdDetailsTopBarWidget extends StatefulWidget implements PreferredSizeWidge
     required this.onShareClicked,
     required this.onEditClicked,
     required this.onFavoriteClicked,
-    required this.isInFavorite,
+    required this.isFavorite,
     required this.adTitle,
     required this.animationController,
     required this.parentContext,
   }) : preferredSize = const Size.fromHeight(kToolbarHeight);
 
   final bool isFromProfile;
-  final bool isInFavorite;
+  final bool isFavorite;
   final String adTitle;
   final VoidCallback onBackPressed;
   final VoidCallback onShareClicked;
@@ -73,19 +75,17 @@ class _AdDetailsTopBarWidgetState extends State<AdDetailsTopBarWidget> {
                     Icons.share,
                     color: _iconColorTween.value,
                   )),
-              widget.isFromProfile
-                  ? IconButton(
-                      onPressed: widget.onEditClicked,
-                      icon: Icon(
-                        Icons.more_horiz,
-                        color: _iconColorTween.value,
-                      ))
-                  : IconButton(
-                      onPressed: widget.onFavoriteClicked,
-                      icon: Icon(
-                        widget.isInFavorite ? Icons.favorite : Icons.favorite_border,
-                        color: _iconColorTween.value,
-                      )),
+              Padding(
+                padding: const EdgeInsets.only(right: Dimens.paddingSmall),
+                child: widget.isFromProfile
+                    ? IconButton(
+                        onPressed: widget.onEditClicked,
+                        icon: Icon(
+                          Icons.more_horiz,
+                          color: _iconColorTween.value,
+                        ))
+                    : FavoriteButtonWidget(onPressed: widget.onFavoriteClicked, isFavorite: widget.isFavorite),
+              )
             ],
           );
         });

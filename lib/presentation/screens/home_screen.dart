@@ -3,6 +3,7 @@ import 'package:assoshare/core/router/route_list.dart';
 import 'package:assoshare/presentation/blocs/home/home_cubit.dart';
 import 'package:assoshare/presentation/blocs/profile_ads/profile_ads_cubit.dart';
 import 'package:assoshare/presentation/navigation/navigation_cubit.dart';
+import 'package:assoshare/presentation/screens/favorite_tab.dart';
 import 'package:assoshare/presentation/screens/search_tab.dart';
 import 'package:assoshare/presentation/widgets/home/bottom_navigation_bar_widget.dart';
 import 'package:flutter/material.dart';
@@ -56,7 +57,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         index: navState.navbarItem.itemIndex,
                         children: const [
                           SearchTab(),
-                          SizedBox.shrink(),
+                          FavoriteTab(),
                           SizedBox.shrink(),
                           ProfileTab(),
                         ],
