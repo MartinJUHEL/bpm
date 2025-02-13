@@ -36,13 +36,13 @@ class SearchAdCubit extends Cubit<SearchAdState> {
   }
 
   void onQueryChanged(String newQuery) async {
+    if (_debounce?.isActive ?? false) _debounce?.cancel();
+
     // If query is empty, return user search history.
     if (newQuery.isEmpty) {
       final history = await _searchHistoryRepository.getSearchHistory();
       return emit(SearchAdState.emptyQuery(searchHistory: history));
     }
-
-    if (_debounce?.isActive ?? false) _debounce?.cancel();
     _debounce = Timer(const Duration(milliseconds: _debounceTime), () async {
       final result = await _adRepository.getAdSuggestions(newQuery);
       result.when(success: (suggestions) {
