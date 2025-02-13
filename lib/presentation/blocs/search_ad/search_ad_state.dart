@@ -20,7 +20,7 @@ sealed class SearchAdState with _$SearchAdState {
 
   const factory SearchAdState.emptyResult({required String query, required FilterEntity filter}) = SearchAdEmptyResult;
 
-  const factory SearchAdState.emptyQuery() = SearchAdQueryEmpty;
+  const factory SearchAdState.emptyQuery({@Default([]) List<String> searchHistory}) = SearchAdQueryEmpty;
 
   const factory SearchAdState.loading() = SearchAdLoading;
 }

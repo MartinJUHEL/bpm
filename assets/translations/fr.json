@@ -92,5 +92,7 @@
   "confirmDeletion": "Es-tu sur de vouloir supprimer ton annonce ?",
   "noFavorites": "Aucun favori",
   "noFavoritesDescription": "Ajoutez des annonces à vos favoris pour les retrouver facilement",
-  "myFavorites": "Mes favoris"
+  "myFavorites": "Mes favoris",
+  "searchHistory": "Historique des recherches",
+  "clearHistory": "Effacer l'historique"
 }

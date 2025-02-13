@@ -88,5 +88,7 @@
   "confirmDeletion": "Are you sure you want to delete your ad?",
   "noFavorites": "No favorites",
   "noFavoritesDescription": "Add ads to your favorites to find them easily",
-  "myFavorites": "My favorites"
+  "myFavorites": "My favorites",
+  "searchHistory": "Search history",
+  "clearHistory": "Clear history"
 }

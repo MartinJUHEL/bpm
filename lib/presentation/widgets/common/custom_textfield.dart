@@ -13,7 +13,8 @@ class CustomTextField extends StatelessWidget {
       this.onTap,
       required this.placeholder,
       this.prefix,
-      this.suffix});
+      this.suffix,
+      this.focusNode});
 
   static const double searchBarHeight = 45;
 
@@ -24,12 +25,14 @@ class CustomTextField extends StatelessWidget {
   final String placeholder;
   final Widget? prefix;
   final Widget? suffix;
+  final FocusNode? focusNode;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: searchBarHeight,
       child: CupertinoTextField(
+        focusNode: focusNode,
         onSubmitted: onSearchStarted,
         controller: searchTextController,
         onTap: onTap,

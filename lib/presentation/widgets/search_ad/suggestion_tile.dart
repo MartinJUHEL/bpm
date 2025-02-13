@@ -9,6 +9,7 @@ class SuggestionTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
+      contentPadding: EdgeInsets.zero,
       onTap: onTap,
       leading: const Icon(Icons.search),
       title: Text(title),

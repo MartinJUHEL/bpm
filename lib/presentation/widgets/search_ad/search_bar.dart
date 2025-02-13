@@ -20,7 +20,8 @@ class AdSearchBar extends StatelessWidget {
       required this.onBackPressed,
       required this.onCityClicked,
       required this.displayCity,
-      required this.onSearchStarted});
+      required this.onSearchStarted,
+      required this.focusNode});
 
   final VoidCallback onTap;
   final TextEditingController searchTextController;
@@ -32,6 +33,7 @@ class AdSearchBar extends StatelessWidget {
   final VoidCallback onCityClicked;
   final bool displayCity;
   final StringCallback onSearchStarted;
+  final FocusNode focusNode;
 
   @override
   Widget build(BuildContext context) {
@@ -40,6 +42,7 @@ class AdSearchBar extends StatelessWidget {
       child: Column(
         children: [
           CustomTextField(
+            focusNode: focusNode,
             onSearchStarted: onSearchStarted,
             onQueryChanged: onQueryChanged,
             searchTextController: searchTextController,
