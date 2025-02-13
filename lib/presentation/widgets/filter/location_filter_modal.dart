@@ -125,7 +125,7 @@ class _LocationFilterModalState extends State<LocationFilterModal> {
             leading: const Icon(Icons.location_on_outlined),
             title: Text(city.displayCity()),
             onTap: () {
-              FocusManager.instance.primaryFocus?.unfocus();
+              FocusScope.of(context).unfocus();
               context.read<SearchCityCubit>().selectCity(city);
             },
           );

@@ -5,6 +5,7 @@ import 'package:assoshare/domain/entities/filter/filter_entity.dart';
 import 'package:assoshare/domain/entities/latlong/lat_long_entity.dart';
 import 'package:assoshare/domain/repositories/ad_repository.dart';
 import 'package:assoshare/domain/repositories/filter_repository.dart';
+import 'package:assoshare/domain/repositories/search_history_repository.dart';
 import 'package:assoshare/presentation/blocs/search_ad/search_ad_cubit.dart';
 import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -12,12 +13,13 @@ import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
 import '../../domain/entities/ad_entity.dart';
-@GenerateNiceMocks([MockSpec<AdRepository>(), MockSpec<FilterRepository>()])
+@GenerateNiceMocks([MockSpec<AdRepository>(), MockSpec<FilterRepository>(), MockSpec<SearchHistoryRepository>()])
 import 'search_ad_cubit_test.mocks.dart';
 
 void main() {
   late MockAdRepository mockAdRepository;
   late MockFilterRepository mockFilterRepository;
+  late MockSearchHistoryRepository mockSearchHistoryRepository;
   late SearchAdCubit searchAdCubit;
 
   setUpAll(() {
@@ -37,7 +39,8 @@ void main() {
   setUp(() {
     mockAdRepository = MockAdRepository();
     mockFilterRepository = MockFilterRepository();
-    searchAdCubit = SearchAdCubit(mockAdRepository, mockFilterRepository);
+    mockSearchHistoryRepository = MockSearchHistoryRepository();
+    searchAdCubit = SearchAdCubit(mockAdRepository, mockFilterRepository, mockSearchHistoryRepository);
   });
 
   tearDown(() {
@@ -50,10 +53,15 @@ void main() {
 
   group('onSearchClicked', () {
     blocTest<SearchAdCubit, SearchAdState>(
-      'emits [SearchAdEmptyQuery] when no previous query exists',
-      build: () => searchAdCubit,
+      'emits [SearchAdEmptyQuery] with history when no previous query exists',
+      build: () {
+        when(mockSearchHistoryRepository.getSearchHistory()).thenAnswer((_) async => ['test1', 'test2']);
+        return searchAdCubit;
+      },
       act: (cubit) => cubit.onSearchClicked(),
-      expect: () => [const SearchAdState.emptyQuery()],
+      expect: () => [
+        const SearchAdState.emptyQuery(searchHistory: ['test1', 'test2'])
+      ],
     );
 
     blocTest<SearchAdCubit, SearchAdState>(
@@ -76,10 +84,15 @@ void main() {
 
   group('onQueryChanged', () {
     blocTest<SearchAdCubit, SearchAdState>(
-      'emits [SearchAdEmptyQuery] when query is empty',
-      build: () => searchAdCubit,
+      'emits [SearchAdEmptyQuery] with history when query is empty',
+      build: () {
+        when(mockSearchHistoryRepository.getSearchHistory()).thenAnswer((_) async => ['test1', 'test2']);
+        return searchAdCubit;
+      },
       act: (cubit) => cubit.onQueryChanged(''),
-      expect: () => [const SearchAdState.emptyQuery()],
+      expect: () => [
+        const SearchAdState.emptyQuery(searchHistory: ['test1', 'test2'])
+      ],
     );
 
     blocTest<SearchAdCubit, SearchAdState>(
@@ -115,11 +128,12 @@ void main() {
 
   group('onSearchStarted', () {
     blocTest<SearchAdCubit, SearchAdState>(
-      'emits [SearchAdLoading, SearchAdDisplayResults] when search has results',
+      'adds search to history and emits [SearchAdLoading, SearchAdDisplayResults] when search has results',
       build: () {
         when(mockFilterRepository.retrieveFilters()).thenAnswer((_) async => mockFilter);
         when(mockAdRepository.searchAd('test', 0, mockFilter))
             .thenAnswer((_) async => Result.success(AdsPageEntity(ads: [defaultAd], total: 1)));
+        when(mockSearchHistoryRepository.addSearch('test')).thenAnswer((_) async {});
         return searchAdCubit;
       },
       act: (cubit) => cubit.onSearchStarted('test'),
@@ -134,14 +148,18 @@ void main() {
           isNextPageLoading: false,
         ),
       ],
+      verify: (_) {
+        verify(mockSearchHistoryRepository.addSearch('test')).called(1);
+      },
     );
 
     blocTest<SearchAdCubit, SearchAdState>(
-      'emits [SearchAdLoading, SearchAdEmptyResult] when no results found',
+      'adds search to history and emits [SearchAdLoading, SearchAdEmptyResult] when no results found',
       build: () {
         when(mockFilterRepository.retrieveFilters()).thenAnswer((_) async => mockFilter);
         when(mockAdRepository.searchAd('test', 0, mockFilter))
             .thenAnswer((_) async => const Result.success(AdsPageEntity(ads: [], total: 0)));
+        when(mockSearchHistoryRepository.addSearch('test')).thenAnswer((_) async {});
         return searchAdCubit;
       },
       act: (cubit) => cubit.onSearchStarted('test'),
@@ -152,6 +170,28 @@ void main() {
           filter: mockFilter,
         ),
       ],
+      verify: (_) {
+        verify(mockSearchHistoryRepository.addSearch('test')).called(1);
+      },
+    );
+  });
+
+  group('history management', () {
+    blocTest<SearchAdCubit, SearchAdState>(
+      'removeFromHistory removes search and emits updated history',
+      build: () {
+        when(mockSearchHistoryRepository.removeSearch('test')).thenAnswer((_) async {});
+        when(mockSearchHistoryRepository.getSearchHistory()).thenAnswer((_) async => ['remaining']);
+        return searchAdCubit;
+      },
+      act: (cubit) => cubit.removeFromHistory('test'),
+      expect: () => [
+        const SearchAdState.emptyQuery(searchHistory: ['remaining']),
+      ],
+      verify: (_) {
+        verify(mockSearchHistoryRepository.removeSearch('test')).called(1);
+        verify(mockSearchHistoryRepository.getSearchHistory()).called(1);
+      },
     );
   });
 

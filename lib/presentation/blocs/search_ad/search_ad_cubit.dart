@@ -5,6 +5,7 @@ import 'package:assoshare/domain/entities/ad/ad_entity.dart';
 import 'package:assoshare/domain/entities/filter/filter_entity.dart';
 import 'package:assoshare/domain/repositories/ad_repository.dart';
 import 'package:assoshare/domain/repositories/filter_repository.dart';
+import 'package:assoshare/domain/repositories/search_history_repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
@@ -16,29 +17,32 @@ part 'search_ad_state.dart';
 class SearchAdCubit extends Cubit<SearchAdState> {
   final AdRepository _adRepository;
   final FilterRepository _filterRepository;
+  final SearchHistoryRepository _searchHistoryRepository;
   static const _debounceTime = 200;
 
-  SearchAdCubit(this._adRepository, this._filterRepository) : super(const SearchAdState.none());
+  SearchAdCubit(this._adRepository, this._filterRepository, this._searchHistoryRepository)
+      : super(const SearchAdState.none());
 
   Timer? _debounce;
 
-  void onSearchClicked() {
+  void onSearchClicked() async {
     // If user already on result page we are prefilling query.
     if (state case SearchAdDisplayResults(:final query)) {
       emit(SearchAdState.searching(query: query, suggestions: []));
     } else {
-      emit(const SearchAdState.emptyQuery());
+      final history = await _searchHistoryRepository.getSearchHistory();
+      emit(SearchAdState.emptyQuery(searchHistory: history));
     }
   }
 
   void onQueryChanged(String newQuery) async {
-    // If query is empty, return user search history.
-    // TODO: fetch history.
-    if (newQuery.isEmpty) {
-      return emit(const SearchAdState.emptyQuery());
-    }
-
     if (_debounce?.isActive ?? false) _debounce?.cancel();
+
+    // If query is empty, return user search history.
+    if (newQuery.isEmpty) {
+      final history = await _searchHistoryRepository.getSearchHistory();
+      return emit(SearchAdState.emptyQuery(searchHistory: history));
+    }
     _debounce = Timer(const Duration(milliseconds: _debounceTime), () async {
       final result = await _adRepository.getAdSuggestions(newQuery);
       result.when(success: (suggestions) {
@@ -90,6 +94,12 @@ class SearchAdCubit extends Cubit<SearchAdState> {
 
   Future<void> onSearchStarted(String query) async {
     emit(const SearchAdState.loading());
+
+    // Add search to history
+    if (query.isNotEmpty) {
+      await _searchHistoryRepository.addSearch(query);
+    }
+
     final filter = await _filterRepository.retrieveFilters();
     final result = await _adRepository.searchAd(query, 0, filter);
 
@@ -122,5 +132,11 @@ class SearchAdCubit extends Cubit<SearchAdState> {
 
   void onSearchCancel() {
     emit(const SearchAdState.none());
+  }
+
+  Future<void> removeFromHistory(String query) async {
+    await _searchHistoryRepository.removeSearch(query);
+    final history = await _searchHistoryRepository.getSearchHistory();
+    emit(SearchAdState.emptyQuery(searchHistory: history));
   }
 }

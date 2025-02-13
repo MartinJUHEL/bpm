@@ -21,6 +21,8 @@ import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lottie/lottie.dart';
 
+import '../widgets/search_ad/search_history_widget.dart';
+
 class SearchTab extends StatefulWidget {
   const SearchTab({super.key});
 
@@ -30,6 +32,14 @@ class SearchTab extends StatefulWidget {
 
 class _SearchTabState extends State<SearchTab> {
   final _searchTextController = TextEditingController();
+  final _focusNode = FocusNode();
+
+  @override
+  void dispose() {
+    _focusNode.dispose();
+    _searchTextController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,8 +50,10 @@ class _SearchTabState extends State<SearchTab> {
           switch (state) {
             case SearchAdNone():
               _searchTextController.text = empty;
+              _focusNode.unfocus();
             case SearchAdDisplayResults():
               _searchTextController.text = state.query;
+              _focusNode.unfocus();
             default:
               break;
           }
@@ -53,6 +65,7 @@ class _SearchTabState extends State<SearchTab> {
               if (didPop) {
                 return;
               }
+              _focusNode.unfocus();
               switch (state) {
                 case SearchAdNone():
                   context.pop();
@@ -77,7 +90,7 @@ class _SearchTabState extends State<SearchTab> {
                       SearchAdSearching() => SuggestionsListWidget(
                           suggestions: state.suggestions,
                           onSuggestionTap: (suggestion) {
-                            FocusManager.instance.primaryFocus?.unfocus();
+                            _focusNode.unfocus();
                             blocContext.read<SearchAdCubit>().onSearchStarted(suggestion);
                           }),
                       SearchAdDisplayResults() => DisplaySearchResultWidget(
@@ -87,15 +100,23 @@ class _SearchTabState extends State<SearchTab> {
                           totalAds: state.totalAds,
                           isNextPageLoading: state.isNextPageLoading,
                         ),
-                      SearchAdSuggestionEmpty() => SuggestionTile(
-                          title: 'searchFor'.tr(args: [state.query]),
-                          onTap: () => blocContext.read<SearchAdCubit>().onSearchStarted(state.query),
+                      SearchAdSuggestionEmpty() => Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: Dimens.paddingPage),
+                          child: SuggestionTile(
+                            title: 'searchFor'.tr(args: [state.query]),
+                            onTap: () {
+                              _focusNode.unfocus();
+                              blocContext.read<SearchAdCubit>().onSearchStarted(state.query);
+                            },
+                          ),
                         ),
                       SearchAdError() => const ExpandedCenterWidget(
                             child: ErrorScreen(
                           assetPath: Constants.serverErrorAsset,
                         )),
-                      SearchAdQueryEmpty() => const SizedBox(), // TODO: Handle search history
+                      SearchAdQueryEmpty() => SearchHistoryWidget(
+                          searchHistory: state.searchHistory,
+                        ),
                       SearchAdEmptyResult() => const SearchAdNoResultWidget(),
                       SearchAdLoading() => ExpandedCenterWidget(child: Lottie.asset(Lotties.searching)),
                     },
@@ -113,14 +134,18 @@ class _SearchTabState extends State<SearchTab> {
         titleSpacing: Dimens.paddingNone,
         toolbarHeight: displayCity ? _appBarMaxHeight : _appBarMinHeight,
         title: AdSearchBar(
+          focusNode: _focusNode,
           displayCity: displayCity,
-          onCityClicked: () => _showLocationFilterModal(context: context),
+          onCityClicked: () {
+            _focusNode.unfocus();
+            _showLocationFilterModal(context: context);
+          },
           onSearchStarted: (query) {
-            FocusManager.instance.primaryFocus?.unfocus();
+            _focusNode.unfocus();
             context.read<SearchAdCubit>().onSearchStarted(query);
           },
           onBackPressed: () {
-            FocusScope.of(context).unfocus();
+            _focusNode.unfocus();
             context.read<SearchAdCubit>().onSearchCancel();
           },
           onClearClicked: () {

@@ -12,6 +12,8 @@ import 'package:assoshare/domain/entities/ad/post_ad_entity.dart' as _i6;
 import 'package:assoshare/domain/entities/filter/filter_entity.dart' as _i2;
 import 'package:assoshare/domain/repositories/ad_repository.dart' as _i3;
 import 'package:assoshare/domain/repositories/filter_repository.dart' as _i10;
+import 'package:assoshare/domain/repositories/search_history_repository.dart'
+    as _i11;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:mockito/src/dummies.dart' as _i7;
 
@@ -227,6 +229,52 @@ class MockFilterRepository extends _i1.Mock implements _i10.FilterRepository {
         Invocation.method(
           #clearLocationFilters,
           [],
+        ),
+        returnValue: _i4.Future<void>.value(),
+        returnValueForMissingStub: _i4.Future<void>.value(),
+      ) as _i4.Future<void>);
+}
+
+/// A class which mocks [SearchHistoryRepository].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockSearchHistoryRepository extends _i1.Mock
+    implements _i11.SearchHistoryRepository {
+  @override
+  _i4.Future<void> addSearch(String? query) => (super.noSuchMethod(
+        Invocation.method(
+          #addSearch,
+          [query],
+        ),
+        returnValue: _i4.Future<void>.value(),
+        returnValueForMissingStub: _i4.Future<void>.value(),
+      ) as _i4.Future<void>);
+
+  @override
+  _i4.Future<List<String>> getSearchHistory() => (super.noSuchMethod(
+        Invocation.method(
+          #getSearchHistory,
+          [],
+        ),
+        returnValue: _i4.Future<List<String>>.value(<String>[]),
+        returnValueForMissingStub: _i4.Future<List<String>>.value(<String>[]),
+      ) as _i4.Future<List<String>>);
+
+  @override
+  _i4.Future<void> clearHistory() => (super.noSuchMethod(
+        Invocation.method(
+          #clearHistory,
+          [],
+        ),
+        returnValue: _i4.Future<void>.value(),
+        returnValueForMissingStub: _i4.Future<void>.value(),
+      ) as _i4.Future<void>);
+
+  @override
+  _i4.Future<void> removeSearch(String? query) => (super.noSuchMethod(
+        Invocation.method(
+          #removeSearch,
+          [query],
         ),
         returnValue: _i4.Future<void>.value(),
         returnValueForMissingStub: _i4.Future<void>.value(),

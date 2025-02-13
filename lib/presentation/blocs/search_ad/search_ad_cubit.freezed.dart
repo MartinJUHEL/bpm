@@ -620,6 +620,8 @@ abstract class _$$SearchAdQueryEmptyImplCopyWith<$Res> {
   factory _$$SearchAdQueryEmptyImplCopyWith(_$SearchAdQueryEmptyImpl value,
           $Res Function(_$SearchAdQueryEmptyImpl) then) =
       __$$SearchAdQueryEmptyImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<String> searchHistory});
 }
 
 /// @nodoc
@@ -632,30 +634,74 @@ class __$$SearchAdQueryEmptyImplCopyWithImpl<$Res>
 
   /// Create a copy of SearchAdState
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? searchHistory = null,
+  }) {
+    return _then(_$SearchAdQueryEmptyImpl(
+      searchHistory: null == searchHistory
+          ? _value._searchHistory
+          : searchHistory // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$SearchAdQueryEmptyImpl implements SearchAdQueryEmpty {
-  const _$SearchAdQueryEmptyImpl();
+  const _$SearchAdQueryEmptyImpl({final List<String> searchHistory = const []})
+      : _searchHistory = searchHistory;
+
+  final List<String> _searchHistory;
+  @override
+  @JsonKey()
+  List<String> get searchHistory {
+    if (_searchHistory is EqualUnmodifiableListView) return _searchHistory;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_searchHistory);
+  }
 
   @override
   String toString() {
-    return 'SearchAdState.emptyQuery()';
+    return 'SearchAdState.emptyQuery(searchHistory: $searchHistory)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$SearchAdQueryEmptyImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$SearchAdQueryEmptyImpl &&
+            const DeepCollectionEquality()
+                .equals(other._searchHistory, _searchHistory));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_searchHistory));
+
+  /// Create a copy of SearchAdState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SearchAdQueryEmptyImplCopyWith<_$SearchAdQueryEmptyImpl> get copyWith =>
+      __$$SearchAdQueryEmptyImplCopyWithImpl<_$SearchAdQueryEmptyImpl>(
+          this, _$identity);
 }
 
 abstract class SearchAdQueryEmpty implements SearchAdState {
-  const factory SearchAdQueryEmpty() = _$SearchAdQueryEmptyImpl;
+  const factory SearchAdQueryEmpty({final List<String> searchHistory}) =
+      _$SearchAdQueryEmptyImpl;
+
+  List<String> get searchHistory;
+
+  /// Create a copy of SearchAdState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$SearchAdQueryEmptyImplCopyWith<_$SearchAdQueryEmptyImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
