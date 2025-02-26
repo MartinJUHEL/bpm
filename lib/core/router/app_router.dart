@@ -117,7 +117,7 @@ abstract class AppRouter {
                     BlocProvider(create: (_) => locator<UserCubit>()..initialize()),
                   ],
                   child: ChatDetailsScreen(
-                    chatId: state.extra as String,
+                    args: state.extra as ChatDetailsScreenArgs,
                   )),
             ),
           ]),

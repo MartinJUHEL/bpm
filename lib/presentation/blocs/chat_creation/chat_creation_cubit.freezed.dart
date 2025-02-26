@@ -20,7 +20,7 @@ mixin _$ChatCreationState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(String chatId) success,
+    required TResult Function() success,
     required TResult Function() error,
   }) =>
       throw _privateConstructorUsedError;
@@ -28,7 +28,7 @@ mixin _$ChatCreationState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(String chatId)? success,
+    TResult? Function()? success,
     TResult? Function()? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -36,7 +36,7 @@ mixin _$ChatCreationState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(String chatId)? success,
+    TResult Function()? success,
     TResult Function()? error,
     required TResult orElse(),
   }) =>
@@ -132,7 +132,7 @@ class _$InitialImpl implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(String chatId) success,
+    required TResult Function() success,
     required TResult Function() error,
   }) {
     return initial();
@@ -143,7 +143,7 @@ class _$InitialImpl implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(String chatId)? success,
+    TResult? Function()? success,
     TResult? Function()? error,
   }) {
     return initial?.call();
@@ -154,7 +154,7 @@ class _$InitialImpl implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(String chatId)? success,
+    TResult Function()? success,
     TResult Function()? error,
     required TResult orElse(),
   }) {
@@ -249,7 +249,7 @@ class _$LoadingImpl implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(String chatId) success,
+    required TResult Function() success,
     required TResult Function() error,
   }) {
     return loading();
@@ -260,7 +260,7 @@ class _$LoadingImpl implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(String chatId)? success,
+    TResult? Function()? success,
     TResult? Function()? error,
   }) {
     return loading?.call();
@@ -271,7 +271,7 @@ class _$LoadingImpl implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(String chatId)? success,
+    TResult Function()? success,
     TResult Function()? error,
     required TResult orElse(),
   }) {
@@ -328,8 +328,6 @@ abstract class _$$SuccessImplCopyWith<$Res> {
   factory _$$SuccessImplCopyWith(
           _$SuccessImpl value, $Res Function(_$SuccessImpl) then) =
       __$$SuccessImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String chatId});
 }
 
 /// @nodoc
@@ -342,61 +340,36 @@ class __$$SuccessImplCopyWithImpl<$Res>
 
   /// Create a copy of ChatCreationState
   /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? chatId = null,
-  }) {
-    return _then(_$SuccessImpl(
-      null == chatId
-          ? _value.chatId
-          : chatId // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
 }
 
 /// @nodoc
 
 class _$SuccessImpl implements _Success {
-  const _$SuccessImpl(this.chatId);
-
-  @override
-  final String chatId;
+  const _$SuccessImpl();
 
   @override
   String toString() {
-    return 'ChatCreationState.success(chatId: $chatId)';
+    return 'ChatCreationState.success()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$SuccessImpl &&
-            (identical(other.chatId, chatId) || other.chatId == chatId));
+        (other.runtimeType == runtimeType && other is _$SuccessImpl);
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, chatId);
-
-  /// Create a copy of ChatCreationState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
-      __$$SuccessImplCopyWithImpl<_$SuccessImpl>(this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(String chatId) success,
+    required TResult Function() success,
     required TResult Function() error,
   }) {
-    return success(chatId);
+    return success();
   }
 
   @override
@@ -404,10 +377,10 @@ class _$SuccessImpl implements _Success {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(String chatId)? success,
+    TResult? Function()? success,
     TResult? Function()? error,
   }) {
-    return success?.call(chatId);
+    return success?.call();
   }
 
   @override
@@ -415,12 +388,12 @@ class _$SuccessImpl implements _Success {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(String chatId)? success,
+    TResult Function()? success,
     TResult Function()? error,
     required TResult orElse(),
   }) {
     if (success != null) {
-      return success(chatId);
+      return success();
     }
     return orElse();
   }
@@ -464,15 +437,7 @@ class _$SuccessImpl implements _Success {
 }
 
 abstract class _Success implements ChatCreationState {
-  const factory _Success(final String chatId) = _$SuccessImpl;
-
-  String get chatId;
-
-  /// Create a copy of ChatCreationState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  const factory _Success() = _$SuccessImpl;
 }
 
 /// @nodoc
@@ -518,7 +483,7 @@ class _$ErrorImpl implements _Error {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(String chatId) success,
+    required TResult Function() success,
     required TResult Function() error,
   }) {
     return error();
@@ -529,7 +494,7 @@ class _$ErrorImpl implements _Error {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(String chatId)? success,
+    TResult? Function()? success,
     TResult? Function()? error,
   }) {
     return error?.call();
@@ -540,7 +505,7 @@ class _$ErrorImpl implements _Error {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(String chatId)? success,
+    TResult Function()? success,
     TResult Function()? error,
     required TResult orElse(),
   }) {

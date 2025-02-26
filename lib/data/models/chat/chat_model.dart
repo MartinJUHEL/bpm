@@ -16,9 +16,12 @@ class ChatModel with _$ChatModel {
     required String lastMessage,
     required String photoUrl,
     @JsonKey(fromJson: timestampToDateTime) required DateTime lastMessageTimestamp,
-    required List<String> participants,
+    required String senderId,
+    required String renterId,
     @JsonKey(fromJson: timestampToDateTime) required DateTime createdAt,
     required bool lastMessageRead,
+    required String renterName,
+    required String senderName,
   }) = _ChatModel;
 
   factory ChatModel.fromJson(Map<String, dynamic> json) => _$ChatModelFromJson(json);
@@ -31,8 +34,11 @@ class ChatModel with _$ChatModel {
         adTitle: adTitle,
         lastMessage: lastMessage,
         lastMessageTimestamp: lastMessageTimestamp,
-        participants: participants,
         photoUrl: photoUrl,
+        senderId: senderId,
+        renterId: renterId,
+        renterName: renterName,
+        senderName: senderName,
       );
 
   Map<String, dynamic> toFirestore() {
@@ -42,10 +48,13 @@ class ChatModel with _$ChatModel {
       'adTitle': adTitle,
       'lastMessage': lastMessage,
       'photoUrl': photoUrl,
-      'participants': participants,
+      'senderId': senderId,
+      'renterId': renterId,
       'lastMessageRead': false,
       'lastMessageTimestamp': FieldValue.serverTimestamp(),
       'createdAt': FieldValue.serverTimestamp(),
+      'renterName': renterName,
+      'senderName': senderName,
     };
   }
 }

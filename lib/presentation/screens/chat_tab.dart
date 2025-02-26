@@ -1,6 +1,7 @@
 import 'package:assoshare/core/di/injection.dart';
 import 'package:assoshare/core/router/route_list.dart';
 import 'package:assoshare/presentation/blocs/chat/chat_cubit.dart';
+import 'package:assoshare/presentation/blocs/user/user_cubit.dart';
 import 'package:assoshare/presentation/widgets/common/error_screen.dart';
 import 'package:assoshare/presentation/widgets/common/expanded_center_widget.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -8,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:timeago/timeago.dart' as timeago;
+import 'package:assoshare/presentation/screens/chat_details_screen.dart';
 
 class ChatTab extends StatelessWidget {
   const ChatTab({super.key});
@@ -49,6 +51,10 @@ class ChatTab extends StatelessWidget {
                   separatorBuilder: (context, index) => const Divider(),
                   itemBuilder: (context, index) {
                     final chat = chats[index];
+                    final currentUser = context.read<UserCubit>().state;
+                    
+                    if (currentUser == null) return const SizedBox.shrink();
+
                     return ListTile(
                       title: Text(
                         chat.adTitle,
@@ -73,7 +79,13 @@ class ChatTab extends StatelessWidget {
                       onTap: () {
                         context.pushNamed(
                           RouteList.chatDetails.name,
-                          extra: chat.id,
+                          extra: ChatDetailsScreenArgs(
+                            chatId: chat.id,
+                            recipientName: chat.renterId == currentUser.uid 
+                              ? chat.senderName 
+                              : chat.renterName,
+                            adTitle: chat.adTitle,
+                          ),
                         );
                       },
                     );

@@ -1,20 +1,22 @@
+import 'package:assoshare/core/data/services/base_firebase_service.dart';
 import 'package:assoshare/data/models/chat/chat_model.dart';
 import 'package:assoshare/data/models/chat/message_model.dart';
 import 'package:assoshare/domain/entities/chat/message_entity.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:injectable/injectable.dart';
 import 'package:uuid/uuid.dart';
-import 'dart:developer' as dev;
 
 @LazySingleton()
-class ChatFirebaseService {
+class ChatFirebaseService extends BaseFirebaseService {
   final FirebaseFirestore _firestore;
 
-  ChatFirebaseService(this._firestore);
+  ChatFirebaseService(this._firestore, super._logger);
 
   static const _chatsCollection = 'chats';
   static const _messagesCollection = 'messages';
-  static const _participantsField = 'participants';
+  static const _senderIdField = 'senderId';
+  static const _renterIdField = 'renterId';
   static const _lastMessageReadField = 'lastMessageRead';
   static const _lastMessageField = 'lastMessage';
   static const _lastMessageTimestampField = 'lastMessageTimestamp';
@@ -29,18 +31,23 @@ class ChatFirebaseService {
   Stream<List<ChatModel>> getUserChats(String userId) {
     return _firestore
         .collection(_chatsCollection)
-        .where(_participantsField, arrayContains: userId)
+        .where(
+          Filter.or(
+            Filter(_senderIdField, isEqualTo: userId),
+            Filter(_renterIdField, isEqualTo: userId),
+          ),
+        )
         .orderBy(_lastMessageTimestampField, descending: true)
         .snapshots()
         .map((snapshot) => snapshot.docs.map((doc) => ChatModel.fromJson({...doc.data(), 'id': doc.id})).toList());
   }
 
   /// Get messages for a specific chat with pagination
-  Stream<List<MessageModel>> getChatMessages(
+  Future<List<MessageModel>> getChatMessages(
     String chatId, {
     int limit = 20,
     DateTime? lastMessageDateTime,
-  }) {
+  }) async {
     Query<Map<String, dynamic>> query =
         _getMessagesCollection(chatId).orderBy(_timestampField, descending: true).limit(limit);
 
@@ -48,9 +55,9 @@ class ChatFirebaseService {
       query = query.startAfter([Timestamp.fromDate(lastMessageDateTime)]);
     }
 
-    return query
-        .snapshots()
-        .map((snapshot) => snapshot.docs.map((doc) => MessageModel.fromJson({...doc.data(), 'id': doc.id})).toList());
+    final doc = await executeWithErrorHandling(() => query.get(), 'getChatMessages');
+
+    return doc.docs.map((doc) => MessageModel.fromJson({...doc.data(), 'id': doc.id})).toList();
   }
 
   /// Get latest messages for real-time updates
@@ -88,29 +95,30 @@ class ChatFirebaseService {
       _lastMessageReadField: false,
     });
 
-    await batch.commit();
+    return executeWithErrorHandling(() => batch.commit(), 'sendMessage');
   }
 
-  /// Mark messages as read
-  Future<void> markMessagesAsRead(String chatId, String userId) async {
-    await _firestore.collection(_chatsCollection).doc(chatId).update({
-      _lastMessageReadField: true,
-    });
+  /// Mark messages as read if the user is not the sender of the last message
+  Future<void> markMessagesAsRead(String chatId) async {
+    return executeWithErrorHandling(
+        () => _firestore.collection(_chatsCollection).doc(chatId).update({
+              _lastMessageReadField: true,
+            }),
+        'markMessagesAsRead');
   }
 
   /// Create a new chat with the first message
-  Future<String> createChat({
+  Future<void> createChat({
     required String senderId,
     required String receiverId,
     required String adId,
     required String adTitle,
     required String photoUrl,
     required String content,
+    required String renterName,
+    required String senderName,
   }) async {
-    dev.log('Creating chat with senderId: $senderId, receiverId: $receiverId');
-
     if (senderId == receiverId) {
-      dev.log('Error: senderId and receiverId are the same');
       throw Exception('Cannot create chat with yourself');
     }
 
@@ -127,13 +135,15 @@ class ChatFirebaseService {
       lastMessage: content,
       photoUrl: photoUrl,
       lastMessageTimestamp: DateTime.now(),
-      participants: [senderId, receiverId],
+      senderId: senderId,
+      renterId: receiverId,
       lastMessageRead: false,
       createdAt: DateTime.now(),
+      renterName: renterName,
+      senderName: senderName,
     );
 
     final chatFirestoreData = chatData.toFirestore();
-    dev.log('Chat data to be sent to Firestore: $chatFirestoreData');
 
     batch.set(chatRef, chatFirestoreData);
 
@@ -149,16 +159,8 @@ class ChatFirebaseService {
     );
 
     final messageFirestoreData = messageData.toFirestore();
-    dev.log('Message data to be sent to Firestore: $messageFirestoreData');
     batch.set(messageRef, messageFirestoreData);
 
-    try {
-      await batch.commit();
-      dev.log('Successfully created chat with ID: $chatId');
-      return chatId;
-    } catch (e, stackTrace) {
-      dev.log('Error creating chat: $e\nStack trace: $stackTrace');
-      rethrow;
-    }
+    return executeWithErrorHandling(() => batch.commit(), 'createChat');
   }
 }

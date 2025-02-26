@@ -159,6 +159,10 @@ Future<_i174.GetIt> $initGetIt(
         gh<_i974.FirebaseFirestore>(),
         gh<_i974.Logger>(),
       ));
+  gh.lazySingleton<_i495.ChatFirebaseService>(() => _i495.ChatFirebaseService(
+        gh<_i974.FirebaseFirestore>(),
+        gh<_i974.Logger>(),
+      ));
   gh.lazySingleton<_i248.GenericErrorTrigger>(
       () => _i354.GenericErrorTriggerImpl());
   gh.lazySingleton<_i884.FilterRepository>(
@@ -174,8 +178,6 @@ Future<_i174.GetIt> $initGetIt(
         gh<_i59.FirebaseAuth>(),
         gh<_i974.Logger>(),
       ));
-  gh.lazySingleton<_i495.ChatFirebaseService>(
-      () => _i495.ChatFirebaseService(gh<_i974.FirebaseFirestore>()));
   gh.lazySingleton<_i864.FavoriteFirebaseService>(
       () => _i864.FavoriteFirebaseService(gh<_i974.FirebaseFirestore>()));
   gh.factory<_i84.PickPhotosBlocCubit>(() => _i84.PickPhotosBlocCubit(

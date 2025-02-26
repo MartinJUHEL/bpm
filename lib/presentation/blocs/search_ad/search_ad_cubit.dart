@@ -65,18 +65,20 @@ class SearchAdCubit extends Cubit<SearchAdState> {
         return;
       }
 
+      final updatedPage = page + 1;
+
       // Start loading.
       emit(SearchAdDisplayResults(
           query: query, result: result, filter: filter, page: page, totalAds: totalAds, isNextPageLoading: true));
 
-      final newResult = await _adRepository.searchAd(query, 0, filter);
+      final newResult = await _adRepository.searchAd(query, updatedPage, filter);
 
       newResult.when(success: (adsPage) {
         emit(SearchAdState.displayResults(
             query: query,
             result: [...result, ...adsPage.ads],
             filter: filter,
-            page: 0,
+            page: updatedPage,
             totalAds: adsPage.total,
             isNextPageLoading: false));
       }, failure: (error) {

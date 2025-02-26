@@ -14,11 +14,12 @@ _$ChatModelImpl _$$ChatModelImplFromJson(Map<String, dynamic> json) =>
       lastMessage: json['lastMessage'] as String,
       photoUrl: json['photoUrl'] as String,
       lastMessageTimestamp: timestampToDateTime(json['lastMessageTimestamp']),
-      participants: (json['participants'] as List<dynamic>)
-          .map((e) => e as String)
-          .toList(),
+      senderId: json['senderId'] as String,
+      renterId: json['renterId'] as String,
       createdAt: timestampToDateTime(json['createdAt']),
       lastMessageRead: json['lastMessageRead'] as bool,
+      renterName: json['renterName'] as String,
+      senderName: json['senderName'] as String,
     );
 
 Map<String, dynamic> _$$ChatModelImplToJson(_$ChatModelImpl instance) =>
@@ -29,7 +30,10 @@ Map<String, dynamic> _$$ChatModelImplToJson(_$ChatModelImpl instance) =>
       'lastMessage': instance.lastMessage,
       'photoUrl': instance.photoUrl,
       'lastMessageTimestamp': instance.lastMessageTimestamp.toIso8601String(),
-      'participants': instance.participants,
+      'senderId': instance.senderId,
+      'renterId': instance.renterId,
       'createdAt': instance.createdAt.toIso8601String(),
       'lastMessageRead': instance.lastMessageRead,
+      'renterName': instance.renterName,
+      'senderName': instance.senderName,
     };

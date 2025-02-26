@@ -5,13 +5,15 @@ import 'package:assoshare/domain/entities/chat/message_entity.dart';
 abstract class ChatRepository {
   /// Create a new chat with the first message
   /// Returns the chat ID if successful
-  Future<Result<String>> createChat({
+  Future<Result<void>> createChat({
     required String senderId,
     required String receiverId,
     required String adId,
     required String adTitle,
     required String photoUrl,
     required String content,
+    required String renterName,
+    required String senderName,
   });
 
   /// Get all chats for a user
@@ -21,7 +23,7 @@ abstract class ChatRepository {
   /// Get messages for a specific chat with pagination
   /// [limit] The maximum number of messages to fetch per page
   /// [lastMessageTimestamp] The timestamp of the last message in the current list, used for pagination
-  Stream<List<MessageEntity>> getChatMessages(
+  Future<Result<List<MessageEntity>>> getChatMessages(
     String chatId, {
     int limit = 20,
     DateTime? lastMessageTimestamp,
@@ -39,5 +41,5 @@ abstract class ChatRepository {
       String chatId, String userId, String content, MessageType type);
 
   /// Mark messages as read
-  Future<Result<void>> markMessagesAsRead(String chatId, String userId);
+  Future<Result<void>> markMessagesAsRead(String chatId);
 }

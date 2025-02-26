@@ -54,27 +54,6 @@ class _AdDetailsScreenState extends State<AdDetailsScreen> with TickerProviderSt
     return false;
   }
 
-  void _showMessageBottomSheet(BuildContext context) {
-    final ad = widget.args.ad;
-    showModalBottomSheet(
-      context: context,
-      isScrollControlled: true,
-      showDragHandle: true,
-      builder: (bottomSheetContext) => MessageBottomSheet(
-        renterName: ad.renterName,
-        onSend: (message) {
-          context.read<ChatCreationCubit>().createChat(
-                receiverId: ad.renterId,
-                adId: ad.id,
-                adTitle: ad.title,
-                photoUrl: ad.photosUrl.first,
-                content: message,
-              );
-        },
-      ),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -84,10 +63,11 @@ class _AdDetailsScreenState extends State<AdDetailsScreen> with TickerProviderSt
           return BlocListener<ChatCreationCubit, ChatCreationState>(
             listener: (context, state) {
               state.whenOrNull(
-                success: (chatId) {
-                  context.pushNamed(
-                    RouteList.chatDetails.name,
-                    extra: chatId,
+                success: () {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text('contactSucceed'.tr()),
+                    ),
                   );
                 },
                 error: () {
@@ -241,6 +221,28 @@ class _AdDetailsScreenState extends State<AdDetailsScreen> with TickerProviderSt
               },
             ),
           );
+        },
+      ),
+    );
+  }
+
+  void _showMessageBottomSheet(BuildContext context) {
+    final ad = widget.args.ad;
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      showDragHandle: true,
+      builder: (bottomSheetContext) => MessageBottomSheet(
+        renterName: ad.renterName,
+        onSend: (message) {
+          context.read<ChatCreationCubit>().createChat(
+                receiverId: ad.renterId,
+                adId: ad.id,
+                adTitle: ad.title,
+                photoUrl: ad.photosUrl.first,
+                content: message,
+                renterName: ad.renterName,
+              );
         },
       ),
     );

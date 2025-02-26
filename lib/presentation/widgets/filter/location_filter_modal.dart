@@ -207,7 +207,7 @@ class _LocationFilterModalState extends State<LocationFilterModal> {
   Widget _buildSuffixIcon(BuildContext context, SearchCityState searchState) {
     if (searchState.locationLoading) {
       return const Padding(
-        padding: EdgeInsets.only(right: 8.0),
+        padding: EdgeInsets.only(right: Dimens.paddingSmaller),
         child: SizedBox(
           width: Dimens.iconSmall,
           height: Dimens.iconSmall,

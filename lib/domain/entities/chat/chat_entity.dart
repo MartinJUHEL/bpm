@@ -13,6 +13,9 @@ class ChatEntity with _$ChatEntity {
     required final String lastMessage,
     required final DateTime lastMessageTimestamp,
     required final String photoUrl,
-    required final List<String> participants,
+    required final String senderId,
+    required final String renterId,
+    required final String renterName,
+    required final String senderName,
   }) = _ChatEntity;
 }

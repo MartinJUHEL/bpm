@@ -115,6 +115,8 @@ dependencies:
 
   #https://pub.dev/packages/path_provider
   path_provider: ^2.1.5
+
+  #https://pub.dev/packages/timeago
   timeago: ^3.7.0
 
 dev_dependencies:

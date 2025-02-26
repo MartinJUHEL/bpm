@@ -27,10 +27,13 @@ mixin _$ChatModel {
   String get photoUrl => throw _privateConstructorUsedError;
   @JsonKey(fromJson: timestampToDateTime)
   DateTime get lastMessageTimestamp => throw _privateConstructorUsedError;
-  List<String> get participants => throw _privateConstructorUsedError;
+  String get senderId => throw _privateConstructorUsedError;
+  String get renterId => throw _privateConstructorUsedError;
   @JsonKey(fromJson: timestampToDateTime)
   DateTime get createdAt => throw _privateConstructorUsedError;
   bool get lastMessageRead => throw _privateConstructorUsedError;
+  String get renterName => throw _privateConstructorUsedError;
+  String get senderName => throw _privateConstructorUsedError;
 
   /// Serializes this ChatModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -54,9 +57,12 @@ abstract class $ChatModelCopyWith<$Res> {
       String lastMessage,
       String photoUrl,
       @JsonKey(fromJson: timestampToDateTime) DateTime lastMessageTimestamp,
-      List<String> participants,
+      String senderId,
+      String renterId,
       @JsonKey(fromJson: timestampToDateTime) DateTime createdAt,
-      bool lastMessageRead});
+      bool lastMessageRead,
+      String renterName,
+      String senderName});
 }
 
 /// @nodoc
@@ -80,9 +86,12 @@ class _$ChatModelCopyWithImpl<$Res, $Val extends ChatModel>
     Object? lastMessage = null,
     Object? photoUrl = null,
     Object? lastMessageTimestamp = null,
-    Object? participants = null,
+    Object? senderId = null,
+    Object? renterId = null,
     Object? createdAt = null,
     Object? lastMessageRead = null,
+    Object? renterName = null,
+    Object? senderName = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -109,10 +118,14 @@ class _$ChatModelCopyWithImpl<$Res, $Val extends ChatModel>
           ? _value.lastMessageTimestamp
           : lastMessageTimestamp // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      participants: null == participants
-          ? _value.participants
-          : participants // ignore: cast_nullable_to_non_nullable
-              as List<String>,
+      senderId: null == senderId
+          ? _value.senderId
+          : senderId // ignore: cast_nullable_to_non_nullable
+              as String,
+      renterId: null == renterId
+          ? _value.renterId
+          : renterId // ignore: cast_nullable_to_non_nullable
+              as String,
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -121,6 +134,14 @@ class _$ChatModelCopyWithImpl<$Res, $Val extends ChatModel>
           ? _value.lastMessageRead
           : lastMessageRead // ignore: cast_nullable_to_non_nullable
               as bool,
+      renterName: null == renterName
+          ? _value.renterName
+          : renterName // ignore: cast_nullable_to_non_nullable
+              as String,
+      senderName: null == senderName
+          ? _value.senderName
+          : senderName // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -140,9 +161,12 @@ abstract class _$$ChatModelImplCopyWith<$Res>
       String lastMessage,
       String photoUrl,
       @JsonKey(fromJson: timestampToDateTime) DateTime lastMessageTimestamp,
-      List<String> participants,
+      String senderId,
+      String renterId,
       @JsonKey(fromJson: timestampToDateTime) DateTime createdAt,
-      bool lastMessageRead});
+      bool lastMessageRead,
+      String renterName,
+      String senderName});
 }
 
 /// @nodoc
@@ -164,9 +188,12 @@ class __$$ChatModelImplCopyWithImpl<$Res>
     Object? lastMessage = null,
     Object? photoUrl = null,
     Object? lastMessageTimestamp = null,
-    Object? participants = null,
+    Object? senderId = null,
+    Object? renterId = null,
     Object? createdAt = null,
     Object? lastMessageRead = null,
+    Object? renterName = null,
+    Object? senderName = null,
   }) {
     return _then(_$ChatModelImpl(
       id: null == id
@@ -193,10 +220,14 @@ class __$$ChatModelImplCopyWithImpl<$Res>
           ? _value.lastMessageTimestamp
           : lastMessageTimestamp // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      participants: null == participants
-          ? _value._participants
-          : participants // ignore: cast_nullable_to_non_nullable
-              as List<String>,
+      senderId: null == senderId
+          ? _value.senderId
+          : senderId // ignore: cast_nullable_to_non_nullable
+              as String,
+      renterId: null == renterId
+          ? _value.renterId
+          : renterId // ignore: cast_nullable_to_non_nullable
+              as String,
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -205,6 +236,14 @@ class __$$ChatModelImplCopyWithImpl<$Res>
           ? _value.lastMessageRead
           : lastMessageRead // ignore: cast_nullable_to_non_nullable
               as bool,
+      renterName: null == renterName
+          ? _value.renterName
+          : renterName // ignore: cast_nullable_to_non_nullable
+              as String,
+      senderName: null == senderName
+          ? _value.senderName
+          : senderName // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -220,11 +259,13 @@ class _$ChatModelImpl extends _ChatModel {
       required this.photoUrl,
       @JsonKey(fromJson: timestampToDateTime)
       required this.lastMessageTimestamp,
-      required final List<String> participants,
+      required this.senderId,
+      required this.renterId,
       @JsonKey(fromJson: timestampToDateTime) required this.createdAt,
-      required this.lastMessageRead})
-      : _participants = participants,
-        super._();
+      required this.lastMessageRead,
+      required this.renterName,
+      required this.senderName})
+      : super._();
 
   factory _$ChatModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$ChatModelImplFromJson(json);
@@ -242,23 +283,23 @@ class _$ChatModelImpl extends _ChatModel {
   @override
   @JsonKey(fromJson: timestampToDateTime)
   final DateTime lastMessageTimestamp;
-  final List<String> _participants;
   @override
-  List<String> get participants {
-    if (_participants is EqualUnmodifiableListView) return _participants;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_participants);
-  }
-
+  final String senderId;
+  @override
+  final String renterId;
   @override
   @JsonKey(fromJson: timestampToDateTime)
   final DateTime createdAt;
   @override
   final bool lastMessageRead;
+  @override
+  final String renterName;
+  @override
+  final String senderName;
 
   @override
   String toString() {
-    return 'ChatModel(id: $id, adId: $adId, adTitle: $adTitle, lastMessage: $lastMessage, photoUrl: $photoUrl, lastMessageTimestamp: $lastMessageTimestamp, participants: $participants, createdAt: $createdAt, lastMessageRead: $lastMessageRead)';
+    return 'ChatModel(id: $id, adId: $adId, adTitle: $adTitle, lastMessage: $lastMessage, photoUrl: $photoUrl, lastMessageTimestamp: $lastMessageTimestamp, senderId: $senderId, renterId: $renterId, createdAt: $createdAt, lastMessageRead: $lastMessageRead, renterName: $renterName, senderName: $senderName)';
   }
 
   @override
@@ -275,12 +316,18 @@ class _$ChatModelImpl extends _ChatModel {
                 other.photoUrl == photoUrl) &&
             (identical(other.lastMessageTimestamp, lastMessageTimestamp) ||
                 other.lastMessageTimestamp == lastMessageTimestamp) &&
-            const DeepCollectionEquality()
-                .equals(other._participants, _participants) &&
+            (identical(other.senderId, senderId) ||
+                other.senderId == senderId) &&
+            (identical(other.renterId, renterId) ||
+                other.renterId == renterId) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
             (identical(other.lastMessageRead, lastMessageRead) ||
-                other.lastMessageRead == lastMessageRead));
+                other.lastMessageRead == lastMessageRead) &&
+            (identical(other.renterName, renterName) ||
+                other.renterName == renterName) &&
+            (identical(other.senderName, senderName) ||
+                other.senderName == senderName));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -293,9 +340,12 @@ class _$ChatModelImpl extends _ChatModel {
       lastMessage,
       photoUrl,
       lastMessageTimestamp,
-      const DeepCollectionEquality().hash(_participants),
+      senderId,
+      renterId,
       createdAt,
-      lastMessageRead);
+      lastMessageRead,
+      renterName,
+      senderName);
 
   /// Create a copy of ChatModel
   /// with the given fields replaced by the non-null parameter values.
@@ -322,9 +372,12 @@ abstract class _ChatModel extends ChatModel {
       required final String photoUrl,
       @JsonKey(fromJson: timestampToDateTime)
       required final DateTime lastMessageTimestamp,
-      required final List<String> participants,
+      required final String senderId,
+      required final String renterId,
       @JsonKey(fromJson: timestampToDateTime) required final DateTime createdAt,
-      required final bool lastMessageRead}) = _$ChatModelImpl;
+      required final bool lastMessageRead,
+      required final String renterName,
+      required final String senderName}) = _$ChatModelImpl;
   const _ChatModel._() : super._();
 
   factory _ChatModel.fromJson(Map<String, dynamic> json) =
@@ -344,12 +397,18 @@ abstract class _ChatModel extends ChatModel {
   @JsonKey(fromJson: timestampToDateTime)
   DateTime get lastMessageTimestamp;
   @override
-  List<String> get participants;
+  String get senderId;
+  @override
+  String get renterId;
   @override
   @JsonKey(fromJson: timestampToDateTime)
   DateTime get createdAt;
   @override
   bool get lastMessageRead;
+  @override
+  String get renterName;
+  @override
+  String get senderName;
 
   /// Create a copy of ChatModel
   /// with the given fields replaced by the non-null parameter values.

@@ -17,4 +17,4 @@ class MessageEntity {
     this.type = MessageType.text,
     this.status = MessageStatus.sent,
   });
-} 
+}

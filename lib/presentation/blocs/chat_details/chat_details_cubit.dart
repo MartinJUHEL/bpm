@@ -16,80 +16,83 @@ class ChatDetailsCubit extends Cubit<ChatDetailsState> {
   final ChatRepository _chatRepository;
   StreamSubscription<List<MessageEntity>>? _messagesSubscription;
   StreamSubscription<List<MessageEntity>>? _latestMessagesSubscription;
-  List<MessageEntity> _messages = [];
+
+  // Used for pagination.
   DateTime? _lastMessageTimestamp;
-  bool _hasReachedEnd = false;
-  String? _currentChatId;
-  bool _isLoadingMore = false;
 
   ChatDetailsCubit(this._chatRepository) : super(const ChatDetailsState.initial());
 
-  /// Initialize the chat details screen with the given chat ID
-  /// This will:
-  /// 1. Reset all state variables
-  /// 2. Load the first page of messages
-  /// 3. Setup real-time message listener
-  void initialize(String chatId) {
+  void initialize(String chatId, String userId) {
     emit(const ChatDetailsState.loading());
-    _currentChatId = chatId;
-    _messages = [];
     _lastMessageTimestamp = null;
-    _hasReachedEnd = false;
-    _isLoadingMore = false;
-    _loadMoreMessages();
-    _setupMessageListener();
+    _fetchMessages(chatId, userId);
   }
 
-  /// Load more messages using pagination
-  /// This will:
-  /// 1. Check if we can load more messages
-  /// 2. Update loading state
-  /// 3. Fetch new messages
-  /// 4. Update the messages list and state
-  Future<void> _loadMoreMessages() async {
-    if (_currentChatId == null || _hasReachedEnd || _isLoadingMore) return;
+  Future<void> _fetchMessages(String chatId, String userId) async {
+    final result = await _chatRepository.getChatMessages(
+      chatId,
+      limit: _pageSize,
+      lastMessageTimestamp: _lastMessageTimestamp,
+    );
 
-    _isLoadingMore = true;
-    if (state is _Loaded) {
-      emit(ChatDetailsState.loaded(
-        messages: _messages,
-        hasReachedEnd: _hasReachedEnd,
-        isLoadingMore: true,
-      ));
-    }
-
-    try {
-      final newMessages = await _chatRepository
-          .getChatMessages(
-            _currentChatId!,
-            limit: _pageSize,
-            lastMessageTimestamp: _lastMessageTimestamp,
-          )
-          .first;
-
-      if (newMessages.isEmpty) {
-        _hasReachedEnd = true;
-      } else {
-        _messages.addAll(newMessages);
+    result.when(success: (newMessages) {
+      if (newMessages.isNotEmpty) {
         _lastMessageTimestamp = newMessages.last.timestamp;
       }
 
+      final hasReachedEnd = newMessages.length < _pageSize;
+
+      if (newMessages[0].senderId != userId) {
+        _chatRepository.markMessagesAsRead(chatId);
+      }
+
       emit(ChatDetailsState.loaded(
-        messages: _messages,
-        hasReachedEnd: _hasReachedEnd,
+        messages: newMessages,
+        hasReachedEnd: hasReachedEnd,
         isLoadingMore: false,
       ));
-    } catch (e) {
+
+      _setupMessageListener(chatId, userId);
+    }, failure: (error) {
       emit(const ChatDetailsState.error());
-    } finally {
-      _isLoadingMore = false;
-    }
+    });
   }
 
-  /// Trigger loading more messages when user scrolls to the end
-  void loadMore() {
-    if (state is _Loaded && !_isLoadingMore) {
-      _loadMoreMessages();
+  Future<void> loadMoreMessages(String chatId) async {
+    if (state case _Loaded(:final messages, :final hasReachedEnd)) {
+      if (hasReachedEnd) return;
+
+      if (state is _Loaded) {
+        emit(ChatDetailsState.loaded(
+          messages: messages,
+          hasReachedEnd: hasReachedEnd,
+          isLoadingMore: true,
+        ));
+      }
+
+      final result = await _chatRepository.getChatMessages(
+        chatId,
+        limit: _pageSize,
+        lastMessageTimestamp: _lastMessageTimestamp,
+      );
+
+      result.when(success: (oldMessages) {
+        final hasReachedEnd = oldMessages.length < _pageSize;
+
+        if (oldMessages.isNotEmpty) {
+          _lastMessageTimestamp = oldMessages.last.timestamp;
+        }
+
+        final List<MessageEntity> updatedMessage = [...messages, ...oldMessages];
+
+        emit(ChatDetailsState.loaded(
+          messages: updatedMessage,
+          hasReachedEnd: hasReachedEnd,
+          isLoadingMore: false,
+        ));
+      }, failure: (error) {
+        emit(const ChatDetailsState.error());
+      });
     }
   }
 
@@ -108,32 +111,44 @@ class ChatDetailsCubit extends Cubit<ChatDetailsState> {
   /// 1. Cancel any existing subscriptions
   /// 2. Listen for new messages
   /// 3. Add new messages to the list if they don't exist
-  /// 4. Update the UI with the new messages
-  void _setupMessageListener() {
-    if (_currentChatId == null) return;
+  /// 4. Set message has read if necessary
+  /// 5. Update the UI with the new messages
+  void _setupMessageListener(String chatId, String userId) {
+    if (state case _Loaded(:final hasReachedEnd)) {
+      _messagesSubscription?.cancel();
+      _latestMessagesSubscription?.cancel();
 
-    _messagesSubscription?.cancel();
-    _latestMessagesSubscription?.cancel();
+      // Listen for new messages
+      _latestMessagesSubscription = _chatRepository.getLatestMessages(chatId).listen((newMessages) {
+        if (newMessages.isEmpty) return;
 
-    // Listen for new messages
-    _latestMessagesSubscription = _chatRepository.getLatestMessages(_currentChatId!).listen((newMessages) {
-      if (newMessages.isEmpty) return;
+        // Add only messages that are not already in the list
+        final messages = (state as _Loaded).messages;
 
-      // Add only messages that are not already in the list
-      final existingIds = _messages.map((m) => m.id).toSet();
-      final messagesToAdd = newMessages.where((m) => !existingIds.contains(m.id)).toList();
+        final existingIds = messages.map((m) => m.id).toSet();
+        final messagesToAdd = newMessages.where((m) => !existingIds.contains(m.id)).toList();
 
-      if (messagesToAdd.isNotEmpty) {
-        _messages.insertAll(0, messagesToAdd);
-        emit(ChatDetailsState.loaded(
-          messages: _messages,
-          hasReachedEnd: _hasReachedEnd,
-          isLoadingMore: false,
-        ));
-      }
-    }, onError: (error) {
-      emit(const ChatDetailsState.error());
-    });
+        if (messagesToAdd.isNotEmpty) {
+          // Create a new list instead of modifying the existing one
+          final List<MessageEntity> updatedMessages = [
+            ...messagesToAdd,
+            ...messages,
+          ];
+
+          if (updatedMessages[0].senderId != userId) {
+            _chatRepository.markMessagesAsRead(chatId);
+          }
+
+          emit(ChatDetailsState.loaded(
+            messages: updatedMessages,
+            hasReachedEnd: hasReachedEnd,
+            isLoadingMore: false,
+          ));
+        }
+      }, onError: (error) {
+        emit(const ChatDetailsState.error());
+      });
+    }
   }
 
   /// Clean up resources when the cubit is closed

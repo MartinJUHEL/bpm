@@ -90,7 +90,8 @@
     "description": "Description",
     "contact": "Contacter",
     "confirmDeletion": "Es-tu sur de vouloir supprimer ton annonce ?",
-    "contactUser": "Contacter {}"
+    "contactUser": "Contacter {}",
+    "contactSucceed" : "Le message a bien été envoyé"
   },
   "noFavorites": "Aucun favori",
   "noFavoritesDescription": "Ajoutez des annonces à vos favoris pour les retrouver facilement",

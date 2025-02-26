@@ -22,7 +22,10 @@ mixin _$ChatEntity {
   String get lastMessage => throw _privateConstructorUsedError;
   DateTime get lastMessageTimestamp => throw _privateConstructorUsedError;
   String get photoUrl => throw _privateConstructorUsedError;
-  List<String> get participants => throw _privateConstructorUsedError;
+  String get senderId => throw _privateConstructorUsedError;
+  String get renterId => throw _privateConstructorUsedError;
+  String get renterName => throw _privateConstructorUsedError;
+  String get senderName => throw _privateConstructorUsedError;
 
   /// Create a copy of ChatEntity
   /// with the given fields replaced by the non-null parameter values.
@@ -44,7 +47,10 @@ abstract class $ChatEntityCopyWith<$Res> {
       String lastMessage,
       DateTime lastMessageTimestamp,
       String photoUrl,
-      List<String> participants});
+      String senderId,
+      String renterId,
+      String renterName,
+      String senderName});
 }
 
 /// @nodoc
@@ -68,7 +74,10 @@ class _$ChatEntityCopyWithImpl<$Res, $Val extends ChatEntity>
     Object? lastMessage = null,
     Object? lastMessageTimestamp = null,
     Object? photoUrl = null,
-    Object? participants = null,
+    Object? senderId = null,
+    Object? renterId = null,
+    Object? renterName = null,
+    Object? senderName = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -95,10 +104,22 @@ class _$ChatEntityCopyWithImpl<$Res, $Val extends ChatEntity>
           ? _value.photoUrl
           : photoUrl // ignore: cast_nullable_to_non_nullable
               as String,
-      participants: null == participants
-          ? _value.participants
-          : participants // ignore: cast_nullable_to_non_nullable
-              as List<String>,
+      senderId: null == senderId
+          ? _value.senderId
+          : senderId // ignore: cast_nullable_to_non_nullable
+              as String,
+      renterId: null == renterId
+          ? _value.renterId
+          : renterId // ignore: cast_nullable_to_non_nullable
+              as String,
+      renterName: null == renterName
+          ? _value.renterName
+          : renterName // ignore: cast_nullable_to_non_nullable
+              as String,
+      senderName: null == senderName
+          ? _value.senderName
+          : senderName // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -118,7 +139,10 @@ abstract class _$$ChatEntityImplCopyWith<$Res>
       String lastMessage,
       DateTime lastMessageTimestamp,
       String photoUrl,
-      List<String> participants});
+      String senderId,
+      String renterId,
+      String renterName,
+      String senderName});
 }
 
 /// @nodoc
@@ -140,7 +164,10 @@ class __$$ChatEntityImplCopyWithImpl<$Res>
     Object? lastMessage = null,
     Object? lastMessageTimestamp = null,
     Object? photoUrl = null,
-    Object? participants = null,
+    Object? senderId = null,
+    Object? renterId = null,
+    Object? renterName = null,
+    Object? senderName = null,
   }) {
     return _then(_$ChatEntityImpl(
       id: null == id
@@ -167,10 +194,22 @@ class __$$ChatEntityImplCopyWithImpl<$Res>
           ? _value.photoUrl
           : photoUrl // ignore: cast_nullable_to_non_nullable
               as String,
-      participants: null == participants
-          ? _value._participants
-          : participants // ignore: cast_nullable_to_non_nullable
-              as List<String>,
+      senderId: null == senderId
+          ? _value.senderId
+          : senderId // ignore: cast_nullable_to_non_nullable
+              as String,
+      renterId: null == renterId
+          ? _value.renterId
+          : renterId // ignore: cast_nullable_to_non_nullable
+              as String,
+      renterName: null == renterName
+          ? _value.renterName
+          : renterName // ignore: cast_nullable_to_non_nullable
+              as String,
+      senderName: null == senderName
+          ? _value.senderName
+          : senderName // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -185,9 +224,11 @@ class _$ChatEntityImpl extends _ChatEntity {
       required this.lastMessage,
       required this.lastMessageTimestamp,
       required this.photoUrl,
-      required final List<String> participants})
-      : _participants = participants,
-        super._();
+      required this.senderId,
+      required this.renterId,
+      required this.renterName,
+      required this.senderName})
+      : super._();
 
   @override
   final String id;
@@ -201,17 +242,18 @@ class _$ChatEntityImpl extends _ChatEntity {
   final DateTime lastMessageTimestamp;
   @override
   final String photoUrl;
-  final List<String> _participants;
   @override
-  List<String> get participants {
-    if (_participants is EqualUnmodifiableListView) return _participants;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_participants);
-  }
+  final String senderId;
+  @override
+  final String renterId;
+  @override
+  final String renterName;
+  @override
+  final String senderName;
 
   @override
   String toString() {
-    return 'ChatEntity(id: $id, adId: $adId, adTitle: $adTitle, lastMessage: $lastMessage, lastMessageTimestamp: $lastMessageTimestamp, photoUrl: $photoUrl, participants: $participants)';
+    return 'ChatEntity(id: $id, adId: $adId, adTitle: $adTitle, lastMessage: $lastMessage, lastMessageTimestamp: $lastMessageTimestamp, photoUrl: $photoUrl, senderId: $senderId, renterId: $renterId, renterName: $renterName, senderName: $senderName)';
   }
 
   @override
@@ -228,8 +270,14 @@ class _$ChatEntityImpl extends _ChatEntity {
                 other.lastMessageTimestamp == lastMessageTimestamp) &&
             (identical(other.photoUrl, photoUrl) ||
                 other.photoUrl == photoUrl) &&
-            const DeepCollectionEquality()
-                .equals(other._participants, _participants));
+            (identical(other.senderId, senderId) ||
+                other.senderId == senderId) &&
+            (identical(other.renterId, renterId) ||
+                other.renterId == renterId) &&
+            (identical(other.renterName, renterName) ||
+                other.renterName == renterName) &&
+            (identical(other.senderName, senderName) ||
+                other.senderName == senderName));
   }
 
   @override
@@ -241,7 +289,10 @@ class _$ChatEntityImpl extends _ChatEntity {
       lastMessage,
       lastMessageTimestamp,
       photoUrl,
-      const DeepCollectionEquality().hash(_participants));
+      senderId,
+      renterId,
+      renterName,
+      senderName);
 
   /// Create a copy of ChatEntity
   /// with the given fields replaced by the non-null parameter values.
@@ -260,7 +311,10 @@ abstract class _ChatEntity extends ChatEntity {
       required final String lastMessage,
       required final DateTime lastMessageTimestamp,
       required final String photoUrl,
-      required final List<String> participants}) = _$ChatEntityImpl;
+      required final String senderId,
+      required final String renterId,
+      required final String renterName,
+      required final String senderName}) = _$ChatEntityImpl;
   const _ChatEntity._() : super._();
 
   @override
@@ -276,7 +330,13 @@ abstract class _ChatEntity extends ChatEntity {
   @override
   String get photoUrl;
   @override
-  List<String> get participants;
+  String get senderId;
+  @override
+  String get renterId;
+  @override
+  String get renterName;
+  @override
+  String get senderName;
 
   /// Create a copy of ChatEntity
   /// with the given fields replaced by the non-null parameter values.

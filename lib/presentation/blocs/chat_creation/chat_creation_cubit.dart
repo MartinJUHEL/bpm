@@ -20,26 +20,29 @@ class ChatCreationCubit extends Cubit<ChatCreationState> {
     required String adTitle,
     required String photoUrl,
     required String content,
+    required String renterName,
   }) async {
-    final userId = _userRepository.getLocalUser()?.uid;
+    final user = _userRepository.getLocalUser();
 
-    if (userId == null || userId == receiverId) {
+    if (user == null || user.uid == receiverId) {
       return;
     }
 
     emit(const ChatCreationState.loading());
 
     final result = await _chatRepository.createChat(
-      senderId: userId,
+      senderId: user.uid,
       receiverId: receiverId,
       adId: adId,
       adTitle: adTitle,
       photoUrl: photoUrl,
       content: content,
+      renterName: renterName,
+      senderName: user.displayName,
     );
 
     result.when(
-      success: (chatId) => emit(ChatCreationState.success(chatId)),
+      success: (_) => emit(const ChatCreationState.success()),
       failure: (error) => emit(const ChatCreationState.error()),
     );
   }

@@ -5,6 +5,9 @@ import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:timeago/timeago.dart' as timeago;
+
+
 
 import 'app.dart';
 import 'app/theme.dart';
@@ -55,6 +58,8 @@ Future<void> runMainApp(FirebaseOptions firebaseOptions) async {
     primaryColor: Colors.yellow,
     flavor: Flavor.dev,
   );
+
+  timeago.setLocaleMessages('fr', timeago.FrMessages()); // Add french messages
 
   ///Use for log changes.
   //Bloc.observer = AppBlocObserver();

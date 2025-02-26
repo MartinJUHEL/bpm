@@ -86,7 +86,8 @@
     "description": "Description",
     "contact": "Contact",
     "confirmDeletion": "Are you sure you want to delete your ad?",
-    "contactUser": "Contact {}"
+    "contactUser": "Contact {}",
+    "contactSucceed" : "The message has been sent successfully"
   },
   "description": "Description",
   "contact": "Contact",

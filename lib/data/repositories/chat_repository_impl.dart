@@ -27,22 +27,16 @@ final class ChatRepositoryImpl extends BaseRemoteRepository
   }
 
   @override
-  Stream<List<MessageEntity>> getChatMessages(
+  Future<Result<List<MessageEntity>>> getChatMessages(
     String chatId, {
     int limit = 20,
     DateTime? lastMessageTimestamp,
   }) {
-    return safeStream(
-        listen: _chatService
-            .getChatMessages(
-              chatId,
-              limit: limit,
-              lastMessageDateTime: lastMessageTimestamp,
-            )
-            .map(
-              (messages) =>
-                  messages.map((message) => message.toEntity()).toList(),
-            ));
+    return safeCall(
+        action: () => _chatService.getChatMessages(chatId,
+            limit: limit, lastMessageDateTime: lastMessageTimestamp),
+        transform: (messages) =>
+            messages.map((message) => message.toEntity()).toList());
   }
 
   @override
@@ -63,20 +57,22 @@ final class ChatRepositoryImpl extends BaseRemoteRepository
   }
 
   @override
-  Future<Result<void>> markMessagesAsRead(String chatId, String userId) {
+  Future<Result<void>> markMessagesAsRead(String chatId) {
     return safeCall(
-        action: () => _chatService.markMessagesAsRead(chatId, userId),
+        action: () => _chatService.markMessagesAsRead(chatId),
         transform: (_) => {});
   }
 
   @override
-  Future<Result<String>> createChat({
+  Future<Result<void>> createChat({
     required String senderId,
     required String receiverId,
     required String adId,
     required String adTitle,
     required String photoUrl,
     required String content,
+    required String renterName,
+    required String senderName,
   }) {
     return safeCall(
         action: () => _chatService.createChat(
@@ -86,7 +82,9 @@ final class ChatRepositoryImpl extends BaseRemoteRepository
               adTitle: adTitle,
               photoUrl: photoUrl,
               content: content,
+              renterName: renterName,
+              senderName: senderName,
             ),
-        transform: (chatId) => chatId);
+        transform: (_) => {});
   }
 }
