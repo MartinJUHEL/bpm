@@ -17,9 +17,9 @@ class Assets {
   static const String blocAuthenticationBloc = 'lib/Authentication/presentation/bloc/authentication_bloc.dart';
   static const String blocAuthenticationEvent = 'lib/Authentication/presentation/bloc/authentication_event.dart';
   static const String blocAuthenticationState = 'lib/Authentication/presentation/bloc/authentication_state.dart';
-  static const String blocHomeBloc = 'lib/home/presentation/bloc/home_bloc.dart';
-  static const String blocHomeEvent = 'lib/home/presentation/bloc/home_event.dart';
-  static const String blocHomeState = 'lib/home/presentation/bloc/home_state.dart';
+  static const String blocHomeBloc = 'lib/user/presentation/bloc/home_bloc.dart';
+  static const String blocHomeEvent = 'lib/user/presentation/bloc/home_event.dart';
+  static const String blocHomeState = 'lib/user/presentation/bloc/home_state.dart';
   static const String blocProfilBloc = 'lib/profile/presentation/bloc/profil_bloc.dart';
   static const String blocProfilEvent = 'lib/profile/presentation/bloc/profil_event.dart';
   static const String blocProfilState = 'lib/profile/presentation/bloc/profile_state.dart';
@@ -81,7 +81,7 @@ class Assets {
   static const String repositoriesPlaceRepositoryImpl = 'lib/core/data/repositories/address_repository_impl.dart';
   static const String repositoriesUserRepository = 'lib/core/domain/repositories/user_repository.dart';
   static const String repositoriesUserRepositoryImpl = 'lib/core/data/repositories/user_repository_impl.dart';
-  static const String screenHomeScreen = 'lib/home/presentation/screen/home_screen.dart';
+  static const String screenHomeScreen = 'lib/user/presentation/screen/home_screen.dart';
   static const String screenSplashScreen = 'lib/splash/presentation/screen/splash_screen.dart';
   static const String screensChooseUserTypeScreen = 'lib/signup/presentation/screens/choose_user_type_screen.dart';
   static const String screensEmailNotVerifiedScreen = 'lib/Authentication/presentation/screens/email_not_verified_screen.dart';

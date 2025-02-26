@@ -28,12 +28,14 @@ import '../../data/datasources/search_history_local_data_source.dart' as _i887;
 import '../../data/repositories/ad_repository_impl.dart' as _i996;
 import '../../data/repositories/address_repository_impl.dart' as _i1071;
 import '../../data/repositories/authentication_repository_impl.dart' as _i143;
+import '../../data/repositories/chat_repository_impl.dart' as _i838;
 import '../../data/repositories/favorite_repository_impl.dart' as _i1024;
 import '../../data/repositories/filter_repository_impl.dart' as _i851;
 import '../../data/repositories/search_history_repository_impl.dart' as _i915;
 import '../../data/repositories/user_repository_impl.dart' as _i790;
 import '../../data/services/ad_firebase_service.dart' as _i545;
 import '../../data/services/authentication_firebase_service.dart' as _i271;
+import '../../data/services/chat_firebase_service.dart' as _i495;
 import '../../data/services/favorite_firebase_service.dart' as _i864;
 import '../../data/services/search_ad_service.dart' as _i427;
 import '../../data/services/storage_service.dart' as _i27;
@@ -41,6 +43,7 @@ import '../../data/services/user_firebase_service.dart' as _i144;
 import '../../domain/repositories/ad_repository.dart' as _i1053;
 import '../../domain/repositories/address_repository.dart' as _i956;
 import '../../domain/repositories/authentication_repository.dart' as _i277;
+import '../../domain/repositories/chat_repository.dart' as _i1072;
 import '../../domain/repositories/favorite_repository.dart' as _i780;
 import '../../domain/repositories/filter_repository.dart' as _i884;
 import '../../domain/repositories/search_history_repository.dart' as _i447;
@@ -74,10 +77,13 @@ import '../../domain/usecases/signup/submit_signin_usecase.dart' as _i941;
 import '../../domain/usecases/signup/submit_signup_usecase.dart' as _i486;
 import '../../presentation/blocs/authentication/authentication_bloc.dart'
     as _i57;
+import '../../presentation/blocs/chat/chat_cubit.dart' as _i212;
+import '../../presentation/blocs/chat_creation/chat_creation_cubit.dart'
+    as _i877;
+import '../../presentation/blocs/chat_details/chat_details_cubit.dart' as _i840;
 import '../../presentation/blocs/favorite/favorite_ids_cubit.dart' as _i133;
 import '../../presentation/blocs/favorite/favorite_list_cubit.dart' as _i781;
 import '../../presentation/blocs/filter/filter_cubit.dart' as _i1021;
-import '../../presentation/blocs/home/home_cubit.dart' as _i642;
 import '../../presentation/blocs/profile/profile_cubit.dart' as _i551;
 import '../../presentation/blocs/profile_ads/profile_ads_cubit.dart' as _i368;
 import '../../presentation/blocs/publish_ad/pick_photos_bloc/pick_photos_bloc_cubit.dart'
@@ -90,6 +96,7 @@ import '../../presentation/blocs/search_ad/search_ad_cubit.dart' as _i722;
 import '../../presentation/blocs/search_address/search_city_cubit.dart'
     as _i725;
 import '../../presentation/blocs/signup/signup_bloc.dart' as _i274;
+import '../../presentation/blocs/user/user_cubit.dart' as _i979;
 import '../../presentation/navigation/navigation_cubit.dart' as _i83;
 import '../data/services/firebase_service.dart' as _i964;
 import '../network/app_connectivity_info.dart' as _i816;
@@ -167,6 +174,8 @@ Future<_i174.GetIt> $initGetIt(
         gh<_i59.FirebaseAuth>(),
         gh<_i974.Logger>(),
       ));
+  gh.lazySingleton<_i495.ChatFirebaseService>(
+      () => _i495.ChatFirebaseService(gh<_i974.FirebaseFirestore>()));
   gh.lazySingleton<_i864.FavoriteFirebaseService>(
       () => _i864.FavoriteFirebaseService(gh<_i974.FirebaseFirestore>()));
   gh.factory<_i84.PickPhotosBlocCubit>(() => _i84.PickPhotosBlocCubit(
@@ -199,10 +208,18 @@ Future<_i174.GetIt> $initGetIt(
         gh<_i27.StorageService>(),
         gh<_i427.SearchAdService>(),
       ));
+  gh.lazySingleton<_i1072.ChatRepository>(() => _i838.ChatRepositoryImpl(
+        gh<_i495.ChatFirebaseService>(),
+        gh<_i248.GenericErrorTrigger>(),
+        gh<_i816.AppConnectivityInfo>(),
+        gh<_i974.Logger>(),
+      ));
   gh.factory<_i813.GenericErrorTriggerCubit>(
       () => _i813.GenericErrorTriggerCubit(gh<_i248.GenericErrorTrigger>()));
   gh.factory<_i1021.FilterCubit>(
       () => _i1021.FilterCubit(gh<_i884.FilterRepository>()));
+  gh.factory<_i840.ChatDetailsCubit>(
+      () => _i840.ChatDetailsCubit(gh<_i1072.ChatRepository>()));
   gh.factory<_i277.IAuthenticationRepository>(() =>
       _i143.AuthenticationRepositoryImpl(
           gh<_i271.AuthenticationRemoteService>()));
@@ -246,8 +263,8 @@ Future<_i174.GetIt> $initGetIt(
             gh<_i411.IsEmailVerifiedUseCase>(),
             gh<_i271.UserRepository>(),
           ));
-  gh.factory<_i642.HomeCubit>(
-      () => _i642.HomeCubit(gh<_i271.UserRepository>()));
+  gh.factory<_i979.UserCubit>(
+      () => _i979.UserCubit(gh<_i271.UserRepository>()));
   gh.factory<_i551.ProfileCubit>(
       () => _i551.ProfileCubit(gh<_i271.UserRepository>()));
   gh.factory<_i941.SubmitSignInUseCase>(() => _i941.SubmitSignInUseCase(
@@ -265,6 +282,14 @@ Future<_i174.GetIt> $initGetIt(
         gh<_i903.IsAdTitleValidUseCase>(),
         gh<_i850.IsAdDescriptionValidUseCase>(),
         gh<_i1053.AdRepository>(),
+        gh<_i271.UserRepository>(),
+      ));
+  gh.factory<_i212.ChatCubit>(() => _i212.ChatCubit(
+        gh<_i1072.ChatRepository>(),
+        gh<_i271.UserRepository>(),
+      ));
+  gh.factory<_i877.ChatCreationCubit>(() => _i877.ChatCreationCubit(
+        gh<_i1072.ChatRepository>(),
         gh<_i271.UserRepository>(),
       ));
   gh.lazySingleton<_i206.UpdateFavoritesUseCase>(

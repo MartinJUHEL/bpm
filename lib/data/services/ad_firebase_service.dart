@@ -10,6 +10,11 @@ final class AdFirebaseService extends BaseFirebaseService {
 
   AdFirebaseService(this._firestore, super._logger);
 
+  static const _adCollection = 'ads';
+  static const _photosUrlField = 'photosUrl';
+  static const _renterIdField = 'renterId';
+  static const _idField = 'id';
+
   /// Post ad and get generated ad id.
   Future<String> postAd(PostAdModel ad) async {
     DocumentReference docRef =
@@ -54,12 +59,3 @@ final class AdFirebaseService extends BaseFirebaseService {
     }, 'getAd');
   }
 }
-
-///////////////////////////////////////////////////////////////////////////
-// CONSTANTS
-///////////////////////////////////////////////////////////////////////////
-
-const _adCollection = 'ads';
-const _photosUrlField = 'photosUrl';
-const _renterIdField = 'renterId';
-const _idField = 'id';

@@ -28,7 +28,6 @@ class ListAdsWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<FavoriteIdsCubit, Set<String>>(
       builder: (context, state) {
-        debugPrint('TOTO : ${state.toString()}');
         return GridView.builder(
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,

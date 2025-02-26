@@ -12,4 +12,5 @@
 
 - BUG3: Error during login
 - BUG4: Overflow in login Screen
-- BUG9: Ads photo url are not upload to algolia.
+- BUG6: Overflow in no result screen
+- BUG9: Ads photo url are not upload to algolia

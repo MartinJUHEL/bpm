@@ -1,8 +1,10 @@
 import 'package:assoshare/core/di/injection.dart';
 import 'package:assoshare/core/router/route_list.dart';
-import 'package:assoshare/presentation/blocs/home/home_cubit.dart';
+import 'package:assoshare/domain/entities/user/user_entity.dart';
 import 'package:assoshare/presentation/blocs/profile_ads/profile_ads_cubit.dart';
+import 'package:assoshare/presentation/blocs/user/user_cubit.dart';
 import 'package:assoshare/presentation/navigation/navigation_cubit.dart';
+import 'package:assoshare/presentation/screens/chat_tab.dart';
 import 'package:assoshare/presentation/screens/favorite_tab.dart';
 import 'package:assoshare/presentation/screens/search_tab.dart';
 import 'package:assoshare/presentation/widgets/home/bottom_navigation_bar_widget.dart';
@@ -36,7 +38,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => locator<HomeCubit>()..initialize(),
+          create: (context) => locator<UserCubit>()..initialize(),
         ),
 
         // List ads in profile.
@@ -44,42 +46,39 @@ class _HomeScreenState extends State<HomeScreen> {
           create: (context) => locator<ProfileAdsCubit>(),
         ),
       ],
-      child: BlocBuilder<HomeCubit, HomeState>(builder: (context, state) {
-        final user = state.user;
-        if (user != null) {
-          return BlocBuilder<NavigationCubit, NavigationState>(
-            builder: (context, navState) {
-              return SafeArea(
-                child: Scaffold(
-                    resizeToAvoidBottomInset: false,
-                    body: Center(
-                      child: IndexedStack(
-                        index: navState.navbarItem.itemIndex,
-                        children: const [
-                          SearchTab(),
-                          FavoriteTab(),
-                          SizedBox.shrink(),
-                          ProfileTab(),
-                        ],
-                      ),
-                    ),
-                    floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-                    floatingActionButton: FloatingActionButton(
-                      shape: const CircleBorder(),
-                      onPressed: () => {_onPublishAdClicked(context, user.uid)},
-                      backgroundColor: Theme.of(context).colorScheme.primary,
-                      child: const FaIcon(
-                        FontAwesomeIcons.plus,
-                      ),
-                    ),
-                    bottomNavigationBar: BottomNavigationBarWidget(tabIndex: navState.index)),
-              );
-            },
-          );
-        } else {
-          // TODO : HANDLE THIS CASE;
+      child: BlocBuilder<UserCubit, UserEntity?>(builder: (context, user) {
+        if (user == null) {
           return const SizedBox.shrink();
         }
+        return BlocBuilder<NavigationCubit, NavigationState>(
+          builder: (context, navState) {
+            return SafeArea(
+              child: Scaffold(
+                  resizeToAvoidBottomInset: false,
+                  body: Center(
+                    child: IndexedStack(
+                      index: navState.navbarItem.itemIndex,
+                      children: const [
+                        SearchTab(),
+                        FavoriteTab(),
+                        ChatTab(),
+                        ProfileTab(),
+                      ],
+                    ),
+                  ),
+                  floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+                  floatingActionButton: FloatingActionButton(
+                    shape: const CircleBorder(),
+                    onPressed: () => {_onPublishAdClicked(context, user.uid)},
+                    backgroundColor: Theme.of(context).colorScheme.primary,
+                    child: const FaIcon(
+                      FontAwesomeIcons.plus,
+                    ),
+                  ),
+                  bottomNavigationBar: BottomNavigationBarWidget(tabIndex: navState.index)),
+            );
+          },
+        );
       }),
     );
   }

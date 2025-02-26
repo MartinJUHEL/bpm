@@ -59,39 +59,41 @@ class AdCardHorizontalWidget extends StatelessWidget {
             ),
             const Gap(Dimens.paddingRegular),
             // Informations
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Text(
-                  ad.title,
-                  style: context.textTheme.titleMedium,
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                ),
-                const Gap(Dimens.paddingSmall),
-                Text(
-                  ad.displayTypeAndPrice(),
-                  style: context.textTheme.bodyMedium?.copyWith(
-                    fontWeight: FontWeight.bold,
-                    color: context.colorScheme.primary,
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Text(
+                    ad.title,
+                    style: context.textTheme.titleMedium,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
                   ),
-                ),
-                const Gap(Dimens.paddingSmaller),
-                Text(
-                  ad.city.displayCity(),
-                  style: context.textTheme.labelMedium?.copyWith(
-                    color: context.colorScheme.outline,
+                  const Gap(Dimens.paddingSmaller),
+                  Text(
+                    ad.displayTypeAndPrice(),
+                    style: context.textTheme.bodySmall?.copyWith(
+                      fontWeight: FontWeight.bold,
+                      color: context.colorScheme.primary,
+                    ),
                   ),
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                ),
-                const Gap(Dimens.paddingTiny),
-                Text(ad.creationDate.format(eEEEdMMMMHHmm).capitalize(),
-                    style: context.textTheme.labelSmall
-                        ?.copyWith(color: context.colorScheme.outline),
-                    overflow: TextOverflow.ellipsis),
-              ],
+                  const Gap(Dimens.paddingSmaller),
+                  Text(
+                    ad.city.displayCity(),
+                    style: context.textTheme.labelMedium?.copyWith(
+                      color: context.colorScheme.outline,
+                    ),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  const Gap(Dimens.paddingTiny),
+                  Text(ad.creationDate.format(eEEEdMMMMHHmm).capitalize(),
+                      style: context.textTheme.labelSmall
+                          ?.copyWith(color: context.colorScheme.outline),
+                      overflow: TextOverflow.ellipsis),
+                ],
+              ),
             ),
           ],
         ),

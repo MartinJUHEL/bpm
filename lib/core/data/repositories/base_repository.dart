@@ -34,10 +34,17 @@ base class BaseRemoteRepository {
       _triggerServerError();
       _logger.e('Server Exception in safeCall');
       return Result<OUTPUT>.failure(const Failure.server()); // Explicit OUTPUT type
-    } catch (e) {
-      _logger.e('Unexpected error in safeCall: $e');
+    } catch (error, stacktrace) {
+      _logger.e('Unexpected error in safeCall: $error, $stacktrace}');
       return Result<OUTPUT>.failure(const Failure.server()); // Explicit OUTPUT type
     }
+  }
+
+  Stream<OUTPUT> safeStream<OUTPUT>({required Stream<OUTPUT> listen}) {
+    return listen.handleError((error, stackTrace) {
+      _logger.e('Server Exception in safeStream: $error, $stackTrace');
+      throw error;
+    });
   }
 
   ///////////////////////////////////////////////////////////////////////////

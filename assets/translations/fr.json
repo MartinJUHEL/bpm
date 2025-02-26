@@ -86,13 +86,34 @@
   "rentalPriceTitle": "What is your rental price?",
   "rentalPriceLabel": "Your rental price",
   "post": "Post",
-  "@_AD_DETAIL": {},
-  "description": "Description",
-  "contact": "Contacter",
-  "confirmDeletion": "Es-tu sur de vouloir supprimer ton annonce ?",
+  "adDetails": {
+    "description": "Description",
+    "contact": "Contacter",
+    "confirmDeletion": "Es-tu sur de vouloir supprimer ton annonce ?",
+    "contactUser": "Contacter {}"
+  },
   "noFavorites": "Aucun favori",
   "noFavoritesDescription": "Ajoutez des annonces à vos favoris pour les retrouver facilement",
   "myFavorites": "Mes favoris",
   "searchHistory": "Historique des recherches",
-  "clearHistory": "Effacer l'historique"
+  "clearHistory": "Effacer l'historique",
+  "chat": {
+    "tab": {
+      "title": "Messages",
+      "empty": "Aucune conversation pour l'instant"
+    },
+    "details": {
+      "title": "Conversation",
+      "empty": "Aucun message",
+      "input": {
+        "hint": "Votre message...",
+        "send": "Envoyer"
+      },
+      "status": {
+        "sent": "Envoyé",
+        "delivered": "Reçu",
+        "read": "Lu"
+      }
+    }
+  }
 }

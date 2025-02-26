@@ -10,6 +10,7 @@ class Dimens {
   static const double paddingSmall = 10;
   static const double paddingRegular = 16;
   static const double paddingLarge = 30;
+  static const double paddingLarger = 38;
   static const double paddingHuge = 80;
 
   static const double paddingPage = paddingRegular;
@@ -37,5 +38,5 @@ class Dimens {
   // OTHER.
 
   static const double adVerticalCardImageSize = 180;
-  static const double adHorizontalCardImageSize = 110;
+  static const double adHorizontalCardImageSize = 120;
 }

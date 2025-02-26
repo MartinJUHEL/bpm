@@ -5,8 +5,10 @@ import 'package:assoshare/presentation/blocs/authentication/authentication_bloc.
 import 'package:assoshare/presentation/blocs/favorite/favorite_list_cubit.dart';
 import 'package:assoshare/presentation/blocs/publish_ad/publish_ad_bloc/publish_ad_bloc.dart';
 import 'package:assoshare/presentation/blocs/signup/signup_bloc.dart';
+import 'package:assoshare/presentation/blocs/user/user_cubit.dart';
 import 'package:assoshare/presentation/navigation/navigation_cubit.dart';
 import 'package:assoshare/presentation/screens/ad_details_screen.dart';
+import 'package:assoshare/presentation/screens/chat_details_screen.dart';
 import 'package:assoshare/presentation/screens/home_screen.dart';
 import 'package:assoshare/presentation/screens/photo_pager_screen.dart';
 import 'package:assoshare/presentation/screens/publish_ad_screen.dart';
@@ -97,16 +99,28 @@ abstract class AppRouter {
             ),
           ]),
       GoRoute(
-        name: RouteList.messages.name,
-        path: RouteList.messages.path,
-        builder: (context, state) => _Page(
-            providers: [
-              BlocProvider(create: (_) => locator<NavigationCubit>()),
-            ],
-            child: const HomeScreen(
-              selectedNavbarItem: NavbarItem.messages,
-            )),
-      ),
+          name: RouteList.chats.name,
+          path: RouteList.chats.path,
+          builder: (context, state) => _Page(
+                  providers: [
+                    BlocProvider(create: (_) => locator<NavigationCubit>()),
+                  ],
+                  child: const HomeScreen(
+                    selectedNavbarItem: NavbarItem.messages,
+                  )),
+          routes: [
+            GoRoute(
+              name: RouteList.chatDetails.name,
+              path: RouteList.chatDetails.path,
+              builder: (context, state) => _Page(
+                  providers: [
+                    BlocProvider(create: (_) => locator<UserCubit>()..initialize()),
+                  ],
+                  child: ChatDetailsScreen(
+                    chatId: state.extra as String,
+                  )),
+            ),
+          ]),
       GoRoute(
           name: RouteList.favorites.name,
           path: RouteList.favorites.path,

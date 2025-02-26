@@ -43,27 +43,21 @@ class _FavoriteTabState extends State<FavoriteTab> {
           builder: (context, state) {
             return state.when(
               initial: () => const SizedBox.shrink(),
-              loading: () => const Expanded(
-                child: ExpandedCenterWidget(
-                  child: CircularProgressIndicator(),
-                ),
+              loading: () => const ExpandedCenterWidget(
+                child: CircularProgressIndicator(),
               ),
               error: () => ExpandedCenterWidget(
                   child: ErrorScreen(
-                onRetryClicked: () =>
-                    context.read<FavoriteListCubit>().loadFavorites(),
+                onRetryClicked: () => context.read<FavoriteListCubit>().loadFavorites(),
               )),
               success: (favorites) => Expanded(
                 child: RefreshIndicator(
-                  onRefresh: () =>
-                      context.read<FavoriteListCubit>().loadFavorites(),
+                  onRefresh: () => context.read<FavoriteListCubit>().loadFavorites(),
                   child: favorites.isEmpty
                       ? _buildEmptyState(context)
                       : FavoriteListWidget(
                           favorites: favorites,
-                          onAdDismissed: (adId) => context
-                              .read<FavoriteListCubit>()
-                              .removeFavorite(adId),
+                          onAdDismissed: (adId) => context.read<FavoriteListCubit>().removeFavorite(adId),
                           onAdClicked: (ad) => context.pushNamed(
                             RouteList.searchAdDetails.name,
                             extra: AdDetailsScreenArgs(

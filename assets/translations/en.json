@@ -82,7 +82,12 @@
   "locationError": "Can't fetch your location",
   "publishAd": "Publish your ad",
   "queryTooShortMessage": "3 characters minimum are needed",
-  "@_AD_DETAIL": {},
+  "adDetails": {
+    "description": "Description",
+    "contact": "Contact",
+    "confirmDeletion": "Are you sure you want to delete your ad?",
+    "contactUser": "Contact {}"
+  },
   "description": "Description",
   "contact": "Contact",
   "confirmDeletion": "Are you sure you want to delete your ad?",
@@ -90,5 +95,24 @@
   "noFavoritesDescription": "Add ads to your favorites to find them easily",
   "myFavorites": "My favorites",
   "searchHistory": "Search history",
-  "clearHistory": "Clear history"
+  "clearHistory": "Clear history",
+  "chat": {
+    "tab": {
+      "title": "Messages",
+      "empty": "No conversation yet"
+    },
+    "details": {
+      "title": "Conversation",
+      "empty": "No messages",
+      "input": {
+        "hint": "Your message...",
+        "send": "Send"
+      },
+      "status": {
+        "sent": "Sent",
+        "delivered": "Delivered",
+        "read": "Read"
+      }
+    }
+  }
 }

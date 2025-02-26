@@ -1,6 +1,6 @@
 enum RouteList {
   splash(name: 'splash', path: '/splash'),
-  home(name: 'home', path: '/home'),
+  home(name: 'user', path: '/user'),
   emailNotVerified(name: 'emailNotVerified', path: '/emailNotVerified'),
   publishAd(name: 'publishAd', path: 'publishAd', parent: RouteList.home),
 
@@ -15,8 +15,9 @@ enum RouteList {
   profile(name: 'profile', path: '/profile'),
   profileAdDetails(name: 'profileAdDetails', path: '/adDetails', parent: RouteList.profile),
 
-  // MESSAGES.
-  messages(name: 'messages', path: '/messages'),
+  // CHATS.
+  chats(name: 'chats', path: '/chats'),
+  chatDetails(name: 'chatDetails', path: 'chatDetails', parent: RouteList.chats),
 
   // FAVORITES.
   favorites(name: 'favorites', path: '/favorites'),
